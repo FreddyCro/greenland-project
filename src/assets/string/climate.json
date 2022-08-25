@@ -1,11 +1,11 @@
 {
-  "seriesTitle": "解凍格陵蘭系列報導",
-  "seriesLandingTitle": "解凍格陵蘭",
-  "seriesLandingUrl": "#",
-  "seriesScientistTitle": "北極站科學家篇",
-  "seriesScientistUrl": "#",
-  "seriesShepherdTitle": "穿梭綠地牧羊人篇",
-  "seriesShepherdUrl": "#",
+  "metaTitle": "",
+  "metaDescription": "",
+  "metaKeywords": "",
+  "metaAuthor": "",
+  "metaCopyright": "",
+  "metaUrl": "",
+  "metaImage": "",
   "editorInterviewTitle": "採訪團隊",
   "editorInterviewMembers": "",
   "editorImageTitle": "影像團隊",
@@ -20,5 +20,5 @@
   "editorDirectorMembers": "",
   "editorGroupTitle": "製作單位",
   "editorGroupMembers": "",
-  "editorReleaseDate": "2022.--.--"
+  "editorReleaseDate": "2022.09.26"
 }

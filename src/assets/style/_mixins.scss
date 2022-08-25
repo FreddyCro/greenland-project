@@ -1,0 +1,193 @@
+// rwd
+$minBreakpoints: (
+  xs: $xs,
+  sm: $sm,
+  md: $md,
+  lg: $lg,
+  xl: $xl,
+  xxl: $xxl,
+);
+
+$maxBreakpoints: (
+  xxs: #{$xs - 0.2px},
+  xs: #{$sm - 0.2px},
+  sm: #{$md - 0.2px},
+  md: #{$lg - 0.2px},
+  lg: #{$xl - 0.2px},
+  xl: #{$xxl - 0.2px},
+);
+
+@mixin rwd-min($min) {
+  @media screen and (min-width: map-get($minBreakpoints, $min)) {
+    @content;
+  }
+}
+
+@mixin rwd-max($max) {
+  @media screen and (max-width: map-get($maxBreakpoints, $max)) {
+    @content;
+  }
+}
+
+@mixin rwd-min-max($min, $max) {
+  @media screen and (min-width: map-get($minBreakpoints, $min)) and (max-width: map-get($maxBreakpoints, $max)) {
+    @content;
+  }
+}
+
+// utilities
+@mixin support-webp {
+  @supports (aspect-ratio: 1 / 1) {
+    @content;
+  }
+}
+
+@mixin bg-2x($src, $ext) {
+  background-image: url('#{$src}.#{$ext}');
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    background-image: url('#{$src}@2x.#{$ext}');
+  }
+}
+
+@mixin reset-btn {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+// font
+@mixin general-font-h1 {
+  font-size: $h1-size-xxs;
+  font-weight: $font-weight-bold;
+  line-height: 46px;
+
+  @include rwd-min(xs) {
+    font-size: $h1-size-xs;
+  }
+
+  @include rwd-min(sm) {
+    font-size: $h1-size-sm;
+    line-height: 68px;
+  }
+
+  @include rwd-min(lg) {
+    font-size: $h1-size-lg;
+  }
+}
+
+@mixin general-font-h2 {
+  font-size: $h2-size-xxs;
+  font-weight: $font-weight-bold;
+  line-height: 40px;
+
+  @include rwd-min(xs) {
+    font-size: $h2-size-xs;
+  }
+
+  @include rwd-min(sm) {
+    font-size: $h2-size-sm;
+    line-height: 50px;
+  }
+
+  @include rwd-min(lg) {
+    font-size: $h2-size-lg;
+  }
+}
+
+@mixin general-font-h3 {
+  font-size: $h3-size-xxs;
+  font-weight: $font-weight-bold;
+  line-height: 36px;
+
+  @include rwd-min(xs) {
+    font-size: $h3-size-xs;
+  }
+
+  @include rwd-min(sm) {
+    font-size: $h3-size-sm;
+    line-height: 46px;
+  }
+
+  @include rwd-min(lg) {
+    font-size: $h3-size-lg;
+  }
+}
+
+@mixin general-font-h4 {
+  font-size: $h4-size-xxs;
+  font-weight: $font-weight-bold;
+  line-height: 32px;
+
+  @include rwd-min(xs) {
+    font-size: $h4-size-xs;
+  }
+
+  @include rwd-min(sm) {
+    font-size: $h4-size-sm;
+  }
+
+  @include rwd-min(lg) {
+    font-size: $h4-size-lg;
+  }
+}
+
+@mixin general-font-p {
+  font-size: $p-size-xxs;
+  font-weight: $font-weight-normal;
+  line-height: 36px;
+
+  @include rwd-min(xs) {
+    font-size: $p-size-xs;
+  }
+
+  @include rwd-min(sm) {
+    font-size: $p-size-sm;
+  }
+
+  @include rwd-min(lg) {
+    font-size: $p-size-lg;
+  }
+}
+
+@mixin general-font-caption {
+  font-size: $caption-size-xxs;
+  font-weight: $font-weight-thin;
+  line-height: 24px;
+
+  @include rwd-min(xs) {
+    font-size: $caption-size-xs;
+  }
+
+  @include rwd-min(sm) {
+    font-size: $caption-size-sm;
+  }
+
+  @include rwd-min(lg) {
+    font-size: $caption-size-lg;
+  }
+}
+
+// layout
+@mixin u-container-xxs {
+  max-width: $container-width-xs;
+  padding-left: $spacing-5;
+  padding-right: $spacing-5;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin u-container-xs {
+  padding-left: $spacing-6;
+  padding-right: $spacing-6;
+}
+
+@mixin u-container-sm {
+  max-width: $container-width-sm;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@mixin u-container-lg {
+  max-width: $container-width-lg;
+}
