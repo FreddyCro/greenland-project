@@ -14,27 +14,32 @@
           :use3x="false"
         )
 
-        .glm-map__item(
-          :class="greenland.classname"
-          v-text="greenland.name"
-          :style="{'left': `${greenland.left}%`, 'top': `${greenland.top}%`, transfrom: transfrom}"
-        ) 
-        .glm-map__item(
-          v-for="city in Object.values(cities)"
-          :class="city.classname"
-          :key="city.classname"
-          :style="{'left': `${city.left}%`, 'top': `${city.top}%`, transfrom: transfrom}"
-        ) {{ city.name }}
+        //- .glm-map__item(
+        //-   :class="greenland.classname"
+        //-   v-text="greenland.name"
+        //-   :style="{'left': `${greenland.left}%`, 'top': `${greenland.top}%`, transfrom: transfrom}"
+        //- ) 
+        //- .glm-map__item(
+        //-   v-for="city in Object.values(cities)"
+        //-   :class="city.classname"
+        //-   :key="city.classname"
+        //-   :style="{'left': `${city.left}%`, 'top': `${city.top}%`, transfrom: transfrom}"
+        //- ) {{ city.name }}
 
-        //- earth
-        img.earth(src="/img/landing/icon/map_earth.svg" alt="earth")
+        //- //- earth
+        //- img.earth(src="/img/landing/icon/map_earth.svg" alt="earth")
 
-        //- pin
-        img.pin(
-          src="/img/landing/icon/map_coordinate.svg"
-          alt="pin"
-          :style="{'left': `${pinCoordinate.left}%`, 'top': `${pinCoordinate.top}%`, transfrom: transfrom}"
-        )
+        //- //- pin
+        //- img.pin(
+        //-   src="/img/landing/icon/map_coordinate.svg"
+        //-   alt="pin"
+        //-   :style="{'left': `${pinCoordinate.left}%`, 'top': `${pinCoordinate.top}%`, transfrom: transfrom}"
+        //- )
+
+        .glm-map__pin-wrapper
+          landing-map-pin-mob
+          landing-map-pin-pad
+          landing-map-pin-pc
 
   .glm-text
     section.u-section.glm-section.glm-mystery(ref="section-1")
@@ -150,6 +155,9 @@
 
 <script>
 import GPic from '@/components/g-pic.vue';
+import LandingMapPinMob from '@/pages/landing/landing-map-pin-mob.vue';
+import LandingMapPinPad from '@/pages/landing/landing-map-pin-pad.vue';
+import LandingMapPinPc from '@/pages/landing/landing-map-pin-pc.vue';
 import str from '@/assets/string/landing.json';
 import { linearIntersectionObserver } from '@/assets/js/observer.js';
 
@@ -157,6 +165,9 @@ export default {
   name: 'landing-map',
   components: {
     GPic,
+    LandingMapPinMob,
+    LandingMapPinPad,
+    LandingMapPinPc,
   },
   data() {
     return {
@@ -443,6 +454,10 @@ export default {
   }
 
   &__bg-nav {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* display: flex; */
     transition: 0.5s ease-in-out;
 
     &--step-1 {
@@ -484,15 +499,13 @@ export default {
   }
 
   &__bg {
-    width: 100%;
-    height: 100%;
-    display: flex;
-
     img {
+      max-width: none;
+      max-height: none;
       width: 100%;
-      height: auto;
+      height: 100%;
       object-fit: cover;
-      object-position: 80% center;
+      object-position: center;
     }
 
     &--fixed {
@@ -527,6 +540,21 @@ export default {
   .pin {
     position: absolute;
     transition: 1s ease-in-out;
+  }
+
+  &__pin-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
   }
 }
 </style>

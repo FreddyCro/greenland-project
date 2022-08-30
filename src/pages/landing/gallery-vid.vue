@@ -1,15 +1,17 @@
 <template lang="pug">
 .gallery-vid
-  video(
-    playsinline
-    autoplay
-    loop
-    type="video/mp4"
-    muted
-    :poster="poster"
-  )
-    source(:src="src")
-  .gallery-pic__text(v-html="text")
+  .gallery-vid__content-wrapper
+    .gallery-vid__content
+      video(
+        playsinline
+        autoplay
+        loop
+        type="video/mp4"
+        muted
+        :poster="poster"
+      )
+        source(:src="src")
+      .gallery-vid__text(v-html="text")
 </template>
 
 <script>
@@ -35,15 +37,39 @@ export default {
 .gallery-vid {
   position: relative;
   width: 100%;
-  height: calc($gallery-pic-height * 2);
-  overflow: hidden;
+  height: 100%;
 
-  @include rwd-min(sm) {
-    height: calc($gallery-pic-height-sm * 2);
+  &__content-wrapper {
+    width: 100%;
+    height: 100%;
+    padding: 0 $spacing-2 $spacing-2 $spacing-2;
   }
 
-  @include rwd-min(md) {
-    height: calc($gallery-pic-height-md * 2);
+  &__content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__text {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: $spacing-5;
+    color: $bg-white;
+    writing-mode: vertical-lr;
+    opacity: 0;
+    transition: 0.333s ease-in-out;
+
+    &:hover {
+      opacity: 0.8;
+      background-color: rgba($color: #285f92, $alpha: 0.6);
+    }
   }
 
   video {
@@ -54,10 +80,6 @@ export default {
     width: 100%;
     height: 100%;
     color: $bg-white;
-  }
-
-  &__text {
-    writing-mode: vertical-rl;
   }
 }
 </style>

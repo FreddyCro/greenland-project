@@ -1,22 +1,37 @@
 <template lang="pug">
 .g-series.u-section
-  .g-container-lg
+  .g-container-lg.g-series__content
     h2.g-series__title(v-html="str.seriesTitle")
 
     .g-series-card-container
-      a.g-series-card.g-series-card--landing(:href="str.seriesLandingUrl")
+      a.g-series-card.g-series-card--landing(
+        v-if="list.includes('landing')"
+        :href="str.seriesLandingUrl"
+      )
         p.g-series-card__title(v-html="str.seriesLandingTitle")
         button.g-series-card__btn(v-html="str.seriesButtonText")
-      a.g-series-card.g-series-card--climate(:href="str.seriesClimateUrl")
+      a.g-series-card.g-series-card--climate(
+        v-if="list.includes('climate')"
+        :href="str.seriesClimateUrl"
+      )
         p.g-series-card__title(v-html="str.seriesClimateTitle")
         button.g-series-card__btn(v-html="str.seriesButtonText") 
-      a.g-series-card.g-series-card--fishing(:href="str.seriesFishingUrl")
+      a.g-series-card.g-series-card--fishing(
+        v-if="list.includes('fising')"
+        :href="str.seriesFishingUrl"
+      )
         p.g-series-card__title(v-html="str.seriesFishingTitle")
         button.g-series-card__btn(v-html="str.seriesButtonText")
-      a.g-series-card.g-series-card--farming(:href="str.seriesFarmingUrl")
+      a.g-series-card.g-series-card--farming(
+        v-if="list.includes('farming')"
+        :href="str.seriesFarmingUrl"
+      )
         p.g-series-card__title(v-html="str.seriesFarmingTitle")
         button.g-series-card__btn(v-html="str.seriesButtonText")
-      a.g-series-card.g-series-card--living(:href="str.seriesLivingUrl")
+      a.g-series-card.g-series-card--living(
+        v-if="list.includes('living')"
+        :href="str.seriesLivingUrl"
+      )
         p.g-series-card__title(v-html="str.seriesLivingTitle")
         button.g-series-card__btn(v-html="str.seriesButtonText")
 </template>
@@ -42,8 +57,27 @@ export default {
 
 <style lang="scss">
 .g-series {
+  position: relative;
   text-align: center;
-  background-color: $footer-gray;
+  background-color: $bg-white;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    background-color: $g-blue-1;
+
+    @include rwd-min(md) {
+      height: 70%;
+    }
+  }
+
+  &__content {
+    position: relative;
+  }
 
   &__title {
     margin-bottom: $spacing-5 !important;
@@ -52,8 +86,10 @@ export default {
 }
 
 .g-series-card-container {
-  display: flex;
-  justify-content: space-between;
+  @include rwd-min(md) {
+    display: flex;
+    justify-content: space-evenly;
+  }
 }
 
 .g-series-card {

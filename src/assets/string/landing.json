@@ -1,9 +1,8 @@
 {
-  "metaTitle": "",
-  "metaDescription": "",
-  "metaKeywords": "",
-  "metaAuthor": "",
-  "metaCopyright": "",
+  "metaTitle": "解凍格陵蘭 探訪世界的邊境 | 專題 | 聯合報",
+  "metaDescription": "全球暖化衝擊全球，全島80%被冰雪覆蓋的格陵蘭更是首當其衝。聯合報、願景工程基金會遠赴格陵蘭，紀錄氣候變遷對當地造成的全面衝擊。當氣候變遷成為格陵蘭人的日常，他們來不及害怕，已被迫接受現實，學習調適。",
+  "metaKeywords": "格陵蘭,暖化,氣候變遷,全球暖化,熱浪,冰山,冰川",
+  "metaAuthor": "聯合報系",
   "metaUrl": "https://vip.udn.com/newmedia/2022/greenland/",
   "editorInterviewTitle": "採訪團隊",
   "editorInterviewMembers": "梁玉芳、許詩愷、吳姿賢、陳靖宜、余承翰、游昌樺、李文顥",
@@ -131,5 +130,6 @@
   "galleryGreenDesc6": "當地漁民說，岸邊的浮冰愈來愈多，船艇需閃避大塊浮冰。",
   "galleryGreenDesc7": "格陵蘭伊魯利薩特，道路的盡頭是天海一色的海冰美景。",
   "galleryGreenDesc8": "冰川近年不斷崩落，大塊浮冰經常漂到港口附近。",
-  "galleryGreenDesc9": "格陵蘭以漁業為主要產業，佔出口產值七成以上。"
+  "galleryGreenDesc9": "格陵蘭以漁業為主要產業，佔出口產值七成以上。",
+  "seriesList": ["climate", "fising", "farming", "living"]
 }
