@@ -1,5 +1,5 @@
 <template>
-  <picture class="g-vid">
+  <picture :class="`g-pic ${classname}`">
     <template v-for="(media, index) in parsedMedia">
       <source
         v-if="webp"
@@ -20,15 +20,74 @@
 </template>
 
 <script>
+const handeImage = ({ src, srcset, ext, use2x, use3x, usePrefix }) => {
+  // console.log(src, srcset, ext);
+  if (!srcset) return;
+  if (srcset.length === 0) return;
+
+  const srcsetList = [];
+
+  if (srcset.includes('pc')) {
+    let pc = `${src}${usePrefix ? '_pc' : ''}.${ext} 1x`;
+
+    if (use2x) {
+      pc += `, ${src}${usePrefix ? '_pc' : ''}@2x.${ext} 2x`;
+    }
+
+    if (use3x) {
+      pc += `, ${src}${usePrefix ? '_pc' : ''}@3x.${ext} 3x`;
+    }
+
+    srcsetList.push(pc);
+  }
+
+  if (srcset.includes('pad')) {
+    let pad = `${src}${usePrefix ? '_pad' : ''}.${ext} 1x`;
+
+    if (use2x) {
+      pad += `, ${src}${usePrefix ? '_pad' : ''}@2x.${ext} 2x`;
+    }
+
+    if (use3x) {
+      pad += `, ${src}${usePrefix ? '_pad' : ''}@3x.${ext} 3x`;
+    }
+
+    srcsetList.push(pad);
+  }
+
+  if (srcset.includes('mob')) {
+    let mob = `${src}${usePrefix ? '_mob' : ''}.${ext} 1x`;
+
+    if (use2x) {
+      mob += `, ${src}${usePrefix ? '_mob' : ''}@2x.${ext} 2x`;
+    }
+
+    if (use3x) {
+      mob += `, ${src}${usePrefix ? '_mob' : ''}@3x.${ext} 3x`;
+    }
+
+    srcsetList.push(mob);
+  }
+
+  return srcsetList;
+};
+
 export default {
   name: 'GPic',
   props: {
+    id: {
+      type: String,
+    },
+    classname: {
+      type: String,
+    },
     src: {
       type: String,
       required: true,
     },
     srcset: {
       type: Array,
+      default: () => ['mob', 'pad', 'pc'],
     },
     ext: {
       type: String,
@@ -56,6 +115,10 @@ export default {
       type: Boolean,
       default: true,
     },
+    usePrefix: {
+      type: Boolean,
+      default: true,
+    },
     webp: {
       type: Boolean,
       default: false,
@@ -68,12 +131,16 @@ export default {
 
       const media = [];
 
-      if (this.srcset.includes('mob')) {
-        media.push('(min-width: 768px)');
+      if (this.srcset.includes('pc')) {
+        media.push('(min-width: 1024px)');
       }
 
       if (this.srcset.includes('pad')) {
-        media.push('(min-width: 1024px)');
+        media.push('(min-width: 768px)');
+      }
+
+      if (this.srcset.includes('mob')) {
+        media.push('');
       }
 
       return media;
@@ -82,58 +149,28 @@ export default {
       if (!this.srcset) return;
       if (this.srcset.length === 0) return;
 
-      const srcset = [];
-
-      if (this.srcset.includes('mob')) {
-        let mob = `${this.src}_mob.${this.ext} 1x`;
-
-        if (this.use2x) {
-          mob += `, ${this.src}_mob@2x.${this.ext} 2x`;
-        }
-
-        if (this.use3x) {
-          mob += `, ${this.src}_mob@3x.${this.ext} 3x`;
-        }
-
-        srcset.push(mob);
-      }
-
-      if (this.srcset.includes('pad')) {
-        let pad = `${this.src}_pad.${this.ext} 1x`;
-
-        if (this.use2x) {
-          pad += `, ${this.src}_pad@2x.${this.ext} 2x`;
-        }
-
-        if (this.use3x) {
-          pad += `, ${this.src}_pad@3x.${this.ext} 3x`;
-        }
-
-        srcset.push(pad);
-      }
-
-      if (this.srcset.includes('pc')) {
-        let pc = `${this.src}_pc.${this.ext} 1x`;
-
-        if (this.use2x) {
-          pc += `, ${this.src}_pc@2x.${this.ext} 2x`;
-        }
-
-        if (this.use3x) {
-          pc += `, ${this.src}_pc@3x.${this.ext} 3x`;
-        }
-
-        srcset.push(pc);
-      }
-
-      return srcset;
+      return handeImage({
+        src: this.src,
+        srcset: this.srcset,
+        ext: this.ext,
+        use2x: this.use2x,
+        use3x: this.use3x,
+        usePrefix: this.usePrefix,
+      });
     },
     parsedWebpSrcset() {
       if (!this.webp) return;
       if (!this.srcset) return;
       if (this.srcset.length === 0) return;
 
-      return [];
+      return handeImage({
+        src: this.src,
+        srcset: this.srcset,
+        ext: 'webp',
+        use2x: this.use2x,
+        use3x: this.use3x,
+        usePrefix: this.usePrefix,
+      });
     },
   },
 };

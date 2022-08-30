@@ -29,6 +29,24 @@
   }
 }
 
+.u-paragraph {
+  h2 {
+    margin-bottom: $spacing-7;
+
+    @include rwd-min(md) {
+      margin-bottom: $spacing-8;
+    }
+  }
+
+  p + p {
+    margin-top: $spacing-7;
+
+    @include rwd-min(md) {
+      margin-top: $spacing-8;
+    }
+  }
+}
+
 .u-container {
   @include u-container-xxs;
 
@@ -66,7 +84,7 @@
   padding-top: $spacing-10;
   padding-bottom: $spacing-10;
 
-  @include rwd-min(lg) {
+  @include rwd-min(md) {
     padding-top: $spacing-11;
     padding-bottom: $spacing-11;
   }
@@ -107,6 +125,12 @@
 
   @include rwd-min(sm) {
     @include u-container-sm;
+  }
+
+  @include rwd-min(md) {
+    max-width: 100%;
+    padding-left: 92px;
+    padding-right: 92px;
   }
 
   @include rwd-min(lg) {

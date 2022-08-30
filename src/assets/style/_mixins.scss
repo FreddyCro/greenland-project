@@ -42,15 +42,127 @@ $maxBreakpoints: (
   }
 }
 
-@mixin bg-2x($src, $ext) {
-  background-image: url('#{$src}.#{$ext}');
+@mixin bg-3x($src, $ext, $webp: true) {
+  background-repeat: no-repeat;
 
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    background-image: url('#{$src}@2x.#{$ext}');
+  // mob
+  // 1x
+  background-image: url('#{$src}_mob.#{$ext}');
+
+  @if $webp == true {
+    @supports (aspect-ratio: 1 / 1) {
+      // 2x webp
+      background-image: url('#{$src}_mob.webp');
+    }
+  }
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (-moz-min-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2),
+    only screen and (min-device-pixel-ratio: 2) {
+    // 2x
+    background-image: url('#{$src}_mob@2x.#{$ext}');
+
+    @if $webp == true {
+      @supports (aspect-ratio: 1 / 1) {
+        // 2x webp
+        background-image: url('#{$src}_mob@2x.webp');
+      }
+    }
+  }
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 3),
+    only screen and (-moz-min-device-pixel-ratio: 3),
+    only screen and (-o-min-device-pixel-ratio: 3),
+    only screen and (min-device-pixel-ratio: 3) {
+    // 3x
+    background-image: url('#{$src}_mob@3x.#{$ext}');
+
+    @if $webp == true {
+      @supports (aspect-ratio: 1 / 1) {
+        // 3x webp
+        background-image: url('#{$src}_mob@3x.webp');
+      }
+    }
+  }
+
+  // pad
+  @media screen and (min-width: $sm) {
+    background-image: url('#{$src}_pad.#{$ext}');
+  }
+
+  @media screen and (min-width: $sm),
+    only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (-moz-min-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2),
+    only screen and (min-device-pixel-ratio: 2) {
+    // 2x
+    background-image: url('#{$src}_pad@2x.#{$ext}');
+
+    @if $webp == true {
+      @supports (aspect-ratio: 1 / 1) {
+        // 2x webp
+        background-image: url('#{$src}_pad@2x.webp');
+      }
+    }
+  }
+
+  @media screen and (min-width: $sm),
+    only screen and (-webkit-min-device-pixel-ratio: 3),
+    only screen and (-moz-min-device-pixel-ratio: 3),
+    only screen and (-o-min-device-pixel-ratio: 3),
+    only screen and (min-device-pixel-ratio: 3) {
+    // 3x
+    background-image: url('#{$src}_pad@3x.#{$ext}');
+
+    @if $webp == true {
+      @supports (aspect-ratio: 1 / 1) {
+        // 3x webp
+        background-image: url('#{$src}_pad@3x.webp');
+      }
+    }
+  }
+
+  // pc
+  @media screen and (min-width: $md) {
+    background-image: url('#{$src}.#{$ext}');
+  }
+
+  @media screen and (min-width: $md),
+    only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (-moz-min-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2),
+    only screen and (min-device-pixel-ratio: 2) {
+    // 2x
+    background-image: url('#{$src}_pc@2x.#{$ext}');
+
+    @if $webp == true {
+      @supports (aspect-ratio: 1 / 1) {
+        // 2x webp
+        background-image: url('#{$src}_pc@2x.webp');
+      }
+    }
+  }
+
+  @media screen and (min-width: $md),
+    only screen and (-webkit-min-device-pixel-ratio: 3),
+    only screen and (-moz-min-device-pixel-ratio: 3),
+    only screen and (-o-min-device-pixel-ratio: 3),
+    only screen and (min-device-pixel-ratio: 3) {
+    // 3x
+    background-image: url('#{$src}_pc@3x.#{$ext}');
+
+    @if $webp == true {
+      @supports (aspect-ratio: 1 / 1) {
+        // 3x webp
+        background-image: url('#{$src}_pc@3x.webp');
+      }
+    }
   }
 }
 
 @mixin reset-btn {
+  padding: 0;
   background-color: transparent;
   border: 0;
   cursor: pointer;
@@ -58,6 +170,7 @@ $maxBreakpoints: (
 
 // font
 @mixin general-font-h1 {
+  margin: 0;
   font-size: $h1-size-xxs;
   font-weight: $font-weight-bold;
   line-height: 46px;
@@ -77,6 +190,7 @@ $maxBreakpoints: (
 }
 
 @mixin general-font-h2 {
+  margin: 0;
   font-size: $h2-size-xxs;
   font-weight: $font-weight-bold;
   line-height: 40px;
@@ -96,6 +210,7 @@ $maxBreakpoints: (
 }
 
 @mixin general-font-h3 {
+  margin: 0;
   font-size: $h3-size-xxs;
   font-weight: $font-weight-bold;
   line-height: 36px;
@@ -115,6 +230,7 @@ $maxBreakpoints: (
 }
 
 @mixin general-font-h4 {
+  margin: 0;
   font-size: $h4-size-xxs;
   font-weight: $font-weight-bold;
   line-height: 32px;
@@ -133,6 +249,7 @@ $maxBreakpoints: (
 }
 
 @mixin general-font-p {
+  margin: 0;
   font-size: $p-size-xxs;
   font-weight: $font-weight-normal;
   line-height: 36px;
