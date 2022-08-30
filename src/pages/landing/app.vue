@@ -136,50 +136,75 @@
     .u-section.gl-gallery
       .g-container-lg
         .gl-gallery__row
-          .gl-gallery__col
-            gallery-pic(src="/img/landing/gallery/greenland_pic9_2", :text="str.galleryIceTitle")
-          .gl-gallery__col
-            gallery-pic(src="/img/landing/gallery/greenland_pic9_2", :text="str.galleryIceDesc2")
-            gallery-pic(src="/img/landing/gallery/greenland_pic9_3", :text="str.galleryIceDesc3")
-          .gl-gallery__col
-            gallery-pic(src="/img/landing/gallery/greenland_pic9_4", :text="str.galleryIceDesc4")
+          .gl-gallery__col.gl-gallery__col-w1
+            gallery-pic(src="/img/landing/gallery/greenland_pic9_2" :text="str.galleryIceTitle" height="2")
+          .gl-gallery__col.gl-gallery__col-w1
+            gallery-pic(src="/img/landing/gallery/greenland_pic9_2" :text="str.galleryIceDesc2")
+            gallery-pic(src="/img/landing/gallery/greenland_pic9_3" :text="str.galleryIceDesc3")
+          .gl-gallery__col.gl-gallery__col-w1
+            gallery-pic(src="/img/landing/gallery/greenland_pic9_4" :text="str.galleryIceDesc4" height="2")
 
         .gl-gallery__row
-          .gl-gallery__col
-            gallery-pic(src="/img/landing/gallery/greenland_pic9_5", :text="str.galleryIceDesc5")
-          .gl-gallery__col
-            gallery-pic(src="/img/landing/gallery/greenland_pic9_6", :text="str.galleryIceDesc6")
-            gallery-pic(src="/img/landing/gallery/greenland_pic9_7", :text="str.galleryIceDesc7")
+          .gl-gallery__col.gl-gallery__col-w2
+            gallery-pic(src="/img/landing/gallery/greenland_pic9_6" :text="str.galleryIceDesc6")
+            gallery-pic(src="/img/landing/gallery/greenland_pic9_5" :text="str.galleryIceDesc5")
+          .gl-gallery__col.gl-gallery__col-w1
+            gallery-pic(src="/img/landing/gallery/greenland_pic9_7" :text="str.galleryIceDesc7" height="2")
 
         .gl-gallery__row
-          .gl-gallery__col
-            gallery-pic(src="/img/landing/gallery/greenland_pic9_8", :text="str.galleryIceDesc8")
-          .gl-gallery__col
-            gallery-pic(src="/img/landing/gallery/greenland_pic9_9", :text="str.galleryIceDesc9")
+          .gl-gallery__col.gl-gallery__col-w1
+            gallery-pic(src="/img/landing/gallery/greenland_pic9_8" :text="str.galleryIceDesc8")
+          .gl-gallery__col.gl-gallery__col-w2
+            gallery-pic(src="/img/landing/gallery/greenland_pic9_9" :text="str.galleryIceDesc9")
 
         .gl-gallery__row
-          gallery-pic(src="/img/landing/gallery/greenland_pic10_2", :text="str.galleryCityTitle")
-          gallery-pic(src="/img/landing/gallery/greenland_pic10_2", :text="str.galleryCityDesc2")
-          gallery-pic(src="/img/landing/gallery/greenland_pic10_3", :text="str.galleryCityDesc3")
-          gallery-pic(src="/img/landing/gallery/greenland_pic10_4", :text="str.galleryCityDesc4")
-          gallery-pic(src="/img/landing/gallery/greenland_pic10_5", :text="str.galleryCityDesc5")
-          gallery-pic(src="/img/landing/gallery/greenland_pic10_6", :text="str.galleryCityDesc6")
-          gallery-pic(src="/img/landing/gallery/greenland_pic10_7", :text="str.galleryCityDesc7")
-          gallery-pic(src="/img/landing/gallery/greenland_pic10_8", :text="str.galleryCityDesc8")
-          gallery-pic(src="/img/landing/gallery/greenland_pic10_9", :text="str.galleryCityDesc9")
+          gallery-pic(src="/img/landing/gallery/greenland_pic10_2" :text="str.galleryCityTitle")
+          gallery-pic(src="/img/landing/gallery/greenland_pic10_2" :text="str.galleryCityDesc2")
+          gallery-pic(src="/img/landing/gallery/greenland_pic10_3" :text="str.galleryCityDesc3")
+          gallery-pic(src="/img/landing/gallery/greenland_pic10_4" :text="str.galleryCityDesc4")
+          gallery-pic(src="/img/landing/gallery/greenland_pic10_5" :text="str.galleryCityDesc5")
+          gallery-pic(src="/img/landing/gallery/greenland_pic10_6" :text="str.galleryCityDesc6")
+          gallery-pic(src="/img/landing/gallery/greenland_pic10_7" :text="str.galleryCityDesc7")
+          gallery-pic(src="/img/landing/gallery/greenland_pic10_8" :text="str.galleryCityDesc8")
+          gallery-pic(src="/img/landing/gallery/greenland_pic10_9" :text="str.galleryCityDesc9")
 
         .gl-gallery__row
-          gallery-pic(src="/img/landing/gallery/greenland_pic11_2", :text="str.galleryGreenTitle")
-          gallery-pic(src="/img/landing/gallery/greenland_pic11_2", :text="str.galleryGreenDesc2")
-          gallery-pic(src="/img/landing/gallery/greenland_pic11_3", :text="str.galleryGreenDesc3")
-          gallery-pic(src="/img/landing/gallery/greenland_pic11_4", :text="str.galleryGreenDesc4")
-          gallery-pic(src="/img/landing/gallery/greenland_pic11_5", :text="str.galleryGreenDesc5")
-          gallery-pic(src="/img/landing/gallery/greenland_pic11_6", :text="str.galleryGreenDesc6")
-          gallery-pic(src="/img/landing/gallery/greenland_pic11_7", :text="str.galleryGreenDesc7")
-          gallery-pic(src="/img/landing/gallery/greenland_pic11_8", :text="str.galleryGreenDesc8")
-          gallery-pic(src="/img/landing/gallery/greenland_pic11_9", :text="str.galleryGreenDesc9")
+          gallery-pic(src="/img/landing/gallery/greenland_pic11_2" :text="str.galleryGreenTitle")
+          gallery-pic(src="/img/landing/gallery/greenland_pic11_2" :text="str.galleryGreenDesc2")
+          gallery-pic(src="/img/landing/gallery/greenland_pic11_3" :text="str.galleryGreenDesc3")
+          gallery-pic(src="/img/landing/gallery/greenland_pic11_4" :text="str.galleryGreenDesc4")
+          gallery-pic(src="/img/landing/gallery/greenland_pic11_5" :text="str.galleryGreenDesc5")
+          gallery-pic(src="/img/landing/gallery/greenland_pic11_6" :text="str.galleryGreenDesc6")
+          gallery-pic(src="/img/landing/gallery/greenland_pic11_7" :text="str.galleryGreenDesc7")
+          gallery-pic(src="/img/landing/gallery/greenland_pic11_8" :text="str.galleryGreenDesc8")
+          gallery-pic(src="/img/landing/gallery/greenland_pic11_9" :text="str.galleryGreenDesc9")
 
-    g-series
+    footer.gl-footer
+      //- TODO: editor
+      g-series
+      footer-editor
+        div
+          p(v-text="str.editorInterviewTitle")
+          p(v-text="str.editorInterviewMembers")
+        div
+          p(v-text="str.editorProducerTitle")
+          p(v-text="str.editorProducerMembers")
+        div
+          p(v-text="str.editorVisualTitle")
+          p(v-text="str.editorVisualMembers")
+        div
+          p(v-text="str.editorEngineerTitle")
+          p(v-text="str.editorEngineerMembers")
+        div
+          p(v-text="str.editorDirectorTitle")
+          p(v-text="str.editorDirectorMembers")
+        div
+          p(v-text="str.editorGroupTitle")
+          p(v-text="str.editorGroupMembers")
+        div
+          p
+          p(v-text="str.editorReleaseDate")
+      g-footer-logo
 </template>
 
 <script>
@@ -188,6 +213,8 @@ import GPic from '@/components/g-pic.vue';
 import GTwoChart from '@/components/g-two-chart.vue';
 import GVid from '@/components/g-vid.vue';
 import GVidWControl from '@/components/g-vid-w-control.vue';
+import GFooterLogo from '@/components/g-footer-logo.vue';
+import FooterEditor from '@/components/common/footer-editor.vue';
 import LandingMap from '@/pages/landing/landing-map.vue';
 import AnchorBtn from '@/pages/landing/anchor-btn.vue';
 import GalleryPic from '@/pages/landing/gallery-pic.vue';
@@ -203,7 +230,9 @@ export default {
     GVid,
     GVidWControl,
     GalleryPic,
+    GFooterLogo,
     LandingMap,
+    FooterEditor,
   },
   data() {
     return {
@@ -321,19 +350,11 @@ export default {
     &-w3 {
       width: calc(100%);
     }
-
-    &-h1 {
-      width: calc(380px);
-    }
-
-    &-h2 {
-      width: calc(380px * 2);
-    }
-
-    &-h3 {
-      width: calc(380px * 3);
-    }
   }
+}
+
+.gl-footer {
+  background-color: $footer-gray;
 }
 </style>
 

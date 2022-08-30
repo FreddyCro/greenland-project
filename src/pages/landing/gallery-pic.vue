@@ -8,7 +8,7 @@
     :webp="true"
     :use-prefix="false",
   )
-  //- .gallery-pic__text(v-html="text")
+  .gallery-pic__text(v-html="text")
 
 </template>
 
@@ -30,10 +30,6 @@ export default {
       type: Boolean,
       default: false,
     },
-    width: {
-      type: String,
-      default: '1',
-    },
     height: {
       type: String,
       default: '1',
@@ -54,53 +50,79 @@ export default {
         'gallery-pic--h3': this.height === '3',
       };
     },
-  }
+  },
 };
 </script>
 
 <style lang="scss">
 .gallery-pic {
   position: relative;
-  width: 200px;
-  height: 200px;
-  /* width: 100%;
-  height: 100%; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
   overflow: hidden;
 
-  /* &--w1 {
-    width: calc(100% / 3);
-  }
-
-  &--w2 {
-    width: calc(100% / 3 * 2);
-  }
-
-  &--w3 {
-    width: calc(100%);
-  }
-
   &--h1 {
-    width: calc(100% / 3);
+    height: $gallery-pic-height;
+
+    @include rwd-min(sm) {
+      height: $gallery-pic-height-sm;
+    }
+
+    @include rwd-min(md) {
+      height: $gallery-pic-height-md;
+    }
   }
 
   &--h2 {
-    width: calc(100% / 3 * 2);
+    height: calc($gallery-pic-height * 2);
+
+    @include rwd-min(sm) {
+      height: calc($gallery-pic-height-sm * 2);
+    }
+
+    @include rwd-min(md) {
+      height: calc($gallery-pic-height-md * 2);
+    }
   }
 
   &--h3 {
-    width: calc(100%);
-  } */
+    height: calc($gallery-pic-height * 3);
 
-  &__img {
-    position: absolute;
-    left: 0;
-    top: 0;
+    @include rwd-min(sm) {
+      height: calc($gallery-pic-height-sm * 3);
+    }
+
+    @include rwd-min(md) {
+      height: calc($gallery-pic-height-md * 3);
+    }
+  }
+
+  &__text {
+    position: relative;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: $spacing-5;
+    color: $bg-white;
+    opacity: 0;
+    transition: 0.333s ease-in-out;
+
+    &:hover {
+      opacity: 0.8;
+      /* background-color: $black-1; */
+    }
+  }
+
+  &__img {
+    img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 </style>
