@@ -6,9 +6,9 @@
 
     .gl-hero-vid-wrapper
       g-vid(
-        src="/vid/landing/greenland_video1_1",
+        src="vid/landing/greenland_video1_1",
         ext="mp4",
-        poster="/img/landing/greenland_preview1_1",
+        poster="img/landing/greenland_preview1_1",
         poster-ext="webp"
         id="gl-vid1",
         classname="gl-hero-vid"
@@ -34,8 +34,8 @@
       .gl-bnb-half.gl-bnb-half--center
         g-two-chart(
           id="gl-hot-chart",
-          first="/img/landing/greenland_chart2_1_pc.svg",
-          second="/img/landing/greenland_chart2_2_pc.svg",
+          first="img/landing/greenland_chart2_1_pc.svg",
+          second="img/landing/greenland_chart2_2_pc.svg",
           :alt="str.hotTitle"
         )
       .gl-bnb-half.u-paragraph
@@ -51,8 +51,8 @@
       .gl-bnb-half.gl-bnb-half--center
         g-two-chart(
           id="gl-melt-chart",
-          first="/img/landing/greenland_chart3_1_pc.svg",
-          second="/img/landing/greenland_chart3_2_pc.svg",
+          first="img/landing/greenland_chart3_1_pc.svg",
+          second="img/landing/greenland_chart3_2_pc.svg",
           :alt="str.hotTitle"
         )
       .gl-bnb-half.u-paragraph
@@ -68,9 +68,9 @@
     section.gl-bnb-section.gl-snow
       .gl-bnb-half.gl-bnb-half--no-padding.gl-bnb-vid
         g-vid-w-control(
-          src="/vid/landing/greenland_video4_1",
+          src="vid/landing/greenland_video4_1",
           ext="mp4"
-          poster="/img/landing/greenland_preview4_1",
+          poster="img/landing/greenland_preview4_1",
           poster-ext="webp"
           id="gl-vid4",
           classname="gl-snow-vid"
@@ -87,9 +87,9 @@
     section.gl-bnb-section.gl-speed
       .gl-bnb-half.gl-bnb-half--no-padding.gl-bnb-vid
         g-vid-w-control(
-          src="/vid/landing/greenland_video5_1",
+          src="vid/landing/greenland_video5_1",
           ext="mp4"
-          poster="/img/landing/greenland_preview5_1",
+          poster="img/landing/greenland_preview5_1",
           poster-ext="webp"
           id="gl-vid5",
           classname="gl-speed-vid"
@@ -106,9 +106,9 @@
     section.gl-bnb-section.gl-culture
       .gl-bnb-half.gl-bnb-half--no-padding.gl-bnb-vid
         g-vid-w-control(
-          src="/vid/landing/greenland_video6_1",
+          src="vid/landing/greenland_video6_1",
           ext="mp4"
-          poster="/img/landing/greenland_preview6_1",
+          poster="img/landing/greenland_preview6_1",
           poster-ext="webp"
           id="gl-vid6",
           classname="gl-culture-vid"
@@ -137,66 +137,66 @@
       //- ice
       .gl-gallery__row
         .gl-gallery__col.gl-gallery__col-w1
-          gallery-vid(src="/vid/landing/greenland_video9_1.mp4" :text="str.galleryIceTitle")
+          gallery-vid(src="vid/landing/greenland_video9_1.mp4" :text="str.galleryIceTitle")
         .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="/img/landing/gallery/greenland_pic9_2" :text="str.galleryIceDesc2")
-          gallery-pic(src="/img/landing/gallery/greenland_pic9_3" :text="str.galleryIceDesc3")
+          gallery-pic(src="img/landing/gallery/greenland_pic9_2" :text="str.galleryIceDesc2")
+          gallery-pic(src="img/landing/gallery/greenland_pic9_3" :text="str.galleryIceDesc3")
         .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="/img/landing/gallery/greenland_pic9_4" :text="str.galleryIceDesc4")
+          gallery-pic(src="img/landing/gallery/greenland_pic9_4" :text="str.galleryIceDesc4")
       .gl-gallery__row
         .gl-gallery__col.gl-gallery__col-w2
-          gallery-pic(src="/img/landing/gallery/greenland_pic9_5" :text="str.galleryIceDesc5")
+          gallery-pic(src="img/landing/gallery/greenland_pic9_5" :text="str.galleryIceDesc5")
         .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="/img/landing/gallery/greenland_pic9_6" :text="str.galleryIceDesc6")
-          gallery-pic(src="/img/landing/gallery/greenland_pic9_7" :text="str.galleryIceDesc7")
+          gallery-pic(src="img/landing/gallery/greenland_pic9_6" :text="str.galleryIceDesc6")
+          gallery-pic(src="img/landing/gallery/greenland_pic9_7" :text="str.galleryIceDesc7")
       .gl-gallery__row
         .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="/img/landing/gallery/greenland_pic9_8" :text="str.galleryIceDesc8")
+          gallery-pic(src="img/landing/gallery/greenland_pic9_8" :text="str.galleryIceDesc8")
         .gl-gallery__col.gl-gallery__col-w2
-          gallery-pic(src="/img/landing/gallery/greenland_pic9_9" :text="str.galleryIceDesc9")
+          gallery-pic(src="img/landing/gallery/greenland_pic9_9" :text="str.galleryIceDesc9")
 
       //- city
       .gl-gallery__row
         .gl-gallery__col.gl-gallery__col-w1
-          gallery-vid(src="/vid/landing/greenland_video10_1.mp4" :text="str.galleryCityTitle")
+          gallery-vid(src="vid/landing/greenland_video10_1.mp4" :text="str.galleryCityTitle")
         .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="/img/landing/gallery/greenland_pic10_2" :text="str.galleryCityDesc2")
+          gallery-pic(src="img/landing/gallery/greenland_pic10_2" :text="str.galleryCityDesc2")
         .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="/img/landing/gallery/greenland_pic10_3" :text="str.galleryCityDesc3")
-          gallery-pic(src="/img/landing/gallery/greenland_pic10_4" :text="str.galleryCityDesc4")
+          gallery-pic(src="img/landing/gallery/greenland_pic10_3" :text="str.galleryCityDesc3")
+          gallery-pic(src="img/landing/gallery/greenland_pic10_4" :text="str.galleryCityDesc4")
       .gl-gallery__row
         .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="/img/landing/gallery/greenland_pic10_5" :text="str.galleryCityDesc5")
+          gallery-pic(src="img/landing/gallery/greenland_pic10_5" :text="str.galleryCityDesc5")
         .gl-gallery__col.gl-gallery__col-w2
-          gallery-pic(src="/img/landing/gallery/greenland_pic10_6" :text="str.galleryCityDesc6")
+          gallery-pic(src="img/landing/gallery/greenland_pic10_6" :text="str.galleryCityDesc6")
       .gl-gallery__row
         .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="/img/landing/gallery/greenland_pic10_7" :text="str.galleryCityDesc7")
+          gallery-pic(src="img/landing/gallery/greenland_pic10_7" :text="str.galleryCityDesc7")
         .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="/img/landing/gallery/greenland_pic10_8" :text="str.galleryCityDesc8")
+          gallery-pic(src="img/landing/gallery/greenland_pic10_8" :text="str.galleryCityDesc8")
         .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="/img/landing/gallery/greenland_pic10_9" :text="str.galleryCityDesc9")
+          gallery-pic(src="img/landing/gallery/greenland_pic10_9" :text="str.galleryCityDesc9")
 
       //- green
       .gl-gallery__row
         .gl-gallery__col.gl-gallery__col-w1
-          gallery-vid(src="/vid/landing/greenland_video11_1.mp4" :text="str.galleryGreenTitle")
+          gallery-vid(src="vid/landing/greenland_video11_1.mp4" :text="str.galleryGreenTitle")
         .gl-gallery__col.gl-gallery__col-w2
-          gallery-pic(src="/img/landing/gallery/greenland_pic11_2" :text="str.galleryGreenDesc2")
+          gallery-pic(src="img/landing/gallery/greenland_pic11_2" :text="str.galleryGreenDesc2")
       .gl-gallery__row
         .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="/img/landing/gallery/greenland_pic11_3" :text="str.galleryGreenDesc3")
+          gallery-pic(src="img/landing/gallery/greenland_pic11_3" :text="str.galleryGreenDesc3")
         .gl-gallery__col.gl-gallery__col-w2
-          gallery-pic(src="/img/landing/gallery/greenland_pic11_4" :text="str.galleryGreenDesc4")
+          gallery-pic(src="img/landing/gallery/greenland_pic11_4" :text="str.galleryGreenDesc4")
       .gl-gallery__row
         .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="/img/landing/gallery/greenland_pic11_5" :text="str.galleryGreenDesc5")
-          gallery-pic(src="/img/landing/gallery/greenland_pic11_6" :text="str.galleryGreenDesc6")
+          gallery-pic(src="img/landing/gallery/greenland_pic11_5" :text="str.galleryGreenDesc5")
+          gallery-pic(src="img/landing/gallery/greenland_pic11_6" :text="str.galleryGreenDesc6")
         .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="/img/landing/gallery/greenland_pic11_7" :text="str.galleryGreenDesc7")
+          gallery-pic(src="img/landing/gallery/greenland_pic11_7" :text="str.galleryGreenDesc7")
         .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="/img/landing/gallery/greenland_pic11_8" :text="str.galleryGreenDesc8")
-          gallery-pic(src="/img/landing/gallery/greenland_pic11_9" :text="str.galleryGreenDesc9")
+          gallery-pic(src="img/landing/gallery/greenland_pic11_8" :text="str.galleryGreenDesc8")
+          gallery-pic(src="img/landing/gallery/greenland_pic11_9" :text="str.galleryGreenDesc9")
 
     footer.gl-footer
       g-series(:list="str.seriesList")
@@ -449,7 +449,7 @@ export default {
   background-size: cover;
   background-position: bottom center;
 
-  @include bg-3x('/img/landing/greenland_pic7_1', 'jpg', true);
+  /* @include bg-3x('/img/landing/greenland_pic7_1', 'jpg', true); */
 }
 
 .after-gl-transition {

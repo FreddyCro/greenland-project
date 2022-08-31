@@ -5,7 +5,7 @@
     .glm-map__bg-wrapper(:class="glmMapClass")
       .glm-map__bg-nav(:class="`glm-map__bg-nav--step-${activeIndex}`")
         g-pic(
-          src="/img/landing/map/greenland_map8_1"
+          src="img/landing/map/greenland_map8_1"
           ext="png"
           alt="greenland map"
           classname="glm-map__bg"
@@ -27,11 +27,11 @@
         //- ) {{ city.name }}
 
         //- //- earth
-        //- img.earth(src="/img/landing/icon/map_earth.svg" alt="earth")
+        //- img.earth(src="img/landing/icon/map_earth.svg" alt="earth")
 
         //- //- pin
         //- img.pin(
-        //-   src="/img/landing/icon/map_coordinate.svg"
+        //-   src="img/landing/icon/map_coordinate.svg"
         //-   alt="pin"
         //-   :style="{'left': `${pinCoordinate.left}%`, 'top': `${pinCoordinate.top}%`, transfrom: transfrom}"
         //- )
@@ -62,7 +62,7 @@
         )
 
         g-pic(
-          src="/img/landing/map/greenland_pic8_2"
+          src="img/landing/map/greenland_pic8_2"
           ext="jpg"
           :alt="str.mapFarmingTitle"
           :webp="true"
@@ -87,7 +87,7 @@
           v-html="p"
         )
         g-pic(
-          src="/img/landing/map/greenland_pic8_3"
+          src="img/landing/map/greenland_pic8_3"
           ext="jpg"
           :alt="str.mapFarmingTitle"
           :webp="true"
@@ -112,7 +112,7 @@
           v-html="p"
         )
         g-pic(
-          src="/img/landing/map/greenland_pic8_4"
+          src="img/landing/map/greenland_pic8_4"
           ext="jpg"
           :alt="str.mapFarmingTitle"
           :webp="true"
@@ -137,7 +137,7 @@
           v-html="p"
         )
         g-pic(
-          src="/img/landing/map/greenland_pic8_5"
+          src="img/landing/map/greenland_pic8_5"
           ext="jpg"
           :alt="str.mapFarmingTitle"
           :webp="true"

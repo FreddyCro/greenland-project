@@ -11,18 +11,18 @@
 
     <div class="g-vid-w-control__btns">
       <button class="g-vid-w-control__btn" @click="handlePlayClick">
-        <img v-if="isPlaying" src="/img/icon/video_play_logo.svg" alt="play" />
-        <img v-else src="/img/icon/video_pause_logo.svg" alt="paused" />
+        <img v-if="isPlaying" src="img/icon/video_play_logo.svg" alt="play" />
+        <img v-else src="img/icon/video_pause_logo.svg" alt="paused" />
       </button>
       <button class="g-vid-w-control__btn" @click="handleMuteClick">
         <img
           v-if="$store.state.sound"
-          src="/img/icon/video_turn_on_volume_logo.svg"
+          src="img/icon/video_turn_on_volume_logo.svg"
           alt="volume on"
         />
         <img
           v-else
-          src="/img/icon/video_turn_off_volume_logo.svg"
+          src="img/icon/video_turn_off_volume_logo.svg"
           alt="volume off"
         />
       </button>

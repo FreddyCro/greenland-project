@@ -21,15 +21,15 @@ export default {
       str,
       logos: [
         {
-          src: '/img/logo_oright.svg',
+          src: 'img/logo_oright.svg',
           alt: '歐萊德',
         },
         {
-          src: '/img/logo_udn.svg',
+          src: 'img/logo_udn.svg',
           alt: '聯合報系',
         },
         {
-          src: '/img/logo_visionproject.svg',
+          src: 'img/logo_visionproject.svg',
           alt: '願景工程',
         },
       ],

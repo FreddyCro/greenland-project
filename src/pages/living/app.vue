@@ -1,7 +1,7 @@
 <template lang="pug">
 #app.greenland
   g-pic(
-    src="/img/fakers/faker_ui"
+    src="img/fakers/faker_ui"
     ext="png"
     alt="Welcome to Your Vue.js App"
     :webp="true"

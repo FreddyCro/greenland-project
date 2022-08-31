@@ -4,9 +4,9 @@
   section.gc-hero
     .gc-hero-vid-wrapper
       g-vid(
-        src="/vid/climate/greenland_climate_video1",
+        src="vid/climate/greenland_climate_video1",
         ext="mp4",
-        poster="/img/climate/greenland_climate_preview1",
+        poster="img/climate/greenland_climate_preview1",
         poster-ext="webp"
         id="gc-hero-vid",
         classname="gc-hero-vid"
@@ -24,7 +24,7 @@
 
   .u-full-bg-container
     g-pic(
-      src="/img/climate/greenland_climate_pic2"
+      src="img/climate/greenland_climate_pic2"
       ext="jpg"
       alt=""
       classname="gc-intro-bg"
@@ -41,9 +41,9 @@
       )
     .u-full-vid-container
       g-vid-w-control(
-        src="/vid/climate/greenland_climate_video3",
+        src="vid/climate/greenland_climate_video3",
         ext="mp4"
-        poster="/img/climate/greenland_climate_preview3",
+        poster="img/climate/greenland_climate_preview3",
         poster-ext="webp"
         id="gc-vid3",
         classname="gc-vid3"
@@ -61,7 +61,7 @@
   //- section morten
   .u-full-img-container
     g-pic(
-      src="/img/climate/greenland_climate_pic4_1"
+      src="img/climate/greenland_climate_pic4_1"
       ext="jpg"
       alt=""
       classname="gc-morten-cover"
@@ -82,7 +82,7 @@
   //- section collage
   .u-wide-img-container
     g-pic(
-      src="/img/climate/greenland_climate_pic4_3"
+      src="img/climate/greenland_climate_pic4_3"
       ext="jpg"
       alt=""
       classname="gc-collage-img1"

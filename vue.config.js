@@ -3,12 +3,27 @@ const landingString = require('./src/assets/string/landing.json');
 // const farmingString = require('./src/assets/string/farming.json');
 // const fishingString = require('./src/assets/string/fishing.json');
 // const livingString = require('./src/assets/string/living.json');
-
 const path = require('path');
 const resolve = (dir) => path.join(__dirname, dir);
 
+const ENV = 'test';
+
+/* production */
+const productionPath =
+  process.env.NODE_ENV === 'production'
+    ? 'https://vip.udn.com/newmedia/2022/greenland/'
+    : 'http://localhost:8080/';
+
+/* testing */
+const testingPath =
+  process.env.NODE_ENV === 'production'
+    ? 'https://freddycro.github.io/test-page/'
+    : 'http://localhost:8080/';
+
+const publicPath = ENV === 'production' ? productionPath : testingPath;
+
 module.exports = {
-  publicPath: './',
+  publicPath,
   pages: {
     index: {
       entry: 'src/pages/landing/main.js',
@@ -16,7 +31,7 @@ module.exports = {
       title: landingString.metaTitle,
       metaTitle: landingString.metaTitle,
       metaDescription: landingString.metaDescription,
-      metaUrl: '',
+      metaUrl: landingString.metaUrl,
     },
     climate: {
       entry: 'src/pages/climate/main.js',
@@ -42,6 +57,8 @@ module.exports = {
       .use('pug-html-loader')
       .loader('pug-html-loader')
       .end();
+
+    config.resolve.alias.set('~', resolve('client/src/assets'));
   },
   css: {
     loaderOptions: {
