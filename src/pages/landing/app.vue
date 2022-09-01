@@ -226,17 +226,17 @@
 </template>
 
 <script>
-import GSeries from '@/components/g-series.vue';
 import GPic from '@/components/g-pic.vue';
 import GTwoChart from '@/components/g-two-chart.vue';
 import GVid from '@/components/g-vid.vue';
 import GVidWControl from '@/components/g-vid-w-control.vue';
-import GFooterLogo from '@/components/g-footer-logo.vue';
-import FooterEditor from '@/components/common/footer-editor.vue';
 import LandingMap from '@/pages/landing/landing-map.vue';
 import AnchorBtn from '@/pages/landing/anchor-btn.vue';
 import GalleryPic from '@/pages/landing/gallery-pic.vue';
 import GalleryVid from '@/pages/landing/gallery-vid.vue';
+import GSeries from '@/components/g-series.vue';
+import GFooterLogo from '@/components/g-footer-logo.vue';
+import FooterEditor from '@/components/common/footer-editor.vue';
 import str from '@/assets/string/landing.json';
 
 export default {
@@ -449,7 +449,7 @@ export default {
   background-size: cover;
   background-position: bottom center;
 
-  /* @include bg-3x('/img/landing/greenland_pic7_1', 'jpg', true); */
+  @include bg-3x('/img/landing/greenland_pic7_1', 'jpg', true);
 }
 
 .after-gl-transition {

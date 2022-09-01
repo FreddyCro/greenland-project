@@ -47,7 +47,9 @@ module.exports = {
       metaModified: landingString.metaModified,
     },
     climate: {
+      publicPath,
       entry: 'src/pages/climate/main.js',
+      template: 'public/index.html',
       filename: 'climate/index.html',
       title: climateString.metaTitle,
       metaTitle: climateString.metaTitle,
@@ -62,7 +64,9 @@ module.exports = {
       metaModified: climateString.metaModified,
     },
     farming: {
+      publicPath,
       entry: 'src/pages/farming/main.js',
+      template: 'public/index.html',
       filename: 'farming/index.html',
       title: farmingString.metaTitle,
       metaTitle: farmingString.metaTitle,
@@ -77,7 +81,9 @@ module.exports = {
       metaModified: farmingString.metaModified,
     },
     fishing: {
+      publicPath,
       entry: 'src/pages/fishing/main.js',
+      template: 'public/index.html',
       filename: 'fishing/index.html',
       title: fishingString.metaTitle,
       metaTitle: fishingString.metaTitle,
@@ -92,7 +98,9 @@ module.exports = {
       metaModified: fishingString.metaModified,
     },
     living: {
+      publicPath,
       entry: 'src/pages/living/main.js',
+      template: 'public/index.html',
       filename: 'living/index.html',
       title: livingString.metaTitle,
       metaTitle: livingString.metaTitle,
