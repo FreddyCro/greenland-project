@@ -1,18 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
 	<head>
-
-
-
-
-
-		<meta name="robot" content="noindex,nofollow"/>
-    <meta name="googlebot" content="noindex,nofollow"/>
-
-
-
-
-
+		<meta name="robot" content="<%= htmlWebpackPlugin.options.metaRobot %>"/>
+    <meta name="googlebot" content="<%= htmlWebpackPlugin.options.metaRobot %>"/>
 
 		<meta charset="utf-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
@@ -40,6 +30,8 @@
 		<meta name="title" content="<%= htmlWebpackPlugin.options.metaTitle %>"/>
 		<meta name="keywords" content="<%= htmlWebpackPlugin.options.metaKeywords %>"/>
 		<meta name="description" content="<%= htmlWebpackPlugin.options.metaDescription %>"/>
+		<meta name="author" content="<%= htmlWebpackPlugin.options.metaAuthor %>"/>
+		<meta name="copyright" content="<%= htmlWebpackPlugin.options.metaCopyright %>"/>
 
 		<meta property="fb:admins" content="671188086"/>
 		<meta property="fb:app_id" content="1010324812347164"/>
@@ -61,6 +53,41 @@
 				        continue.</strong>
 		</noscript>
 		<div id="app"></div>
+		<script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Article",
+        "url": "<%= htmlWebpackPlugin.options.metaUrl %>",
+        "headline": "<%= htmlWebpackPlugin.options.metaTitle %>",
+        "datePublished": "<%= htmlWebpackPlugin.options.datePublished %>",
+        "dateModified": "<%= htmlWebpackPlugin.options.metaModified %>",
+        "description": "<%= htmlWebpackPlugin.options.metaDescription %>",
+        "articleSection": "專題報導",
+        "author": {
+          "@type": "Organization",
+          "name": "<%= htmlWebpackPlugin.options.metaAuthor %>"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "udn 新媒體中心 | 聯合報",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://udn.com/upf/newmedia/image/nmd-logo.png"
+          },
+          "sameAs": [
+            "https://www.facebook.com/udnplus/",
+            "https://www.instagram.com/udngroup/",
+            "https://www.youtube.com/channel/UCEt9Vy6Kz4GKlePLgIJbtoA",
+            "https://twitter.com/udnNewMedia"
+          ]
+        },
+        "image": {
+          "@type": "ImageObject",
+          "url": "<%= htmlWebpackPlugin.options.pageUrl %>og.jpg"
+        },
+        "mainEntityOfPage": "<%= htmlWebpackPlugin.options.metaUrl %>"
+      }
+    </script>
 		<!-- built files will be auto injected -->
 	</body>
 </html>
