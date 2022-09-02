@@ -1,11 +1,16 @@
 <template lang="pug">
 #app.greenland
-  g-pic(
-    src="img/fakers/faker_ui"
-    ext="png"
-    alt="Welcome to Your Vue.js App"
-    :webp="true"
-  )
+  //- hero
+  section.gli-hero
+    .gli-hero-vid-wrapper
+      g-vid(
+        src="../vid/living/greenland_living_video1",
+        ext="mp4",
+        poster="../img/living/greenland_living_preview1",
+        poster-ext="webp"
+        id="gli-hero-vid",
+        classname="gli-hero-vid"
+      )
 </template>
 
 <script>
