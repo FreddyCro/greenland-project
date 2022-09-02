@@ -2,6 +2,15 @@
 #app.u-article.greenland
   //- hero
   section.gfi-hero
+    .gfi-hero-vid-wrapper
+      g-vid(
+        src="../vid/fishing/greenland_fishing_video1",
+        ext="mp4",
+        poster="../img/fishing/greenland_fishing_preview1",
+        poster-ext="webp"
+        id="gfi-hero-vid",
+        classname="gfi-hero-vid"
+      )
 
   //- section intro
   section.u-section.gfi-intro
@@ -12,11 +21,28 @@
       :key="`gfi-introText1-${index}`"
       v-html="p"
     )
+    .u-full-bg-container
+      g-pic(
+        src="../img/fishing/greenland_fishing_pic2"
+        ext="jpg"
+        :alt="str.introTitle"
+        classname="gc-intro-bg"
+        :webp="true"
+      )
     p(
       v-for="p, index in str.introText2"
       :key="`gfi-introText2-${index}`"
       v-html="p"
     )
+    .u-full-vid-container
+      g-vid-w-control(
+        src="../vid/fishing/greenland_fishing_video3",
+        ext="mp4"
+        poster="../img/fishing/greenland_fishing_preview3",
+        poster-ext="webp"
+        id="gc-vid3",
+        classname="gc-vid3"
+      )
     p(
       v-for="p, index in str.introText3"
       :key="`gfi-introText3-${index}`"
@@ -24,6 +50,14 @@
     )
 
   //- section ja
+  .u-full-bg-container
+    g-pic(
+      src="../img/fishing/greenland_fishing_pic4_1"
+      ext="jpg"
+      :alt="str.janBeforeImg1Caption"
+      classname="gf-ja-before-img1"
+      :webp="true"
+    )
   section.u-section.gfi-ja
     h2(v-html="str.janTitle")
     p(
@@ -41,12 +75,13 @@
       v-html="p"
     )
     g-pic(
-      src="../img/farming/test"
+      src="../img/fishing/greenlnad_fishing_pic4_2"
       ext="jpg"
       :alt="str.janBeforeImg1Caption"
       classname="gf-ja-before-img1"
       :webp="true"
     )
+    p.caption(v-html="str.janBeforeImg1Caption")
 
   //- section ja-protection
   section.u-section.gfi-ja-protection
@@ -57,12 +92,13 @@
       v-html="p"
     )
     g-pic(
-      src="../img/farming/test"
+      src="../img/fishing/greenland_fishing_pic5_1"
       ext="jpg"
       :alt="str.janProtectionImg1Caption"
       classname="gf-ja-protection-img1"
       :webp="true"
     )
+    p.caption(v-html="str.janProtectionImg1Caption")
 
   //- section crisis
   section.u-section.gfi-crisis
@@ -81,25 +117,23 @@
       :key="`gfi-crisisPlasticText1-${index}`"
       v-html="p"
     )
-    g-pic(
-      src="../img/farming/test"
-      ext="jpg"
-      :alt="str.crisisPlasticImg1Caption"
-      classname="gf-crisis-plastic-img1"
-      :webp="true"
-    )
+    //- chart
+    .flourish-embed.flourish-chart(data-src="visualisation/10851355")
+    p(v-html="str.crisisPlasticImg1Caption")
+    
     p(
       v-for="p, index in str.crisisPlasticText2"
       :key="`gfi-crisisPlasticText2-${index}`"
       v-html="p"
     )
     g-pic(
-      src="../img/farming/test"
+      src="../img/fishing/greenland_fishing_pic5_3"
       ext="jpg"
       :alt="str.crisisPlasticImg2Caption"
       classname="gf-crisis-plastic-img2"
       :webp="true"
     )
+    p.caption(v-html="str.crisisPlasticImg2Caption")
     p(
       v-for="p, index in str.crisisPlasticText3"
       :key="`gfi-crisisPlasticText3-${index}`"
@@ -114,13 +148,8 @@
       :key="`gfi-crisisIceText1-${index}`"
       v-html="p"
     )
-    g-pic(
-      src="../img/farming/test"
-      ext="jpg"
-      :alt="str.crisisIceImg1Caption"
-      classname="gf-crisis-ice-img1"
-      :webp="true"
-    )
+    .flourish-embed.flourish-chart(data-src="visualisation/10851378")
+    p.caption(v-html="str.crisisIceImg1Caption")
     p(
       v-for="p, index in str.crisisIceText2"
       :key="`gfi-crisisIceText2-${index}`"
@@ -128,6 +157,14 @@
     )
 
   //- section warm
+  .u-full-bg-container
+    g-pic(
+      src="../img/fishing/greenland_fishing_pic6_1"
+      ext="jpg"
+      :alt="str.warmTitle"
+      classname="gf-crisis-ice-img1"
+      :webp="true"
+    )
   section.u-section.gfi-warm
     h2(v-html="str.warmTitle")
     p(
@@ -145,12 +182,13 @@
       v-html="p"
     )
     g-pic(
-      src="../img/farming/test"
+      src="../img/fishing/greenland_fishing_pic6_2"
       ext="jpg"
       :alt="str.warmFishImg1Caption"
       classname="gf-warm-fish-img1"
       :webp="true"
     )
+    p.caption(v-html="str.warmFishImg1Caption")
 
   //- section warm-warn
   section.u-section.gfi-warm-warn
@@ -189,6 +227,9 @@
 </template>
 
 <script>
+import GPic from '@/components/g-pic.vue';
+import GVid from '@/components/g-vid.vue';
+import GVidWControl from '@/components/g-vid-w-control.vue';
 import GSeries from '@/components/g-series.vue';
 import GFooterLogo from '@/components/g-footer-logo.vue';
 import FooterEditor from '@/components/common/footer-editor.vue';
@@ -197,6 +238,9 @@ import str from '@/assets/string/fishing.json';
 export default {
   name: 'App',
   components: {
+    GPic,
+    GVid,
+    GVidWControl,
     GSeries,
     GFooterLogo,
     FooterEditor,

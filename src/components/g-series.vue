@@ -17,7 +17,7 @@
         p.g-series-card__title(v-html="str.seriesClimateTitle")
         button.g-series-card__btn(v-html="str.seriesButtonText") 
       a.g-series-card.g-series-card--fishing(
-        v-if="list.includes('fising')"
+        v-if="list.includes('fishing')"
         :href="str.seriesFishingUrl"
       )
         p.g-series-card__title(v-html="str.seriesFishingTitle")
@@ -105,15 +105,33 @@ export default {
   background-color: #cccccc;
 
   &--landing {
-    /* @include bg-3x(); */
+    @include bg-3x('/img/series/landing', 'jpg', true);
+    background-size: cover;
+    background-position: center;
   }
+
   &--climate {
+    @include bg-3x('/img/series/climate', 'jpg', true);
+    background-size: cover;
+    background-position: center;
   }
+
   &--fishing {
+    @include bg-3x('/img/series/fishing', 'jpg', true);
+    background-size: cover;
+    background-position: center;
   }
+
   &--farming {
+    @include bg-3x('/img/series/farming', 'jpg', true);
+    background-size: cover;
+    background-position: center;
   }
+
   &--living {
+    @include bg-3x('/img/series/living', 'jpg', true);
+    background-size: cover;
+    background-position: center;
   }
 
   &__title {

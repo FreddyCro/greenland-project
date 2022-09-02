@@ -26,7 +26,7 @@
     g-pic(
       src="../img/climate/greenland_climate_pic2"
       ext="jpg"
-      alt=""
+      :alt="str.introTitle"
       classname="gc-intro-bg"
       :webp="true"
     )
@@ -82,7 +82,7 @@
   //- section collage
   .u-wide-img-container
     g-pic(
-      src="../img/climate/test"
+      src="../img/climate/greenland_climate_pic4_2"
       ext="jpg"
       alt=""
       classname="gc-collage-img1"
@@ -99,10 +99,10 @@
         :key="`gc-collageText1-${index}`"
         v-html="p"
       )
+      h1 here is a chart
+      p.caption(v-html="str.protectionImg1Caption")
 
     //- section protection
-    //- chart
-    p.caption(v-html="str.protectionImg1Caption")
     section.u-section.gc-protection
       h2(v-html="str.protectionTitle")
       p(
@@ -110,10 +110,10 @@
         v-html="p"
       )
       g-pic(
-        src="../img/climate/test"
+        src="../img/climate/greenland_climate_pic4_4"
         ext="jpg"
         :alt="str.protectionImg2Caption"
-        classname="gc-protection-img1"
+        classname="gc-protection-img2"
         :webp="true"
       )
       p.caption(v-html="str.protectionImg2Caption")
@@ -130,23 +130,25 @@
         v-html="p"
       )
       g-pic(
-        src="../img/climate/test"
+        src="../img/climate/greenland_climate_pic5_1"
         ext="jpg"
         :alt="str.jpImg1Caption"
         classname="gc-jp-img1"
         :webp="true"
       )
+      p.caption(v-html="str.jpImg1Caption")
       p(
         v-for="p, index in str.jpText2" :key="`gc-jpText2-${index}`"
         v-html="p"
       )
       g-pic(
-        src="../img/climate/test"
+        src="../img/climate/greenland_climate_pic5_2"
         ext="jpg"
         :alt="str.jpImg2Caption"
         classname="gc-jp-img2"
         :webp="true"
       )
+      p.caption(v-html="str.jpImg2Caption")
 
     //- section sea
     section.u-section.gc-sea
@@ -156,12 +158,13 @@
         v-html="p"
       )
       g-pic(
-        src="../img/climate/test"
+        src="../img/climate/greenland_climate_pic5_3"
         ext="jpg"
         :alt="str.seaImg1Caption"
         classname="gc-sea-img1"
         :webp="true"
       )
+      p.caption(v-html="str.seaImg1Caption")
 
     //- section science
     section.u-section.gc-science
@@ -171,12 +174,14 @@
         v-html="p"
       )
       g-pic(
-        src="../img/climate/test"
+        src="../img/climate/greenland_climate_pic6_2"
         ext="jpg"
         :alt="str.scienceImg1Caption"
         classname="gc-science-img1"
         :webp="true"
       )
+      p.caption(v-html="str.scienceImg1Caption")
+
       p(
         v-for="p, index in str.scienceText2" :key="`gc-scienceText2-${index}`"
         v-html="p"
