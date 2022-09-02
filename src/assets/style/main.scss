@@ -26,6 +26,8 @@
 
   p {
     @include general-font-p;
+
+    margin-bottom: $spacing-2;
   }
 }
 

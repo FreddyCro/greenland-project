@@ -11,28 +11,299 @@
         id="gli-hero-vid",
         classname="gli-hero-vid"
       )
+
+  //- section intro
+  section.u-section.gli-intro
+    h1(v-html="str.introTitle")
+    h2(v-html="str.introSubTitle")
+    p(
+      v-for="p, index in str.introText1"
+      :key="`gli-introText1-${index}`"
+      v-html="p"
+    )
+    .u-full-bg-container
+      g-pic(
+        src="../img/living/greenland_living_pic2"
+        ext="jpg"
+        :alt="str.introTitle"
+        classname="gc-intro-img-1"
+        :webp="true"
+      )
+    p(
+      v-for="p, index in str.introText2"
+      :key="`gli-introText2-${index}`"
+      v-html="p"
+    )
+    .u-full-bg-container
+      g-pic(
+        src="../img/living/greenland_living_pic3"
+        ext="jpg"
+        :alt="str.introTitle"
+        classname="gc-intro-img-2"
+        :webp="true"
+      )
+    p(
+      v-for="p, index in str.introText3"
+      :key="`gli-introText3-${index}`"
+      v-html="p"
+    )
+
+  //- section kir
+  section.u-section.gli-kir
+    g-pic(
+      src="../img/living/greenland_living_pic4_1"
+      ext="jpg"
+      :alt="str.kirImg1Caption"
+      classname="gc-kir-img-1"
+      :webp="true"
+    )
+    p.caption(v-html="str.kirImg1Caption")
+    h2(v-html="str.kirTitle")
+    p(
+      v-for="p, index in str.kirText1"
+      :key="`gli-kirText1-${index}`"
+      v-html="p"
+    )
+    g-pic(
+      src="../img/living/greenland_living_pic4_2"
+      ext="jpg"
+      :alt="str.kirImg2Caption"
+      classname="gc-kir-img-2"
+      :webp="true"
+    )
+    p.caption(v-html="str.kirImg2Caption")
+    p(
+      v-for="p, index in str.kirText2"
+      :key="`gli-kirText2-${index}`"
+      v-html="p"
+    )
+
+  //- section kaj
+  section.u-section.gli-kaj
+    g-pic(
+      src="../img/living/greenland_living_pic5_1"
+      ext="jpg"
+      :alt="str.kajImg1Caption"
+      classname="gc-kaj-img-1"
+      :webp="true"
+    )
+    p.caption(v-html="str.kajImg1Caption")
+    h2(v-html="str.kajTitle")
+    p(
+      v-for="p, index in str.kajText1"
+      :key="`gli-kajText1-${index}`"
+      v-html="p"
+    )
+    g-pic(
+      src="../img/living/greenland_living_pic5_2"
+      ext="jpg"
+      :alt="str.kajImg2Caption"
+      classname="gc-kaj-img-2"
+      :webp="true"
+    )
+    p.caption(v-html="str.kajImg2Caption")
+    p(
+      v-for="p, index in str.kajText2"
+      :key="`gli-kajText2-${index}`"
+      v-html="p"
+    )
+
+  //- section pau
+  section.u-section.gli-pau
+    g-pic(
+      src="../img/living/greenland_living_pic6_1"
+      ext="jpg"
+      :alt="str.pauImg1Caption"
+      classname="gc-pau-img-2"
+      :webp="true"
+    )
+    p.caption(v-html="str.pauImg1Caption")
+    h2(v-html="str.pauTitle")
+    p(
+      v-for="p, index in str.pauText1"
+      :key="`gli-pauText1-${index}`"
+      v-html="p"
+    )
+    g-pic(
+      src="../img/living/greenland_living_pic6_2"
+      ext="jpg"
+      :alt="str.pauImg2Caption"
+      classname="gc-pau-img-2"
+      :webp="true"
+    )
+    p.caption(v-html="str.pauImg2Caption")
+    p(
+      v-for="p, index in str.pauText2"
+      :key="`gli-pauText2-${index}`"
+      v-html="p"
+    )
+    .flourish-embed.flourish-chart(data-src="visualisation/11056258")
+    p.caption(v-html="str.pauImg3Caption")
+    p(
+      v-for="p, index in str.pauText3"
+      :key="`gli-pauText3-${index}`"
+      v-html="p"
+    )
+
+  //- section chris
+  section.u-section.gli-chris
+    g-pic(
+      src="../img/living/greenland_living_pic7_1"
+      ext="jpg"
+      :alt="str.chrisImg1Caption"
+      classname="gc-chris-img-1"
+      :webp="true"
+    )
+    p.caption(v-html="str.chrisImg1Caption")
+    h2(v-html="str.chrisTitle")
+    p(
+      v-for="p, index in str.chrisText1"
+      :key="`gli-chrisText1-${index}`"
+      v-html="p"
+    )
+    g-pic(
+      src="../img/living/greenland_living_pic7_2"
+      ext="jpg"
+      :alt="str.chrisImg2Caption"
+      classname="gc-chris-img-2"
+      :webp="true"
+    )
+    p.caption(v-html="str.chrisImg2Caption")
+    p(
+      v-for="p, index in str.chrisText2"
+      :key="`gli-chrisText2-${index}`"
+      v-html="p"
+    )
+
+  //- section avi
+  section.u-section.gli-avi
+    g-pic(
+      src="../img/living/greenland_living_pic8_1"
+      ext="jpg"
+      :alt="str.aviImg1Caption"
+      classname="gc-avi-img-1"
+      :webp="true"
+    )
+    p.caption(v-html="str.aviImg1Caption")
+    h2(v-html="str.aviTitle")
+    p(
+      v-for="p, index in str.aviText1"
+      :key="`gli-aviText1-${index}`"
+      v-html="p"
+    )
+    .flourish-embed.flourish-chart(data-src="visualisation/11056017")
+    p.caption(v-html="str.aviImg2Caption")
+    p(
+      v-for="p, index in str.aviText2"
+      :key="`gli-aviText2-${index}`"
+      v-html="p"
+    )
+    g-pic(
+      src="../img/living/greenland_living_pic8_3_pc"
+      ext="jpg"
+      :alt="str.aviImg3Caption"
+      classname="gc-avi-img-3"
+      :webp="true"
+    )
+    p.caption(v-html="str.aviImg3Caption")
+    p(
+      v-for="p, index in str.aviText3"
+      :key="`gli-aviText3-${index}`"
+      v-html="p"
+    )
+
+  //- section bo
+  section.u-section.gli-bo
+    g-pic(
+      src="../img/living/greenland_living_pic9_1"
+      ext="jpg"
+      :alt="str.boImg1Caption"
+      classname="gc-bo-img-1"
+      :webp="true"
+    )
+    p.caption(v-html="str.boImg1Caption")
+    h2(v-html="str.boTitle")
+    p(
+      v-for="p, index in str.boText1"
+      :key="`gli-boText1-${index}`"
+      v-html="p"
+    )
+    .flourish-embed.flourish-chart(data-src="visualisation/11053342")
+    p.caption(v-html="str.boImg2Caption")
+    p(
+      v-for="p, index in str.boText2"
+      :key="`gli-boText2-${index}`"
+      v-html="p"
+    )
+    g-pic(
+      src="../img/living/greenland_living_pic9_3"
+      ext="jpg"
+      :alt="str.boImg3Caption"
+      classname="gc-bo-img-1"
+      :webp="true"
+    )
+    p.caption(v-html="str.boImg3Caption")
+    p(
+      v-for="p, index in str.boText3"
+      :key="`gli-boText3-${index}`"
+      v-html="p"
+    )
+
+  footer.gl-footer
+  g-series(:list="str.seriesList")
+  footer-editor
+    div
+      p(v-text="str.editorInterviewTitle")
+      p(v-text="str.editorInterviewMembers")
+    div
+      p(v-text="str.editorProducerTitle")
+      p(v-text="str.editorProducerMembers")
+    div
+      p(v-text="str.editorVisualTitle")
+      p(v-text="str.editorVisualMembers")
+    div
+      p(v-text="str.editorEngineerTitle")
+      p(v-text="str.editorEngineerMembers")
+    div
+      p(v-text="str.editorDirectorTitle")
+      p(v-text="str.editorDirectorMembers")
+    div
+      p(v-text="str.editorGroupTitle")
+      p(v-text="str.editorGroupMembers")
+    div
+      p
+      p(v-text="str.editorReleaseDate")
+  g-footer-logo
+
 </template>
 
 <script>
 import GPic from '@/components/g-pic.vue';
 import GVid from '@/components/g-vid.vue';
+import GVidWControl from '@/components/g-vid-w-control.vue';
+import GSeries from '@/components/g-series.vue';
+import GFooterLogo from '@/components/g-footer-logo.vue';
+import FooterEditor from '@/components/common/footer-editor.vue';
+import str from '@/assets/string/living.json';
 
 export default {
   name: 'App',
   components: {
     GPic,
     GVid,
+    GVidWControl,
+    GSeries,
+    GFooterLogo,
+    FooterEditor,
+  },
+  data() {
+    return {
+      str,
+    };
   },
 };
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style lang="scss"></style>
+
+<style lang="scss" scoped></style>
