@@ -145,9 +145,35 @@
   }
 }
 
+.u-section + .u-section {
+  padding-top: 0;
+}
+
 .u-section-full {
   width: 100%;
   height: 100vh;
+}
+
+.u-full-vid {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.u-full-width-img {
+  img {
+    width: 100%;
+  }
+}
+
+.u-full-img {
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
 }
 
 // greenland series style

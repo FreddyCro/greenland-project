@@ -7,71 +7,80 @@
     :description="str.metaDescription"
   )
   
-  //- hero
-  section.gf-hero
-    .gf-hero-vid-wrapper
+  //- section hero
+  g-slide(id="hero" classname="gc-hero-slide")
+    section.u-section-full(slot="bg")
       g-vid(
         src="../vid/farming/greenland_farming_video1",
         ext="mp4",
         poster="../img/farming/greenland_farming_preview1",
         poster-ext="webp"
         id="gf-hero-vid",
-        classname="gf-hero-vid"
+        classname="u-full-vid"
       )
+    section.u-section.gf-hero(slot="content")
+      .u-container
+        h1(v-html="str.introTitle")
+        h2(v-html="str.introSubTitle")
+        p(
+          v-for="p, index in str.introText1"
+          :key="`gf-introText1-${index}`"
+          v-html="p"
+        )
 
   //- section intro
-  section.u-section.gf-intro
-    h1(v-html="str.introTitle")
-    h2(v-html="str.introSubTitle")
-    p(
-      v-for="p, index in str.introText1"
-      :key="`gf-introText1-${index}`"
-      v-html="p"
-    )
-    .u-full-bg-container
+  g-slide(id="intro" classname="gf-intro-slide" :is-last="true")
+    section(slot="bg")
       g-pic(
         src="../img/farming/greenland_farming_pic2"
         ext="jpg"
         :alt="str.introTitle"
-        classname="gc-intro-img-1"
+        classname="gf-intro-img-1"
         :webp="true"
       )
-    p(
-      v-for="p, index in str.introText2"
-      :key="`gf-introText2-${index}`"
-      v-html="p"
-    )
-    .u-full-bg-container
-      g-vid(
-        src="../vid/farming/greenland_farming_video3",
-        ext="mp4",
-        poster="../img/farming/greenland_farming_preview3",
-        poster-ext="webp"
-        id="gf-intro-vid-1",
-        classname="gf-intro-vid-1"
+    section.u-section.gf-intro(slot="content")
+      .u-container
+        p(
+          v-for="p, index in str.introText2"
+          :key="`gf-introText2-${index}`"
+          v-html="p"
+        )
+
+  //- section transition
+  g-vid-w-control(
+    src="../vid/farming/greenland_farming_video3",
+    ext="mp4",
+    poster="../img/farming/greenland_farming_preview3",
+    poster-ext="webp"
+    id="gf-intro-vid-1",
+    classname="u-full-vid"
+  )
+  
+  section.u-section.gf-transition
+    .u-container
+      p(
+        v-for="p, index in str.introText3"
+        :key="`gf-introText3-${index}`"
+        v-html="p"
       )
-    p(
-      v-for="p, index in str.introText3"
-      :key="`gf-introText3-${index}`"
-      v-html="p"
-    )
 
   //- section skill
+  g-pic(
+    src="../img/farming/greenland_farming_pic4_1"
+    ext="jpg"
+    :alt="str.skillImg1Caption"
+    classname="u-full-width-img"
+    :webp="true"
+  )
   section.u-section.gf-skill
-    .u-full-bg-container
-      g-pic(
-        src="../img/farming/greenland_farming_pic4_1"
-        ext="jpg"
-        :alt="str.skillImg1Caption"
-        classname="gf-skill-img1"
-        :webp="true"
+    .u-container
+      h2(v-html="str.skillTitle")
+      p(
+        v-for="p, index in str.skillText1"
+        :key="`gf-skillText1-${index}`"
+        v-html="p"
       )
-    h2(v-html="str.skillTitle")
-    p(
-      v-for="p, index in str.skillText1"
-      :key="`gf-skillText1-${index}`"
-      v-html="p"
-    )
+  .u-container-lg
     g-pic(
       src="../img/farming/greenland_farming_pic4_3"
       ext="jpg"
@@ -79,43 +88,50 @@
       classname="gf-skill-img1"
       :webp="true"
     )
-    p(
-      v-for="p, index in str.skillText2"
-      :key="`gf-skillText2-${index}`"
-      v-html="p"
-    )
+  section.u-section
+    .u-container
+      p(
+        v-for="p, index in str.skillText2"
+        :key="`gf-skillText2-${index}`"
+        v-html="p"
+      )
 
   //- section farm
+  g-pic(
+    src="../img/farming/greenland_farming_pic5_1"
+    ext="jpg"
+    :alt="str.farmWeatherImg1Caption"
+    classname="u-full-width-img"
+    :webp="true"
+  )
   section.u-section.gf-farm
-    .u-full-bg-container
-      g-pic(
-        src="../img/farming/greenland_farming_pic5_1"
-        ext="jpg"
-        :alt="str.farmWeatherImg1Caption"
-        classname="gf-farm-img1"
-        :webp="true"
+    .u-container
+      h2(v-html="str.farmTitle")
+      p(
+        v-for="p, index in str.farmText1"
+        :key="`gf-farmText1-${index}`"
+        v-html="p"
       )
-    h2(v-html="str.farmTitle")
-    p(
-      v-for="p, index in str.farmText1"
-      :key="`gf-farmText1-${index}`"
-      v-html="p"
-    )
+  .u-container
     block-chart
-    p(
-      v-for="p, index in str.farmText2"
-      :key="`gf-farmText2-${index}`"
-      v-html="p"
-    )
+  section.u-section
+    .u-container
+      p(
+        v-for="p, index in str.farmText2"
+        :key="`gf-farmText2-${index}`"
+        v-html="p"
+      )
 
   //- section farm weather
   section.u-section.gf-farm-weather
-    h3(v-html="str.farmWeatherTitle")
-    p(
-      v-for="p, index in str.farmWeatherText1"
-      :key="`gf-farmWeatherText1-${index}`"
-      v-html="p"
-    )
+    .u-container
+      h3(v-html="str.farmWeatherTitle")
+      p(
+        v-for="p, index in str.farmWeatherText1"
+        :key="`gf-farmWeatherText1-${index}`"
+        v-html="p"
+      )
+  .u-container-lg
     g-pic(
       src="../img/farming/greenland_farming_pic5_3"
       ext="jpg"
@@ -123,22 +139,28 @@
       classname="gf-farmWeather-img2"
       :webp="true"
     )
-    p(
-      v-for="p, index in str.farmWeatherText2"
-      :key="`gf-farmWeatherText2-${index}`"
-      v-html="p"
-    )
+    p.caption(v-html="str.farmWeatherImg1Caption")
+  section.u-section
+    .u-container
+      p(
+        v-for="p, index in str.farmWeatherText2"
+        :key="`gf-farmWeatherText2-${index}`"
+        v-html="p"
+      )
+  .u-container
     .flourish-embed.flourish-chart(data-src="visualisation/10985230")
     p.caption(v-html="str.farmWeatherImg2Caption")
 
   //- section farm sheep
   section.u-section.gf-farm-sheep
-    h3(v-html="str.farmSheepTitle")
-    p(
-      v-for="p, index in str.farmSheepText1"
-      :key="`gf-farmSheepText1-${index}`"
-      v-html="p"
-    )
+    .u-container
+      h3(v-html="str.farmSheepTitle")
+      p(
+        v-for="p, index in str.farmSheepText1"
+        :key="`gf-farmSheepText1-${index}`"
+        v-html="p"
+      )
+  .u-container-lg
     g-pic(
       src="../img/farming/greenland_farming_pic5_5"
       ext="jpg"
@@ -147,11 +169,14 @@
       :webp="true"
     )
     p.caption(v-html="str.farmSheepImg1Caption")
-    p(
-      v-for="p, index in str.farmSheepText2"
-      :key="`gf-farmSheepText2-${index}`"
-      v-html="p"
-    )
+  section.u-section
+    .u-container
+      p(
+        v-for="p, index in str.farmSheepText2"
+        :key="`gf-farmSheepText2-${index}`"
+        v-html="p"
+      )
+  .u-container-lg
     g-pic(
       src="../img/farming/greenland_farming_pic5_6"
       ext="jpg"
@@ -159,11 +184,17 @@
       classname="gf-farmSheep-img2"
       :webp="true"
     )
-    p(
-      v-for="p, index in str.farmSheepText3"
-      :key="`gf-farmSheepText3-${index}`"
-      v-html="p"
-    )
+  .u-container
+    p.caption(v-html="str.farmSheepImg2Caption")
+
+  section.u-section
+    .u-container
+      p(
+        v-for="p, index in str.farmSheepText3"
+        :key="`gf-farmSheepText3-${index}`"
+        v-html="p"
+      )
+  .u-container
     g-pic(
       src="../img/farming/greenland_farming_chart5_7"
       ext="svg"
@@ -174,28 +205,31 @@
       :no3x="true"
     )
     p.caption(v-html="str.farmSheepImg3Caption")
-    p(
-      v-for="p, index in str.farmSheepText4"
-      :key="`gf-farmSheepText4-${index}`"
-      v-html="p"
-    )
+  section.u-section
+    .u-container
+      p(
+        v-for="p, index in str.farmSheepText4"
+        :key="`gf-farmSheepText4-${index}`"
+        v-html="p"
+      )
 
   //- section sale
+  g-pic(
+    src="../img/farming/greenland_farming_pic6_1"
+    ext="jpg"
+    :alt="str.saleTitle"
+    classname="u-full-width-img"
+    :webp="true"
+  )
   section.u-section.gf-sale
-    .u-full-bg-container
-      g-pic(
-        src="../img/farming/greenland_farming_pic6_1"
-        ext="jpg"
-        :alt="str.saleTitle"
-        classname="gf-sale-img"
-        :webp="true"
+    .u-container
+      h2(v-html="str.saleTitle")
+      p(
+        v-for="p, index in str.saleText1"
+        :key="`gf-saleText1-${index}`"
+        v-html="p"
       )
-    h2(v-html="str.saleTitle")
-    p(
-      v-for="p, index in str.saleText1"
-      :key="`gf-saleText1-${index}`"
-      v-html="p"
-    )
+  .u-container-lg
     g-pic(
       src="../img/farming/greenland_farming_pic6_2"
       ext="jpg"
@@ -203,36 +237,44 @@
       classname="gf-sale-img1"
       :webp="true"
     )
-    p(
-      v-for="p, index in str.saleText2"
-      :key="`gf-saleText2-${index}`"
-      v-html="p"
-    )
+  section.u-section
+    .u-container
+      p(
+        v-for="p, index in str.saleText2"
+        :key="`gf-saleText2-${index}`"
+        v-html="p"
+      )
 
   //- section sale creative
   section.u-section.gf-sale-creative
-    h3(v-html="str.saleCreativeTitle")
-    p(
-      v-for="p, index in str.saleCreativeText1"
-      :key="`gf-saleCreativeText1-${index}`"
-      v-html="p"
-    )
+    .u-container
+      h3(v-html="str.saleCreativeTitle")
+      p(
+        v-for="p, index in str.saleCreativeText1"
+        :key="`gf-saleCreativeText1-${index}`"
+        v-html="p"
+      )
+  .u-container
     .flourish-embed.flourish-chart(data-src="visualisation/10995303")
     p.caption(v-html="str.saleCreativeImg1Caption")
-    p(
-      v-for="p, index in str.saleCreativeText2"
-      :key="`gf-saleCreativeText2-${index}`"
-      v-html="p"
-    )
+  section.u-section
+    .u-container
+      p(
+        v-for="p, index in str.saleCreativeText2"
+        :key="`gf-saleCreativeText2-${index}`"
+        v-html="p"
+      )
 
   //- section sale culture
   section.u-section.gf-sale-culture
-    h3(v-html="str.saleCultureTitle")
-    p(
-      v-for="p, index in str.saleCultureText1"
-      :key="`gf-saleCultureText1-${index}`"
-      v-html="p"
-    )
+    .u-container
+      h3(v-html="str.saleCultureTitle")
+      p(
+        v-for="p, index in str.saleCultureText1"
+        :key="`gf-saleCultureText1-${index}`"
+        v-html="p"
+      )
+  .u-container-lg
     g-pic(
       src="../img/farming/greenland_farming_pic6_3"
       ext="jpg"
@@ -244,12 +286,13 @@
 
   //- section sale self
   section.u-section.gf-sale-self
-    h3(v-html="str.saleSelfTitle")
-    p(
-      v-for="p, index in str.saleSelfText1"
-      :key="`gf-saleSelfText1-${index}`"
-      v-html="p"
-    )
+    .u-container
+      h3(v-html="str.saleSelfTitle")
+      p(
+        v-for="p, index in str.saleSelfText1"
+        :key="`gf-saleSelfText1-${index}`"
+        v-html="p"
+      )
 
   footer.g-footer
     g-series(:list="str.seriesList")
@@ -268,6 +311,7 @@
 
 <script>
 import NmdHeader from '@/components/common/header/HeaderTypeA.vue';
+import GSlide from '@/components/g-slide.vue';
 import GPic from '@/components/g-pic.vue';
 import GVid from '@/components/g-vid.vue';
 import GVidWControl from '@/components/g-vid-w-control.vue';
@@ -283,6 +327,7 @@ export default {
   name: 'App',
   components: {
     NmdHeader,
+    GSlide,
     GPic,
     GVid,
     GVidWControl,
@@ -331,6 +376,12 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.gf-transition {
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+}
+</style>
 
 <style lang="scss" scoped></style>
