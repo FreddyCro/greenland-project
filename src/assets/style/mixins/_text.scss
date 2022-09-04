@@ -1,0 +1,121 @@
+// text
+@mixin general-font-h1 {
+  margin: 0;
+  font-size: $h1-size-xxs;
+  font-weight: $font-weight-bold;
+  line-height: 46px;
+
+  @include rwd-min(xs) {
+    font-size: $h1-size-xs;
+  }
+
+  @include rwd-min(sm) {
+    font-size: $h1-size-sm;
+    line-height: 68px;
+  }
+
+  @include rwd-min(lg) {
+    font-size: $h1-size-lg;
+  }
+}
+
+@mixin general-font-h2 {
+  margin: 0;
+  font-size: $h2-size-xxs;
+  font-weight: $font-weight-bold;
+  line-height: 40px;
+
+  @include rwd-min(xs) {
+    font-size: $h2-size-xs;
+  }
+
+  @include rwd-min(sm) {
+    font-size: $h2-size-sm;
+    line-height: 50px;
+  }
+
+  @include rwd-min(lg) {
+    font-size: $h2-size-lg;
+  }
+}
+
+@mixin general-font-h3 {
+  margin: 0;
+  font-size: $h3-size-xxs;
+  font-weight: $font-weight-bold;
+  line-height: 36px;
+
+  @include rwd-min(xs) {
+    font-size: $h3-size-xs;
+  }
+
+  @include rwd-min(sm) {
+    font-size: $h3-size-sm;
+    line-height: 46px;
+  }
+
+  @include rwd-min(lg) {
+    font-size: $h3-size-lg;
+  }
+}
+
+@mixin general-font-h4 {
+  margin: 0;
+  font-size: $h4-size-xxs;
+  font-weight: $font-weight-bold;
+  line-height: 32px;
+
+  @include rwd-min(xs) {
+    font-size: $h4-size-xs;
+  }
+
+  @include rwd-min(sm) {
+    font-size: $h4-size-sm;
+  }
+
+  @include rwd-min(lg) {
+    font-size: $h4-size-lg;
+  }
+}
+
+@mixin general-font-p {
+  margin: 0;
+  font-size: $p-size-xxs;
+  font-weight: $font-weight-normal;
+  line-height: 36px;
+
+  @include rwd-min(xs) {
+    font-size: $p-size-xs;
+  }
+
+  @include rwd-min(sm) {
+    font-size: $p-size-sm;
+  }
+
+  @include rwd-min(lg) {
+    font-size: $p-size-lg;
+  }
+}
+
+@mixin general-font-smaller {
+  font-size: $p-smaller;
+  line-height: 22px;
+}
+
+@mixin general-font-caption {
+  font-size: $caption-size-xxs;
+  font-weight: $font-weight-thin;
+  line-height: 24px;
+
+  @include rwd-min(xs) {
+    font-size: $caption-size-xs;
+  }
+
+  @include rwd-min(sm) {
+    font-size: $caption-size-sm;
+  }
+
+  @include rwd-min(lg) {
+    font-size: $caption-size-lg;
+  }
+}

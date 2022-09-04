@@ -1,5 +1,12 @@
 <template lang="pug">
 #app.u-article.greenland
+  nmd-header(
+    :outlink="headerList"
+    :title="str.metaTitle"
+    :url="str.metaUrl"
+    :description="str.metaDescription"
+  )
+  
   //- hero
   section.gf-hero
     .gf-hero-vid-wrapper
@@ -94,7 +101,7 @@
       :key="`gf-farmText1-${index}`"
       v-html="p"
     )
-    h1 here is a chart
+    block-chart
     p(
       v-for="p, index in str.farmText2"
       :key="`gf-farmText2-${index}`"
@@ -244,56 +251,81 @@
       v-html="p"
     )
 
-  footer.gl-footer
+  footer.g-footer
     g-series(:list="str.seriesList")
-    footer-editor
-      div
-        p(v-text="str.editorInterviewTitle")
-        p(v-text="str.editorInterviewMembers")
-      div
-        p(v-text="str.editorProducerTitle")
-        p(v-text="str.editorProducerMembers")
-      div
-        p(v-text="str.editorVisualTitle")
-        p(v-text="str.editorVisualMembers")
-      div
-        p(v-text="str.editorEngineerTitle")
-        p(v-text="str.editorEngineerMembers")
-      div
-        p(v-text="str.editorDirectorTitle")
-        p(v-text="str.editorDirectorMembers")
-      div
-        p(v-text="str.editorGroupTitle")
-        p(v-text="str.editorGroupMembers")
-      div
-        p
-        p(v-text="str.editorReleaseDate")
-    g-footer-logo
+    .u-section.g-footer__copyright-wrapper
+      .u-container.g-footer__copyright
+        footer-editor(:data="editor")
+        footer-share(
+          :title="str.metaTitle"
+          :url="str.metaUrl"
+          :description="str.metaDescription"
+        )
+        footer-questionnaire
+        footer-logo
 
 </template>
 
 <script>
+import NmdHeader from '@/components/common/header/HeaderTypeA.vue';
 import GPic from '@/components/g-pic.vue';
 import GVid from '@/components/g-vid.vue';
 import GVidWControl from '@/components/g-vid-w-control.vue';
 import GSeries from '@/components/g-series.vue';
-import GFooterLogo from '@/components/g-footer-logo.vue';
-import FooterEditor from '@/components/common/footer-editor.vue';
+import BlockChart from '@/pages/farming/block-chart.vue';
+import FooterLogo from '@/components/common/footer/footer-logo.vue';
+import FooterEditor from '@/components/common/footer/footer-editor.vue';
+import FooterQuestionnaire from '@/components/common/footer/footer-questionnaire.vue';
+import FooterShare from '@/components/common/footer/footer-share.vue';
 import str from '@/assets/string/farming.json';
 
 export default {
   name: 'App',
   components: {
+    NmdHeader,
     GPic,
     GVid,
     GVidWControl,
     GSeries,
-    GFooterLogo,
+    BlockChart,
+    FooterLogo,
     FooterEditor,
+    FooterQuestionnaire,
+    FooterShare,
   },
   data() {
     return {
       str,
+      editor: [
+        {
+          title: str.editorInterviewTitle,
+          members: str.editorInterviewMembers,
+        },
+        {
+          title: str.editorProducerTitle,
+          members: str.editorProducerMembers,
+        },
+        {
+          title: str.editorVisualTitle,
+          members: str.editorVisualMembers,
+        },
+        {
+          title: str.editorEngineerTitle,
+          members: str.editorEngineerMembers,
+        },
+        {
+          title: str.editorDirectorTitle,
+          members: str.editorDirectorMembers,
+        },
+        {
+          title: str.editorGroupTitle,
+          members: str.editorGroupMembers,
+        },
+        {
+          title: '',
+          members: [str.editorReleaseDate],
+        },
+      ],
     };
   },
 };

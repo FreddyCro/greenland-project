@@ -1,0 +1,29 @@
+// layout
+@mixin u-container-xxs {
+  padding-left: $spacing-5;
+  padding-right: $spacing-5;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin u-container-xs {
+  padding-left: $spacing-6;
+  padding-right: $spacing-6;
+}
+
+@mixin u-container-sm {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@mixin u-container-width-xxs {
+  max-width: $container-width-xs;
+}
+
+@mixin u-container-width-sm {
+  max-width: $container-width-sm;
+}
+
+@mixin u-container-width-lg {
+  max-width: $container-width-lg;
+}

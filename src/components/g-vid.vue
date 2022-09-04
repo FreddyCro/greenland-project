@@ -5,13 +5,14 @@
     :id="id"
     :class="`g-vid ${classname}`"
     playsinline
-    autoplay
+    :autoplay="isPlaying ? false : true"
     loop
     type="video/mp4"
-    muted
-    :poster="poster ? `${poster}_${$store.state.device}.${posterExt}` : ''"
+    :muted="$store.state.sound ? false : true"
+    :poster="rwdSrcPoster"
   >
-    <source :src="rwdSrc" />
+    <source v-if="useWebm" :src="rwdSrcWebm" type="video/webm" />
+    <source :src="rwdSrc" type="video/mp4" />
   </video>
 </template>
 
@@ -39,19 +40,48 @@ export default {
     classname: {
       type: String,
     },
+    useWebm: {
+      type: Boolean,
+      default: false,
+    },
+    isPlaying: {
+      type: Boolean,
+      default: true,
+    },
+  },
+  data() {
+    return {
+      video: null,
+    };
   },
   computed: {
     rwdSrc() {
       return `${this.src}_${this.$store.state.device || ''}.${this.ext}`;
     },
+    rwdSrcWebm() {
+      if (!this.$store.state.device) return '';
+      if (!this.useWebm) return '';
+
+      return `${this.src}_${this.$store.state.device || ''}.webm`;
+    },
+    rwdSrcPoster() {
+      if (!this.$store.state.device) return '';
+
+      return `${this.poster}_${this.$store.state.device || ''}.${
+        this.posterExt
+      }`;
+    },
   },
   watch: {
     rwdSrc: {
       handler() {
-        this.$refs[this.id].load();
-        this.$refs[this.id].play();
+        this.video.load();
+        if (this.isPlaying) this.video.play();
       },
     },
+  },
+  mounted() {
+    this.video = this.$refs[this.id];
   },
 };
 </script>

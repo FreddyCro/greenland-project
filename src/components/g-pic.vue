@@ -3,15 +3,15 @@
     <template v-for="(media, index) in parsedMedia">
       <source
         v-if="webp"
-        :srcset="parsedWebpSrcset[index]"
         :media="media"
+        :srcset="parsedWebpSrcset[index]"
         type="image/webp"
         :key="`webp-${media}`"
       />
       <source
         v-if="srcset.length > 0"
-        :srcset="parsedSrcset[index]"
         :media="media"
+        :srcset="parsedSrcset[index]"
         :key="`normal-${media}`"
       />
     </template>

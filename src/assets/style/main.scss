@@ -8,6 +8,17 @@
   color: $font-color;
   font-family: $font-family;
 
+  * {
+    box-sizing: border-box;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: 'Noto Serif TC', 'Noto Sans TC', 'Microsoft JhengHei', Roboto,
+      sans-serif;
+  }
+
   h1 {
     @include general-font-h1;
   }
@@ -26,8 +37,19 @@
 
   p {
     @include general-font-p;
+  }
 
-    margin-bottom: $spacing-2;
+  p.caption {
+    @include general-font-caption;
+  }
+
+  p.smaller {
+    @include general-font-smaller;
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
   }
 }
 
@@ -49,8 +71,10 @@
   }
 }
 
+// container
 .u-container {
   @include u-container-xxs;
+  @include u-container-width-xxs;
 
   @include rwd-min(xs) {
     @include u-container-xs;
@@ -58,15 +82,42 @@
 
   @include rwd-min(sm) {
     @include u-container-sm;
+    @include u-container-width-sm;
   }
 
   @include rwd-min(lg) {
-    @include u-container-lg;
+    @include u-container-width-lg;
+  }
+}
+
+.u-container-md {
+  @include u-container-xxs;
+  @include u-container-width-xxs;
+
+  @include rwd-min(xs) {
+    @include u-container-xs;
+  }
+
+  @include rwd-min(sm) {
+    @include u-container-sm;
+    @include u-container-width-sm;
+  }
+
+  @include rwd-min(md) {
+    max-width: none;
+    padding-left: 92px;
+    padding-right: 92px;
+  }
+
+  @include rwd-min(lg) {
+    padding-left: 110px;
+    padding-right: 110px;
   }
 }
 
 .u-container-lg {
   @include u-container-xxs;
+  @include u-container-width-xxs;
 
   @include rwd-min(xs) {
     @include u-container-xs;
@@ -74,6 +125,7 @@
 
   @include rwd-min(sm) {
     @include u-container-sm;
+    @include u-container-width-sm;
   }
 
   @include rwd-min(lg) {
@@ -81,6 +133,7 @@
   }
 }
 
+// section
 .u-section {
   width: 100%;
   padding-top: $spacing-10;
@@ -101,44 +154,17 @@
 .greenland {
   background-color: $bg-white;
   text-align: justify;
-  
-  * {
-    box-sizing: border-box;
-  }
-
-  h1,
-  h2,
-  h3 {
-    font-family: 'Noto Serif TC', 'Noto Sans TC', 'Microsoft JhengHei', Roboto,
-      sans-serif;
-  }
-
-  img {
-    max-width: 100%;
-    max-height: 100%;
-  }
 }
 
-.g-container-lg {
-  @include u-container-xxs;
+.g-footer {
+  background-color: $bg-white;
 
-  @include rwd-min(xs) {
-    @include u-container-xs;
+  &__copyright-wrapper {
+    background-color: $footer-gray;
   }
 
-  @include rwd-min(sm) {
-    @include u-container-sm;
-  }
-
-  @include rwd-min(md) {
-    max-width: 100%;
-    padding-left: 92px;
-    padding-right: 92px;
-  }
-
-  @include rwd-min(lg) {
-    max-width: 100%;
-    padding-left: 110px;
-    padding-right: 110px;
+  &__copyright {
+    max-width: 620px;
+    margin: 0 auto;
   }
 }

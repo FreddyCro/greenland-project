@@ -7,12 +7,18 @@
       :posterExt="posterExt"
       :id="id"
       :classname="classname"
+      :use-webm="useWebm"
+      :is-playing="isPlaying"
     />
 
     <div class="g-vid-w-control__btns">
       <button class="g-vid-w-control__btn" @click="handlePlayClick">
-        <img v-if="isPlaying" src="img/icon/video_play_logo.svg" alt="play" />
-        <img v-else src="img/icon/video_pause_logo.svg" alt="paused" />
+        <img
+          v-if="isPlaying"
+          src="img/icon/video_pause_logo.svg"
+          alt="paused"
+        />
+        <img v-else src="img/icon/video_play_logo.svg" alt="play" />
       </button>
       <button class="g-vid-w-control__btn" @click="handleMuteClick">
         <img
@@ -59,6 +65,10 @@ export default {
     classname: {
       type: String,
     },
+    useWebm: {
+      type: Boolean,
+      default: false,
+    },
     usePlay: {
       type: Boolean,
       default: true,
@@ -67,26 +77,51 @@ export default {
       type: Boolean,
       default: true,
     },
+    forceStop: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
+      video: null,
       isPlaying: false,
       isMuted: false,
     };
   },
+  watch: {
+    forceStop: {
+      handler(value) {
+        this.isPlaying = !value;
+      },
+    },
+    isPlaying: {
+      handler(value) {
+        this.handlePlay(value);
+      },
+    },
+  },
   methods: {
     handlePlayClick() {
       this.isPlaying = !this.isPlaying;
-      const video = document.querySelector(`#${this.id}`);
-
-      if (this.isPlaying) video.pause();
-      else video.play();
+    },
+    handlePlay(boolean) {
+      if (boolean) this.video.play();
+      else this.video.pause();
     },
     handleMuteClick() {
       this.isMuted = !this.isMuted;
-
-      // TODO: muted all sound video
+      this.$store.dispatch('setSound', this.isMuted);
     },
+  },
+  mounted() {
+    this.video = document.querySelector(`#${this.id}`);
+    this.isPlaying = !this.forceStop;
+
+    // TODO: optimize this
+    setTimeout(() => {
+      this.handlePlay(this.isPlaying);
+    }, 100);
   },
 };
 </script>

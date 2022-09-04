@@ -1,5 +1,12 @@
 <template lang="pug">
 #app.u-article.greenland
+  nmd-header(
+    :outlink="headerList"
+    :title="str.metaTitle"
+    :url="str.metaUrl"
+    :description="str.metaDescription"
+  )
+  
   //- section hero
   section.gl-hero
     h1(v-html="str.heroTitle")
@@ -12,6 +19,7 @@
         poster-ext="webp"
         id="gl-vid1",
         classname="gl-hero-vid"
+        :use-webm="true"
       )
 
   //- section intro
@@ -74,6 +82,7 @@
           poster-ext="webp"
           id="gl-vid4",
           classname="gl-snow-vid"
+          :force-stop="true"
         )
       .gl-bnb-half.gl-bnb-text.u-paragraph
         h2(v-html="str.snowTitle")
@@ -134,98 +143,87 @@
 
     landing-map
     .u-section.gl-gallery
-      //- ice
-      .gl-gallery__row
-        .gl-gallery__col.gl-gallery__col-w1
-          gallery-vid(src="vid/landing/greenland_video9_1.mp4" :text="str.galleryIceTitle")
-        .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="img/landing/gallery/greenland_pic9_2" :text="str.galleryIceDesc2")
-          gallery-pic(src="img/landing/gallery/greenland_pic9_3" :text="str.galleryIceDesc3")
-        .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="img/landing/gallery/greenland_pic9_4" :text="str.galleryIceDesc4")
-      .gl-gallery__row
-        .gl-gallery__col.gl-gallery__col-w2
-          gallery-pic(src="img/landing/gallery/greenland_pic9_5" :text="str.galleryIceDesc5")
-        .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="img/landing/gallery/greenland_pic9_6" :text="str.galleryIceDesc6")
-          gallery-pic(src="img/landing/gallery/greenland_pic9_7" :text="str.galleryIceDesc7")
-      .gl-gallery__row
-        .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="img/landing/gallery/greenland_pic9_8" :text="str.galleryIceDesc8")
-        .gl-gallery__col.gl-gallery__col-w2
-          gallery-pic(src="img/landing/gallery/greenland_pic9_9" :text="str.galleryIceDesc9")
+      .u-container-lg
+        //- ice
+        .gl-gallery__row
+          .gl-gallery__col.gl-gallery__col-w1
+            gallery-vid(src="vid/landing/greenland_video9_1.mp4" :text="str.galleryIceTitle")
+          .gl-gallery__col.gl-gallery__col-w1
+            gallery-pic(src="img/landing/gallery/greenland_pic9_2" :text="str.galleryIceDesc2")
+            gallery-pic(src="img/landing/gallery/greenland_pic9_3" :text="str.galleryIceDesc3")
+          .gl-gallery__col.gl-gallery__col-w1
+            gallery-pic(src="img/landing/gallery/greenland_pic9_4" :text="str.galleryIceDesc4")
+        .gl-gallery__row
+          .gl-gallery__col.gl-gallery__col-w2
+            gallery-pic(src="img/landing/gallery/greenland_pic9_5" :text="str.galleryIceDesc5")
+          .gl-gallery__col.gl-gallery__col-w1
+            gallery-pic(src="img/landing/gallery/greenland_pic9_6" :text="str.galleryIceDesc6")
+            gallery-pic(src="img/landing/gallery/greenland_pic9_7" :text="str.galleryIceDesc7")
+        .gl-gallery__row
+          .gl-gallery__col.gl-gallery__col-w1
+            gallery-pic(src="img/landing/gallery/greenland_pic9_8" :text="str.galleryIceDesc8")
+          .gl-gallery__col.gl-gallery__col-w2
+            gallery-pic(src="img/landing/gallery/greenland_pic9_9" :text="str.galleryIceDesc9")
 
-      //- city
-      .gl-gallery__row
-        .gl-gallery__col.gl-gallery__col-w1
-          gallery-vid(src="vid/landing/greenland_video10_1.mp4" :text="str.galleryCityTitle")
-        .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="img/landing/gallery/greenland_pic10_2" :text="str.galleryCityDesc2")
-        .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="img/landing/gallery/greenland_pic10_3" :text="str.galleryCityDesc3")
-          gallery-pic(src="img/landing/gallery/greenland_pic10_4" :text="str.galleryCityDesc4")
-      .gl-gallery__row
-        .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="img/landing/gallery/greenland_pic10_5" :text="str.galleryCityDesc5")
-        .gl-gallery__col.gl-gallery__col-w2
-          gallery-pic(src="img/landing/gallery/greenland_pic10_6" :text="str.galleryCityDesc6")
-      .gl-gallery__row
-        .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="img/landing/gallery/greenland_pic10_7" :text="str.galleryCityDesc7")
-        .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="img/landing/gallery/greenland_pic10_8" :text="str.galleryCityDesc8")
-        .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="img/landing/gallery/greenland_pic10_9" :text="str.galleryCityDesc9")
+        //- city
+        .gl-gallery__row
+          .gl-gallery__col.gl-gallery__col-w1
+            gallery-vid(src="vid/landing/greenland_video10_1.mp4" :text="str.galleryCityTitle")
+          .gl-gallery__col.gl-gallery__col-w1
+            gallery-pic(src="img/landing/gallery/greenland_pic10_2" :text="str.galleryCityDesc2")
+          .gl-gallery__col.gl-gallery__col-w1
+            gallery-pic(src="img/landing/gallery/greenland_pic10_3" :text="str.galleryCityDesc3")
+            gallery-pic(src="img/landing/gallery/greenland_pic10_4" :text="str.galleryCityDesc4")
+        .gl-gallery__row
+          .gl-gallery__col.gl-gallery__col-w1
+            gallery-pic(src="img/landing/gallery/greenland_pic10_5" :text="str.galleryCityDesc5")
+          .gl-gallery__col.gl-gallery__col-w2
+            gallery-pic(src="img/landing/gallery/greenland_pic10_6" :text="str.galleryCityDesc6")
+        .gl-gallery__row
+          .gl-gallery__col.gl-gallery__col-w1
+            gallery-pic(src="img/landing/gallery/greenland_pic10_7" :text="str.galleryCityDesc7")
+          .gl-gallery__col.gl-gallery__col-w1
+            gallery-pic(src="img/landing/gallery/greenland_pic10_8" :text="str.galleryCityDesc8")
+          .gl-gallery__col.gl-gallery__col-w1
+            gallery-pic(src="img/landing/gallery/greenland_pic10_9" :text="str.galleryCityDesc9")
 
-      //- green
-      .gl-gallery__row
-        .gl-gallery__col.gl-gallery__col-w1
-          gallery-vid(src="vid/landing/greenland_video11_1.mp4" :text="str.galleryGreenTitle")
-        .gl-gallery__col.gl-gallery__col-w2
-          gallery-pic(src="img/landing/gallery/greenland_pic11_2" :text="str.galleryGreenDesc2")
-      .gl-gallery__row
-        .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="img/landing/gallery/greenland_pic11_3" :text="str.galleryGreenDesc3")
-        .gl-gallery__col.gl-gallery__col-w2
-          gallery-pic(src="img/landing/gallery/greenland_pic11_4" :text="str.galleryGreenDesc4")
-      .gl-gallery__row
-        .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="img/landing/gallery/greenland_pic11_5" :text="str.galleryGreenDesc5")
-          gallery-pic(src="img/landing/gallery/greenland_pic11_6" :text="str.galleryGreenDesc6")
-        .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="img/landing/gallery/greenland_pic11_7" :text="str.galleryGreenDesc7")
-        .gl-gallery__col.gl-gallery__col-w1
-          gallery-pic(src="img/landing/gallery/greenland_pic11_8" :text="str.galleryGreenDesc8")
-          gallery-pic(src="img/landing/gallery/greenland_pic11_9" :text="str.galleryGreenDesc9")
+        //- green
+        .gl-gallery__row
+          .gl-gallery__col.gl-gallery__col-w1
+            gallery-vid(src="vid/landing/greenland_video11_1.mp4" :text="str.galleryGreenTitle")
+          .gl-gallery__col.gl-gallery__col-w2
+            gallery-pic(src="img/landing/gallery/greenland_pic11_2" :text="str.galleryGreenDesc2")
+        .gl-gallery__row
+          .gl-gallery__col.gl-gallery__col-w1
+            gallery-pic(src="img/landing/gallery/greenland_pic11_3" :text="str.galleryGreenDesc3")
+          .gl-gallery__col.gl-gallery__col-w2
+            gallery-pic(src="img/landing/gallery/greenland_pic11_4" :text="str.galleryGreenDesc4")
+        .gl-gallery__row
+          .gl-gallery__col.gl-gallery__col-w1
+            gallery-pic(src="img/landing/gallery/greenland_pic11_5" :text="str.galleryGreenDesc5")
+            gallery-pic(src="img/landing/gallery/greenland_pic11_6" :text="str.galleryGreenDesc6")
+          .gl-gallery__col.gl-gallery__col-w1
+            gallery-pic(src="img/landing/gallery/greenland_pic11_7" :text="str.galleryGreenDesc7")
+          .gl-gallery__col.gl-gallery__col-w1
+            gallery-pic(src="img/landing/gallery/greenland_pic11_8" :text="str.galleryGreenDesc8")
+            gallery-pic(src="img/landing/gallery/greenland_pic11_9" :text="str.galleryGreenDesc9")
 
-    footer.gl-footer
+    footer.g-footer
       g-series(:list="str.seriesList")
-      footer-editor
-        div
-          p(v-text="str.editorInterviewTitle")
-          p(v-text="str.editorInterviewMembers")
-        div
-          p(v-text="str.editorProducerTitle")
-          p(v-text="str.editorProducerMembers")
-        div
-          p(v-text="str.editorVisualTitle")
-          p(v-text="str.editorVisualMembers")
-        div
-          p(v-text="str.editorEngineerTitle")
-          p(v-text="str.editorEngineerMembers")
-        div
-          p(v-text="str.editorDirectorTitle")
-          p(v-text="str.editorDirectorMembers")
-        div
-          p(v-text="str.editorGroupTitle")
-          p(v-text="str.editorGroupMembers")
-        div
-          p
-          p(v-text="str.editorReleaseDate")
-      g-footer-logo
+      .u-section.g-footer__copyright-wrapper
+        .u-container.g-footer__copyright
+          footer-editor(:data="editor")
+          footer-share(
+            :title="str.metaTitle"
+            :url="str.metaUrl"
+            :description="str.metaDescription"
+          )
+          footer-questionnaire
+          footer-logo
 </template>
 
 <script>
+import NmdHeader from '@/components/common/header/HeaderTypeA.vue';
 import GPic from '@/components/g-pic.vue';
 import GTwoChart from '@/components/g-two-chart.vue';
 import GVid from '@/components/g-vid.vue';
@@ -235,13 +233,16 @@ import AnchorBtn from '@/pages/landing/anchor-btn.vue';
 import GalleryPic from '@/pages/landing/gallery-pic.vue';
 import GalleryVid from '@/pages/landing/gallery-vid.vue';
 import GSeries from '@/components/g-series.vue';
-import GFooterLogo from '@/components/g-footer-logo.vue';
-import FooterEditor from '@/components/common/footer-editor.vue';
+import FooterLogo from '@/components/common/footer/footer-logo.vue';
+import FooterEditor from '@/components/common/footer/footer-editor.vue';
+import FooterQuestionnaire from '@/components/common/footer/footer-questionnaire.vue';
+import FooterShare from '@/components/common/footer/footer-share.vue';
 import str from '@/assets/string/landing.json';
 
 export default {
   name: 'App',
   components: {
+    NmdHeader,
     AnchorBtn,
     GSeries,
     GPic,
@@ -250,13 +251,62 @@ export default {
     GVidWControl,
     GalleryPic,
     GalleryVid,
-    GFooterLogo,
     LandingMap,
+    FooterLogo,
     FooterEditor,
+    FooterQuestionnaire,
+    FooterShare,
   },
   data() {
     return {
       str,
+      headerList: [
+        {
+          title: '外連1',
+          url: 'https://udn.com',
+          active: false,
+        },
+        {
+          title: '外連2',
+          url: 'https://udn.com',
+          active: false,
+        },
+        {
+          title: '自己這頁',
+          url: null,
+          active: true,
+        },
+      ],
+      editor: [
+        {
+          title: str.editorInterviewTitle,
+          members: str.editorInterviewMembers,
+        },
+        {
+          title: str.editorProducerTitle,
+          members: str.editorProducerMembers,
+        },
+        {
+          title: str.editorVisualTitle,
+          members: str.editorVisualMembers,
+        },
+        {
+          title: str.editorEngineerTitle,
+          members: str.editorEngineerMembers,
+        },
+        {
+          title: str.editorDirectorTitle,
+          members: str.editorDirectorMembers,
+        },
+        {
+          title: str.editorGroupTitle,
+          members: str.editorGroupMembers,
+        },
+        {
+          title: '',
+          members: [str.editorReleaseDate],
+        },
+      ],
     };
   },
 };
@@ -320,6 +370,13 @@ export default {
 }
 
 .gl-bnb-section {
+  display: flex;
+  flex-direction: column-reverse;
+
+  @include rwd-min(md) {
+    flex-direction: row;
+  }
+
   .gl-bnb-half {
     @include rwd-min(md) {
       width: 50%;
@@ -344,6 +401,16 @@ export default {
     }
   }
 
+  .gl-bnb-text,
+  .gl-bnb-vid {
+    @include rwd-min(md) {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
   .g-vid {
     width: 100%;
     height: 100%;
@@ -353,8 +420,9 @@ export default {
 
 .gl-gallery {
   background-color: $bg-white;
+  overflow: hidden;
 
-  @include rwd-min(md) {
+  /* @include rwd-min(md) {
     max-width: 1920px;
     padding-left: $spacing-7;
     padding-right: $spacing-7;
@@ -363,7 +431,7 @@ export default {
   @include rwd-min(lg) {
     padding-left: $spacing-9;
     padding-right: $spacing-9;
-  }
+  } */
 
   &__row {
     margin: 0 -$spacing-2;
@@ -392,8 +460,29 @@ export default {
   }
 }
 
-.gl-footer {
-  background-color: $footer-gray;
+.gl-transition {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  background-size: cover;
+  background-position: bottom center;
+
+  @include bg-3x('/img/landing/greenland_pic7_1', 'jpg', true);
+}
+
+.after-gl-transition {
+  position: relative;
+}
+
+.gl-transition-text {
+  text-align: center;
+
+  span {
+    background-color: #fff;
+  }
 }
 </style>
 
@@ -417,50 +506,6 @@ export default {
     height: 100%;
     object-fit: cover;
     object-position: center center;
-  }
-}
-
-.gl-bnb-section {
-  display: flex;
-  flex-direction: column-reverse;
-
-  @include rwd-min(md) {
-    flex-direction: row;
-  }
-
-  .gl-bnb-text,
-  .gl-bnb-vid {
-    @include rwd-min(md) {
-      width: 50%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-  }
-}
-
-.gl-transition {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: flex-end;
-  background-size: cover;
-  background-position: bottom center;
-
-  @include bg-3x('/img/landing/greenland_pic7_1', 'jpg', true);
-}
-
-.after-gl-transition {
-  position: relative;
-}
-
-.gl-transition-text {
-  text-align: center;
-
-  span {
-    background-color: #fff;
   }
 }
 </style>

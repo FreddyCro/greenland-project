@@ -42,7 +42,7 @@ export default {
   &__content-wrapper {
     width: 100%;
     height: 100%;
-    padding: 0 $spacing-2 $spacing-2 $spacing-2;
+    padding: $spacing-2;
   }
 
   &__content {

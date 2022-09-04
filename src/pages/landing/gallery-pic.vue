@@ -11,7 +11,8 @@
         :use-prefix="false",
       )
       
-      .gallery-pic__text(v-html="text")
+      .gallery-pic__text
+        span(v-html="text")
 
 </template>
 
@@ -47,7 +48,7 @@ export default {
   &__content-wrapper {
     width: 100%;
     height: 100%;
-    padding: 0 $spacing-2 $spacing-2 $spacing-2;
+    padding: $spacing-2;
   }
 
   &__content {
@@ -73,10 +74,23 @@ export default {
     &:hover {
       opacity: 0.8;
       background-color: rgba($color: #285f92, $alpha: 0.6);
+
+      span {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    span {
+      transform: translateY($spacing-5);
+      opacity: 0;
+      transition: 0.333s ease-in-out;
     }
   }
 
   &__img {
+    display: flex;
+
     img {
       position: relative;
       height: 100%;
