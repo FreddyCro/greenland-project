@@ -37,9 +37,9 @@
         //- )
 
         .glm-map__pin-wrapper
-          landing-map-pin-mob
-          landing-map-pin-pad
-          landing-map-pin-pc
+          landing-map-pin-mob(:step="step[activeIndex]")
+          landing-map-pin-pad(:step="step[activeIndex]")
+          landing-map-pin-pc(:step="step[activeIndex]")
 
   .glm-text
     section.u-section.glm-section.glm-mystery(ref="section-1")

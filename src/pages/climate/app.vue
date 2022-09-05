@@ -270,6 +270,33 @@ export default {
   data() {
     return {
       str,
+      headerList: [
+        {
+          title: '解凍格陵蘭',
+          url: '/',
+          active: true,
+        },
+        {
+          title: '北極站科學家篇',
+          url: '/climate',
+          active: false,
+        },
+        {
+          title: '撈海廢討海人篇',
+          url: '/fishing',
+          active: false,
+        },
+        {
+          title: '穿梭綠地牧羊人篇',
+          url: '/farming',
+          active: false,
+        },
+        {
+          title: '格陵蘭居民篇',
+          url: '/living',
+          active: false,
+        },
+      ],
       editor: [
         {
           title: str.editorInterviewTitle,

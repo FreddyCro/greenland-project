@@ -262,19 +262,29 @@ export default {
       str,
       headerList: [
         {
-          title: '外連1',
-          url: 'https://udn.com',
-          active: false,
-        },
-        {
-          title: '外連2',
-          url: 'https://udn.com',
-          active: false,
-        },
-        {
-          title: '自己這頁',
-          url: null,
+          title: '解凍格陵蘭',
+          url: '/',
           active: true,
+        },
+        {
+          title: '北極站科學家篇',
+          url: '/climate',
+          active: false,
+        },
+        {
+          title: '撈海廢討海人篇',
+          url: '/fishing',
+          active: false,
+        },
+        {
+          title: '穿梭綠地牧羊人篇',
+          url: '/farming',
+          active: false,
+        },
+        {
+          title: '格陵蘭居民篇',
+          url: '/living',
+          active: false,
         },
       ],
       editor: [
