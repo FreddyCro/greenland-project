@@ -228,7 +228,7 @@
       )
       .u-section
         g-pic(
-          src="../img/living/greenland_living_pic8_3_pc"
+          src="../img/living/greenland_living_pic8_3"
           ext="jpg"
           :alt="str.aviImg3Caption"
           classname="gc-avi-img-3"
