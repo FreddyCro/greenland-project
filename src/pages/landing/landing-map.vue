@@ -14,9 +14,21 @@
           :use3x="false"
         )
         .glm-map__pin-wrapper
-          landing-map-pin-mob(:step="step[activeIndex]")
-          landing-map-pin-pad(:step="step[activeIndex]")
-          landing-map-pin-pc(:step="step[activeIndex]")
+          landing-map-pin-mob(
+            :index="activeIndex"
+            :step="step"
+            :progress="progress"
+          )
+          landing-map-pin-pad(
+            :index="activeIndex"
+            :step="step"
+            :progress="progress"
+          )
+          landing-map-pin-pc(
+            :index="activeIndex"
+            :step="step"
+            :progress="progress"
+          )
 
   .glm-text
     section.u-section.glm-section.glm-mystery(ref="section-1")
@@ -31,7 +43,10 @@
     section.u-section.glm-section.glm-scientist#climate(ref="section-2")
       .u-container.glm-container.u-paragraph
         h2(v-html="str.mapScientistTitle")
-        h3(v-html="str.mapScientistPin")
+        h3
+          span
+            img(src="img/landing/icon/logo_place.svg", alt="pin")
+          span(v-html="str.mapScientistPin")
         p(
           v-for="p, index in str.mapScientistText1"
           :key="`mapScientistText1-${index}`"
@@ -57,7 +72,10 @@
     section.u-section.glm-section.glm-fishing#fishing(ref="section-3")
       .u-container.glm-container.u-paragraph
         h2(v-html="str.mapFishingTitle")
-        h3(v-html="str.mapFishingPin")
+        h3
+          span
+            img(src="img/landing/icon/logo_place.svg", alt="pin")
+          span(v-html="str.mapFishingPin")
         p(
           v-for="p, index in str.mapFishingText1"
           :key="`mapFishingText1-${index}`"
@@ -82,7 +100,10 @@
     section.u-section.glm-section.glm-farming#farming(ref="section-4")
       .u-container.glm-container.u-paragraph
         h2(v-html="str.mapFarmingTitle")
-        h3(v-html="str.mapFarmingPin")
+        h3
+          span
+            img(src="img/landing/icon/logo_place.svg", alt="pin")
+          span(v-html="str.mapFarmingPin")
         p(
           v-for="p, index in str.mapFarmingText1"
           :key="`mapFarmingText1-${index}`"
@@ -107,7 +128,10 @@
     section.u-section.glm-section.glm-living(ref="section-5")
       .u-container.glm-container.u-paragraph
         h2(v-html="str.mapLivingTitle")
-        h3(v-html="str.mapLivingPin")
+        h3
+          span
+            img(src="img/landing/icon/logo_place.svg", alt="pin")
+          span(v-html="str.mapLivingPin")
         p(
           v-for="p, index in str.mapLivingText1"
           :key="`mapLivingText1-${index}`"
@@ -138,6 +162,7 @@ import LandingMapPinPc from '@/pages/landing/landing-map-pin-pc.vue';
 import str from '@/assets/string/landing.json';
 import { linearIntersectionObserver } from '@/assets/js/observer.js';
 import { calcElementProgress } from '@/assets/js/progress.js';
+import debounce from 'debounce';
 
 export default {
   name: 'landing-map',
@@ -153,31 +178,17 @@ export default {
       status: 'above',
       activeIndex: 0,
       activeIndexList: [],
-      step: ['', 'kaikai', 'sisi', 'cack', 'nuuk'],
+      step: ['kaikai', 'kaikai', 'sisi', 'cack', 'nuuk'],
+      progress: 1,
     };
   },
   computed: {
-    pinCoordinate() {
-      const currentStep = this.step[this.activeIndex];
-
-      return {
-        left: this.cities[currentStep]
-          ? `${this.cities[currentStep].left}`
-          : `${this.pin.left}`,
-        top: this.cities[currentStep]
-          ? `${this.cities[currentStep].top}`
-          : `${this.pin.top}`,
-      };
-    },
     glmMapClass() {
       return {
         'glm-map__bg-wrapper--above': this.status === 'above',
         'glm-map__bg-wrapper--enter': this.status === 'enter',
         'glm-map__bg-wrapper--under': this.status === 'under',
       };
-    },
-    transfrom() {
-      return `translate(0, 0)`;
     },
   },
   created() {
@@ -193,17 +204,16 @@ export default {
     window.removeEventListener('resize', this.handleResize, { passive: true });
   },
   methods: {
-    handleCalcPinStepProgress(el) {
-      const pinStepProgress = calcElementProgress(el);
-
-      console.log(
-        'activeIndex',
-        this.activeIndex,
-        'pinStepProgress',
-        pinStepProgress
+    handleUpdateProgress: debounce(function () {
+      // handle pin
+      this.progress = calcElementProgress(
+        this.$refs[`section-${this.activeIndex + 1}`]
       );
-    },
+    }, 100),
     handleScroll() {
+      this.handleUpdateProgress();
+
+      // handle global map
       const el = this.$refs.glm;
       const pos = el.getBoundingClientRect();
       const topBound = 0;
@@ -258,7 +268,6 @@ export default {
           });
 
           console.log('enter', i + 1);
-          this.handleCalcPinStepProgress(this.$refs[el]);
         };
 
         const handleLeave = () => {
@@ -268,7 +277,6 @@ export default {
           });
 
           console.log('leave', i + 1);
-          this.handleCalcPinStepProgress(this.$refs[el]);
         };
 
         linearIntersectionObserver(this.$refs[el], handleEnter, handleLeave);
@@ -358,6 +366,10 @@ export default {
     height: 100%;
     overflow: hidden;
 
+    svg {
+      opacity: 0;
+    }
+
     &--above {
       position: relative;
       right: 0;
@@ -368,6 +380,11 @@ export default {
       position: fixed;
       right: 0;
       top: 0;
+
+      svg {
+        opacity: 1;
+        transition: 0.5s ease-in-out;
+      }
 
       @include rwd-min(md) {
         width: 50%;
@@ -394,14 +411,45 @@ export default {
     /* display: flex; */
     transition: 0.5s ease-in-out;
 
+    .pin {
+      opacity: 0;
+      transition: 0.5s ease-in-out;
+    }
+
+    &--step-1,
+    &--step-2,
+    &--step-3,
+    &--step-4,
+    &--step-5 {
+      .island,
+      .ilu,
+      .ilu-pin,
+      .konck,
+      .konck-pin,
+      .nasak,
+      .nasak-pin,
+      .nasas,
+      .nasas-pin {
+        opacity: 0;
+      }
+
+      .pin {
+        opacity: 1;
+      }
+    }
+
     &--step-1 {
-      transform: scale(1.35);
-      transform-origin: 40% 70%;
+      transform: scale(2);
+      transform-origin: 10% 70%;
+
+      .temp {
+        opacity: 0;
+      }
     }
 
     &--step-2 {
-      transform: scale(1.35);
-      transform-origin: 40% 60%;
+      transform: scale(2);
+      transform-origin: 10% 60%;
 
       .temp {
         opacity: 0;
@@ -411,6 +459,13 @@ export default {
     &--step-3 {
       transform: scale(1.5);
       transform-origin: 40% 70%;
+
+      .konck,
+      .konck-pin,
+      .nuuk,
+      .nuuk-pin {
+        opacity: 0;
+      }
 
       .temp {
         opacity: 0;
@@ -426,8 +481,14 @@ export default {
       }
 
       .kaikai,
-      .sisi {
+      .kaikai-pin,
+      .sisi,
+      .sisi-pin {
         opacity: 0;
+      }
+
+      svg {
+        opacity: 1;
       }
     }
   }
@@ -446,22 +507,6 @@ export default {
       position: fixed;
       top: 0;
       left: 0;
-    }
-  }
-
-  &__item {
-    position: absolute;
-    color: #fafafa;
-    transition: 0.333s ease-in-out;
-
-    &.island {
-      color: #d8d8d8;
-    }
-
-    &.ilu,
-    &.konck,
-    &.nasas {
-      color: #808080;
     }
   }
 
@@ -489,6 +534,14 @@ export default {
       object-fit: cover;
       object-position: center;
     }
+  }
+}
+
+.glm-mystery {
+  margin-top: 50vh !important;
+
+  @include rwd-min(md) {
+    margin-top: 100vh !important;
   }
 }
 </style>

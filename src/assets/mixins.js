@@ -1,5 +1,6 @@
 import debounce from 'debounce';
 import { detectPlatform } from '@/assets/js/udn-newmedia-utils';
+import { calcInterpolation } from '@/assets/js/progress.js';
 
 const gaTable = {
   HeaderShareOpen: {
@@ -144,4 +145,46 @@ const sendGa = {
   },
 };
 
-export { rwd, sendGa };
+const glMap = {
+  props: {
+    index: {
+      type: Number,
+      default: 0,
+    },
+    step: {
+      type: Array,
+    },
+    progress: {
+      type: Number,
+      default: 1,
+    },
+  },
+  data() {
+    return {
+      ticking: 0,
+    };
+  },
+  computed: {
+    pinCoords() {
+      const fromCity =
+        this.index === 0 ? this.pin : this.cities[this.step[this.index - 1]];
+      const toCity =
+        this.index === 0 ? this.pin : this.cities[this.step[this.index]];
+
+      const coords = calcInterpolation({
+        startX: fromCity.left,
+        startY: fromCity.top,
+        endX: toCity.left,
+        endY: toCity.top,
+        progress: this.progress,
+      });
+
+      return {
+        left: coords.x,
+        top: coords.y,
+      };
+    },
+  },
+};
+
+export { rwd, sendGa, glMap };

@@ -466,14 +466,11 @@
 </template>
 
 <script>
+import { glMap } from '@/assets/mixins';
+
 export default {
   name: 'landing-map-pin-pc',
-  props: {
-    step: {
-      type: String,
-      default: '',
-    },
-  },
+  mixins: [glMap],
   data() {
     return {
       pin: {
@@ -487,7 +484,7 @@ export default {
           top: '1070',
         },
         ilu: {
-          classname: 'ilu temp',
+          classname: 'ilu',
           left: '817.209',
           top: '1077.62',
         },
@@ -497,7 +494,7 @@ export default {
           top: '1226',
         },
         konck: {
-          classname: 'konck temp',
+          classname: 'konck',
           left: '805',
           top: '1240.57',
         },
@@ -507,12 +504,12 @@ export default {
           top: '1453',
         },
         nasas: {
-          classname: 'nasas temp',
+          classname: 'nasas',
           left: '937',
           top: '1669',
         },
         nasak: {
-          classname: 'nasak temp',
+          classname: 'nasak',
           left: '924.117',
           top: '1695.57',
         },
@@ -523,16 +520,6 @@ export default {
         },
       },
     };
-  },
-  computed: {
-    pinCoords() {
-      // TODO: interpolation progress
-
-      return {
-        left: this.step ? this.cities[this.step].left : this.pin.left,
-        top: this.step ? this.cities[this.step].top : this.pin.top,
-      };
-    },
   },
 };
 </script>

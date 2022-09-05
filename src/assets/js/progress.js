@@ -1,8 +1,7 @@
-const calcElementProgress = (element) => {
-  const { top, height } = element.getBoundingClientRect();
-  const { innerHeight } = window;
-  const progress = (innerHeight - top) / height;
-  return progress;
+const calcElementProgress = (el) => {
+  const { top, height } = el.getBoundingClientRect();
+  const progress = Math.max(0, Math.min(1, (top / height - 1) * -1));
+  return +progress.toFixed(2);
 };
 
 const calcGlobalProgress = () => {
@@ -14,8 +13,8 @@ const calcGlobalProgress = () => {
 };
 
 const calcInterpolation = ({ startX, startY, endX, endY, progress }) => {
-  const x = startX + (endX - startX) * progress;
-  const y = startY + (endY - startY) * progress;
+  const x = +startX + (+endX - +startX) * progress;
+  const y = +startY + (+endY - +startY) * progress;
   return { x, y };
 };
 
