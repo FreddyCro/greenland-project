@@ -13,29 +13,6 @@
           :use2x="false"
           :use3x="false"
         )
-
-        //- .glm-map__item(
-        //-   :class="greenland.classname"
-        //-   v-text="greenland.name"
-        //-   :style="{'left': `${greenland.left}%`, 'top': `${greenland.top}%`, transfrom: transfrom}"
-        //- ) 
-        //- .glm-map__item(
-        //-   v-for="city in Object.values(cities)"
-        //-   :class="city.classname"
-        //-   :key="city.classname"
-        //-   :style="{'left': `${city.left}%`, 'top': `${city.top}%`, transfrom: transfrom}"
-        //- ) {{ city.name }}
-
-        //- //- earth
-        //- img.earth(src="img/landing/icon/map_earth.svg" alt="earth")
-
-        //- //- pin
-        //- img.pin(
-        //-   src="img/landing/icon/map_coordinate.svg"
-        //-   alt="pin"
-        //-   :style="{'left': `${pinCoordinate.left}%`, 'top': `${pinCoordinate.top}%`, transfrom: transfrom}"
-        //- )
-
         .glm-map__pin-wrapper
           landing-map-pin-mob(:step="step[activeIndex]")
           landing-map-pin-pad(:step="step[activeIndex]")
@@ -43,7 +20,7 @@
 
   .glm-text
     section.u-section.glm-section.glm-mystery(ref="section-1")
-      .glm-container.u-paragraph
+      .u-container.glm-container.u-paragraph
         h2(v-html="str.mapMysteryTitle")
         p(
           v-for="p, index in str.mapMysteryText"
@@ -51,8 +28,8 @@
           v-html="p"
         )
 
-    section.u-section.glm-section.glm-scientist(ref="section-2")
-      .glm-container.u-paragraph
+    section.u-section.glm-section.glm-scientist#climate(ref="section-2")
+      .u-container.glm-container.u-paragraph
         h2(v-html="str.mapScientistTitle")
         h3(v-html="str.mapScientistPin")
         p(
@@ -77,8 +54,8 @@
           v-html="str.mapScientistStoryTitle"
         )
 
-    section.u-section.glm-section.glm-fishing(ref="section-3")
-      .glm-container.u-paragraph
+    section.u-section.glm-section.glm-fishing#fishing(ref="section-3")
+      .u-container.glm-container.u-paragraph
         h2(v-html="str.mapFishingTitle")
         h3(v-html="str.mapFishingPin")
         p(
@@ -102,8 +79,8 @@
           v-html="str.mapFishingStoryTitle"
         )
 
-    section.u-section.glm-section.glm-farming(ref="section-4")
-      .glm-container.u-paragraph
+    section.u-section.glm-section.glm-farming#farming(ref="section-4")
+      .u-container.glm-container.u-paragraph
         h2(v-html="str.mapFarmingTitle")
         h3(v-html="str.mapFarmingPin")
         p(
@@ -128,7 +105,7 @@
         )
 
     section.u-section.glm-section.glm-living(ref="section-5")
-      .glm-container.u-paragraph
+      .u-container.glm-container.u-paragraph
         h2(v-html="str.mapLivingTitle")
         h3(v-html="str.mapLivingPin")
         p(
@@ -177,66 +154,6 @@ export default {
       activeIndex: 0,
       activeIndexList: [],
       step: ['', 'kaikai', 'sisi', 'cack', 'nuuk'],
-      pin: {
-        left: '29',
-        top: '48',
-      },
-      greenland: {
-        classname: 'island',
-        name: '格陵蘭',
-        left: '54',
-        top: '33',
-      },
-      cities: {
-        kaikai: {
-          classname: 'kaikai',
-          name: '凱凱塔蘇瓦克',
-          left: '27',
-          top: '48',
-        },
-        ilu: {
-          classname: 'ilu temp',
-          name: '伊魯利薩特',
-          left: '44',
-          top: '49',
-        },
-        sisi: {
-          classname: 'sisi',
-          name: '西西穆特',
-          left: '32',
-          top: '57',
-        },
-        konck: {
-          classname: 'konck temp',
-          name: '康克魯斯瓦克',
-          left: '44',
-          top: '57',
-        },
-        nuuk: {
-          classname: 'nuuk',
-          name: '努克',
-          left: '36',
-          top: '67',
-        },
-        nasas: {
-          classname: 'nasas temp',
-          name: '納沙斯瓦克',
-          left: '46',
-          top: '75',
-        },
-        nasak: {
-          classname: 'nasak temp',
-          name: '納沙克',
-          left: '44',
-          top: '77',
-        },
-        cack: {
-          classname: 'cack',
-          name: '卡科爾托克',
-          left: '43',
-          top: '79',
-        },
-      },
     };
   },
   computed: {
@@ -276,10 +193,8 @@ export default {
     window.removeEventListener('resize', this.handleResize, { passive: true });
   },
   methods: {
-    handleCalcPinStepProgress() {
-      const pinStepProgress = calcElementProgress(
-        this.$refs[`section-${this.activeIndex + 1}`]
-      );
+    handleCalcPinStepProgress(el) {
+      const pinStepProgress = calcElementProgress(el);
 
       console.log(
         'activeIndex',
@@ -343,6 +258,7 @@ export default {
           });
 
           console.log('enter', i + 1);
+          this.handleCalcPinStepProgress(this.$refs[el]);
         };
 
         const handleLeave = () => {
@@ -352,6 +268,7 @@ export default {
           });
 
           console.log('leave', i + 1);
+          this.handleCalcPinStepProgress(this.$refs[el]);
         };
 
         linearIntersectionObserver(this.$refs[el], handleEnter, handleLeave);
@@ -369,6 +286,10 @@ export default {
     display: flex;
     flex-direction: row-reverse;
     background-color: $bg-white;
+  }
+
+  .u-section + .u-section {
+    padding-top: $spacing-10;
   }
 }
 

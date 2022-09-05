@@ -1,5 +1,5 @@
 <template>
-  <button class="gl-anchor">
+  <a class="gl-anchor" :href="target">
     <div class="gl-anchor__title" v-html="text" />
     <svg
       class="gl-anchor__btn"
@@ -16,7 +16,7 @@
         stroke-linejoin="round"
       />
     </svg>
-  </button>
+  </a>
 </template>
 
 <script>

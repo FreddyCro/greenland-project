@@ -478,7 +478,7 @@ export default {
     return {
       pin: {
         left: '746',
-        right: '1070',
+        top: '1070',
       },
       cities: {
         kaikai: {

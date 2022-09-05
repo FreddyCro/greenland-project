@@ -477,49 +477,49 @@ export default {
   data() {
     return {
       pin: {
-        left: '746',
-        right: '1070',
+        left: '973.029',
+        top: '1430.22',
       },
       cities: {
         kaikai: {
           classname: 'kaikai',
-          left: '',
-          top: '',
+          left: '973.029',
+          top: '1430.22',
         },
         ilu: {
           classname: 'ilu temp',
-          left: '',
-          top: '',
+          left: '1083.19',
+          top: '1432.79',
         },
         sisi: {
           classname: 'sisi',
-          left: '',
-          top: '',
+          left: '921.793',
+          top: '1673.6',
         },
         konck: {
           classname: 'konck temp',
-          left: '',
-          top: '',
+          left: '1065.26',
+          top: '1681.28',
         },
         nuuk: {
           classname: 'nuuk',
-          left: '',
-          top: '',
+          left: '965.344',
+          top: '1998.95',
         },
         nasas: {
           classname: 'nasas temp',
-          left: '',
-          top: '',
+          left: '1247.15',
+          top: '2337.12',
         },
         nasak: {
           classname: 'nasak temp',
-          left: '',
-          top: '',
+          left: '1226.65',
+          top: '2365.3',
         },
         cack: {
           classname: 'cack',
-          left: '',
-          top: '',
+          left: '1226.65',
+          top: '2388.35',
         },
       },
     };
