@@ -38,6 +38,7 @@ export default {
   @include reset-btn;
 
   text-align: center;
+  color: $font-color;
 
   &__title {
     margin-bottom: $spacing-3;

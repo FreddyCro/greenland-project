@@ -484,6 +484,7 @@ export default {
   align-items: flex-end;
   background-size: cover;
   background-position: bottom center;
+  pointer-events: none;
 
   @include bg-3x('/img/landing/greenland_pic7_1', 'jpg', true);
 }
@@ -503,6 +504,12 @@ export default {
 
 .after-gl-transition {
   position: relative;
+}
+
+.g-footer {
+  &__copyright-wrapper {
+    position: relative;
+  }
 }
 </style>
 
