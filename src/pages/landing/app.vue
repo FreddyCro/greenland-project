@@ -39,14 +39,14 @@
   .gl-bnb-container
     //- section hot
     section.gl-bnb-section.u-section.gl-hot
-      .gl-bnb-half.gl-bnb-half--center
-        g-two-chart(
-          id="gl-hot-chart",
-          first="img/landing/greenland_chart2_1_pc.svg",
-          second="img/landing/greenland_chart2_2_pc.svg",
-          :alt="str.hotTitle"
-        )
-      .gl-bnb-half.u-paragraph
+      bnb-slide(
+        id="hot",
+        classname="gl-hot-slide",
+        first-chart="img/landing/greenland_chart2_1_pc.svg",
+        second-chart="img/landing/greenland_chart2_2_pc.svg",
+        :alt="str.hotTitle"
+      )
+        //- TODO: container
         h2(v-html="str.hotTitle")
         p(
           v-for="p, index in str.hotText"
@@ -56,14 +56,14 @@
 
     //- section melt
     section.gl-bnb-section.u-section.gl-melt
-      .gl-bnb-half.gl-bnb-half--center
-        g-two-chart(
-          id="gl-melt-chart",
-          first="img/landing/greenland_chart3_1_pc.svg",
-          second="img/landing/greenland_chart3_2_pc.svg",
-          :alt="str.hotTitle"
-        )
-      .gl-bnb-half.u-paragraph
+      bnb-slide(
+        id="melt",
+        classname="gl-melt-slide",
+        first-chart="img/landing/greenland_chart3_1_pc.svg",
+        second-chart="img/landing/greenland_chart3_2_pc.svg",
+        :alt="str.hotTitle"
+      )
+        //- TODO: container
         h2(v-html="str.meltTitle")
         p(
           v-for="p, index in str.meltText"
@@ -232,6 +232,7 @@ import LandingMap from '@/pages/landing/landing-map.vue';
 import AnchorBtn from '@/pages/landing/anchor-btn.vue';
 import GalleryPic from '@/pages/landing/gallery-pic.vue';
 import GalleryVid from '@/pages/landing/gallery-vid.vue';
+import BnbSlide from '@/pages/landing/bnb-slide.vue';
 import GSeries from '@/components/g-series.vue';
 import FooterLogo from '@/components/common/footer/footer-logo.vue';
 import FooterEditor from '@/components/common/footer/footer-editor.vue';
@@ -251,6 +252,7 @@ export default {
     GVidWControl,
     GalleryPic,
     GalleryVid,
+    BnbSlide,
     LandingMap,
     FooterLogo,
     FooterEditor,
@@ -388,7 +390,7 @@ export default {
   }
 
   .gl-bnb-half {
-    @include rwd-min(md) {
+    /* @include rwd-min(md) {
       width: 50%;
       padding: $spacing-10;
     }
@@ -399,7 +401,7 @@ export default {
 
     &--no-padding {
       padding: 0;
-    }
+    } */
   }
 
   .gl-bnb-vid {

@@ -47,6 +47,14 @@
     @include general-font-smaller;
   }
 
+  p + p {
+    margin-top: $spacing-7;
+
+    @include rwd-min(md) {
+      margin-top: $spacing-8;
+    }
+  }
+
   img {
     max-width: 100%;
     max-height: 100%;
@@ -59,14 +67,6 @@
 
     @include rwd-min(md) {
       margin-bottom: $spacing-8;
-    }
-  }
-
-  p + p {
-    margin-top: $spacing-7;
-
-    @include rwd-min(md) {
-      margin-top: $spacing-8;
     }
   }
 }

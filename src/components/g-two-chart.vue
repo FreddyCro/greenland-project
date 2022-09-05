@@ -8,7 +8,6 @@
 
 <script>
 import GSvgChart from '@/components/g-svg-chart.vue';
-import { onceIntersectionObserver } from '@/assets/js/observer.js';
 
 export default {
   name: 'g-two-chart',
@@ -29,18 +28,9 @@ export default {
     alt: {
       type: String,
     },
-  },
-  data() {
-    return {
-      isActive: false,
-    };
-  },
-  mounted() {
-    onceIntersectionObserver(this.$refs[this.id], this.handleActive);
-  },
-  methods: {
-    handleActive() {
-      this.isActive = true;
+    isActive: {
+      type: Boolean,
+      default: false,
     },
   },
 };

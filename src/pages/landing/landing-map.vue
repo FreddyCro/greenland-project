@@ -160,6 +160,7 @@ import LandingMapPinPad from '@/pages/landing/landing-map-pin-pad.vue';
 import LandingMapPinPc from '@/pages/landing/landing-map-pin-pc.vue';
 import str from '@/assets/string/landing.json';
 import { linearIntersectionObserver } from '@/assets/js/observer.js';
+import { calcElementProgress } from '@/assets/js/progress.js';
 
 export default {
   name: 'landing-map',
@@ -275,6 +276,18 @@ export default {
     window.removeEventListener('resize', this.handleResize, { passive: true });
   },
   methods: {
+    handleCalcPinStepProgress() {
+      const pinStepProgress = calcElementProgress(
+        this.$refs[`section-${this.activeIndex + 1}`]
+      );
+
+      console.log(
+        'activeIndex',
+        this.activeIndex,
+        'pinStepProgress',
+        pinStepProgress
+      );
+    },
     handleScroll() {
       const el = this.$refs.glm;
       const pos = el.getBoundingClientRect();

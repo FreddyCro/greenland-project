@@ -51,7 +51,13 @@
       />
     </g>
     <g class="city-pin-g nuuk-pin-g" filter="url(#filter3_d_1687_272)">
-      <circle class="city-pin nuuk-pin" cx="742" cy="1453" r="12" fill="white" />
+      <circle
+        class="city-pin nuuk-pin"
+        cx="742"
+        cy="1453"
+        r="12"
+        fill="white"
+      />
     </g>
     <g class="city-pin-g nasas-pin-g temp" filter="url(#filter4_d_1687_272)">
       <circle
