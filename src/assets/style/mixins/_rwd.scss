@@ -1,0 +1,36 @@
+// rwd
+$minBreakpoints: (
+  xs: $xs,
+  sm: $sm,
+  md: $md,
+  lg: $lg,
+  xl: $xl,
+  xxl: $xxl,
+);
+
+$maxBreakpoints: (
+  xxs: #{$xs - 0.2px},
+  xs: #{$sm - 0.2px},
+  sm: #{$md - 0.2px},
+  md: #{$lg - 0.2px},
+  lg: #{$xl - 0.2px},
+  xl: #{$xxl - 0.2px},
+);
+
+@mixin rwd-min($min) {
+  @media screen and (min-width: map-get($minBreakpoints, $min)) {
+    @content;
+  }
+}
+
+@mixin rwd-max($max) {
+  @media screen and (max-width: map-get($maxBreakpoints, $max)) {
+    @content;
+  }
+}
+
+@mixin rwd-min-max($min, $max) {
+  @media screen and (min-width: map-get($minBreakpoints, $min)) and (max-width: map-get($maxBreakpoints, $max)) {
+    @content;
+  }
+}

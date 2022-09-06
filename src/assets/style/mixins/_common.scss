@@ -1,0 +1,128 @@
+// utilities
+@mixin support-webp {
+  @supports (aspect-ratio: 1 / 1) {
+    @content;
+  }
+}
+
+@mixin bg-3x($src, $ext, $webp: true) {
+  background-repeat: no-repeat;
+
+  // mob
+  // 1x
+  background-image: url('#{$src}_mob.#{$ext}');
+
+  @if $webp == true {
+    @supports (aspect-ratio: 1 / 1) {
+      // 2x webp
+      background-image: url('#{$src}_mob.webp');
+    }
+  }
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (-moz-min-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2),
+    only screen and (min-device-pixel-ratio: 2) {
+    // 2x
+    background-image: url('#{$src}_mob@2x.#{$ext}');
+
+    @if $webp == true {
+      @supports (aspect-ratio: 1 / 1) {
+        // 2x webp
+        background-image: url('#{$src}_mob@2x.webp');
+      }
+    }
+  }
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 3),
+    only screen and (-moz-min-device-pixel-ratio: 3),
+    only screen and (-o-min-device-pixel-ratio: 3),
+    only screen and (min-device-pixel-ratio: 3) {
+    // 3x
+    background-image: url('#{$src}_mob@3x.#{$ext}');
+
+    @if $webp == true {
+      @supports (aspect-ratio: 1 / 1) {
+        // 3x webp
+        background-image: url('#{$src}_mob@3x.webp');
+      }
+    }
+  }
+
+  // pad
+  @media only screen and (min-width: $sm) {
+    background-image: url('#{$src}_pad.#{$ext}');
+  }
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: $sm),
+    only screen and (-moz-min-device-pixel-ratio: 2) and (min-width: $sm),
+    only screen and (-o-min-device-pixel-ratio: 2) and (min-width: $sm),
+    only screen and (min-device-pixel-ratio: 2) and (min-width: $sm) {
+    // 2x
+    background-image: url('#{$src}_pad@2x.#{$ext}');
+
+    @if $webp == true {
+      @supports (aspect-ratio: 1 / 1) {
+        // 2x webp
+        background-image: url('#{$src}_pad@2x.webp');
+      }
+    }
+  }
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 3) and (min-width: $sm),
+    only screen and (-moz-min-device-pixel-ratio: 3) and (min-width: $sm),
+    only screen and (-o-min-device-pixel-ratio: 3) and (min-width: $sm),
+    only screen and (min-device-pixel-ratio: 3) and (min-width: $sm) {
+    // 3x
+    background-image: url('#{$src}_pad@3x.#{$ext}');
+
+    @if $webp == true {
+      @supports (aspect-ratio: 1 / 1) {
+        // 3x webp
+        background-image: url('#{$src}_pad@3x.webp');
+      }
+    }
+  }
+
+  // pc
+  @media only screen and (min-width: $md) {
+    background-image: url('#{$src}_pc.#{$ext}');
+  }
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: $md),
+    only screen and (-moz-min-device-pixel-ratio: 2) and (min-width: $md),
+    only screen and (-o-min-device-pixel-ratio: 2) and (min-width: $md),
+    only screen and (min-device-pixel-ratio: 2) and (min-width: $md) {
+    // 2x
+    background-image: url('#{$src}_pc@2x.#{$ext}');
+
+    @if $webp == true {
+      @supports (aspect-ratio: 1 / 1) {
+        // 2x webp
+        background-image: url('#{$src}_pc@2x.webp');
+      }
+    }
+  }
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 3) and (min-width: $md),
+    only screen and (-moz-min-device-pixel-ratio: 3) and (min-width: $md),
+    only screen and (-o-min-device-pixel-ratio: 3) and (min-width: $md),
+    only screen and (min-device-pixel-ratio: 3) and (min-width: $md) {
+    // 3x
+    background-image: url('#{$src}_pc@3x.#{$ext}');
+
+    @if $webp == true {
+      @supports (aspect-ratio: 1 / 1) {
+        // 3x webp
+        background-image: url('#{$src}_pc@3x.webp');
+      }
+    }
+  }
+}
+
+@mixin reset-btn {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}

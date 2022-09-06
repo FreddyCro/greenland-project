@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&display=swap');
+
+@import '_normalize.scss';
+
+// udn style
+.u-article {
+  color: $font-color;
+  font-family: $font-family;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: 'Noto Serif TC', 'Noto Sans TC', 'Microsoft JhengHei', Roboto,
+      sans-serif;
+  }
+
+  h1 {
+    @include general-font-h1;
+  }
+
+  h2 {
+    @include general-font-h2;
+  }
+
+  h3 {
+    @include general-font-h3;
+  }
+
+  h4 {
+    @include general-font-h4;
+  }
+
+  p {
+    @include general-font-p;
+  }
+
+  p.caption {
+    @include general-font-caption;
+  }
+
+  p.smaller {
+    @include general-font-smaller;
+  }
+
+  p + p {
+    margin-top: $spacing-7;
+
+    @include rwd-min(md) {
+      margin-top: $spacing-8;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.u-paragraph {
+  h2 {
+    margin-bottom: $spacing-7;
+
+    @include rwd-min(md) {
+      margin-bottom: $spacing-8;
+    }
+  }
+}
+
+// container
+.u-container {
+  @include u-container-xxs;
+  @include u-container-width-xxs;
+
+  @include rwd-min(xs) {
+    @include u-container-xs;
+  }
+
+  @include rwd-min(sm) {
+    @include u-container-sm;
+    @include u-container-width-sm;
+  }
+
+  @include rwd-min(lg) {
+    @include u-container-width-lg;
+  }
+}
+
+.u-container-md {
+  @include u-container-xxs;
+  @include u-container-width-xxs;
+
+  @include rwd-min(xs) {
+    @include u-container-xs;
+  }
+
+  @include rwd-min(sm) {
+    @include u-container-sm;
+    @include u-container-width-sm;
+  }
+
+  @include rwd-min(md) {
+    max-width: none;
+    padding-left: 92px;
+    padding-right: 92px;
+  }
+
+  @include rwd-min(lg) {
+    padding-left: 110px;
+    padding-right: 110px;
+  }
+}
+
+.u-container-lg {
+  @include u-container-xxs;
+  @include u-container-width-xxs;
+
+  @include rwd-min(xs) {
+    @include u-container-xs;
+  }
+
+  @include rwd-min(sm) {
+    @include u-container-sm;
+    @include u-container-width-sm;
+  }
+
+  @include rwd-min(lg) {
+    max-width: 1020px;
+  }
+}
+
+// section
+.u-section {
+  width: 100%;
+  padding-top: $spacing-10;
+  padding-bottom: $spacing-10;
+
+  @include rwd-min(md) {
+    padding-top: $spacing-11;
+    padding-bottom: $spacing-11;
+  }
+}
+
+.u-section + .u-section {
+  padding-top: 0;
+}
+
+.u-section-full {
+  width: 100%;
+  height: 100vh;
+}
+
+.u-full-vid {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.u-full-width-img {
+  img {
+    width: 100%;
+  }
+}
+
+.u-full-img {
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
+// greenland series style
+.greenland {
+  background-color: $bg-white;
+  text-align: justify;
+}
+
+.g-footer {
+  background-color: $bg-white;
+
+  &__copyright-wrapper {
+    background-color: $footer-gray;
+  }
+
+  &__copyright {
+    max-width: 620px;
+    margin: 0 auto;
+  }
+}

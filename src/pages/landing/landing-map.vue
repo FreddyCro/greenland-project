@@ -1,0 +1,547 @@
+<template lang="pug">
+//- greenland landing map
+.glm(ref="glm")
+  .glm-map(:class="{'glm-map--under': status === 'under'}")
+    .glm-map__bg-wrapper(:class="glmMapClass")
+      .glm-map__bg-nav(:class="`glm-map__bg-nav--step-${activeIndex}`")
+        g-pic(
+          src="img/landing/map/greenland_map8_1"
+          ext="png"
+          alt="greenland map"
+          classname="glm-map__bg"
+          :webp="true"
+          :use2x="false"
+          :use3x="false"
+        )
+        .glm-map__pin-wrapper
+          landing-map-pin-mob(
+            :index="activeIndex"
+            :step="step"
+            :progress="progress"
+          )
+          landing-map-pin-pad(
+            :index="activeIndex"
+            :step="step"
+            :progress="progress"
+          )
+          landing-map-pin-pc(
+            :index="activeIndex"
+            :step="step"
+            :progress="progress"
+          )
+
+  .glm-text
+    section.u-section.glm-section.glm-mystery(ref="section-1")
+      .u-container.glm-container.u-paragraph
+        h2(v-html="str.mapMysteryTitle")
+        p(
+          v-for="p, index in str.mapMysteryText"
+          :key="`mapMysteryText-${index}`"
+          v-html="p"
+        )
+
+    section.u-section.glm-section.glm-scientist#climate(ref="section-2")
+      .u-container.glm-container.u-paragraph
+        h2(v-html="str.mapScientistTitle")
+        h3
+          span
+            img(src="img/landing/icon/logo_place.svg", alt="pin")
+          span(v-html="str.mapScientistPin")
+        p(
+          v-for="p, index in str.mapScientistText1"
+          :key="`mapScientistText1-${index}`"
+          v-html="p"
+        )
+
+        g-pic(
+          src="img/landing/map/greenland_pic8_2"
+          ext="jpg"
+          :alt="str.mapFarmingTitle"
+          :webp="true"
+        )
+        p(
+          v-for="p, index in str.mapScientistText2"
+          :key="`mapScientistText2-${index}`"
+          v-html="p"
+        )
+        a(
+          :href="str.mapScientistStoryUrl"
+          v-html="str.mapScientistStoryTitle"
+        )
+
+    section.u-section.glm-section.glm-fishing#fishing(ref="section-3")
+      .u-container.glm-container.u-paragraph
+        h2(v-html="str.mapFishingTitle")
+        h3
+          span
+            img(src="img/landing/icon/logo_place.svg", alt="pin")
+          span(v-html="str.mapFishingPin")
+        p(
+          v-for="p, index in str.mapFishingText1"
+          :key="`mapFishingText1-${index}`"
+          v-html="p"
+        )
+        g-pic(
+          src="img/landing/map/greenland_pic8_3"
+          ext="jpg"
+          :alt="str.mapFarmingTitle"
+          :webp="true"
+        )
+        p(
+          v-for="p, index in str.mapFishingText2"
+          :key="`mapFishingText2-${index}`"
+          v-html="p"
+        )
+        a(
+          :href="str.mapFishingStoryUrl"
+          v-html="str.mapFishingStoryTitle"
+        )
+
+    section.u-section.glm-section.glm-farming#farming(ref="section-4")
+      .u-container.glm-container.u-paragraph
+        h2(v-html="str.mapFarmingTitle")
+        h3
+          span
+            img(src="img/landing/icon/logo_place.svg", alt="pin")
+          span(v-html="str.mapFarmingPin")
+        p(
+          v-for="p, index in str.mapFarmingText1"
+          :key="`mapFarmingText1-${index}`"
+          v-html="p"
+        )
+        g-pic(
+          src="img/landing/map/greenland_pic8_4"
+          ext="jpg"
+          :alt="str.mapFarmingTitle"
+          :webp="true"
+        )
+        p(
+          v-for="p, index in str.mapFarmingText2"
+          :key="`mapFarmingText2-${index}`"
+          v-html="p"
+        )
+        a(
+          :href="str.mapFarmingStoryUrl"
+          v-html="str.mapFarmingStoryTitle"
+        )
+
+    section.u-section.glm-section.glm-living(ref="section-5")
+      .u-container.glm-container.u-paragraph
+        h2(v-html="str.mapLivingTitle")
+        h3
+          span
+            img(src="img/landing/icon/logo_place.svg", alt="pin")
+          span(v-html="str.mapLivingPin")
+        p(
+          v-for="p, index in str.mapLivingText1"
+          :key="`mapLivingText1-${index}`"
+          v-html="p"
+        )
+        g-pic(
+          src="img/landing/map/greenland_pic8_5"
+          ext="jpg"
+          :alt="str.mapFarmingTitle"
+          :webp="true"
+        )
+        p(
+          v-for="p, index in str.mapLivingText2"
+          :key="`mapLivingText2-${index}`"
+          v-html="p"
+        )
+        a(
+          :href="str.mapLivingStoryUrl"
+          v-html="str.mapLivingStoryTitle"
+        )
+</template>
+
+<script>
+import GPic from '@/components/g-pic.vue';
+import LandingMapPinMob from '@/pages/landing/landing-map-pin-mob.vue';
+import LandingMapPinPad from '@/pages/landing/landing-map-pin-pad.vue';
+import LandingMapPinPc from '@/pages/landing/landing-map-pin-pc.vue';
+import str from '@/assets/string/landing.json';
+import { linearIntersectionObserver } from '@/assets/js/observer.js';
+import { calcElementProgress } from '@/assets/js/progress.js';
+import debounce from 'debounce';
+
+export default {
+  name: 'landing-map',
+  components: {
+    GPic,
+    LandingMapPinMob,
+    LandingMapPinPad,
+    LandingMapPinPc,
+  },
+  data() {
+    return {
+      str,
+      status: 'above',
+      activeIndex: 0,
+      activeIndexList: [],
+      step: ['kaikai', 'kaikai', 'sisi', 'cack', 'nuuk'],
+      progress: 1,
+    };
+  },
+  computed: {
+    glmMapClass() {
+      return {
+        'glm-map__bg-wrapper--above': this.status === 'above',
+        'glm-map__bg-wrapper--enter': this.status === 'enter',
+        'glm-map__bg-wrapper--under': this.status === 'under',
+      };
+    },
+  },
+  created() {
+    window.addEventListener('scroll', this.handleScroll, { passive: true });
+    window.addEventListener('resize', this.handleResize, { passive: true });
+  },
+  mounted() {
+    // initialize
+    this.init();
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.handleScroll, { passive: true });
+    window.removeEventListener('resize', this.handleResize, { passive: true });
+  },
+  methods: {
+    handleUpdateProgress: debounce(function () {
+      // handle pin
+      this.progress = calcElementProgress(
+        this.$refs[`section-${this.activeIndex + 1}`]
+      );
+    }, 100),
+    handleScroll() {
+      this.handleUpdateProgress();
+
+      // handle global map
+      const el = this.$refs.glm;
+      const pos = el.getBoundingClientRect();
+      const topBound = 0;
+      const bottomBound = window.innerHeight;
+
+      // | above / leave position
+      // |———————————————————————
+      // | enter position
+      // |———————————————————————
+      // | under / leave position
+
+      // enter
+      if (pos.top < topBound && pos.bottom > bottomBound) {
+        this.status = 'enter';
+      } else {
+        // leave
+        // major.classList.remove(majorEnterClass);
+
+        // above
+        if (pos.top >= topBound) {
+          this.status = 'above';
+        }
+
+        // under
+        if (pos.bottom < bottomBound) {
+          this.status = 'under';
+        }
+      }
+    },
+    init() {
+      window.requestAnimationFrame(this.handleScroll);
+      this.handleScroll();
+
+      // add io listener for map
+      const sectionList = [
+        'section-1',
+        'section-2',
+        'section-3',
+        'section-4',
+        'section-5',
+      ];
+
+      sectionList.forEach((el, i) => {
+        this.activeIndexList.push(false);
+
+        const handleEnter = () => {
+          this.$refs[el].classList.add('show');
+          this.activeIndexList = this.activeIndexList.map((item, index) => {
+            if (index === i) this.activeIndex = index;
+            if (index <= i) return true;
+            return false;
+          });
+
+          console.log('enter', i + 1);
+        };
+
+        const handleLeave = () => {
+          this.activeIndexList.forEach((item, index) => {
+            if (item) return;
+            this.$refs[sectionList[index]].classList.remove('show');
+          });
+
+          console.log('leave', i + 1);
+        };
+
+        linearIntersectionObserver(this.$refs[el], handleEnter, handleLeave);
+      });
+    },
+  },
+};
+</script>
+
+<style lang="scss">
+.glm {
+  position: relative;
+
+  @include rwd-min(md) {
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: $bg-white;
+  }
+
+  .u-section + .u-section {
+    padding-top: $spacing-10;
+  }
+}
+
+.glm-section {
+  margin-top: 100vh;
+  background-color: $bg-white;
+  opacity: 0.9;
+
+  @include rwd-min(md) {
+    background-color: $bg-white;
+    opacity: 1;
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.glm-container {
+  @include u-container-xxs;
+
+  @include rwd-min(xs) {
+    @include u-container-xs;
+  }
+
+  @include rwd-min(sm) {
+    @include u-container-sm;
+  }
+
+  @include rwd-min(md) {
+    max-width: 100%;
+    padding-left: $spacing-7;
+  }
+
+  @include rwd-min(lg) {
+    padding-left: $spacing-9;
+  }
+}
+
+.glm-text {
+  position: relative;
+
+  @include rwd-min(md) {
+    width: 50%;
+    padding: $spacing-10;
+  }
+}
+
+.glm-map {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
+  @include rwd-min(md) {
+    /* position: sticky;
+    top: 0; */
+    width: 50%;
+  }
+
+  &--under {
+    position: static;
+  }
+
+  &__bg-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    svg {
+      opacity: 0;
+    }
+
+    &--above {
+      position: relative;
+      right: 0;
+      top: 0;
+    }
+
+    &--enter {
+      position: fixed;
+      right: 0;
+      top: 0;
+
+      svg {
+        opacity: 1;
+        transition: 0.5s ease-in-out;
+      }
+
+      @include rwd-min(md) {
+        width: 50%;
+      }
+    }
+
+    &--under {
+      position: absolute;
+      right: 0;
+      top: auto;
+      bottom: 0;
+      height: 100vh;
+
+      @include rwd-min(md) {
+        width: 50%;
+      }
+    }
+  }
+
+  &__bg-nav {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* display: flex; */
+    transition: 0.5s ease-in-out;
+
+    .pin {
+      opacity: 0;
+      transition: 0.5s ease-in-out;
+    }
+
+    &--step-1,
+    &--step-2,
+    &--step-3,
+    &--step-4,
+    &--step-5 {
+      .island,
+      .ilu,
+      .ilu-pin,
+      .konck,
+      .konck-pin,
+      .nasak,
+      .nasak-pin,
+      .nasas,
+      .nasas-pin {
+        opacity: 0;
+      }
+
+      .pin {
+        opacity: 1;
+      }
+    }
+
+    &--step-1 {
+      transform: scale(2);
+      transform-origin: 10% 70%;
+
+      .temp {
+        opacity: 0;
+      }
+    }
+
+    &--step-2 {
+      transform: scale(2);
+      transform-origin: 10% 60%;
+
+      .temp {
+        opacity: 0;
+      }
+    }
+
+    &--step-3 {
+      transform: scale(1.5);
+      transform-origin: 40% 70%;
+
+      .konck,
+      .konck-pin,
+      .nuuk,
+      .nuuk-pin {
+        opacity: 0;
+      }
+
+      .temp {
+        opacity: 0;
+      }
+    }
+
+    &--step-4 {
+      transform: scale(2);
+      transform-origin: 40% 80%;
+
+      .temp {
+        opacity: 0;
+      }
+
+      .kaikai,
+      .kaikai-pin,
+      .sisi,
+      .sisi-pin {
+        opacity: 0;
+      }
+
+      svg {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__bg {
+    img {
+      max-width: none;
+      max-height: none;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    &--fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  .earth {
+    position: absolute;
+    right: $spacing-5;
+    bottom: $spacing-5;
+  }
+
+  .pin {
+    position: absolute;
+    transition: 1s ease-in-out;
+  }
+
+  &__pin-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+
+.glm-mystery {
+  margin-top: 50vh !important;
+
+  @include rwd-min(md) {
+    margin-top: 100vh !important;
+  }
+}
+</style>
