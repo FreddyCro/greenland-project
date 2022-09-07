@@ -95,19 +95,10 @@ export default {
         this.isPlaying = !value;
       },
     },
-    isPlaying: {
-      handler(value) {
-        this.handlePlay(value);
-      },
-    },
   },
   methods: {
     handlePlayClick() {
       this.isPlaying = !this.isPlaying;
-    },
-    handlePlay(boolean) {
-      if (boolean) this.video.play();
-      else this.video.pause();
     },
     handleMuteClick() {
       this.isMuted = !this.isMuted;
@@ -117,11 +108,6 @@ export default {
   mounted() {
     this.video = document.querySelector(`#${this.id}`);
     this.isPlaying = !this.forceStop;
-
-    // TODO: optimize this
-    setTimeout(() => {
-      this.handlePlay(this.isPlaying);
-    }, 100);
   },
 };
 </script>
