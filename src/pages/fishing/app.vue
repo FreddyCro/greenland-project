@@ -16,7 +16,7 @@
         poster="../img/fishing/greenland_fishing_preview1",
         poster-ext="webp"
         id="gfi-hero-vid",
-        classname="u-full-vid"
+        classname="u-full-vh-vid"
       )
     section.u-section.gfi-hero(slot="content")
       .u-container
@@ -29,13 +29,13 @@
         )
 
   //- section intro
-  g-slide(id="intro" classname="gfi-intro-slide" :is-last="true")
+  g-slide(id="intro" classname="gfi-intro-slide")
     section(slot="bg")
       g-pic(
         src="../img/fishing/greenland_fishing_pic2"
         ext="jpg"
         :alt="str.introTitle"
-        classname="gc-intro-bg"
+        classname="u-full-vh-img"
         :webp="true"
       )
     section.u-section.gf-intro(slot="content")
@@ -47,22 +47,24 @@
         )
 
   //- section transition
-  g-vid-w-control(
-    src="../vid/fishing/greenland_fishing_video3",
-    ext="mp4"
-    poster="../img/fishing/greenland_fishing_preview3",
-    poster-ext="webp"
-    id="gc-vid3",
-    classname="gc-vid3"
-  )
-  
-  section.u-section.gfi-transition
-    .u-container
-      p(
-        v-for="p, index in str.introText3"
-        :key="`gfi-introText3-${index}`"
-        v-html="p"
+  g-slide(id="transition" classname="gfi-transition-slide" :is-last="true")
+    section(slot="bg")
+      g-vid-w-control(
+        src="../vid/fishing/greenland_fishing_video3",
+        ext="mp4"
+        poster="../img/fishing/greenland_fishing_preview3",
+        poster-ext="webp"
+        id="gc-vid3",
+        classname="u-full-vh-vid"
       )
+  
+    section.u-section.gfi-transition(slot="content")
+      .u-container
+        p(
+          v-for="p, index in str.introText3"
+          :key="`gfi-introText3-${index}`"
+          v-html="p"
+        )
 
   //- section ja
   g-pic(
@@ -115,12 +117,10 @@
   g-pic(
     src="../img/fishing/greenland_fishing_pic5_1"
     ext="jpg"
-    :alt="str.janProtectionImg1Caption"
+    :alt="str.janProtectionTitle"
     classname="u-full-width-img"
     :webp="true"
   )
-  .u-container-lg
-    p.caption(v-html="str.janProtectionImg1Caption")
 
   //- section crisis
   section.u-section.gfi-crisis

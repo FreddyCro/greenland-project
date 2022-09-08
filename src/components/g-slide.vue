@@ -1,9 +1,13 @@
 <template lang="pug">
 .g-slide(:ref="`g-slide-${id}`" :class="classname")
-  .g-slide-bg-wrapper
+  .g-slide-bg-wrapper(
+    :ref="`g-slide-last-enter-trigger-${id}`"
+    :class="{ 'g-slide-bg-wrapper--last': isLast }"
+  )
     .g-slide-bg(:class="{ 'g-slide-bg--active': isEnter }")
       slot(name="bg")
 
+  .last-trigger(:ref="`g-slide-last-leave-trigger-${id}`")
   .g-slide-content(:class="{ 'g-slide-content--active': isEnter, 'g-slide-content--last': isLast }")
     slot(name="content")
 </template>
@@ -35,11 +39,24 @@ export default {
     };
   },
   mounted() {
-    linearIntersectionObserver(
-      this.$refs[`g-slide-${this.id}`],
-      this.handleEnter,
-      this.handleLeave
-    );
+    if (this.isLast) {
+      linearIntersectionObserver(
+        this.$refs[`g-slide-last-enter-trigger-${this.id}`],
+        this.handleEnter,
+        () => {}
+      );
+      linearIntersectionObserver(
+        this.$refs[`g-slide-last-leave-trigger-${this.id}`],
+        () => {},
+        this.handleLeave
+      );
+    } else {
+      linearIntersectionObserver(
+        this.$refs[`g-slide-${this.id}`],
+        this.handleEnter,
+        this.handleLeave
+      );
+    }
   },
   methods: {
     handleEnter() {
@@ -55,6 +72,10 @@ export default {
 <style lang="scss">
 .g-slide-bg-wrapper {
   min-height: 100vh;
+
+  &--last {
+    margin-bottom: 50vh;
+  }
 }
 
 .g-slide-bg {
@@ -70,6 +91,7 @@ export default {
 
   &--active {
     opacity: 1;
+    pointer-events: all;
   }
 }
 
@@ -77,7 +99,7 @@ export default {
   position: relative;
   display: flex;
   align-items: center;
-  /* min-height: 100vh; */
+  min-height: 100vh;
   margin-bottom: 100vh;
   z-index: 2;
   opacity: 0;
@@ -87,6 +109,9 @@ export default {
 
   &--last {
     margin-bottom: 0;
+    background-color: $bg-white;
+    color: $font-color;
+    opacity: 1;
   }
 
   &--active {

@@ -161,6 +161,13 @@
   object-position: center center;
 }
 
+.u-full-vh-vid {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center center;
+}
+
 .u-full-width-img {
   img {
     width: 100%;
@@ -171,6 +178,15 @@
   img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
+.u-full-vh-img {
+  img {
+    width: 100%;
+    height: 100vh;
     object-fit: cover;
     object-position: center center;
   }
