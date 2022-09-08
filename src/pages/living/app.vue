@@ -1,6 +1,7 @@
 <template lang="pug">
 #app.u-article.greenland
   nmd-header(
+    public-path="../"
     :outlink="headerList"
     :title="str.metaTitle"
     :url="str.metaUrl"
@@ -14,7 +15,7 @@
         src="../vid/living/greenland_living_video1",
         ext="mp4",
         poster="../img/living/greenland_living_preview1",
-        poster-ext="webp"
+        poster-ext="jpg"
         id="gli-hero-vid",
         classname="u-full-vid"
         )
@@ -282,7 +283,10 @@
       )
 
   footer.g-footer
-    g-series(:list="str.seriesList")
+    g-series(
+      public-path="../"
+      :list="str.seriesList"
+    )
     .u-section.g-footer__copyright-wrapper
       .u-container.g-footer__copyright
         footer-editor(:data="editor")

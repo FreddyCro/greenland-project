@@ -1,6 +1,7 @@
 <template lang="pug">
 #app.u-article.greenland
   nmd-header(
+    public-path="../"
     :outlink="headerList"
     :title="str.metaTitle"
     :url="str.metaUrl"
@@ -16,7 +17,7 @@
         poster="../img/farming/greenland_farming_preview1",
         poster-ext="webp"
         id="gf-hero-vid",
-        classname="u-full-vid"
+        classname="u-full-vh-vid"
       )
     section.u-section.gf-hero(slot="content")
       .u-container
@@ -29,13 +30,13 @@
         )
 
   //- section intro
-  g-slide(id="intro" classname="gf-intro-slide" :is-last="true")
+  g-slide(id="intro" classname="gf-intro-slide")
     section(slot="bg")
       g-pic(
         src="../img/farming/greenland_farming_pic2"
         ext="jpg"
         :alt="str.introTitle"
-        classname="gf-intro-img-1"
+        classname="u-full-vh-img"
         :webp="true"
       )
     section.u-section.gf-intro(slot="content")
@@ -47,22 +48,24 @@
         )
 
   //- section transition
-  g-vid-w-control(
-    src="../vid/farming/greenland_farming_video3",
-    ext="mp4",
-    poster="../img/farming/greenland_farming_preview3",
-    poster-ext="webp"
-    id="gf-intro-vid-1",
-    classname="u-full-vid"
-  )
-  
-  section.u-section.gf-transition
-    .u-container
-      p(
-        v-for="p, index in str.introText3"
-        :key="`gf-introText3-${index}`"
-        v-html="p"
+  g-slide(id="transition" classname="gf-transition-slide" :is-last="true")
+    section(slot="bg")
+      g-vid-w-control(
+        src="../vid/farming/greenland_farming_video3",
+        ext="mp4",
+        poster="../img/farming/greenland_farming_preview3",
+        poster-ext="webp"
+        id="gf-intro-vid-1",
+        classname="u-full-vh-vid"
       )
+    
+    section.u-section.gf-transition(slot="content")
+      .u-container
+        p(
+          v-for="p, index in str.introText3"
+          :key="`gf-introText3-${index}`"
+          v-html="p"
+        )
 
   //- section skill
   g-pic(
@@ -113,14 +116,7 @@
         v-html="p"
       )
   .u-container
-    g-pic(
-      src="../img/fakers/faker_ui"
-      ext="png"
-      alt=""
-      classname=""
-      :webp="true"
-    )
-    //- block-chart
+    block-chart
   section.u-section
     .u-container
       p(
@@ -302,7 +298,10 @@
       )
 
   footer.g-footer
-    g-series(:list="str.seriesList")
+    g-series(
+      public-path="../"
+      :list="str.seriesList"
+    )
     .u-section.g-footer__copyright-wrapper
       .u-container.g-footer__copyright
         footer-editor(:data="editor")

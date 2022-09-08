@@ -13,6 +13,14 @@
               :class="`g-series-card--${item}`"
               :href="listData[item].url"
             )
+              g-pic(
+                :src="listData[item].src"
+                ext="jpg"
+                :alt="listData[item].title"
+                classname="g-series-card__bg"
+                :webp="true"
+              )
+
               h4.g-series-card__title(v-html="listData[item].title")
               button.g-series-card__btn
                 span(v-html="listData[item].text")
@@ -28,11 +36,19 @@
 </template>
 
 <script>
+import GPic from '@/components/g-pic.vue';
 import str from '@/assets/string/series.json';
 
 export default {
   name: 'g-series',
+  components: {
+    GPic,
+  },
   props: {
+    isSubpage: {
+      type: Boolean,
+      default: false,
+    },
     list: {
       type: Array,
       default: () => [],
@@ -46,26 +62,31 @@ export default {
           url: str.seriesLandingUrl,
           title: str.seriesLandingTitle,
           text: str.seriesButtonText,
+          src: 'img/series/landing',
         },
         climate: {
           url: str.seriesClimateUrl,
           title: str.seriesClimateTitle,
           text: str.seriesButtonText,
+          src: 'img/series/climate',
         },
         fishing: {
           url: str.seriesFishingUrl,
           title: str.seriesFishingTitle,
           text: str.seriesButtonText,
+          src: 'img/series/fishing',
         },
         farming: {
           url: str.seriesFarmingUrl,
           title: str.seriesFarmingTitle,
           text: str.seriesButtonText,
+          src: 'img/series/farming',
         },
         living: {
           url: str.seriesLivingUrl,
           title: str.seriesLivingTitle,
           text: str.seriesButtonText,
+          src: 'img/series/living',
         },
       },
     };
@@ -154,34 +175,12 @@ export default {
   align-items: center;
   padding: $spacing-3;
   background-color: #cccccc;
-  background-size: cover;
-  background-position: top center;
   text-decoration: none;
 
   @include rwd-min(sm) {
     padding: $spacing-5;
     max-width: 240px;
     background-position: center;
-  }
-
-  &--landing {
-    @include bg-3x('/img/series/landing', 'jpg', true);
-  }
-
-  &--climate {
-    @include bg-3x('/img/series/climate', 'jpg', true);
-  }
-
-  &--fishing {
-    @include bg-3x('/img/series/fishing', 'jpg', true);
-  }
-
-  &--farming {
-    @include bg-3x('/img/series/farming', 'jpg', true);
-  }
-
-  &--living {
-    @include bg-3x('/img/series/living', 'jpg', true);
   }
 
   &::before {
@@ -211,6 +210,18 @@ export default {
 
     path {
       fill: $black;
+    }
+  }
+
+  &__bg {
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
     }
   }
 

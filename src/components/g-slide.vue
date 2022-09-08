@@ -1,19 +1,17 @@
 <template lang="pug">
 .g-slide(:ref="`g-slide-${id}`" :class="classname")
-  .g-slide-bg-wrapper(
-    :ref="`g-slide-last-enter-trigger-${id}`"
-    :class="{ 'g-slide-bg-wrapper--last': isLast }"
-  )
+  .g-slide-bg-wrapper(:class="{ 'g-slide-bg-wrapper--last': isLast }")
     .g-slide-bg(:class="{ 'g-slide-bg--active': isEnter }")
       slot(name="bg")
 
-  .last-trigger(:ref="`g-slide-last-leave-trigger-${id}`")
+  .last-trigger(v-if="isLast" :ref="`g-slide-last-trigger-${id}`")
   .g-slide-content(:class="{ 'g-slide-content--active': isEnter, 'g-slide-content--last': isLast }")
     slot(name="content")
 </template>
 
 <script>
 import { linearIntersectionObserver } from '@/assets/js/observer.js';
+
 export default {
   name: 'g-slide-bg',
   props: {
@@ -41,13 +39,8 @@ export default {
   mounted() {
     if (this.isLast) {
       linearIntersectionObserver(
-        this.$refs[`g-slide-last-enter-trigger-${this.id}`],
+        this.$refs[`g-slide-last-trigger-${this.id}`],
         this.handleEnter,
-        () => {}
-      );
-      linearIntersectionObserver(
-        this.$refs[`g-slide-last-leave-trigger-${this.id}`],
-        () => {},
         this.handleLeave
       );
     } else {
@@ -70,11 +63,18 @@ export default {
 </script>
 
 <style lang="scss">
+.g-slide {
+  .last-trigger {
+    height: 100vh;
+    opacity: 0;
+    pointer-events: none;
+  }
+}
 .g-slide-bg-wrapper {
   min-height: 100vh;
 
   &--last {
-    margin-bottom: 50vh;
+    min-height: auto;
   }
 }
 

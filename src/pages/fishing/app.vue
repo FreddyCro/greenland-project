@@ -1,6 +1,7 @@
 <template lang="pug">
 #app.u-article.greenland
   nmd-header(
+    public-path="../"
     :outlink="headerList"
     :title="str.metaTitle"
     :url="str.metaUrl"
@@ -242,7 +243,10 @@
       )
 
   footer.g-footer
-    g-series(:list="str.seriesList")
+    g-series(
+      public-path="../"
+      :list="str.seriesList"
+    )
     .u-section.g-footer__copyright-wrapper
       .u-container.g-footer__copyright
         footer-editor(:data="editor")

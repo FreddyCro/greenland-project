@@ -1,6 +1,7 @@
 <template lang="pug">
 #app.u-article.greenland
   nmd-header(
+    public-path="../"
     :outlink="headerList"
     :title="str.metaTitle"
     :url="str.metaUrl"
@@ -28,13 +29,13 @@
         )
 
   //- section intro
-  g-slide(id="intro" classname="gc-intro-slide" :is-last="true")
+  g-slide(id="intro" classname="gc-intro-slide")
     section(slot="bg")
       g-pic(
         src="../img/climate/greenland_climate_pic2"
         ext="jpg"
         :alt="str.introTitle"
-        classname="u-full-width-img"
+        classname="u-full-vh-img"
         :webp="true"
       )
     section.u-section.gc-intro(slot="content")
@@ -46,22 +47,24 @@
         )
 
   //- section transition
-  g-vid-w-control(
-    src="../vid/climate/greenland_climate_video3",
-    ext="mp4"
-    poster="../img/climate/greenland_climate_preview3",
-    poster-ext="webp"
-    id="gc-vid3",
-    classname="u-full-vid"
-  )
-
-  section.u-section.gc-transition
-    .u-container
-      p(
-        v-for="p, index in str.transitionText"
-        :key="`gc-transition-${index}`"
-        v-html="p"
+  g-slide(id="transition" classname="gc-transition-slide" :is-last="true")
+    section(slot="bg")
+      g-vid-w-control(
+        src="../vid/climate/greenland_climate_video3",
+        ext="mp4"
+        poster="../img/climate/greenland_climate_preview3",
+        poster-ext="webp"
+        id="gc-vid3",
+        classname="u-full-vh-vid"
       )
+
+    section.u-section.gc-transition(slot="content")
+      .u-container
+        p(
+          v-for="p, index in str.transitionText"
+          :key="`gc-transition-${index}`"
+          v-html="p"
+        )
 
   //- section morten
   g-pic(
@@ -103,12 +106,10 @@
       )
 
   .u-container
-    g-pic(
-      src="../img/fakers/faker_ui"
-      ext="png"
-      alt=""
-      classname=""
-      :webp="true"
+    img(
+      :src="'../img/climate/greenland_climate_chart4_3.svg'"
+      :alt="str.protectionImg1Caption"
+      class="gc-collage-img2"
     )
     p.caption(v-html="str.protectionImg1Caption")
 
@@ -227,7 +228,10 @@
       )
 
   footer.g-footer
-    g-series(:list="str.seriesList")
+    g-series(
+      public-path="../"
+      :list="str.seriesList"
+    )
     .u-section.g-footer__copyright-wrapper
       .u-container.g-footer__copyright
         footer-editor(:data="editor")

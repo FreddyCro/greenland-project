@@ -24,7 +24,10 @@
           name="聯logo"
           @click="sendGA({ nmdCommon: 'HeaderUdnLogo' })"
         >
-          <img src="img/logo_head_melting_greenland.svg" alt="project logo" />
+          <img
+            :src="`${publicPath}img/logo_head_melting_greenland.svg`"
+            alt="project logo"
+          />
         </a>
       </nav>
       <nav class="header-bar__nav">
@@ -85,6 +88,10 @@ export default {
   name: 'HeaderTypeA',
   mixins: [sendGa],
   props: {
+    publicPath: {
+      type: String,
+      default: '',
+    },
     href: {
       type: String,
       default: document.querySelector('meta[property="og:url"]').content,
@@ -128,24 +135,20 @@ export default {
       if (this.menuActiveFlag) this.sendGA({ nmdCommon: 'HeaderMenuOpen' });
       else this.sendGA({ nmdCommon: 'HeaderMenuClose' });
     },
-    handleScroll: debounce(
-      function () {
-        if (!this.ticking) {
-          window.requestAnimationFrame(() => {
-            // activeFlag
-            if (!this.menuActiveFlag) {
-              if (this.lastPosition >= window.pageYOffset)
-                this.activeFlag = true;
-              else this.activeFlag = false;
-              this.lastPosition = window.pageYOffset;
-            }
-            this.ticking = false;
-          });
-        }
-        this.ticking = true;
-      },
-      30,
-    ),
+    handleScroll: debounce(function () {
+      if (!this.ticking) {
+        window.requestAnimationFrame(() => {
+          // activeFlag
+          if (!this.menuActiveFlag) {
+            if (this.lastPosition >= window.pageYOffset) this.activeFlag = true;
+            else this.activeFlag = false;
+            this.lastPosition = window.pageYOffset;
+          }
+          this.ticking = false;
+        });
+      }
+      this.ticking = true;
+    }, 30),
   },
   mounted() {
     window.addEventListener('scroll', this.handleScroll, true);
