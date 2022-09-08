@@ -16,6 +16,7 @@
         ext="mp4",
         poster="../img/farming/greenland_farming_preview1",
         poster-ext="webp"
+        :use-webm="true"
         id="gf-hero-vid",
         classname="u-full-vh-vid"
       )
@@ -55,6 +56,7 @@
         ext="mp4",
         poster="../img/farming/greenland_farming_preview3",
         poster-ext="webp"
+        :use-webm="true"
         id="gf-intro-vid-1",
         classname="u-full-vh-vid"
       )
@@ -117,6 +119,8 @@
       )
   .u-container
     block-chart
+    p.caption(v-html="str.farmImg1Caption")
+
   section.u-section
     .u-container
       p(
@@ -351,26 +355,26 @@ export default {
         {
           title: '解凍格陵蘭',
           url: '/',
-          active: true,
+          active: false,
         },
         {
           title: '北極站科學家篇',
-          url: '/climate',
+          url: 'climate',
           active: false,
         },
         {
           title: '撈海廢討海人篇',
-          url: '/fishing',
+          url: 'fishing',
           active: false,
         },
         {
           title: '穿梭綠地牧羊人篇',
-          url: '/farming',
-          active: false,
+          url: 'farming',
+          active: true,
         },
         {
           title: '格陵蘭居民篇',
-          url: '/living',
+          url: 'living',
           active: false,
         },
       ],

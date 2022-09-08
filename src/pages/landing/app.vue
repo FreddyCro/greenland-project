@@ -1,6 +1,7 @@
 <template lang="pug">
 #app.u-article.greenland
   nmd-header(
+    public-path="./"
     :outlink="headerList"
     :title="str.metaTitle"
     :url="str.metaUrl"
@@ -271,22 +272,22 @@ export default {
         },
         {
           title: '北極站科學家篇',
-          url: '/climate',
+          url: 'climate',
           active: false,
         },
         {
           title: '撈海廢討海人篇',
-          url: '/fishing',
+          url: 'fishing',
           active: false,
         },
         {
           title: '穿梭綠地牧羊人篇',
-          url: '/farming',
+          url: 'farming',
           active: false,
         },
         {
           title: '格陵蘭居民篇',
-          url: '/living',
+          url: 'living',
           active: false,
         },
       ],
@@ -435,6 +436,12 @@ export default {
   position: relative;
   background-color: $bg-white;
   overflow: hidden;
+
+  .u-container-lg {
+    @include rwd-min(lg) {
+      max-width: 1680px;
+    }
+  }
 
   /* @include rwd-min(md) {
     max-width: 1920px;

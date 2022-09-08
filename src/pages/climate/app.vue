@@ -16,6 +16,7 @@
         ext="mp4",
         poster="../img/climate/greenland_climate_preview1",
         poster-ext="webp"
+        :use-webm="true"
         id="gc-hero-vid",
         classname="u-full-vid"
       )
@@ -54,6 +55,7 @@
         ext="mp4"
         poster="../img/climate/greenland_climate_preview3",
         poster-ext="webp"
+        :use-webm="true"
         id="gc-vid3",
         classname="u-full-vh-vid"
       )
@@ -278,26 +280,26 @@ export default {
         {
           title: '解凍格陵蘭',
           url: '/',
-          active: true,
-        },
-        {
-          title: '北極站科學家篇',
-          url: '/climate',
           active: false,
         },
         {
+          title: '北極站科學家篇',
+          url: 'climate',
+          active: true,
+        },
+        {
           title: '撈海廢討海人篇',
-          url: '/fishing',
+          url: 'fishing',
           active: false,
         },
         {
           title: '穿梭綠地牧羊人篇',
-          url: '/farming',
+          url: 'farming',
           active: false,
         },
         {
           title: '格陵蘭居民篇',
-          url: '/living',
+          url: 'living',
           active: false,
         },
       ],

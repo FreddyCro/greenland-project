@@ -11,10 +11,10 @@
           )
             a.g-series-card(
               :class="`g-series-card--${item}`"
-              :href="listData[item].url"
+              :href="`${publicPath}${listData[item].url}`"
             )
               g-pic(
-                :src="listData[item].src"
+                :src="`${publicPath}${listData[item].src}`"
                 ext="jpg"
                 :alt="listData[item].title"
                 classname="g-series-card__bg"
@@ -45,9 +45,9 @@ export default {
     GPic,
   },
   props: {
-    isSubpage: {
-      type: Boolean,
-      default: false,
+    publicPath: {
+      type: String,
+      default: '',
     },
     list: {
       type: Array,

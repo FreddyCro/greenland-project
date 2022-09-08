@@ -55,6 +55,7 @@ export default {
     position: relative;
     width: 100%;
     height: 100%;
+    max-height: 50vh;
   }
 
   &__text {
