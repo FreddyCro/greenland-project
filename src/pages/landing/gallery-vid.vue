@@ -60,15 +60,14 @@ export default {
     justify-content: center;
     align-items: center;
     padding: $spacing-5;
+    font-size: 32px;
+    letter-spacing: 16px;
     color: $bg-white;
+    font-family: 'Noto Serif TC', 'Noto Sans TC', 'Microsoft JhengHei', Roboto,
+      sans-serif;
     writing-mode: vertical-lr;
-    opacity: 0;
-    transition: 0.333s ease-in-out;
-
-    &:hover {
-      opacity: 0.8;
-      background-color: rgba($color: #285f92, $alpha: 0.6);
-    }
+    opacity: 0.8;
+    background-color: rgba($color: #285f92, $alpha: 0.6);
   }
 
   video {

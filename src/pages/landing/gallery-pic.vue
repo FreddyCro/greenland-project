@@ -58,6 +58,8 @@ export default {
   }
 
   &__text {
+    @include general-font-p;
+
     position: absolute;
     left: 0;
     top: 0;

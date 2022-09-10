@@ -95,11 +95,11 @@ export default {
     padding: 0 $spacing-5;
   }
 
-  @include rwd-min(md) {
+  @include rwd-min(sm) {
     padding: 0 0;
   }
 
-  @include rwd-min(lg) {
+  @include rwd-min(md) {
     max-width: calc(1020px + 110px * 2);
     padding: 0 110px;
   }
