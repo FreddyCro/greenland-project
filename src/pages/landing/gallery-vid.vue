@@ -61,6 +61,7 @@ export default {
     align-items: center;
     padding: $spacing-5;
     font-size: 32px;
+    line-height: 1.3;
     letter-spacing: 16px;
     color: $bg-white;
     font-family: 'Noto Serif TC', 'Noto Sans TC', 'Microsoft JhengHei', Roboto,
@@ -68,6 +69,10 @@ export default {
     writing-mode: vertical-lr;
     opacity: 0.8;
     background-color: rgba($color: #285f92, $alpha: 0.6);
+
+    @include rwd-min(md) {
+      font-size: 42px;
+    }
   }
 
   video {

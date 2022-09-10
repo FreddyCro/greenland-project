@@ -54,6 +54,7 @@
       first-chart="img/landing/greenland_chart2_1_pc.svg",
       second-chart="img/landing/greenland_chart2_2_pc.svg",
       :alt="str.hotTitle"
+      :use-offset="true"
     )
       //- TODO: container
       .u-container
@@ -69,9 +70,10 @@
     bnb-slide(
       id="melt",
       classname="gl-melt-slide",
-      first-chart="img/landing/greenland_chart3_1_pc.svg",
-      second-chart="img/landing/greenland_chart3_2_pc.svg",
+      first-chart="img/landing/greenland_chart3_1_pc.svg"
+      second-chart="img/landing/greenland_chart3_2_pc.svg"
       :alt="str.hotTitle"
+      :use-offset="true"
     )
       //- TODO: container
       .u-container
@@ -87,9 +89,10 @@
     bnb-slide(
       vid="vid/landing/greenland_video4_1",
       ext="mp4"
-      poster="img/landing/greenland_preview4_1",
+      poster="img/landing/greenland_preview4_1"
       poster-ext="webp"
-      id="gl-vid4",
+      id="gl-vid4"
+      classname="gl-snow-slide"
     )
       .u-container
         h2(v-html="str.snowTitle")
@@ -310,13 +313,24 @@ export default {
   }
 }
 
-.gl-snow-vid {
-  object-position: top left;
+.gl-snow-slide {
+  .g-vid {
+    object-position: top left;
+  }
 }
 
-.gl-speed-vid,
-.gl-culture-vid {
-  object-position: bottom center;
+.gl-speed,
+.gl-culture {
+  .g-vid-w-control__btn {
+    background-color: #434343;
+  }
+
+  .g-vid {
+    @include rwd-max(lg) {
+      object-fit: contain;
+      object-position: center;
+    }
+  }
 }
 
 .gl-bnb-section {

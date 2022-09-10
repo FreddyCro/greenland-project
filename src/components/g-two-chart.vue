@@ -47,7 +47,7 @@ export default {
     width: 100%;
     height: 100%;
     opacity: 1;
-    transition: opacity 0.333s 1s ease-in-out;
+    transition: opacity 0.333s ease-in-out;
 
     &--hidden {
       opacity: 0;

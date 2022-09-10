@@ -15,20 +15,12 @@
     </HeaderMenu>
     <div class="header-bar__nav__container">
       <nav class="header-bar__nav">
-        <a
-          class="header-bar__logo"
-          :href="href"
-          target="_self"
-          rel="noopener"
-          aria-label="聯logo"
-          name="聯logo"
-          @click="sendGA({ nmdCommon: 'HeaderUdnLogo' })"
-        >
+        <div class="header-bar__logo">
           <img
             :src="`${publicPath}img/logo_head_melting_greenland.svg`"
             alt="project logo"
           />
-        </a>
+        </div>
       </nav>
       <nav class="header-bar__nav">
         <div class="header-bar-share__container">
@@ -192,19 +184,12 @@ export default {
   }
 
   .header-bar__logo {
-    @include clean-tap;
-
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     padding-left: $spacing-4;
-    text-decoration: none;
-    cursor: pointer;
     transition: 0.333s ease-in;
-
-    &:hover {
-    }
 
     img {
       height: 100%;

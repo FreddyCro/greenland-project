@@ -1,4 +1,4 @@
-const onceIntersectionObserver = (el, callback) => {
+const onceIntersectionObserver = (el, callback, options) => {
   const cb = (entries, observer) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
@@ -11,16 +11,18 @@ const onceIntersectionObserver = (el, callback) => {
     });
   };
 
-  const options = {
-    rootMargin: '0px 0px 0px 0px',
-    threshold: 0,
-  };
+  if (!options) {
+    options = {
+      rootMargin: '0px 0px -200px 0px',
+      threshold: 0,
+    };
+  }
 
   const observer = new IntersectionObserver(cb, options);
   observer.observe(el);
 };
 
-const linearIntersectionObserver = (el, enterEvent, leaveEvent) => {
+const linearIntersectionObserver = (el, enterEvent, leaveEvent, options) => {
   const cb = (entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) {
@@ -31,10 +33,12 @@ const linearIntersectionObserver = (el, enterEvent, leaveEvent) => {
     });
   };
 
-  const options = {
-    rootMargin: '0px 0px 0px 0px',
-    threshold: 0,
-  };
+  if (!options) {
+    options = {
+      rootMargin: '0px 0px 0px 0px',
+      threshold: 0,
+    };
+  }
 
   const observer = new IntersectionObserver(cb, options);
   observer.observe(el);

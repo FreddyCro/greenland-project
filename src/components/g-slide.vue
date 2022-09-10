@@ -13,7 +13,7 @@
 import { linearIntersectionObserver } from '@/assets/js/observer.js';
 
 export default {
-  name: 'g-slide-bg',
+  name: 'g-slide',
   props: {
     id: {
       type: String,
