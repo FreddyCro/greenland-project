@@ -10,7 +10,7 @@
   
   //- section hero
   g-slide(id="hero" classname="gc-hero-slide")
-    section.u-section-full(slot="bg")
+    section.u-section-full.gf-hero-vid-wrapper(slot="bg")
       g-vid(
         src="../vid/farming/greenland_farming_video1",
         ext="mp4",
@@ -20,6 +20,7 @@
         id="gf-hero-vid",
         classname="u-full-vh-vid"
       )
+      g-hero-scroll(:fadeOut="true")
     section.u-section.gf-hero(slot="content")
       .u-container
         h1(v-html="str.introTitle")
@@ -326,6 +327,7 @@ import GPic from '@/components/g-pic.vue';
 import GVid from '@/components/g-vid.vue';
 import GVidWControl from '@/components/g-vid-w-control.vue';
 import GSeries from '@/components/g-series.vue';
+import GHeroScroll from '@/components/g-hero-scroll.vue';
 import BlockChart from '@/pages/farming/block-chart.vue';
 import FooterLogo from '@/components/common/footer/footer-logo.vue';
 import FooterEditor from '@/components/common/footer/footer-editor.vue';
@@ -342,6 +344,7 @@ export default {
     GVid,
     GVidWControl,
     GSeries,
+    GHeroScroll,
     BlockChart,
     FooterLogo,
     FooterEditor,
@@ -414,6 +417,10 @@ export default {
 </script>
 
 <style lang="scss">
+.gf-hero-vid-wrapper {
+  position: relative;
+}
+
 .gf-transition {
   min-height: 600px;
   display: flex;

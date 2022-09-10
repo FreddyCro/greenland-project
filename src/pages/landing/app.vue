@@ -11,7 +11,6 @@
   //- section hero
   section.gl-hero
     h1(v-html="str.heroTitle")
-
     .gl-hero-vid-wrapper
       g-vid(
         src="vid/landing/greenland_video1_1",
@@ -22,6 +21,7 @@
         classname="gl-hero-vid"
         :use-webm="true"
       )
+    g-hero-scroll
 
   //- section intro
   section.u-section.gl-intro
@@ -161,39 +161,41 @@
 </template>
 
 <script>
-import NmdHeader from '@/components/common/header/HeaderTypeA.vue';
-import GPic from '@/components/g-pic.vue';
-import GTwoChart from '@/components/g-two-chart.vue';
-import GVid from '@/components/g-vid.vue';
-import GVidWControl from '@/components/g-vid-w-control.vue';
-import LandingMap from '@/pages/landing/landing-map.vue';
 import AnchorBtn from '@/pages/landing/anchor-btn.vue';
-import Gallery from '@/pages/landing/gallery.vue';
 import BnbSlide from '@/pages/landing/bnb-slide.vue';
-import GSeries from '@/components/g-series.vue';
 import FooterLogo from '@/components/common/footer/footer-logo.vue';
 import FooterEditor from '@/components/common/footer/footer-editor.vue';
 import FooterQuestionnaire from '@/components/common/footer/footer-questionnaire.vue';
 import FooterShare from '@/components/common/footer/footer-share.vue';
+import GPic from '@/components/g-pic.vue';
+import GTwoChart from '@/components/g-two-chart.vue';
+import GVid from '@/components/g-vid.vue';
+import GVidWControl from '@/components/g-vid-w-control.vue';
+import Gallery from '@/pages/landing/gallery.vue';
+import GSeries from '@/components/g-series.vue';
+import GHeroScroll from '@/components/g-hero-scroll.vue';
+import LandingMap from '@/pages/landing/landing-map.vue';
+import NmdHeader from '@/components/common/header/HeaderTypeA.vue';
 import str from '@/assets/string/landing.json';
 
 export default {
   name: 'App',
   components: {
-    NmdHeader,
     AnchorBtn,
+    BnbSlide,
     GSeries,
     GPic,
     GTwoChart,
     GVid,
     GVidWControl,
     Gallery,
-    BnbSlide,
-    LandingMap,
+    GHeroScroll,
     FooterLogo,
     FooterEditor,
     FooterQuestionnaire,
     FooterShare,
+    LandingMap,
+    NmdHeader,
   },
   data() {
     return {
@@ -325,21 +327,6 @@ export default {
     flex-direction: row;
   }
 
-  .gl-bnb-half {
-    /* @include rwd-min(md) {
-      width: 50%;
-      padding: $spacing-10;
-    }
-
-    &--center {
-      text-align: center;
-    }
-
-    &--no-padding {
-      padding: 0;
-    } */
-  }
-
   .gl-bnb-vid {
     height: 100vh;
 
@@ -407,6 +394,7 @@ export default {
 
 <style lang="scss" scoped>
 .gl-hero {
+  position: relative;
   text-align: center;
   padding-top: $spacing-10;
 

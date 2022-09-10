@@ -10,7 +10,7 @@
   
   //- section hero
   g-slide(id="intro" classname="gli-intro-slide")
-    section.u-section-full(slot="bg")
+    section.u-section-full.gli-hero-vid-wrapper(slot="bg")
       g-vid(
         src="../vid/living/greenland_living_video1",
         ext="mp4",
@@ -20,6 +20,8 @@
         id="gli-hero-vid",
         classname="u-full-vid"
         )
+      g-hero-scroll(:fadeOut="true")
+
     section.u-section.gli-hero(slot="content")
       .u-container
         h1(v-html="str.introTitle")
@@ -354,31 +356,33 @@
 </template>
 
 <script>
-import NmdHeader from '@/components/common/header/HeaderTypeA.vue';
+import FooterLogo from '@/components/common/footer/footer-logo.vue';
+import FooterEditor from '@/components/common/footer/footer-editor.vue';
+import FooterQuestionnaire from '@/components/common/footer/footer-questionnaire.vue';
+import FooterShare from '@/components/common/footer/footer-share.vue';
 import GSlide from '@/components/g-slide.vue';
 import GPic from '@/components/g-pic.vue';
 import GVid from '@/components/g-vid.vue';
 import GVidWControl from '@/components/g-vid-w-control.vue';
 import GSeries from '@/components/g-series.vue';
-import FooterLogo from '@/components/common/footer/footer-logo.vue';
-import FooterEditor from '@/components/common/footer/footer-editor.vue';
-import FooterQuestionnaire from '@/components/common/footer/footer-questionnaire.vue';
-import FooterShare from '@/components/common/footer/footer-share.vue';
+import GHeroScroll from '@/components/g-hero-scroll.vue';
+import NmdHeader from '@/components/common/header/HeaderTypeA.vue';
 import str from '@/assets/string/living.json';
 
 export default {
   name: 'App',
   components: {
-    NmdHeader,
+    FooterLogo,
+    FooterEditor,
+    FooterQuestionnaire,
+    FooterShare,
     GSlide,
     GPic,
     GVid,
     GVidWControl,
     GSeries,
-    FooterLogo,
-    FooterEditor,
-    FooterQuestionnaire,
-    FooterShare,
+    GHeroScroll,
+    NmdHeader,
   },
   data() {
     return {
@@ -446,11 +450,13 @@ export default {
 </script>
 
 <style lang="scss">
+.gli-hero-vid-wrapper {
+  position: relative;
+}
+
 .gfi-transition {
   min-height: 600px;
   display: flex;
   align-items: center;
 }
 </style>
-
-<style lang="scss" scoped></style>

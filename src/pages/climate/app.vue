@@ -10,7 +10,7 @@
 
   //- section hero
   g-slide(id="hero" classname="gc-hero-slide")
-    section.u-section-full.gc-hero(slot="bg")
+    section.u-section-full.gf-hero-vid-wrapper(slot="bg")
       g-vid(
         src="../vid/climate/greenland_climate_video1",
         ext="mp4",
@@ -20,6 +20,7 @@
         id="gc-hero-vid",
         classname="u-full-vid"
       )
+      g-hero-scroll(:fadeOut="true")
     section.u-section.gc-hero(slot="content")
       .u-container
         h1(v-html="str.introTitle")
@@ -253,6 +254,7 @@ import GPic from '@/components/g-pic.vue';
 import GVid from '@/components/g-vid.vue';
 import GVidWControl from '@/components/g-vid-w-control.vue';
 import GSeries from '@/components/g-series.vue';
+import GHeroScroll from '@/components/g-hero-scroll.vue';
 import FooterLogo from '@/components/common/footer/footer-logo.vue';
 import FooterEditor from '@/components/common/footer/footer-editor.vue';
 import FooterQuestionnaire from '@/components/common/footer/footer-questionnaire.vue';
@@ -268,6 +270,7 @@ export default {
     GVid,
     GVidWControl,
     GSeries,
+    GHeroScroll,
     FooterLogo,
     FooterEditor,
     FooterQuestionnaire,
@@ -339,11 +342,13 @@ export default {
 </script>
 
 <style lang="scss">
+.gf-hero-vid-wrapper {
+  position: relative;
+}
+
 .gc-transition {
   min-height: 600px;
   display: flex;
   align-items: center;
 }
 </style>
-
-<style lang="scss" scoped></style>
