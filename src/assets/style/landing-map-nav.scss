@@ -32,18 +32,30 @@
   &--step-1,
   &--step-2,
   &--step-3,
-  &--step-4,
-  &--step-5 {
-    .island,
-    .ilu,
-    .konck,
-    .nasak,
-    .nasas {
-      opacity: 0;
-    }
-
+  &--step-4 {
     .pin {
       opacity: 1;
+    }
+
+    .kaikai-label,
+    .ilu-label,
+    .sisi-label,
+    .konck-label,
+    .nuuk-label,
+    .nasas-label,
+    .nasak-label,
+    .cack-label {
+      @include rwd-max(sm) {
+        transition: none;
+        transform: scale(0.9);
+        transform-origin: center;
+      }
+    }
+
+    .cack-label {
+      @include rwd-max(sm) {
+        transform-origin: 50% 70%;
+      }
     }
   }
 
@@ -53,12 +65,21 @@
 
   &--step-1 {
     // zoom in
-    // shift right
-    // fade out some pin
-
     transform: scale(2);
-    transform-origin: 10% 70%;
 
+    // shift right
+    transform-origin: 20% 60%;
+
+    @include rwd-min(sm) {
+      transform-origin: 35% 60%;
+    }
+
+    @include rwd-min(md) {
+      transform-origin: 20% 60%;
+      transform: scale(2.3);
+    }
+
+    // fade out some pin
     .ilu,
     .sisi,
     .konck,
@@ -73,9 +94,16 @@
   &--step-2 {
     // shift down
     // fade out sisi
-
     transform: scale(2);
-    transform-origin: 10% 60%;
+    transform-origin: 20% 60%;
+
+    @include rwd-min(sm) {
+      transform-origin: 35% 60%;
+    }
+
+    @include rwd-min(md) {
+      transform: scale(2.3);
+    }
 
     .ilu,
     .konck,
@@ -88,7 +116,18 @@
   }
 
   &--step-3 {
-    // shift to nuuk
+    // shift down nuuk
+    transform: scale(2);
+    transform-origin: 20% 100%;
+
+    @include rwd-min(sm) {
+      transform-origin: 35% 100%;
+    }
+
+    @include rwd-min(md) {
+      transform: scale(2.3);
+      transform-origin: 20% 70%;
+    }
 
     .ilu,
     .konck,
@@ -97,27 +136,21 @@
     .nasak {
       opacity: 0;
     }
+  }
+
+  &--step-later-3 {
+    // zoom out
+    transform: scale(1.5);
   }
 
   &--step-4 {
-    // zoom out
-    // shift down nuuk
+    transform: scale(1.3);
+    transform-origin: 40% 100%;
 
-    transform: scale(1.5);
-    transform-origin: 40% 70%;
-
-    .ilu,
-    .konck,
-    .nuuk,
-    .nasas,
-    .nasak {
-      opacity: 0;
+    @include rwd-min(md) {
+      transform: scale(1.5);
+      transform-origin: 40% 80%;
     }
-  }
-
-  &--step-5 {
-    transform: scale(2);
-    transform-origin: 40% 80%;
 
     .kaikai,
     .ilu,
@@ -131,5 +164,9 @@
     svg {
       opacity: 1;
     }
+  }
+
+  &--step-later-4 {
+    transform: scale(2);
   }
 }

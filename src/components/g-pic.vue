@@ -101,7 +101,6 @@ export default {
     },
     alt: {
       type: String,
-      required: true,
     },
     loading: {
       type: String,

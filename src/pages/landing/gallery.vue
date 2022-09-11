@@ -122,7 +122,7 @@ export default {
 
 .item {
   position: relative;
-  background-color: $g-blue-2;
+  /* background-color: $g-blue-2; */
 
   @include rwd-min(sm) {
     width: 100%;
@@ -141,8 +141,6 @@ export default {
 }
 
 .item-2-1 {
-  padding-top: calc(34.25% - $spacing-1);
-
   @include rwd-min(sm) {
     grid-column-start: span 2;
     padding-top: calc(34.25% - $spacing-1);

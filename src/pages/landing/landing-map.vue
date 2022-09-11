@@ -3,7 +3,7 @@
 .glm.u-paragraph(ref="glm" :class="{'glm--active': isMapEnter}")
   .glm-map(:class="{'glm-map--under': status === 'under'}")
     .glm-map__bg-wrapper(:class="glmMapClass")
-      .glm-map-nav(:class="`glm-map-nav--step-${activeIndex}`")
+      .glm-map-nav(:class="navClass")
         g-pic(
           src="img/landing/map/greenland_map8_1"
           ext="png"
@@ -105,9 +105,7 @@
         )
           g-button(:text="str.mapFishingStoryTitle" classname="glm-button")
 
-    section.u-section.glm-section.glm-transition-1(ref="section-4")
-
-    section.u-section.glm-section.glm-farming#farming(ref="section-5")
+    section.u-section.glm-section.glm-farming#farming(ref="section-4")
       .glm-container
         .glm-title
           h2(v-html="str.mapFarmingTitle")
@@ -139,7 +137,7 @@
         )
           g-button(:text="str.mapFarmingStoryTitle" classname="glm-button")
 
-    section.u-section.glm-section.glm-living(ref="section-6")
+    section.u-section.glm-section.glm-living(ref="section-5")
       .glm-container
         .glm-title
           h2(v-html="str.mapLivingTitle")
@@ -201,8 +199,9 @@ export default {
       status: 'above',
       isMapEnter: false,
       activeIndex: 0,
+      activeLaterIndex: 0,
       activeIndexList: [],
-      step: ['kaikai', 'kaikai', 'sisi', 'nuuk', 'cack', 'nuuk'],
+      step: ['kaikai', 'kaikai', 'sisi', 'cack', 'nuuk'],
       progress: 0.01,
     };
   },
@@ -212,6 +211,12 @@ export default {
         'glm-map__bg-wrapper--above': this.status === 'above',
         'glm-map__bg-wrapper--enter': this.status === 'enter',
         'glm-map__bg-wrapper--under': this.status === 'under',
+      };
+    },
+    navClass() {
+      return {
+        [`glm-map-nav--step-${this.activeIndex}`]: true,
+        [`glm-map-nav--step-later-${this.activeLaterIndex}`]: true,
       };
     },
   },
@@ -243,7 +248,6 @@ export default {
         'section-3',
         'section-4',
         'section-5',
-        'section-6',
       ];
 
       sectionList.forEach((el, i) => {
@@ -252,8 +256,15 @@ export default {
         const handleEnter = () => {
           this.$refs[el].classList.add('show');
           this.activeIndexList = this.activeIndexList.map((item, index) => {
-            if (index === i) this.activeIndex = index;
-            if (index <= i) return true;
+            if (index === i) {
+              this.activeIndex = index;
+
+              const vm = this;
+              setTimeout(() => {
+                vm.activeLaterIndex = index;
+                console.log('enter later', i + 1);
+              }, 500);
+            } else if (index <= i) return true;
             return false;
           });
 
