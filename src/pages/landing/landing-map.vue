@@ -105,7 +105,9 @@
         )
           g-button(:text="str.mapFishingStoryTitle" classname="glm-button")
 
-    section.u-section.glm-section.glm-farming#farming(ref="section-4")
+    section.u-section.glm-section.glm-transition-1(ref="section-4")
+
+    section.u-section.glm-section.glm-farming#farming(ref="section-5")
       .glm-container
         .glm-title
           h2(v-html="str.mapFarmingTitle")
@@ -137,7 +139,7 @@
         )
           g-button(:text="str.mapFarmingStoryTitle" classname="glm-button")
 
-    section.u-section.glm-section.glm-living(ref="section-5")
+    section.u-section.glm-section.glm-living(ref="section-6")
       .glm-container
         .glm-title
           h2(v-html="str.mapLivingTitle")
@@ -200,7 +202,7 @@ export default {
       isMapEnter: false,
       activeIndex: 0,
       activeIndexList: [],
-      step: ['kaikai', 'kaikai', 'sisi', 'cack', 'nuuk'],
+      step: ['kaikai', 'kaikai', 'sisi', 'nuuk', 'cack', 'nuuk'],
       progress: 0.01,
     };
   },
@@ -215,6 +217,15 @@ export default {
   },
   mounted() {
     onceIntersectionObserver(this.$refs.glm, this.init);
+    linearIntersectionObserver(
+      this.$refs.glm,
+      () => {
+        this.isMapEnter = true;
+      },
+      () => {
+        this.isMapEnter = false;
+      }
+    );
   },
   destroyed() {
     window.removeEventListener('scroll', this.handleScroll, { passive: true });
@@ -232,6 +243,7 @@ export default {
         'section-3',
         'section-4',
         'section-5',
+        'section-6',
       ];
 
       sectionList.forEach((el, i) => {
@@ -277,7 +289,7 @@ export default {
       }
 
       console.log('progress: ', this.progress);
-    }, 100),
+    }, 50),
     handleScroll() {
       this.handleUpdateProgress();
 
@@ -286,12 +298,6 @@ export default {
       const pos = el.getBoundingClientRect();
       const topBound = 0;
       const bottomBound = window.innerHeight;
-
-      if (pos.top < window.innerHeight) {
-        this.isMapEnter = true;
-      } else {
-        this.isMapEnter = false;
-      }
 
       // | above / leave position
       // |———————————————————————
@@ -365,6 +371,10 @@ export default {
     &:first-child {
       margin-top: 0;
     }
+
+    &:last-child {
+      margin-bottom: 100vh;
+    }
   }
 
   .glm-container {
@@ -430,6 +440,11 @@ export default {
         fill: $font-color-light;
       }
     }
+  }
+
+  .glm-transition-1 {
+    opacity: 0;
+    pointer-events: none;
   }
 }
 
