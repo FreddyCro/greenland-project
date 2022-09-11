@@ -1,0 +1,87 @@
+.glm-map-nav {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: 0.5s ease-in-out;
+
+  .pin {
+    opacity: 0;
+    transition: 0.5s ease-in-out;
+  }
+
+  &--step-1,
+  &--step-2,
+  &--step-3,
+  &--step-4,
+  &--step-5 {
+    .island,
+    .ilu,
+    .ilu-pin,
+    .konck,
+    .konck-pin,
+    .nasak,
+    .nasak-pin,
+    .nasas,
+    .nasas-pin {
+      opacity: 0;
+    }
+
+    .pin {
+      opacity: 1;
+    }
+  }
+
+  &--step-1 {
+    transform: scale(2);
+    transform-origin: 10% 70%;
+
+    .temp {
+      opacity: 0;
+    }
+  }
+
+  &--step-2 {
+    transform: scale(2);
+    transform-origin: 10% 60%;
+
+    .temp {
+      opacity: 0;
+    }
+  }
+
+  &--step-3 {
+    transform: scale(1.5);
+    transform-origin: 40% 70%;
+
+    .konck,
+    .konck-pin,
+    .nuuk,
+    .nuuk-pin {
+      opacity: 0;
+    }
+
+    .temp {
+      opacity: 0;
+    }
+  }
+
+  &--step-4 {
+    transform: scale(2);
+    transform-origin: 40% 80%;
+
+    .temp {
+      opacity: 0;
+    }
+
+    .kaikai,
+    .kaikai-pin,
+    .sisi,
+    .sisi-pin {
+      opacity: 0;
+    }
+
+    svg {
+      opacity: 1;
+    }
+  }
+}

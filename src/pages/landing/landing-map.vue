@@ -3,7 +3,7 @@
 .glm.u-paragraph(ref="glm" :class="{'glm--active': isMapEnter}")
   .glm-map(:class="{'glm-map--under': status === 'under'}")
     .glm-map__bg-wrapper(:class="glmMapClass")
-      .glm-map__bg-nav(:class="`glm-map__bg-nav--step-${activeIndex}`")
+      .glm-map-nav(:class="`glm-map-nav--step-${activeIndex}`")
         g-pic(
           src="img/landing/map/greenland_map8_1"
           ext="png"
@@ -177,7 +177,10 @@ import LandingMapPinMob from '@/pages/landing/landing-map-pin-mob.vue';
 import LandingMapPinPad from '@/pages/landing/landing-map-pin-pad.vue';
 import LandingMapPinPc from '@/pages/landing/landing-map-pin-pc.vue';
 import str from '@/assets/string/landing.json';
-import { linearIntersectionObserver } from '@/assets/js/observer.js';
+import {
+  onceIntersectionObserver,
+  linearIntersectionObserver,
+} from '@/assets/js/observer.js';
 import { calcElementProgress } from '@/assets/js/progress.js';
 import debounce from 'debounce';
 
@@ -198,7 +201,7 @@ export default {
       activeIndex: 0,
       activeIndexList: [],
       step: ['kaikai', 'kaikai', 'sisi', 'cack', 'nuuk'],
-      progress: 1,
+      progress: 0.01,
     };
   },
   computed: {
@@ -210,24 +213,70 @@ export default {
       };
     },
   },
-  created() {
-    window.addEventListener('scroll', this.handleScroll, { passive: true });
-    window.addEventListener('resize', this.handleResize, { passive: true });
-  },
   mounted() {
-    // initialize
-    this.init();
+    onceIntersectionObserver(this.$refs.glm, this.init);
   },
   destroyed() {
     window.removeEventListener('scroll', this.handleScroll, { passive: true });
-    window.removeEventListener('resize', this.handleResize, { passive: true });
   },
   methods: {
+    init() {
+      window.addEventListener('scroll', this.handleScroll, { passive: true });
+      window.requestAnimationFrame(this.handleScroll);
+      this.handleScroll();
+
+      // add io listener for map
+      const sectionList = [
+        'section-1',
+        'section-2',
+        'section-3',
+        'section-4',
+        'section-5',
+      ];
+
+      sectionList.forEach((el, i) => {
+        this.activeIndexList.push(false);
+
+        const handleEnter = () => {
+          this.$refs[el].classList.add('show');
+          this.activeIndexList = this.activeIndexList.map((item, index) => {
+            if (index === i) this.activeIndex = index;
+            if (index <= i) return true;
+            return false;
+          });
+
+          console.log('enter', i + 1);
+        };
+
+        const handleLeave = () => {
+          this.activeIndexList.forEach((item, index) => {
+            if (item) return;
+            this.$refs[sectionList[index]].classList.remove('show');
+          });
+
+          console.log('leave', i + 1);
+        };
+
+        linearIntersectionObserver(this.$refs[el], handleEnter, handleLeave);
+      });
+    },
     handleUpdateProgress: debounce(function () {
       // handle pin
-      this.progress = calcElementProgress(
+      const newProgress = calcElementProgress(
         this.$refs[`section-${this.activeIndex + 1}`]
       );
+
+      const smallDeviceStep = 3;
+
+      if (window.innerWidth < 768) {
+        this.progress = Math.min(1, newProgress * smallDeviceStep);
+      } else if (window.innerWidth < 1024) {
+        this.progress = Math.min(1, newProgress * smallDeviceStep);
+      } else {
+        this.progress = newProgress;
+      }
+
+      console.log('progress: ', this.progress);
     }, 100),
     handleScroll() {
       this.handleUpdateProgress();
@@ -268,50 +317,13 @@ export default {
         }
       }
     },
-    init() {
-      window.requestAnimationFrame(this.handleScroll);
-      this.handleScroll();
-
-      // add io listener for map
-      const sectionList = [
-        'section-1',
-        'section-2',
-        'section-3',
-        'section-4',
-        'section-5',
-      ];
-
-      sectionList.forEach((el, i) => {
-        this.activeIndexList.push(false);
-
-        const handleEnter = () => {
-          this.$refs[el].classList.add('show');
-          this.activeIndexList = this.activeIndexList.map((item, index) => {
-            if (index === i) this.activeIndex = index;
-            if (index <= i) return true;
-            return false;
-          });
-
-          console.log('enter', i + 1);
-        };
-
-        const handleLeave = () => {
-          this.activeIndexList.forEach((item, index) => {
-            if (item) return;
-            this.$refs[sectionList[index]].classList.remove('show');
-          });
-
-          console.log('leave', i + 1);
-        };
-
-        linearIntersectionObserver(this.$refs[el], handleEnter, handleLeave);
-      });
-    },
   },
 };
 </script>
 
 <style lang="scss">
+@import '@/assets/style/landing-map-nav.scss';
+
 .glm {
   position: relative;
   opacity: 0;
@@ -363,12 +375,14 @@ export default {
     }
 
     @include rwd-min(sm) {
-      @include u-container-sm;
+      padding-left: $spacing-12;
+      padding-right: $spacing-12;
     }
 
     @include rwd-min(md) {
       max-width: 100%;
       padding-left: $spacing-7;
+      padding-right: 0;
     }
 
     @include rwd-min(lg) {
@@ -473,95 +487,6 @@ export default {
 
       @include rwd-min(md) {
         width: 50%;
-      }
-    }
-  }
-
-  &__bg-nav {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    /* display: flex; */
-    transition: 0.5s ease-in-out;
-
-    .pin {
-      opacity: 0;
-      transition: 0.5s ease-in-out;
-    }
-
-    &--step-1,
-    &--step-2,
-    &--step-3,
-    &--step-4,
-    &--step-5 {
-      .island,
-      .ilu,
-      .ilu-pin,
-      .konck,
-      .konck-pin,
-      .nasak,
-      .nasak-pin,
-      .nasas,
-      .nasas-pin {
-        opacity: 0;
-      }
-
-      .pin {
-        opacity: 1;
-      }
-    }
-
-    &--step-1 {
-      transform: scale(2);
-      transform-origin: 10% 70%;
-
-      .temp {
-        opacity: 0;
-      }
-    }
-
-    &--step-2 {
-      transform: scale(2);
-      transform-origin: 10% 60%;
-
-      .temp {
-        opacity: 0;
-      }
-    }
-
-    &--step-3 {
-      transform: scale(1.5);
-      transform-origin: 40% 70%;
-
-      .konck,
-      .konck-pin,
-      .nuuk,
-      .nuuk-pin {
-        opacity: 0;
-      }
-
-      .temp {
-        opacity: 0;
-      }
-    }
-
-    &--step-4 {
-      transform: scale(2);
-      transform-origin: 40% 80%;
-
-      .temp {
-        opacity: 0;
-      }
-
-      .kaikai,
-      .kaikai-pin,
-      .sisi,
-      .sisi-pin {
-        opacity: 0;
-      }
-
-      svg {
-        opacity: 1;
       }
     }
   }

@@ -56,7 +56,7 @@ export default {
 .gl-transition {
   position: relative;
   height: 300vh;
-  margin-bottom: 50vh;
+  margin-bottom: 36vh;
   opacity: 0;
   transition: 0.5s ease-in-out;
 
@@ -70,7 +70,7 @@ export default {
     position: sticky;
     top: 0;
     width: 100%;
-    height: 100vh;
+    height: 125vh;
     display: flex;
     justify-content: center;
     align-items: center;
