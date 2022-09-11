@@ -102,12 +102,14 @@ export default {
   position: absolute;
   top: 0;
   z-index: 10;
+  width: 100%;
   height: 50%;
 }
 
 .gl-transition__trigger-2 {
   position: absolute;
   top: 50vh;
+  width: 100%;
   height: 60vh;
 }
 </style>

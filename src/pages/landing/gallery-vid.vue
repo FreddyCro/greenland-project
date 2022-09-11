@@ -76,13 +76,14 @@ export default {
   }
 
   video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
     @include rwd-min(sm) {
       position: absolute;
       left: 0;
       top: 0;
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
       color: $bg-white;
     }
   }
