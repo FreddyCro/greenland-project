@@ -351,7 +351,7 @@
           :description="str.metaDescription"
         )
         footer-questionnaire
-        footer-logo
+        footer-logo(public-path="../")
 
 </template>
 

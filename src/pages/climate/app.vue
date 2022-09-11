@@ -52,6 +52,7 @@
   g-slide(id="transition" classname="gc-transition-slide" :is-last="true")
     section(slot="bg")
       g-vid-w-control(
+        public-path="../"
         src="../vid/climate/greenland_climate_video3",
         ext="mp4"
         poster="../img/climate/greenland_climate_preview3",
@@ -195,6 +196,7 @@
       )
       
   g-vid-w-control(
+    public-path="../"
     src="../vid/climate/greenland_climate_video6_1",
     ext="mp4"
     poster="../img/climate/greenland_climate_preview6_1",
@@ -244,7 +246,7 @@
           :description="str.metaDescription"
         )
         footer-questionnaire
-        footer-logo
+        footer-logo(public-path="../")
 </template>
 
 <script>

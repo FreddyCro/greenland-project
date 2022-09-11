@@ -16,7 +16,7 @@
       <a
         v-for="(item, index) in outlink"
         :key="index"
-        :href="item.url"
+        :href="`${publicPath}${item.url}`"
         target="_blank"
         rel="noopener"
         :ariaLabel="item.title"
@@ -42,6 +42,10 @@
 export default {
   name: 'HeaderMenu',
   props: {
+    publicPath: {
+      type: String,
+      default: '',
+    },
     menuActiveFlag: {
       type: Boolean,
       default: false,

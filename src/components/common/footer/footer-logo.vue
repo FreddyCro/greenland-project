@@ -5,7 +5,7 @@
       img.g-footer-logo__logo(
         v-for="logo, index in logos"
         :key="`footer-logo-${index}`"
-        :src="logo.src"
+        :src="`${publicPath}${logo.src}`"
         :alt="logo.alt"
       )
 
@@ -17,6 +17,12 @@ import str from '@/assets/string/common.json';
 
 export default {
   name: 'g-footer-logo',
+  props: {
+    publicPath: {
+      type: String,
+      default: '',
+    },
+  },
   data() {
     return {
       str,

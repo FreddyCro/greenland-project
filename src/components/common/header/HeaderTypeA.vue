@@ -6,6 +6,7 @@
     }"
   >
     <HeaderMenu
+      :public-path="publicPath"
       :menuActiveFlag="menuActiveFlag"
       :simplified="true"
       :outlink="outlink"
@@ -29,7 +30,7 @@
               network="facebook"
               :title="title"
               :description="description"
-              :url="url"
+              :url="shareUrl"
             >
               <ShareFb />
             </share-network>
@@ -39,7 +40,7 @@
               network="line"
               :title="title"
               :description="description"
-              :url="url"
+              :url="shareUrl"
             >
               <ShareLine />
             </share-network>
@@ -49,7 +50,7 @@
               network="twitter"
               :title="title"
               :description="description"
-              :url="url"
+              :url="shareUrl"
             >
               <ShareTwitter />
             </share-network>
@@ -100,10 +101,6 @@ export default {
       type: String,
       default: '',
     },
-    url: {
-      type: String,
-      default: '',
-    },
   },
   components: {
     HeaderHamburger,
@@ -118,6 +115,7 @@ export default {
       menuActiveFlag: false,
       lastPosition: window.pageYOffset,
       ticking: false,
+      shareUrl: '',
     };
   },
   methods: {
@@ -144,6 +142,9 @@ export default {
   },
   mounted() {
     window.addEventListener('scroll', this.handleScroll, true);
+    this.shareUrl =
+      document.querySelector('meta[property="og:url"]').content ||
+      window.location.href;
   },
 };
 </script>

@@ -53,6 +53,7 @@
   g-slide(id="transition" classname="gfi-transition-slide" :is-last="true")
     section(slot="bg")
       g-vid-w-control(
+        public-path="../"
         src="../vid/fishing/greenland_fishing_video3",
         ext="mp4"
         poster="../img/fishing/greenland_fishing_preview3",
@@ -259,7 +260,7 @@
           :description="str.metaDescription"
         )
         footer-questionnaire
-        footer-logo
+        footer-logo(public-path="../")
         
 </template>
 
