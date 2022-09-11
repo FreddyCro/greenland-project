@@ -3,6 +3,13 @@
   .gl-transition__trigger-1(ref="trigger-1")
   .gl-transition__trigger-2(ref="trigger-2")
   .gl-transition__content
+    .gl-transition__content-bg
+      g-pic(
+        src="img/landing/greenland_pic7_1"
+        ext="jpg"
+        :webp="true"
+        classname="u-full-vh-img"
+      )
     .gl-transition__content-text(:class="{'gl-transition__content-text--active': isTextEnter}")
       p(
         v-for="p, index in text"
@@ -12,10 +19,14 @@
 </template>
 
 <script>
+import GPic from '@/components/g-pic.vue';
 import { linearIntersectionObserver } from '@/assets/js/observer.js';
 
 export default {
   name: 'landing-map-transition',
+  components: {
+    GPic,
+  },
   props: {
     text: {
       type: Array,
@@ -78,7 +89,16 @@ export default {
     background-position: bottom center;
   }
 
+  &__content-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
   &__content-text {
+    position: relative;
     margin: 0 auto;
     text-align: center;
     opacity: 0;
