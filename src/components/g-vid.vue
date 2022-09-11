@@ -3,7 +3,8 @@
     v-if="src"
     :ref="id"
     :id="id"
-    :class="`g-vid ${classname ? classname : ''}`"
+    class="g-vid"
+    :class="classname || ''"
     playsinline
     :autoplay="isPlaying ? false : true"
     loop

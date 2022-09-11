@@ -84,8 +84,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.gallery {
-}
 .gallery-container {
   position: relative;
   padding: 0 $spacing-4;

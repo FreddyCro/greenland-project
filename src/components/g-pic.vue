@@ -1,5 +1,5 @@
 <template>
-  <picture :class="`g-pic ${classname}`">
+  <picture class="g-pic" :class="classname || ''">
     <template v-for="(media, index) in parsedMedia">
       <source
         v-if="webp"

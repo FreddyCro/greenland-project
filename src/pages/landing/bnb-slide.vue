@@ -161,10 +161,10 @@ export default {
       width: 50%;
     }
 
-    .u-container {
+    /* .u-container {
       margin-left: 0;
       margin-right: 0;
-    }
+    } */
   }
 
   &__sec-wrapper {

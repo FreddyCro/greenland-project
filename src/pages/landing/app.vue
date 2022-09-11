@@ -57,7 +57,7 @@
       :use-offset="true"
     )
       //- TODO: container
-      .u-container
+      .u-container.u-paragraph
         h2(v-html="str.hotTitle")
         p(
           v-for="p, index in str.hotText"
@@ -76,7 +76,7 @@
       :use-offset="true"
     )
       //- TODO: container
-      .u-container
+      .u-container.u-paragraph
         h2(v-html="str.meltTitle")
         p(
           v-for="p, index in str.meltText"
@@ -94,7 +94,7 @@
       id="gl-vid4"
       classname="gl-snow-slide"
     )
-      .u-container
+      .u-container.u-paragraph
         h2(v-html="str.snowTitle")
         p(
           v-for="p, index in str.snowText"
@@ -111,7 +111,7 @@
       poster-ext="webp"
       id="gl-vid5"
     )
-      .u-container
+      .u-container.u-paragraph
         h2(v-html="str.speedTitle")
         p(
           v-for="p, index in str.speedText"
@@ -128,17 +128,19 @@
       poster-ext="webp"
       id="gl-vid6"
     )
-      .u-container
+      .u-container.u-paragraph
         h2(v-html="str.cultureTitle")
         p(
           v-for="p, index in str.cultureText"
           :key="`cultureText-${index}`"
           v-html="p"
         )
-        
+
   landing-map-transition(:text="str.transitionText")
   landing-map
-  gallery
+
+  section.u-section.gl-gallery
+    gallery
 
   footer.g-footer
     g-series(:list="str.seriesList")

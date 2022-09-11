@@ -6,7 +6,7 @@
       :poster="poster"
       :posterExt="posterExt"
       :id="id"
-      :classname="classname ? classname : ''"
+      :class="classname || ''"
       :use-webm="useWebm"
       :is-playing="isPlaying"
     />
