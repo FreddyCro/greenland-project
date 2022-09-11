@@ -1,5 +1,5 @@
 <template lang="pug">
-#app.u-article.greenland
+#app.u-article.u-paragraph.greenland
   nmd-header(
     public-path="../"
     :outlink="headerList"
@@ -24,8 +24,9 @@
 
     section.u-section.gli-hero(slot="content")
       .u-container
-        h1(v-html="str.introTitle")
-        h2(v-html="str.introSubTitle")
+        .g-hero-title
+          h1(v-html="str.introTitle")
+          h2(v-html="str.introSubTitle")
         p(
           v-for="p, index in str.introText1"
           :key="`gli-introText1-${index}`"
@@ -78,11 +79,12 @@
         classname="gc-kir-img-1"
         :webp="true"
       )
-      p.caption(v-html="str.kirImg1Caption")
+    .u-container
+      p.quote-caption(v-html="str.kirImg1Caption")
 
     .u-section
       .u-container
-        h2(v-html="str.kirTitle")
+        g-quote(:text="str.kirTitle")
         p(
           v-for="p, index in str.kirText1"
           :key="`gli-kirText1-${index}`"
@@ -117,11 +119,12 @@
         classname="gc-kaj-img-1"
         :webp="true"
       )
-      p.caption(v-html="str.kajImg1Caption")
+    .u-container
+      p.quote-caption(v-html="str.kajImg1Caption")
 
     .u-section
       .u-container
-        h2(v-html="str.kajTitle")
+        g-quote(:text="str.kajTitle")
         p(
           v-for="p, index in str.kajText1"
           :key="`gli-kajText1-${index}`"
@@ -156,11 +159,12 @@
         classname="gc-pau-img-2"
         :webp="true"
       )
-      p.caption(v-html="str.pauImg1Caption")
+    .u-container
+      p.quote-caption(v-html="str.pauImg1Caption")
       
     .u-section
       .u-container
-        h2(v-html="str.pauTitle")
+        g-quote(:text="str.pauTitle")
         p(
           v-for="p, index in str.pauText1"
           :key="`gli-pauText1-${index}`"
@@ -207,11 +211,12 @@
         classname="gc-chris-img-1"
         :webp="true"
       )
-      p.caption(v-html="str.chrisImg1Caption")
+    .u-container
+      p.quote-caption(v-html="str.chrisImg1Caption")
       
     .u-section
       .u-container
-        h2(v-html="str.chrisTitle")
+        g-quote(:text="str.chrisTitle")
         p(
           v-for="p, index in str.chrisText1"
           :key="`gli-chrisText1-${index}`"
@@ -246,11 +251,12 @@
         classname="gc-avi-img-1"
         :webp="true"
       )
-      p.caption(v-html="str.aviImg1Caption")
+    .u-container
+      p.quote-caption(v-html="str.aviImg1Caption")
       
     .u-section
       .u-container
-        h2(v-html="str.aviTitle")
+        g-quote(:text="str.aviTitle")
         p(
           v-for="p, index in str.aviText1"
           :key="`gli-aviText1-${index}`"
@@ -296,11 +302,12 @@
         classname="gc-bo-img-1"
         :webp="true"
       )
-      p.caption(v-html="str.boImg1Caption")
+    .u-container
+      p.quote-caption(v-html="str.boImg1Caption")
       
     .u-section
       .u-container
-        h2(v-html="str.boTitle")
+        g-quote(:text="str.boTitle")
         p(
           v-for="p, index in str.boText1"
           :key="`gli-boText1-${index}`"
@@ -366,6 +373,7 @@ import GVid from '@/components/g-vid.vue';
 import GVidWControl from '@/components/g-vid-w-control.vue';
 import GSeries from '@/components/g-series.vue';
 import GHeroScroll from '@/components/g-hero-scroll.vue';
+import GQuote from '@/components/g-quote.vue';
 import NmdHeader from '@/components/common/header/HeaderTypeA.vue';
 import str from '@/assets/string/living.json';
 
@@ -382,6 +390,7 @@ export default {
     GVidWControl,
     GSeries,
     GHeroScroll,
+    GQuote,
     NmdHeader,
   },
   data() {
@@ -449,6 +458,17 @@ export default {
 };
 </script>
 
+<style lang="scss" scoped>
+.g-hero-title {
+  text-align: center;
+  margin-bottom: $spacing-11 !important;
+
+  h2 {
+    @include general-font-h3;
+  }
+}
+</style>
+
 <style lang="scss">
 .gli-hero-vid-wrapper {
   position: relative;
@@ -458,5 +478,20 @@ export default {
   min-height: 600px;
   display: flex;
   align-items: center;
+}
+
+.quote-caption {
+  display: flex;
+  align-items: center;
+  color: $g-blue-1;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 20px;
+    margin-right: $spacing-2;
+    background-color: $g-blue-1;
+  }
 }
 </style>

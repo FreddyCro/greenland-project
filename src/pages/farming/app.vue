@@ -1,5 +1,5 @@
 <template lang="pug">
-#app.u-article.greenland
+#app.u-article.u-paragraph.greenland
   nmd-header(
     public-path="../"
     :outlink="headerList"
@@ -23,8 +23,9 @@
       g-hero-scroll(:fadeOut="true")
     section.u-section.gf-hero(slot="content")
       .u-container
-        h1(v-html="str.introTitle")
-        h2(v-html="str.introSubTitle")
+        .g-hero-title
+          h1(v-html="str.introTitle")
+          h2(v-html="str.introSubTitle")
         p(
           v-for="p, index in str.introText1"
           :key="`gf-introText1-${index}`"
@@ -417,6 +418,17 @@ export default {
 };
 </script>
 
+<style lang="scss" scoped>
+.g-hero-title {
+  text-align: center;
+  margin-bottom: $spacing-11 !important;
+  
+  h2 {
+    @include general-font-h3;
+  }
+}
+</style>
+
 <style lang="scss">
 .gf-hero-vid-wrapper {
   position: relative;
@@ -428,5 +440,3 @@ export default {
   align-items: center;
 }
 </style>
-
-<style lang="scss" scoped></style>

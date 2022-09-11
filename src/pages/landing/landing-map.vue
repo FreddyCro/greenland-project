@@ -68,7 +68,7 @@
           v-html="p"
         )
         a.glm-anchor(
-          :href="str.mapScientistStoryUrl"
+          href="./climate"
           target="_blank"
         )
           g-button(:text="str.mapScientistStoryTitle" classname="glm-button")
@@ -100,7 +100,7 @@
           v-html="p"
         )
         a.glm-anchor(
-          :href="str.mapFishingStoryUrl"
+          href="./fishing"
           target="_blank"
         )
           g-button(:text="str.mapFishingStoryTitle" classname="glm-button")
@@ -134,7 +134,7 @@
           v-html="p"
         )
         a.glm-anchor(
-          :href="str.mapFarmingStoryUrl"
+          href="./farming"
           target="_blank"
         )
           g-button(:text="str.mapFarmingStoryTitle" classname="glm-button")
@@ -166,7 +166,7 @@
           v-html="p"
         )
         a.glm-anchor(
-          :href="str.mapLivingStoryUrl"
+          href="./living"
           target="_blank"
         )
           g-button(:text="str.mapLivingStoryTitle" classname="glm-button")

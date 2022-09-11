@@ -288,6 +288,7 @@ export default {
         color: #333333;
         opacity: 1;
         border-bottom: solid 1px #000000;
+        pointer-events: none;
         cursor: initial;
       }
     }
