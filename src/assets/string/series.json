@@ -3,12 +3,12 @@
   "seriesLandingTitle": "解凍格陵蘭",
   "seriesLandingUrl": "/",
   "seriesClimateTitle": "北極站科學家篇",
-  "seriesClimateUrl": "/climate",
+  "seriesClimateUrl": "climate",
   "seriesFishingTitle": "撈海廢討海人篇",
-  "seriesFishingUrl": "/fishing",
+  "seriesFishingUrl": "fishing",
   "seriesFarmingTitle": "穿梭綠地牧羊人篇",
-  "seriesFarmingUrl": "/farming",
+  "seriesFarmingUrl": "farming",
   "seriesLivingTitle": "格陵蘭居民篇",
-  "seriesLivingUrl": "/living",
+  "seriesLivingUrl": "living",
   "seriesButtonText": "看報導"
 }

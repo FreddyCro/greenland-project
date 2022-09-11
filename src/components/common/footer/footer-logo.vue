@@ -62,6 +62,10 @@ export default {
 
   &__logo {
     width: 120px;
+
+    @include rwd-min(xs) {
+      margin-bottom: $spacing-5;
+    }
   }
 
   &__text {

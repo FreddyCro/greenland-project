@@ -61,7 +61,7 @@
         poster-ext="webp"
         :use-webm="true"
         id="gf-intro-vid-1",
-        classname="u-full-vh-vid"
+        classname="u-full-vh-vid gf-transition-vid"
       )
     
     section.u-section.gf-transition(slot="content")
@@ -214,6 +214,7 @@
       :no2x="true"
       :no3x="true"
     )
+    p.small.gf-img-source(v-html="str.farmSheepImg3Source")
     p.caption(v-html="str.farmSheepImg3Caption")
   section.u-section
     .u-container
@@ -422,10 +423,19 @@ export default {
 .g-hero-title {
   text-align: center;
   margin-bottom: $spacing-11 !important;
-  
+
   h2 {
     @include general-font-h3;
   }
+}
+
+.gf-img-source {
+  font-size: 14px;
+  color: rgb(156, 156, 156);
+}
+
+.gf-img-source + p {
+  margin-top: 0;
 }
 </style>
 
@@ -438,5 +448,12 @@ export default {
   min-height: 600px;
   display: flex;
   align-items: center;
+}
+
+.gf-transition-vid {
+  @include rwd-max(lg) {
+    object-fit: contain !important;
+    object-position: center;
+  }
 }
 </style>

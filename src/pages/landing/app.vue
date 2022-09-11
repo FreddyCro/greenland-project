@@ -316,9 +316,9 @@ export default {
 
 .gl-speed,
 .gl-culture {
-  .g-vid-w-control__btn {
+  /* .g-vid-w-control__btn {
     background-color: #434343;
-  }
+  } */
 
   .g-vid {
     @include rwd-max(lg) {

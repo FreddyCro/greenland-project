@@ -373,7 +373,9 @@ export default {
     }
 
     &:last-child {
-      margin-bottom: 100vh;
+      @include rwd-min(md) {
+        margin-bottom: 100vh;
+      }
     }
   }
 

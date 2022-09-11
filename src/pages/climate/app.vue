@@ -61,7 +61,7 @@
         poster-ext="webp"
         :use-webm="true"
         id="gc-vid3",
-        classname="u-full-vh-vid"
+        classname="u-full-vh-vid gc-transition-vid"
       )
 
     section.u-section.gc-transition(slot="content")
@@ -349,7 +349,7 @@ export default {
 .g-hero-title {
   text-align: center;
   margin-bottom: $spacing-11 !important;
-  
+
   h2 {
     @include general-font-h3;
   }
@@ -365,5 +365,12 @@ export default {
   min-height: 600px;
   display: flex;
   align-items: center;
+}
+
+.gc-transition-vid {
+  @include rwd-max(lg) {
+    object-fit: contain !important;
+    object-position: center;
+  }
 }
 </style>

@@ -119,6 +119,7 @@ export default {
 <style lang="scss">
 .g-vid-w-control {
   position: relative;
+  background-color: $black;
 
   &__btns {
     position: absolute;

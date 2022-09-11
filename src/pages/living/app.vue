@@ -70,20 +70,19 @@
       )
 
   //- section kir
-  section.u-section.gli-kir
-    .u-container-lg
-      g-pic(
-        src="../img/living/greenland_living_pic4_1"
-        ext="jpg"
-        :alt="str.kirImg1Caption"
-        classname="gc-kir-img-1"
-        :webp="true"
-      )
-    .u-container
-      p.quote-caption(v-html="str.kirImg1Caption")
-
+  section.gli-kir
     .u-section
+      .u-container-lg
+        g-pic(
+          src="../img/living/greenland_living_pic4_1"
+          ext="jpg"
+          :alt="str.kirImg1Caption"
+          classname="gc-kir-img-1"
+          :webp="true"
+        )
       .u-container
+        p.quote-caption(v-html="str.kirImg1Caption")
+
         g-quote(:text="str.kirTitle")
         p(
           v-for="p, index in str.kirText1"
@@ -111,19 +110,17 @@
 
   //- section kaj
   section.gli-kaj
-    .u-container-lg
-      g-pic(
-        src="../img/living/greenland_living_pic5_1"
-        ext="jpg"
-        :alt="str.kajImg1Caption"
-        classname="gc-kaj-img-1"
-        :webp="true"
-      )
-    .u-container
-      p.quote-caption(v-html="str.kajImg1Caption")
-
     .u-section
+      .u-container-lg
+        g-pic(
+          src="../img/living/greenland_living_pic5_1"
+          ext="jpg"
+          :alt="str.kajImg1Caption"
+          classname="gc-kaj-img-1"
+          :webp="true"
+        )
       .u-container
+        p.quote-caption(v-html="str.kajImg1Caption")
         g-quote(:text="str.kajTitle")
         p(
           v-for="p, index in str.kajText1"
@@ -151,19 +148,17 @@
 
   //- section pau
   section.gli-pau
-    .u-container-lg
-      g-pic(
-        src="../img/living/greenland_living_pic6_1"
-        ext="jpg"
-        :alt="str.pauImg1Caption"
-        classname="gc-pau-img-2"
-        :webp="true"
-      )
-    .u-container
-      p.quote-caption(v-html="str.pauImg1Caption")
-      
     .u-section
+      .u-container-lg
+        g-pic(
+          src="../img/living/greenland_living_pic6_1"
+          ext="jpg"
+          :alt="str.pauImg1Caption"
+          classname="gc-pau-img-2"
+          :webp="true"
+        )
       .u-container
+        p.quote-caption(v-html="str.pauImg1Caption")
         g-quote(:text="str.pauTitle")
         p(
           v-for="p, index in str.pauText1"
@@ -203,19 +198,17 @@
 
   //- section chris
   section.gli-chris
-    .u-container-lg
-      g-pic(
-        src="../img/living/greenland_living_pic7_1"
-        ext="jpg"
-        :alt="str.chrisImg1Caption"
-        classname="gc-chris-img-1"
-        :webp="true"
-      )
-    .u-container
-      p.quote-caption(v-html="str.chrisImg1Caption")
-      
     .u-section
+      .u-container-lg
+        g-pic(
+          src="../img/living/greenland_living_pic7_1"
+          ext="jpg"
+          :alt="str.chrisImg1Caption"
+          classname="gc-chris-img-1"
+          :webp="true"
+        )
       .u-container
+        p.quote-caption(v-html="str.chrisImg1Caption")
         g-quote(:text="str.chrisTitle")
         p(
           v-for="p, index in str.chrisText1"
@@ -243,19 +236,17 @@
 
   //- section avi
   section.gli-avi
-    .u-container-lg
-      g-pic(
-        src="../img/living/greenland_living_pic8_1"
-        ext="jpg"
-        :alt="str.aviImg1Caption"
-        classname="gc-avi-img-1"
-        :webp="true"
-      )
-    .u-container
-      p.quote-caption(v-html="str.aviImg1Caption")
-      
     .u-section
+      .u-container-lg
+        g-pic(
+          src="../img/living/greenland_living_pic8_1"
+          ext="jpg"
+          :alt="str.aviImg1Caption"
+          classname="gc-avi-img-1"
+          :webp="true"
+        )
       .u-container
+        p.quote-caption(v-html="str.aviImg1Caption")
         g-quote(:text="str.aviTitle")
         p(
           v-for="p, index in str.aviText1"
@@ -294,19 +285,17 @@
 
   //- section bo
   section.gli-bo
-    .u-container-lg
-      g-pic(
-        src="../img/living/greenland_living_pic9_1"
-        ext="jpg"
-        :alt="str.boImg1Caption"
-        classname="gc-bo-img-1"
-        :webp="true"
-      )
-    .u-container
-      p.quote-caption(v-html="str.boImg1Caption")
-      
     .u-section
+      .u-container-lg
+        g-pic(
+          src="../img/living/greenland_living_pic9_1"
+          ext="jpg"
+          :alt="str.boImg1Caption"
+          classname="gc-bo-img-1"
+          :webp="true"
+        )
       .u-container
+        p.quote-caption(v-html="str.boImg1Caption")
         g-quote(:text="str.boTitle")
         p(
           v-for="p, index in str.boText1"

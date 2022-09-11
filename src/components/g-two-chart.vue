@@ -40,6 +40,11 @@ export default {
 .g-two-chart {
   position: relative;
 
+  @include rwd-max(xs) {
+    margin-left: $spacing-5;
+    margin-right: $spacing-5;
+  }
+
   &__second {
     position: absolute;
     top: 0;
