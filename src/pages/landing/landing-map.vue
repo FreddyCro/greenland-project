@@ -1,6 +1,6 @@
 <template lang="pug">
 //- greenland landing map
-.glm(ref="glm")
+.glm.u-paragraph(ref="glm")
   .glm-map(:class="{'glm-map--under': status === 'under'}")
     .glm-map__bg-wrapper(:class="glmMapClass")
       .glm-map__bg-nav(:class="`glm-map__bg-nav--step-${activeIndex}`")
@@ -32,7 +32,7 @@
 
   .glm-text
     section.u-section.glm-section.glm-mystery(ref="section-1")
-      .u-container.glm-container.u-paragraph
+      .u-container.glm-container
         h2(v-html="str.mapMysteryTitle")
         p(
           v-for="p, index in str.mapMysteryText"
@@ -41,7 +41,7 @@
         )
 
     section.u-section.glm-section.glm-scientist#climate(ref="section-2")
-      .u-container.glm-container.u-paragraph
+      .u-container.glm-container
         h2(v-html="str.mapScientistTitle")
         h3
           span
@@ -70,7 +70,7 @@
         )
 
     section.u-section.glm-section.glm-fishing#fishing(ref="section-3")
-      .u-container.glm-container.u-paragraph
+      .u-container.glm-container
         h2(v-html="str.mapFishingTitle")
         h3
           span
@@ -98,7 +98,7 @@
         )
 
     section.u-section.glm-section.glm-farming#farming(ref="section-4")
-      .u-container.glm-container.u-paragraph
+      .u-container.glm-container
         h2(v-html="str.mapFarmingTitle")
         h3
           span
@@ -126,7 +126,7 @@
         )
 
     section.u-section.glm-section.glm-living(ref="section-5")
-      .u-container.glm-container.u-paragraph
+      .u-container.glm-container
         h2(v-html="str.mapLivingTitle")
         h3
           span

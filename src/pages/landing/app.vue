@@ -135,17 +135,8 @@
           :key="`cultureText-${index}`"
           v-html="p"
         )
-
-  .gl-transition
-  .after-gl-transition
-      section.u-section
-        .gl-transition-text
-          p(
-            v-for="p, index in str.transitionText"
-            :key="`transitionText-${index}`"
-          )
-            span(v-html="p")
-
+        
+  landing-map-transition(:text="str.transitionText")
   landing-map
   gallery
 
@@ -178,6 +169,7 @@ import Gallery from '@/pages/landing/gallery.vue';
 import GSeries from '@/components/g-series.vue';
 import GHeroScroll from '@/components/g-hero-scroll.vue';
 import LandingMap from '@/pages/landing/landing-map.vue';
+import LandingMapTransition from '@/pages/landing/landing-map-transition.vue';
 import NmdHeader from '@/components/common/header/HeaderTypeA.vue';
 import str from '@/assets/string/landing.json';
 
@@ -198,6 +190,7 @@ export default {
     FooterQuestionnaire,
     FooterShare,
     LandingMap,
+    LandingMapTransition,
     NmdHeader,
   },
   data() {
@@ -365,38 +358,6 @@ export default {
     height: 100%;
     object-fit: cover;
   }
-}
-
-.gl-transition {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  background-size: cover;
-  background-position: bottom center;
-  pointer-events: none;
-
-  @include bg-3x('/img/landing/greenland_pic7_1', 'jpg', true);
-}
-
-.gl-transition-text {
-  margin: 0 auto;
-  text-align: center;
-
-  p + p {
-    margin-top: $spacing-2 !important;
-  }
-
-  span {
-    background-color: #fff;
-  }
-}
-
-.after-gl-transition {
-  position: relative;
 }
 
 .g-footer {

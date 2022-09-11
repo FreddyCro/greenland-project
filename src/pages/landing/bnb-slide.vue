@@ -198,9 +198,11 @@ export default {
         padding: $spacing-10;
       }
 
-      img {
-        max-width: 469px !important;
-        max-height: 329px !important;
+      @include rwd-min(xl) {
+        img {
+          max-width: 469px !important;
+          max-height: 329px !important;
+        }
       }
     }
   }
