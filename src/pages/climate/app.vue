@@ -104,7 +104,7 @@
   //- section collage
   section.u-section.gc-collage
     .u-container
-      h2(v-html="str.collageTitle")
+      h3(v-html="str.collageTitle")
       p(
         v-for="p, index in str.collageText1"
         :key="`gc-collageText1-${index}`"
@@ -122,7 +122,7 @@
   //- section protection
   section.u-section.gc-protection
     .u-container
-      h2(v-html="str.protectionTitle")
+      h3(v-html="str.protectionTitle")
       p(
         v-for="p, index in str.protectionText1" :key="`gc-protectionText1-${index}`"
         v-html="p"
@@ -191,7 +191,7 @@
   //- section sea
   section.u-section.gc-sea
     .u-container
-      h2(v-html="str.seaTitle")
+      h3(v-html="str.seaTitle")
       p(
         v-for="p, index in str.seaText1" :key="`gc-seaText1-${index}`"
         v-html="p"
@@ -212,7 +212,7 @@
   //- section science
   section.u-section.gc-science
     .u-container
-      h2(v-html="str.scienceTitle")
+      h3(v-html="str.scienceTitle")
       p(
         v-for="p, index in str.scienceText1" :key="`gc-scienceText1-${index}`"
         v-html="p"
@@ -286,7 +286,7 @@ export default {
       headerList: [
         {
           title: '解凍格陵蘭',
-          url: '/',
+          url: '',
           active: false,
         },
         {

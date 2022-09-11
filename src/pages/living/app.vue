@@ -388,7 +388,7 @@ export default {
       headerList: [
         {
           title: '解凍格陵蘭',
-          url: '/',
+          url: '',
           active: false,
         },
         {

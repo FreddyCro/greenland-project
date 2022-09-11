@@ -10,9 +10,9 @@
     </div>
     <svg
       class="block-chart-svg"
-      width="350"
-      height="300"
-      viewBox="0 0 350 300"
+      :width="350 * scale()"
+      :height="300 * scale()"
+      :viewBox="`0 0 ${350 * scale()} ${300 * scale()}`"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -26,12 +26,23 @@
         :fill="rect.color"
         :stroke="rect.color"
       />
+      <text
+        v-for="rect in Object.values(rects).reverse()"
+        :key="`block-chart-text-${rect.year}`"
+        class="block-chart-text"
+        :class="{ 'block-chart-text--active': rect.active }"
+        x="4"
+        :y="-calcHeight(rect.value, rect.active) + 18"
+        :fill="rect.year === 2015 ? '#285F92' : '#FAFAFA'"
+      >
+        {{ rect.year }}年 {{ rect.value }}公頃
+      </text>
     </svg>
   </div>
 </template>
 
 <script>
-import { onceIntersectionObserver } from '@/assets/js/observer.js';
+import { linearIntersectionObserver } from '@/assets/js/observer.js';
 
 const config = {
   minValue: 1127,
@@ -61,24 +72,46 @@ export default {
     const rects = Object.values(vm.rects);
 
     rects.forEach((rect, index) => {
-      onceIntersectionObserver(
+      linearIntersectionObserver(
         vm.$refs['block-chart-trigger-' + index][0],
         () => {
           rect.active = true;
         }
       );
     });
+
+    linearIntersectionObserver(
+      vm.$refs['block-chart'],
+      () => {},
+      () => {
+        rects.forEach((rect) => {
+          rect.active = false;
+        });
+      },
+      {
+        rootMargin: '-200px 0px 0px 0px',
+      }
+    );
   },
   methods: {
+    scale() {
+      const { maxWidth } = config;
+      const containerWidth = this.$refs['block-chart']?.clientWidth || maxWidth;
+      const scale = containerWidth / maxWidth;
+
+      return scale;
+    },
     calcWidth(value, active) {
       const { minValue, maxValue, minWidth, maxWidth } = config;
 
       if (!active) {
-        return minWidth;
+        return minWidth * this.scale();
       } else {
         return (
-          minWidth +
-          ((value - minValue) / (maxValue - minValue)) * (maxWidth - minWidth)
+          (minWidth +
+            ((value - minValue) / (maxValue - minValue)) *
+              (maxWidth - minWidth)) *
+          this.scale()
         );
       }
     },
@@ -86,11 +119,13 @@ export default {
       const { minValue, maxValue, minHeight, maxHeight } = config;
 
       if (!active) {
-        return minHeight;
+        return minHeight * this.scale();
       } else {
         return (
-          minHeight +
-          ((value - minValue) / (maxValue - minValue)) * (maxHeight - minHeight)
+          (minHeight +
+            ((value - minValue) / (maxValue - minValue)) *
+              (maxHeight - minHeight)) *
+          this.scale()
         );
       }
     },
@@ -101,7 +136,6 @@ export default {
 <style lang="scss">
 .block-chart {
   position: relative;
-  text-align: center;
 }
 
 .block-chart-trigger-container {
@@ -109,11 +143,13 @@ export default {
   top: 50%;
   left: 0;
   width: 100%;
-  height: 60vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   transform: translate(0, -50%);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .block-chart-trigger {
@@ -127,6 +163,15 @@ export default {
 
   rect {
     transition: 0.15s ease-in-out;
+  }
+}
+
+.block-chart-text {
+  transform: scaleY(-1);
+  opacity: 0;
+
+  &--active {
+    opacity: 1;
   }
 }
 </style>

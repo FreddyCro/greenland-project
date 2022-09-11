@@ -9,7 +9,7 @@
   )
   
   //- section hero
-  g-slide(id="hero" classname="gc-hero-slide")
+  g-slide(id="hero" classname="gc-hero-slide" :is-first="true")
     section.u-section-full.gf-hero-vid-wrapper(slot="bg")
       g-vid(
         src="../vid/farming/greenland_farming_video1",
@@ -360,7 +360,7 @@ export default {
       headerList: [
         {
           title: '解凍格陵蘭',
-          url: '/',
+          url: '',
           active: false,
         },
         {

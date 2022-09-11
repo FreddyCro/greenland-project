@@ -12,6 +12,7 @@
             a.g-series-card(
               :class="`g-series-card--${item}`"
               :href="`${publicPath}${listData[item].url}`"
+              target="_blank"
             )
               g-pic(
                 :src="`${publicPath}${listData[item].src}`"
