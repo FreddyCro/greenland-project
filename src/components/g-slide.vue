@@ -112,7 +112,7 @@ export default {
 
   &::before {
     content: '';
-    z-index: 5;
+    z-index: 3;
     position: absolute;
     left: 0;
     top: 0;
@@ -121,6 +121,7 @@ export default {
     background-color: rgba($color: #000000, $alpha: 0.5);
     opacity: 0;
     transition: 0.5s ease-in-out;
+    pointer-events: none;
   }
 
   &--fade-in {

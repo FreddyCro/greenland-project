@@ -92,10 +92,12 @@
     g-pic(
       src="../img/farming/greenland_farming_pic4_3"
       ext="jpg"
-      :alt="str.farmImg1Caption"
+      :alt="str.skillImg1Caption"
       classname="gf-skill-img1"
       :webp="true"
     )
+    p.caption(v-html="str.skillImg1Caption")
+
   section.u-section
     .u-container
       p(
@@ -248,6 +250,8 @@
       classname="gf-sale-img1"
       :webp="true"
     )
+    p.caption(v-html="str.saleImg1Caption")
+
   section.u-section
     .u-container
       p(

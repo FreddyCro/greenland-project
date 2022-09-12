@@ -1,5 +1,5 @@
 <template>
-  <div class="g-vid-w-control">
+  <div ref="g-vid" class="g-vid-w-control">
     <g-vid
       :src="src"
       :ext="ext"
@@ -18,7 +18,11 @@
           :src="`${publicPath}img/icon/video_pause_logo.svg`"
           alt="paused"
         />
-        <img v-else :src="`${publicPath}img/icon/video_play_logo.svg`" alt="play" />
+        <img
+          v-else
+          :src="`${publicPath}img/icon/video_play_logo.svg`"
+          alt="play"
+        />
       </button>
       <button class="g-vid-w-control__btn" @click="handleMuteClick">
         <img
@@ -38,6 +42,7 @@
 
 <script>
 import GVid from '@/components/g-vid.vue';
+import { linearIntersectionObserver } from '@/assets/js/observer.js';
 
 export default {
   name: 'g-vid-w-control',
@@ -112,6 +117,16 @@ export default {
   mounted() {
     this.video = document.querySelector(`#${this.id}`);
     this.isPlaying = !this.forceStop;
+
+    linearIntersectionObserver(
+      this.$refs['g-vid'],
+      () => {
+        // this.isPlaying = true;
+      },
+      () => {
+        // this.isPlaying = false;
+      }
+    );
   },
 };
 </script>

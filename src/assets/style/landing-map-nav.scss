@@ -26,7 +26,7 @@
   .nasas,
   .nasak,
   .cack {
-    transition: 0.5s ease-in-out;
+    transition: 0.333s ease-in-out;
   }
 
   &--step-1,
@@ -106,12 +106,19 @@
     }
 
     .ilu,
+    .sisi,
     .konck,
     .nuuk,
     .nasas,
     .nasak,
     .cack {
       opacity: 0;
+    }
+  }
+
+  &--step-later-2 {
+    .sisi {
+      opacity: 1;
     }
   }
 
@@ -133,7 +140,8 @@
     .konck,
     .nuuk,
     .nasas,
-    .nasak {
+    .nasak,
+    .cack {
       opacity: 0;
     }
   }
@@ -141,6 +149,10 @@
   &--step-later-3 {
     // zoom out
     transform: scale(1.5);
+
+    .cack {
+      opacity: 1;
+    }
   }
 
   &--step-4 {
@@ -156,6 +168,7 @@
     .ilu,
     .sisi,
     .konck,
+    .nuuk,
     .nasas,
     .nasak {
       opacity: 0;
@@ -168,5 +181,9 @@
 
   &--step-later-4 {
     transform: scale(2);
+
+    .nuuk {
+      opacity: 1;
+    }
   }
 }
