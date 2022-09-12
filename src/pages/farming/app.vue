@@ -1,6 +1,7 @@
 <template lang="pug">
-#app.u-article.greenland
+#app.u-article.u-paragraph.greenland
   nmd-header(
+    public-path="../"
     :outlink="headerList"
     :title="str.metaTitle"
     :url="str.metaUrl"
@@ -8,20 +9,23 @@
   )
   
   //- section hero
-  g-slide(id="hero" classname="gc-hero-slide")
-    section.u-section-full(slot="bg")
+  g-slide(id="hero" classname="gc-hero-slide" :is-first="true")
+    section.u-section-full.gf-hero-vid-wrapper(slot="bg")
       g-vid(
         src="../vid/farming/greenland_farming_video1",
         ext="mp4",
         poster="../img/farming/greenland_farming_preview1",
         poster-ext="webp"
+        :use-webm="true"
         id="gf-hero-vid",
-        classname="u-full-vid"
+        classname="u-full-vh-vid"
       )
+      g-hero-scroll(:fadeOut="true")
     section.u-section.gf-hero(slot="content")
       .u-container
-        h1(v-html="str.introTitle")
-        h2(v-html="str.introSubTitle")
+        .g-hero-title
+          h1(v-html="str.introTitle")
+          h2(v-html="str.introSubTitle")
         p(
           v-for="p, index in str.introText1"
           :key="`gf-introText1-${index}`"
@@ -29,13 +33,13 @@
         )
 
   //- section intro
-  g-slide(id="intro" classname="gf-intro-slide" :is-last="true")
+  g-slide(id="intro" classname="gf-intro-slide")
     section(slot="bg")
       g-pic(
         src="../img/farming/greenland_farming_pic2"
         ext="jpg"
         :alt="str.introTitle"
-        classname="gf-intro-img-1"
+        classname="u-full-vh-img"
         :webp="true"
       )
     section.u-section.gf-intro(slot="content")
@@ -47,22 +51,26 @@
         )
 
   //- section transition
-  g-vid-w-control(
-    src="../vid/farming/greenland_farming_video3",
-    ext="mp4",
-    poster="../img/farming/greenland_farming_preview3",
-    poster-ext="webp"
-    id="gf-intro-vid-1",
-    classname="u-full-vid"
-  )
-  
-  section.u-section.gf-transition
-    .u-container
-      p(
-        v-for="p, index in str.introText3"
-        :key="`gf-introText3-${index}`"
-        v-html="p"
+  g-slide(id="transition" classname="gf-transition-slide" :is-last="true")
+    section(slot="bg")
+      g-vid-w-control(
+        public-path="../"
+        src="../vid/farming/greenland_farming_video3",
+        ext="mp4",
+        poster="../img/farming/greenland_farming_preview3",
+        poster-ext="webp"
+        :use-webm="true"
+        id="gf-intro-vid-1",
+        classname="u-full-vh-vid gf-transition-vid"
       )
+    
+    section.u-section.gf-transition(slot="content")
+      .u-container
+        p(
+          v-for="p, index in str.introText3"
+          :key="`gf-introText3-${index}`"
+          v-html="p"
+        )
 
   //- section skill
   g-pic(
@@ -84,10 +92,12 @@
     g-pic(
       src="../img/farming/greenland_farming_pic4_3"
       ext="jpg"
-      :alt="str.farmImg1Caption"
+      :alt="str.skillImg1Caption"
       classname="gf-skill-img1"
       :webp="true"
     )
+    p.caption(v-html="str.skillImg1Caption")
+
   section.u-section
     .u-container
       p(
@@ -113,14 +123,9 @@
         v-html="p"
       )
   .u-container
-    g-pic(
-      src="../img/fakers/faker_ui"
-      ext="png"
-      alt=""
-      classname=""
-      :webp="true"
-    )
-    //- block-chart
+    block-chart
+    p.caption(v-html="str.farmImg1Caption")
+
   section.u-section
     .u-container
       p(
@@ -211,6 +216,7 @@
       :no2x="true"
       :no3x="true"
     )
+    p.small.gf-img-source(v-html="str.farmSheepImg3Source")
     p.caption(v-html="str.farmSheepImg3Caption")
   section.u-section
     .u-container
@@ -244,6 +250,8 @@
       classname="gf-sale-img1"
       :webp="true"
     )
+    p.caption(v-html="str.saleImg1Caption")
+
   section.u-section
     .u-container
       p(
@@ -302,7 +310,10 @@
       )
 
   footer.g-footer
-    g-series(:list="str.seriesList")
+    g-series(
+      public-path="../"
+      :list="str.seriesList"
+    )
     .u-section.g-footer__copyright-wrapper
       .u-container.g-footer__copyright
         footer-editor(:data="editor")
@@ -312,7 +323,7 @@
           :description="str.metaDescription"
         )
         footer-questionnaire
-        footer-logo
+        footer-logo(public-path="../")
 
 </template>
 
@@ -323,6 +334,7 @@ import GPic from '@/components/g-pic.vue';
 import GVid from '@/components/g-vid.vue';
 import GVidWControl from '@/components/g-vid-w-control.vue';
 import GSeries from '@/components/g-series.vue';
+import GHeroScroll from '@/components/g-hero-scroll.vue';
 import BlockChart from '@/pages/farming/block-chart.vue';
 import FooterLogo from '@/components/common/footer/footer-logo.vue';
 import FooterEditor from '@/components/common/footer/footer-editor.vue';
@@ -339,6 +351,7 @@ export default {
     GVid,
     GVidWControl,
     GSeries,
+    GHeroScroll,
     BlockChart,
     FooterLogo,
     FooterEditor,
@@ -351,27 +364,27 @@ export default {
       headerList: [
         {
           title: '解凍格陵蘭',
-          url: '/',
-          active: true,
+          url: '',
+          active: false,
         },
         {
           title: '北極站科學家篇',
-          url: '/climate',
+          url: 'climate',
           active: false,
         },
         {
           title: '撈海廢討海人篇',
-          url: '/fishing',
+          url: 'fishing',
           active: false,
         },
         {
           title: '穿梭綠地牧羊人篇',
-          url: '/farming',
-          active: false,
+          url: 'farming',
+          active: true,
         },
         {
           title: '格陵蘭居民篇',
-          url: '/living',
+          url: 'living',
           active: false,
         },
       ],
@@ -410,12 +423,41 @@ export default {
 };
 </script>
 
+<style lang="scss" scoped>
+.g-hero-title {
+  text-align: center;
+  margin-bottom: $spacing-11 !important;
+
+  h2 {
+    @include general-font-h3;
+  }
+}
+
+.gf-img-source {
+  font-size: 14px;
+  color: rgb(156, 156, 156);
+}
+
+.gf-img-source + p {
+  margin-top: 0;
+}
+</style>
+
 <style lang="scss">
+.gf-hero-vid-wrapper {
+  position: relative;
+}
+
 .gf-transition {
   min-height: 600px;
   display: flex;
   align-items: center;
 }
-</style>
 
-<style lang="scss" scoped></style>
+.gf-transition-vid {
+  @include rwd-max(lg) {
+    object-fit: contain !important;
+    object-position: center;
+  }
+}
+</style>

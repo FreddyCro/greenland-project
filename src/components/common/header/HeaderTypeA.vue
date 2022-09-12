@@ -6,6 +6,7 @@
     }"
   >
     <HeaderMenu
+      :public-path="publicPath"
       :menuActiveFlag="menuActiveFlag"
       :simplified="true"
       :outlink="outlink"
@@ -15,17 +16,12 @@
     </HeaderMenu>
     <div class="header-bar__nav__container">
       <nav class="header-bar__nav">
-        <a
-          class="header-bar__logo"
-          :href="href"
-          target="_self"
-          rel="noopener"
-          aria-label="聯logo"
-          name="聯logo"
-          @click="sendGA({ nmdCommon: 'HeaderUdnLogo' })"
-        >
-          <img src="img/logo_head_melting_greenland.svg" alt="project logo" />
-        </a>
+        <div class="header-bar__logo">
+          <img
+            :src="`${publicPath}img/logo_head_melting_greenland.svg`"
+            alt="project logo"
+          />
+        </div>
       </nav>
       <nav class="header-bar__nav">
         <div class="header-bar-share__container">
@@ -34,7 +30,7 @@
               network="facebook"
               :title="title"
               :description="description"
-              :url="url"
+              :url="shareUrl"
             >
               <ShareFb />
             </share-network>
@@ -44,7 +40,7 @@
               network="line"
               :title="title"
               :description="description"
-              :url="url"
+              :url="shareUrl"
             >
               <ShareLine />
             </share-network>
@@ -54,7 +50,7 @@
               network="twitter"
               :title="title"
               :description="description"
-              :url="url"
+              :url="shareUrl"
             >
               <ShareTwitter />
             </share-network>
@@ -85,6 +81,10 @@ export default {
   name: 'HeaderTypeA',
   mixins: [sendGa],
   props: {
+    publicPath: {
+      type: String,
+      default: '',
+    },
     href: {
       type: String,
       default: document.querySelector('meta[property="og:url"]').content,
@@ -98,10 +98,6 @@ export default {
       default: '',
     },
     description: {
-      type: String,
-      default: '',
-    },
-    url: {
       type: String,
       default: '',
     },
@@ -119,6 +115,7 @@ export default {
       menuActiveFlag: false,
       lastPosition: window.pageYOffset,
       ticking: false,
+      shareUrl: '',
     };
   },
   methods: {
@@ -128,27 +125,26 @@ export default {
       if (this.menuActiveFlag) this.sendGA({ nmdCommon: 'HeaderMenuOpen' });
       else this.sendGA({ nmdCommon: 'HeaderMenuClose' });
     },
-    handleScroll: debounce(
-      function () {
-        if (!this.ticking) {
-          window.requestAnimationFrame(() => {
-            // activeFlag
-            if (!this.menuActiveFlag) {
-              if (this.lastPosition >= window.pageYOffset)
-                this.activeFlag = true;
-              else this.activeFlag = false;
-              this.lastPosition = window.pageYOffset;
-            }
-            this.ticking = false;
-          });
-        }
-        this.ticking = true;
-      },
-      30,
-    ),
+    handleScroll: debounce(function () {
+      if (!this.ticking) {
+        window.requestAnimationFrame(() => {
+          // activeFlag
+          if (!this.menuActiveFlag) {
+            if (this.lastPosition >= window.pageYOffset) this.activeFlag = true;
+            else this.activeFlag = false;
+            this.lastPosition = window.pageYOffset;
+          }
+          this.ticking = false;
+        });
+      }
+      this.ticking = true;
+    }, 30),
   },
   mounted() {
     window.addEventListener('scroll', this.handleScroll, true);
+    this.shareUrl =
+      document.querySelector('meta[property="og:url"]').content ||
+      window.location.href;
   },
 };
 </script>
@@ -189,19 +185,12 @@ export default {
   }
 
   .header-bar__logo {
-    @include clean-tap;
-
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     padding-left: $spacing-4;
-    text-decoration: none;
-    cursor: pointer;
     transition: 0.333s ease-in;
-
-    &:hover {
-    }
 
     img {
       height: 100%;

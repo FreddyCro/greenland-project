@@ -1,6 +1,7 @@
 <template lang="pug">
-#app.u-article.greenland
+#app.u-article.u-paragraph.greenland
   nmd-header(
+    public-path="../"
     :outlink="headerList"
     :title="str.metaTitle"
     :url="str.metaUrl"
@@ -9,18 +10,22 @@
 
   //- section hero
   g-slide(id="hero" classname="gc-hero-slide")
-    section.u-section-full.gc-hero(slot="bg")
+    section.u-section-full.gf-hero-vid-wrapper(slot="bg")
       g-vid(
         src="../vid/climate/greenland_climate_video1",
         ext="mp4",
         poster="../img/climate/greenland_climate_preview1",
         poster-ext="webp"
+        :use-webm="true"
         id="gc-hero-vid",
         classname="u-full-vid"
       )
+      g-hero-scroll(:fadeOut="true")
     section.u-section.gc-hero(slot="content")
       .u-container
-        h1(v-html="str.introTitle")
+        .g-hero-title
+          h1(v-html="str.introTitle")
+          h2(v-html="str.introSubTitle")
         p(
           v-for="p, index in str.introSectionText"
           :key="`gc-introSectionText-${index}`"
@@ -28,13 +33,13 @@
         )
 
   //- section intro
-  g-slide(id="intro" classname="gc-intro-slide" :is-last="true")
+  g-slide(id="intro" classname="gc-intro-slide")
     section(slot="bg")
       g-pic(
         src="../img/climate/greenland_climate_pic2"
         ext="jpg"
         :alt="str.introTitle"
-        classname="u-full-width-img"
+        classname="u-full-vh-img"
         :webp="true"
       )
     section.u-section.gc-intro(slot="content")
@@ -46,22 +51,26 @@
         )
 
   //- section transition
-  g-vid-w-control(
-    src="../vid/climate/greenland_climate_video3",
-    ext="mp4"
-    poster="../img/climate/greenland_climate_preview3",
-    poster-ext="webp"
-    id="gc-vid3",
-    classname="u-full-vid"
-  )
-
-  section.u-section.gc-transition
-    .u-container
-      p(
-        v-for="p, index in str.transitionText"
-        :key="`gc-transition-${index}`"
-        v-html="p"
+  g-slide(id="transition" classname="gc-transition-slide" :is-last="true")
+    section(slot="bg")
+      g-vid-w-control(
+        public-path="../"
+        src="../vid/climate/greenland_climate_video3",
+        ext="mp4"
+        poster="../img/climate/greenland_climate_preview3",
+        poster-ext="webp"
+        :use-webm="true"
+        id="gc-vid3",
+        classname="u-full-vh-vid gc-transition-vid"
       )
+
+    section.u-section.gc-transition(slot="content")
+      .u-container
+        p(
+          v-for="p, index in str.transitionText"
+          :key="`gc-transition-${index}`"
+          v-html="p"
+        )
 
   //- section morten
   g-pic(
@@ -95,7 +104,7 @@
   //- section collage
   section.u-section.gc-collage
     .u-container
-      h2(v-html="str.collageTitle")
+      h3(v-html="str.collageTitle")
       p(
         v-for="p, index in str.collageText1"
         :key="`gc-collageText1-${index}`"
@@ -103,19 +112,17 @@
       )
 
   .u-container
-    g-pic(
-      src="../img/fakers/faker_ui"
-      ext="png"
-      alt=""
-      classname=""
-      :webp="true"
+    img(
+      :src="'../img/climate/greenland_climate_chart4_3.svg'"
+      :alt="str.protectionImg1Caption"
+      class="gc-collage-img2"
     )
     p.caption(v-html="str.protectionImg1Caption")
 
   //- section protection
   section.u-section.gc-protection
     .u-container
-      h2(v-html="str.protectionTitle")
+      h3(v-html="str.protectionTitle")
       p(
         v-for="p, index in str.protectionText1" :key="`gc-protectionText1-${index}`"
         v-html="p"
@@ -184,13 +191,14 @@
   //- section sea
   section.u-section.gc-sea
     .u-container
-      h2(v-html="str.seaTitle")
+      h3(v-html="str.seaTitle")
       p(
         v-for="p, index in str.seaText1" :key="`gc-seaText1-${index}`"
         v-html="p"
       )
       
   g-vid-w-control(
+    public-path="../"
     src="../vid/climate/greenland_climate_video6_1",
     ext="mp4"
     poster="../img/climate/greenland_climate_preview6_1",
@@ -204,7 +212,7 @@
   //- section science
   section.u-section.gc-science
     .u-container
-      h2(v-html="str.scienceTitle")
+      h3(v-html="str.scienceTitle")
       p(
         v-for="p, index in str.scienceText1" :key="`gc-scienceText1-${index}`"
         v-html="p"
@@ -227,7 +235,10 @@
       )
 
   footer.g-footer
-    g-series(:list="str.seriesList")
+    g-series(
+      public-path="../"
+      :list="str.seriesList"
+    )
     .u-section.g-footer__copyright-wrapper
       .u-container.g-footer__copyright
         footer-editor(:data="editor")
@@ -237,7 +248,7 @@
           :description="str.metaDescription"
         )
         footer-questionnaire
-        footer-logo
+        footer-logo(public-path="../")
 </template>
 
 <script>
@@ -247,6 +258,7 @@ import GPic from '@/components/g-pic.vue';
 import GVid from '@/components/g-vid.vue';
 import GVidWControl from '@/components/g-vid-w-control.vue';
 import GSeries from '@/components/g-series.vue';
+import GHeroScroll from '@/components/g-hero-scroll.vue';
 import FooterLogo from '@/components/common/footer/footer-logo.vue';
 import FooterEditor from '@/components/common/footer/footer-editor.vue';
 import FooterQuestionnaire from '@/components/common/footer/footer-questionnaire.vue';
@@ -262,6 +274,7 @@ export default {
     GVid,
     GVidWControl,
     GSeries,
+    GHeroScroll,
     FooterLogo,
     FooterEditor,
     FooterQuestionnaire,
@@ -273,27 +286,27 @@ export default {
       headerList: [
         {
           title: '解凍格陵蘭',
-          url: '/',
-          active: true,
-        },
-        {
-          title: '北極站科學家篇',
-          url: '/climate',
+          url: '',
           active: false,
         },
         {
+          title: '北極站科學家篇',
+          url: 'climate',
+          active: true,
+        },
+        {
           title: '撈海廢討海人篇',
-          url: '/fishing',
+          url: 'fishing',
           active: false,
         },
         {
           title: '穿梭綠地牧羊人篇',
-          url: '/farming',
+          url: 'farming',
           active: false,
         },
         {
           title: '格陵蘭居民篇',
-          url: '/living',
+          url: 'living',
           active: false,
         },
       ],
@@ -332,12 +345,32 @@ export default {
 };
 </script>
 
+<style lang="scss" scoped>
+.g-hero-title {
+  text-align: center;
+  margin-bottom: $spacing-11 !important;
+
+  h2 {
+    @include general-font-h3;
+  }
+}
+</style>
+
 <style lang="scss">
+.gf-hero-vid-wrapper {
+  position: relative;
+}
+
 .gc-transition {
   min-height: 600px;
   display: flex;
   align-items: center;
 }
-</style>
 
-<style lang="scss" scoped></style>
+.gc-transition-vid {
+  @include rwd-max(lg) {
+    object-fit: contain !important;
+    object-position: center;
+  }
+}
+</style>

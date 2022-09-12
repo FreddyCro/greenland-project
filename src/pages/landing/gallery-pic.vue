@@ -1,18 +1,17 @@
 <template lang="pug">
 .gallery-pic
-  .gallery-pic__content-wrapper
-    .gallery-pic__content
-      g-pic(
-        :src="src"
-        ext="jpg"
-        :alt="text"
-        classname="gallery-pic__img"
-        :webp="true"
-        :use-prefix="false",
-      )
-      
-      .gallery-pic__text
-        span(v-html="text")
+  .gallery-pic__content
+    g-pic(
+      :src="src"
+      ext="jpg"
+      :alt="text"
+      classname="gallery-pic__img"
+      :webp="true"
+      :use-prefix="false",
+    )
+    
+    .gallery-pic__text
+      span(v-html="text")
 
 </template>
 
@@ -39,25 +38,28 @@ export default {
 
 <style lang="scss">
 .gallery-pic {
+  position: relative;
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
 
-  &__content-wrapper {
-    width: 100%;
-    height: 100%;
-    padding: $spacing-2;
+  @include rwd-min(sm) {
+    position: absolute;
+    left: 0;
+    top: 0;
   }
 
   &__content {
-    position: relative;
     width: 100%;
     height: 100%;
   }
 
   &__text {
+    @include general-font-p;
+
     position: absolute;
     left: 0;
     top: 0;
@@ -89,12 +91,15 @@ export default {
   }
 
   &__img {
-    display: flex;
-
     img {
-      position: relative;
-      height: 100%;
-      max-width: none;
+      @include rwd-min(sm) {
+        position: absolute;
+        left: 0;
+        top: 0;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 }

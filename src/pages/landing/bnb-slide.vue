@@ -1,23 +1,28 @@
 <template lang="pug">
 .bnb-slide(:ref="`bnb-slide-${id}`" :class="classname")
   .bnb-slide-half.bnb-slide__sec-wrapper
-    .bnb-slide-half.bnb-slide__sec(:class="{'bnb-slide__sec--active': isActive}")
+    .bnb-slide__sec.bnb-slide__sec--chart(
+      v-if="firstChart && secondChart"
+      :class="{'bnb-slide__sec--active': isBnbEnter}"
+    )
       g-two-chart(
-        v-if="firstChart && secondChart"
         :id="`bnb-slide-media-${id}`",
         :first="firstChart",
         :second="secondChart",
         :alt="alt"
-        :is-active="isActive"
+        :is-active="isPrimEnter"
       )
+    .bnb-slide__sec.bnb-slide__sec--vid(
+      v-if="vid"
+      :class="{'bnb-slide__sec--active': isBnbEnter}"
+    )
       g-vid-w-control(
-        v-if="vid"
         :src="vid"
         :ext="ext"
         :poster="poster",
         :poster-ext="posterExt"
         :id="`bnb-slide-media-${id}`",
-        :force-stop="!isActive"
+        :force-stop="!isBnbEnter"
       )
   .bnb-slide-half.bnb-slide__prim(:ref="`bnb-slide-prim-${id}`")
     slot
@@ -71,17 +76,44 @@ export default {
       type: String,
       default: '',
     },
+    useOffset: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
-      isActive: false,
+      isBnbEnter: false,
+      isPrimEnter: false,
     };
   },
   mounted() {
+    // handle bnb slide
+    linearIntersectionObserver(
+      this.$refs[`bnb-slide-${this.id}`],
+      () => {
+        this.isBnbEnter = true;
+      },
+      () => {
+        this.isBnbEnter = false;
+      }
+    );
+
+    // handle prim
     linearIntersectionObserver(
       this.$refs[`bnb-slide-prim-${this.id}`],
-      this.handleEnter,
-      this.handleLeave
+      () => {
+        this.isPrimEnter = true;
+      },
+      () => {
+        this.isPrimEnter = false;
+      },
+      {
+        rootMargin: this.useOffset
+          ? `0px 0px ${window.innerHeight * -0.3}px 0px`
+          : '0px 0px 0px 0px',
+        threshold: 0,
+      }
     );
   },
   methods: {
@@ -99,16 +131,19 @@ export default {
 .bnb-slide {
   position: relative;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+
+  @include rwd-min(md) {
+    flex-direction: row;
+  }
 
   &-half {
     position: relative;
-    height: 100%;
+    width: 100%;
 
     @include rwd-min(md) {
       width: 50%;
@@ -117,38 +152,71 @@ export default {
 
   &__prim {
     position: relative;
+    width: 100%;
     margin: 100vh auto;
     padding: $spacing-9;
     background-color: rgba($color: $bg-white, $alpha: 0.9);
-  }
-
-  &__sec-wrapper {
-    position: relative;
-    overflow: hidden;
-  }
-
-  &__sec {
-    position: fixed;
-    left: 0;
-    top: 50%;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: translateY(-50%);
-    opacity: 0;
-    pointer-events: none;
-    transition: 0.333s ease-in-out;
-
-    &--active {
-      opacity: 1;
-      pointer-events: all;
-    }
 
     @include rwd-min(md) {
       width: 50%;
     }
+
+    /* .u-container {
+      margin-left: 0;
+      margin-right: 0;
+    } */
+  }
+
+  &__sec-wrapper {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    @include rwd-min(md) {
+      width: 50%;
+    }
+  }
+
+  &__sec {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: 0.5s ease-in-out;
+
+    &--active {
+      opacity: 1;
+    }
+
+    &--chart {
+      @include rwd-min(md) {
+        justify-content: flex-end;
+        padding: $spacing-10;
+      }
+
+      @include rwd-min(xl) {
+        img {
+          max-width: 469px !important;
+          max-height: 329px !important;
+        }
+      }
+    }
+  }
+
+  .g-vid-w-control {
+    width: 100%;
+    height: 100%;
+  }
+
+  .g-vid {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center bottom;
   }
 }
 </style>

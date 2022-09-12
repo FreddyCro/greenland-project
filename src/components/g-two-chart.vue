@@ -40,6 +40,11 @@ export default {
 .g-two-chart {
   position: relative;
 
+  @include rwd-max(xs) {
+    margin-left: $spacing-5;
+    margin-right: $spacing-5;
+  }
+
   &__second {
     position: absolute;
     top: 0;
@@ -47,7 +52,7 @@ export default {
     width: 100%;
     height: 100%;
     opacity: 1;
-    transition: opacity 0.333s 1s ease-in-out;
+    transition: opacity 0.333s ease-in-out;
 
     &--hidden {
       opacity: 0;

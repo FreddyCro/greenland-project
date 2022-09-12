@@ -3,7 +3,8 @@
     v-if="src"
     :ref="id"
     :id="id"
-    :class="`g-vid ${classname}`"
+    class="g-vid"
+    :class="classname || ''"
     playsinline
     :autoplay="isPlaying ? false : true"
     loop
@@ -56,6 +57,7 @@ export default {
   },
   computed: {
     rwdSrc() {
+      if (!this.$store.state.device) return '';
       return `${this.src}_${this.$store.state.device || ''}.${this.ext}`;
     },
     rwdSrcWebm() {
@@ -66,7 +68,6 @@ export default {
     },
     rwdSrcPoster() {
       if (!this.$store.state.device) return '';
-
       return `${this.poster}_${this.$store.state.device || ''}.${
         this.posterExt
       }`;
@@ -77,6 +78,13 @@ export default {
       handler() {
         this.video.load();
         if (this.isPlaying) this.video.play();
+        else this.video.pause();
+      },
+    },
+    isPlaying: {
+      handler(value) {
+        if (value) this.video.play();
+        else this.video.pause();
       },
     },
   },

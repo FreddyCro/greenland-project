@@ -11,28 +11,45 @@
           )
             a.g-series-card(
               :class="`g-series-card--${item}`"
-              :href="listData[item].url"
+              :href="`${publicPath}${listData[item].url}`"
+              target="_blank"
             )
-              h4.g-series-card__title(v-html="listData[item].title")
-              button.g-series-card__btn
-                span(v-html="listData[item].text")
-                span.g-series-card__btn-arrow
-                  svg(
-                    width="11"
-                    height="8"
-                    viewBox="0 0 22 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  )
-                    path(d="M1 7C0.447715 7 5.3647e-08 7.44772 0 8C-5.3647e-08 8.55228 0.447715 9 1 9L1 7ZM21.7071 8.70711C22.0976 8.31658 22.0976 7.68342 21.7071 7.29289L15.3431 0.928933C14.9526 0.538409 14.3195 0.538409 13.9289 0.928933C13.5384 1.31946 13.5384 1.95262 13.9289 2.34315L19.5858 8L13.9289 13.6569C13.5384 14.0474 13.5384 14.6805 13.9289 15.0711C14.3195 15.4616 14.9526 15.4616 15.3431 15.0711L21.7071 8.70711ZM1 9L21 9L21 7L1 7L1 9Z")
+              g-pic(
+                :src="`${publicPath}${listData[item].src}`"
+                ext="jpg"
+                :alt="listData[item].title"
+                classname="g-series-card__bg"
+                :webp="true"
+              )
+              .g-series-card__content
+                h4.g-series-card__title(v-html="listData[item].title")
+                button.g-series-card__btn
+                  span(v-html="listData[item].text")
+                  span.g-series-card__btn-arrow
+                    svg(
+                      width="11"
+                      height="8"
+                      viewBox="0 0 22 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    )
+                      path(d="M1 7C0.447715 7 5.3647e-08 7.44772 0 8C-5.3647e-08 8.55228 0.447715 9 1 9L1 7ZM21.7071 8.70711C22.0976 8.31658 22.0976 7.68342 21.7071 7.29289L15.3431 0.928933C14.9526 0.538409 14.3195 0.538409 13.9289 0.928933C13.5384 1.31946 13.5384 1.95262 13.9289 2.34315L19.5858 8L13.9289 13.6569C13.5384 14.0474 13.5384 14.6805 13.9289 15.0711C14.3195 15.4616 14.9526 15.4616 15.3431 15.0711L21.7071 8.70711ZM1 9L21 9L21 7L1 7L1 9Z")
 </template>
 
 <script>
+import GPic from '@/components/g-pic.vue';
 import str from '@/assets/string/series.json';
 
 export default {
   name: 'g-series',
+  components: {
+    GPic,
+  },
   props: {
+    publicPath: {
+      type: String,
+      default: './',
+    },
     list: {
       type: Array,
       default: () => [],
@@ -46,26 +63,31 @@ export default {
           url: str.seriesLandingUrl,
           title: str.seriesLandingTitle,
           text: str.seriesButtonText,
+          src: 'img/series/landing',
         },
         climate: {
           url: str.seriesClimateUrl,
           title: str.seriesClimateTitle,
           text: str.seriesButtonText,
+          src: 'img/series/climate',
         },
         fishing: {
           url: str.seriesFishingUrl,
           title: str.seriesFishingTitle,
           text: str.seriesButtonText,
+          src: 'img/series/fishing',
         },
         farming: {
           url: str.seriesFarmingUrl,
           title: str.seriesFarmingTitle,
           text: str.seriesButtonText,
+          src: 'img/series/farming',
         },
         living: {
           url: str.seriesLivingUrl,
           title: str.seriesLivingTitle,
           text: str.seriesButtonText,
+          src: 'img/series/living',
         },
       },
     };
@@ -129,6 +151,7 @@ export default {
 }
 
 .g-series-card-wrapper {
+  position: relative;
   width: 100%;
   height: 330px;
   padding: $spacing-5;
@@ -146,42 +169,17 @@ export default {
 
 .g-series-card {
   position: relative;
+  display: block;
   width: 100%;
   height: 100%;
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   padding: $spacing-3;
   background-color: #cccccc;
-  background-size: cover;
-  background-position: top center;
   text-decoration: none;
 
   @include rwd-min(sm) {
     padding: $spacing-5;
     max-width: 240px;
     background-position: center;
-  }
-
-  &--landing {
-    @include bg-3x('/img/series/landing', 'jpg', true);
-  }
-
-  &--climate {
-    @include bg-3x('/img/series/climate', 'jpg', true);
-  }
-
-  &--fishing {
-    @include bg-3x('/img/series/fishing', 'jpg', true);
-  }
-
-  &--farming {
-    @include bg-3x('/img/series/farming', 'jpg', true);
-  }
-
-  &--living {
-    @include bg-3x('/img/series/living', 'jpg', true);
   }
 
   &::before {
@@ -212,6 +210,27 @@ export default {
     path {
       fill: $black;
     }
+  }
+
+  &__bg {
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
   }
 
   &__title {

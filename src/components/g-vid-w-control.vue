@@ -1,12 +1,12 @@
 <template>
-  <div class="g-vid-w-control">
+  <div ref="g-vid" class="g-vid-w-control">
     <g-vid
       :src="src"
       :ext="ext"
       :poster="poster"
       :posterExt="posterExt"
       :id="id"
-      :classname="classname"
+      :class="classname || ''"
       :use-webm="useWebm"
       :is-playing="isPlaying"
     />
@@ -15,20 +15,24 @@
       <button class="g-vid-w-control__btn" @click="handlePlayClick">
         <img
           v-if="isPlaying"
-          src="img/icon/video_pause_logo.svg"
+          :src="`${publicPath}img/icon/video_pause_logo.svg`"
           alt="paused"
         />
-        <img v-else src="img/icon/video_play_logo.svg" alt="play" />
+        <img
+          v-else
+          :src="`${publicPath}img/icon/video_play_logo.svg`"
+          alt="play"
+        />
       </button>
       <button class="g-vid-w-control__btn" @click="handleMuteClick">
         <img
           v-if="$store.state.sound"
-          src="img/icon/video_turn_on_volume_logo.svg"
+          :src="`${publicPath}img/icon/video_turn_on_volume_logo.svg`"
           alt="volume on"
         />
         <img
           v-else
-          src="img/icon/video_turn_off_volume_logo.svg"
+          :src="`${publicPath}img/icon/video_turn_off_volume_logo.svg`"
           alt="volume off"
         />
       </button>
@@ -38,6 +42,7 @@
 
 <script>
 import GVid from '@/components/g-vid.vue';
+import { linearIntersectionObserver } from '@/assets/js/observer.js';
 
 export default {
   name: 'g-vid-w-control',
@@ -45,6 +50,10 @@ export default {
     GVid,
   },
   props: {
+    publicPath: {
+      type: String,
+      default: '',
+    },
     src: {
       type: String,
     },
@@ -95,19 +104,10 @@ export default {
         this.isPlaying = !value;
       },
     },
-    isPlaying: {
-      handler(value) {
-        this.handlePlay(value);
-      },
-    },
   },
   methods: {
     handlePlayClick() {
       this.isPlaying = !this.isPlaying;
-    },
-    handlePlay(boolean) {
-      if (boolean) this.video.play();
-      else this.video.pause();
     },
     handleMuteClick() {
       this.isMuted = !this.isMuted;
@@ -118,10 +118,15 @@ export default {
     this.video = document.querySelector(`#${this.id}`);
     this.isPlaying = !this.forceStop;
 
-    // TODO: optimize this
-    setTimeout(() => {
-      this.handlePlay(this.isPlaying);
-    }, 100);
+    linearIntersectionObserver(
+      this.$refs['g-vid'],
+      () => {
+        // this.isPlaying = true;
+      },
+      () => {
+        // this.isPlaying = false;
+      }
+    );
   },
 };
 </script>
@@ -129,6 +134,7 @@ export default {
 <style lang="scss">
 .g-vid-w-control {
   position: relative;
+  background-color: $black;
 
   &__btns {
     position: absolute;

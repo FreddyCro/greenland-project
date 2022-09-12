@@ -4,7 +4,7 @@
       network="facebook"
       :title="title"
       :description="description"
-      :url="url"
+      :url="shareUrl"
     >
       <button class="footer-share__btn footer-share__btn--fb">
         <svg
@@ -25,7 +25,7 @@
       network="facebook"
       :title="title"
       :description="description"
-      :url="url"
+      :url="shareUrl"
     >
       <button class="footer-share__btn footer-share__btn--line">
         <svg
@@ -42,11 +42,7 @@
         </svg>
       </button>
     </share-network>
-    <share-network
-      network="twitter"
-      :title="title"
-      :url="url"
-    >
+    <share-network network="twitter" :title="title" :url="shareUrl">
       <button class="footer-share__btn footer-share__btn--twitter">
         <svg
           width="36"
@@ -77,10 +73,16 @@ export default {
       type: String,
       default: '',
     },
-    url: {
-      type: String,
-      default: '',
-    },
+  },
+  data() {
+    return {
+      shareUrl: '',
+    };
+  },
+  mounted() {
+    this.shareUrl =
+      document.querySelector('meta[property="og:url"]').content ||
+      window.location.href;
   },
 };
 </script>

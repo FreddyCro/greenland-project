@@ -4,27 +4,24 @@ const farmingString = require('./src/assets/string/farming.json');
 const fishingString = require('./src/assets/string/fishing.json');
 const livingString = require('./src/assets/string/living.json');
 
-const path = require('path');
-const resolve = (dir) => path.join(__dirname, dir);
-
 const ENV = 'test';
-
 const getPublicPath = (env) => {
   /* production */
   const productionPath =
     process.env.NODE_ENV === 'production'
-      ? 'https://vip.udn.com/newmedia/2022/greenland/'
+      ? process.env.VUE_APP_PRODUCTION_PATH
       : 'http://localhost:8080/';
 
   /* testing */
   const testingPath =
     process.env.NODE_ENV === 'production'
-      ? 'https://freddycro.github.io/test-page/'
+      ? process.env.VUE_APP_TEST_PATH
       : 'http://localhost:8080/';
 
   return env === 'production' ? productionPath : testingPath;
 };
 
+console.log(process.env.VUE_APP_TEST_PATH);
 const publicPath = getPublicPath(ENV);
 const robot = ENV === 'production' ? 'index,follow' : 'noindex,nofollow';
 
@@ -37,7 +34,7 @@ module.exports = {
       title: landingString.metaTitle,
       metaTitle: landingString.metaTitle,
       metaDescription: landingString.metaDescription,
-      metaUrl: landingString.metaUrl,
+      metaUrl: `${publicPath}/`,
       metaImage: `${landingString.metaUrl}/og.jpg`,
       metaKeywords: landingString.metaKeywords,
       metaRobot: robot,
@@ -54,8 +51,8 @@ module.exports = {
       title: climateString.metaTitle,
       metaTitle: climateString.metaTitle,
       metaDescription: climateString.metaDescription,
-      metaUrl: climateString.metaUrl,
-      metaImage: `${climateString.metaUrl}/og.jpg`,
+      metaUrl: `${publicPath}climate/`,
+      metaImage: `${publicPath}climate/og.jpg`,
       metaKeywords: climateString.metaKeywords,
       metaRobot: robot,
       metaAuthor: climateString.metaAuthor,
@@ -71,8 +68,8 @@ module.exports = {
       title: farmingString.metaTitle,
       metaTitle: farmingString.metaTitle,
       metaDescription: farmingString.metaDescription,
-      metaUrl: farmingString.metaUrl,
-      metaImage: `${farmingString.metaUrl}/og.jpg`,
+      metaUrl: `${publicPath}farming/`,
+      metaImage: `${farmingString.metaUrl}farming/og.jpg`,
       metaKeywords: farmingString.metaKeywords,
       metaRobot: robot,
       metaAuthor: farmingString.metaAuthor,
@@ -88,8 +85,8 @@ module.exports = {
       title: fishingString.metaTitle,
       metaTitle: fishingString.metaTitle,
       metaDescription: fishingString.metaDescription,
-      metaUrl: fishingString.metaUrl,
-      metaImage: `${fishingString.metaUrl}/og.jpg`,
+      metaUrl: `${publicPath}fishing/`,
+      metaImage: `${publicPath}fishing/og.jpg`,
       metaKeywords: fishingString.metaKeywords,
       metaRobot: robot,
       metaAuthor: fishingString.metaAuthor,
@@ -105,8 +102,8 @@ module.exports = {
       title: livingString.metaTitle,
       metaTitle: livingString.metaTitle,
       metaDescription: livingString.metaDescription,
-      metaUrl: livingString.metaUrl,
-      metaImage: `${livingString.metaUrl}/og.jpg`,
+      metaUrl: `${publicPath}living/`,
+      metaImage: `${publicPath}living/og.jpg`,
       metaKeywords: livingString.metaKeywords,
       metaRobot: robot,
       metaAuthor: livingString.metaAuthor,
@@ -122,13 +119,11 @@ module.exports = {
       .use('pug-html-loader')
       .loader('pug-html-loader')
       .end();
-
-    config.resolve.alias.set('~', resolve('client/src/assets'));
   },
   css: {
     loaderOptions: {
       scss: {
-        additionalData: ` @import "@/assets/style/_variables.scss"; @import "@/assets/style/_mixins.scss";`,
+        additionalData: `@import "@/assets/style/_variables.scss"; @import "@/assets/style/_mixins.scss";`,
       },
     },
   },
