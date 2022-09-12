@@ -63,7 +63,7 @@ export default {
   &__logo {
     width: 120px;
 
-    @include rwd-min(xs) {
+    @include rwd-max(xs) {
       margin-bottom: $spacing-5;
     }
   }

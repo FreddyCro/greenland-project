@@ -297,6 +297,10 @@ export default {
   data() {
     return {
       str,
+      VIDEO_PATH:
+        process.env.NODE_ENV === 'production'
+          ? process.env.VUE_APP_VIDEO_PATH
+          : 'http://localhost:8080/vid/',
       headerList: [
         {
           title: '解凍格陵蘭',

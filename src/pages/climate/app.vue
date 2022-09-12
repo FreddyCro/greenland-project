@@ -93,7 +93,7 @@
   //- section collage
   .u-container-lg
     g-pic(
-      src="../img/climate/greenland_climate_pic4_2"
+      src="../img/climate/greenland_climate_pic4_3"
       ext="jpg"
       :alt="str.collageImg1Caption"
       classname="gc-collage-img1"
@@ -112,10 +112,14 @@
       )
 
   .u-container
-    img(
-      :src="'../img/climate/greenland_climate_chart4_3.svg'"
+    g-pic(
+      src="../img/climate/greenland_climate_chart4_2"
+      classname="gc-collage-img2"
+      ext="svg"
       :alt="str.protectionImg1Caption"
-      class="gc-collage-img2"
+      :use2x="false"
+      :use3x="false"
+      :webp="false"
     )
     p.caption(v-html="str.protectionImg1Caption")
 
@@ -283,6 +287,10 @@ export default {
   data() {
     return {
       str,
+      VIDEO_PATH:
+        process.env.NODE_ENV === 'production'
+          ? process.env.VUE_APP_VIDEO_PATH
+          : 'http://localhost:8080/vid/',
       headerList: [
         {
           title: '解凍格陵蘭',

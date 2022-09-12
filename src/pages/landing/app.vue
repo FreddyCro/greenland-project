@@ -13,7 +13,7 @@
     h1(v-html="str.heroTitle")
     .gl-hero-vid-wrapper
       g-vid(
-        src="vid/landing/greenland_video1_1",
+        :src="`${VIDEO_PATH}landing/greenland_video1_1`",
         ext="mp4",
         poster="img/landing/greenland_preview1_1",
         poster-ext="webp"
@@ -21,7 +21,6 @@
         classname="gl-hero-vid"
         :use-webm="true"
       )
-    g-hero-scroll
 
   //- section intro
   section.u-section.gl-intro
@@ -198,6 +197,10 @@ export default {
   data() {
     return {
       str,
+      VIDEO_PATH:
+        process.env.NODE_ENV === 'production'
+          ? process.env.VUE_APP_VIDEO_PATH
+          : 'http://localhost:8080/vid/',
       headerList: [
         {
           title: '解凍格陵蘭',

@@ -40,7 +40,7 @@
         src="../img/living/greenland_living_pic2"
         ext="jpg"
         :alt="str.introTitle"
-        classname="gc-intro-img-1"
+        classname="u-full-vh-img gc-intro-img-1"
         :webp="true"
       )
     section.u-section.gli-intro(slot="content")
@@ -385,6 +385,10 @@ export default {
   data() {
     return {
       str,
+      VIDEO_PATH:
+        process.env.NODE_ENV === 'production'
+          ? process.env.VUE_APP_VIDEO_PATH
+          : 'http://localhost:8080/vid/',
       headerList: [
         {
           title: '解凍格陵蘭',

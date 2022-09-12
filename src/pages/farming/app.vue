@@ -213,8 +213,8 @@
       :alt="str.farmSheepImg3Caption"
       classname="gf-farmSheep-img3"
       :webp="false"
-      :no2x="true"
-      :no3x="true"
+      :use2x="false"
+      :use3x="false"
     )
     p.small.gf-img-source(v-html="str.farmSheepImg3Source")
     p.caption(v-html="str.farmSheepImg3Caption")
@@ -361,6 +361,10 @@ export default {
   data() {
     return {
       str,
+      VIDEO_PATH:
+        process.env.NODE_ENV === 'production'
+          ? process.env.VUE_APP_VIDEO_PATH
+          : 'http://localhost:8080/vid/',
       headerList: [
         {
           title: '解凍格陵蘭',
