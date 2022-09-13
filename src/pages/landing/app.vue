@@ -86,7 +86,7 @@
   //- section snow
   section.gl-snow
     bnb-slide(
-      vid="vid/landing/greenland_video4_1",
+      :vid="`${VIDEO_PATH}landing/greenland_video4_1`",
       ext="mp4"
       poster="img/landing/greenland_preview4_1"
       poster-ext="webp"
@@ -104,7 +104,7 @@
   //- section speed
   section.gl-speed
     bnb-slide(
-      vid="vid/landing/greenland_video5_1",
+      :vid="`${VIDEO_PATH}landing/greenland_video5_1`",
       ext="mp4"
       poster="img/landing/greenland_preview5_1",
       poster-ext="webp"
@@ -121,7 +121,7 @@
   //- section culture
   section.gl-culture
     bnb-slide(
-      vid="vid/landing/greenland_video6_1",
+      :vid="`${VIDEO_PATH}landing/greenland_video6_1`",
       ext="mp4"
       poster="img/landing/greenland_preview6_1",
       poster-ext="webp"

@@ -12,7 +12,7 @@
   g-slide(id="hero" classname="gfi-hero-slide")
     section.u-section-full.gfi-hero-vid-wrapper(slot="bg")
       g-vid(
-        src="../vid/fishing/greenland_fishing_video1",
+        :src="`${VIDEO_PATH}/fishing/greenland_fishing_video1`",
         ext="mp4",
         poster="../img/fishing/greenland_fishing_preview1",
         poster-ext="webp"
@@ -55,7 +55,7 @@
     section(slot="bg")
       g-vid-w-control(
         public-path="../"
-        src="../vid/fishing/greenland_fishing_video3",
+        :src="`${VIDEO_PATH}/fishing/greenland_fishing_video3`",
         ext="mp4"
         poster="../img/fishing/greenland_fishing_preview3",
         poster-ext="webp"

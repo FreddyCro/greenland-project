@@ -12,7 +12,7 @@
   g-slide(id="intro" classname="gli-intro-slide")
     section.u-section-full.gli-hero-vid-wrapper(slot="bg")
       g-vid(
-        src="../vid/living/greenland_living_video1",
+        :src="`${VIDEO_PATH}/living/greenland_living_video1`",
         ext="mp4",
         poster="../img/living/greenland_living_preview1",
         poster-ext="jpg"

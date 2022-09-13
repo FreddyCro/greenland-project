@@ -12,7 +12,7 @@
   g-slide(id="hero" classname="gc-hero-slide" :is-first="true")
     section.u-section-full.gf-hero-vid-wrapper(slot="bg")
       g-vid(
-        src="../vid/farming/greenland_farming_video1",
+        :src="`${VIDEO_PATH}/farming/greenland_farming_video1`",
         ext="mp4",
         poster="../img/farming/greenland_farming_preview1",
         poster-ext="webp"
@@ -55,7 +55,7 @@
     section(slot="bg")
       g-vid-w-control(
         public-path="../"
-        src="../vid/farming/greenland_farming_video3",
+        :src="`${VIDEO_PATH}/farming/greenland_farming_video3`",
         ext="mp4",
         poster="../img/farming/greenland_farming_preview3",
         poster-ext="webp"

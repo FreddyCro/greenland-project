@@ -12,7 +12,7 @@
   g-slide(id="hero" classname="gc-hero-slide")
     section.u-section-full.gf-hero-vid-wrapper(slot="bg")
       g-vid(
-        src="../vid/climate/greenland_climate_video1",
+        :src="`${VIDEO_PATH}climate/greenland_climate_video1`",
         ext="mp4",
         poster="../img/climate/greenland_climate_preview1",
         poster-ext="webp"
@@ -55,7 +55,7 @@
     section(slot="bg")
       g-vid-w-control(
         public-path="../"
-        src="../vid/climate/greenland_climate_video3",
+        :src="`${VIDEO_PATH}climate/greenland_climate_video3`",
         ext="mp4"
         poster="../img/climate/greenland_climate_preview3",
         poster-ext="webp"
@@ -203,7 +203,7 @@
       
   g-vid-w-control(
     public-path="../"
-    src="../vid/climate/greenland_climate_video6_1",
+    :src="`${VIDEO_PATH}climate/greenland_climate_video6_1`",
     ext="mp4"
     poster="../img/climate/greenland_climate_preview6_1",
     poster-ext="webp"
