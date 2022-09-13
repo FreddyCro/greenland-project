@@ -4,7 +4,7 @@ const farmingString = require('./src/assets/string/farming.json');
 const fishingString = require('./src/assets/string/fishing.json');
 const livingString = require('./src/assets/string/living.json');
 
-const ENV = 'test';
+const ENV = process.env.MODE;
 const getPublicPath = (env) => {
   /* production */
   const productionPath =
@@ -21,7 +21,6 @@ const getPublicPath = (env) => {
   return env === 'production' ? productionPath : testingPath;
 };
 
-console.log(process.env.VUE_APP_TEST_PATH);
 const publicPath = getPublicPath(ENV);
 const robot = ENV === 'production' ? 'index,follow' : 'noindex,nofollow';
 
