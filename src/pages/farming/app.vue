@@ -1,7 +1,6 @@
 <template lang="pug">
 #app.u-article.u-paragraph.greenland
   nmd-header(
-    public-path="../"
     :outlink="headerList"
     :title="str.metaTitle"
     :url="str.metaUrl"
@@ -12,7 +11,7 @@
   g-slide(id="hero" classname="gc-hero-slide" :is-first="true")
     section.u-section-full.gf-hero-vid-wrapper(slot="bg")
       g-vid(
-        src="../vid/farming/greenland_farming_video1",
+        :src="`${VIDEO_PATH}farming/greenland_farming_video1`",
         ext="mp4",
         poster="../img/farming/greenland_farming_preview1",
         poster-ext="webp"
@@ -54,8 +53,7 @@
   g-slide(id="transition" classname="gf-transition-slide" :is-last="true")
     section(slot="bg")
       g-vid-w-control(
-        public-path="../"
-        src="../vid/farming/greenland_farming_video3",
+        :src="`${VIDEO_PATH}farming/greenland_farming_video3`",
         ext="mp4",
         poster="../img/farming/greenland_farming_preview3",
         poster-ext="webp"
@@ -363,10 +361,6 @@ export default {
   data() {
     return {
       str,
-      VIDEO_PATH:
-        process.env.NODE_ENV === 'production'
-          ? process.env.VUE_APP_VIDEO_PATH
-          : 'http://localhost:8080/vid/',
       headerList: [
         {
           title: '解凍格陵蘭',

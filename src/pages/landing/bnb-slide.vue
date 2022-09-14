@@ -23,6 +23,8 @@
         :poster-ext="posterExt"
         :id="`bnb-slide-media-${id}`",
         :force-stop="!isBnbEnter"
+        :use-play="false"
+        :use-sound="false"
       )
   .bnb-slide-half.bnb-slide__prim(:ref="`bnb-slide-prim-${id}`")
     slot
@@ -75,6 +77,14 @@ export default {
     alt: {
       type: String,
       default: '',
+    },
+    usePlay: {
+      type: Boolean,
+      default: true,
+    },
+    useSound: {
+      type: Boolean,
+      default: true,
     },
     useOffset: {
       type: Boolean,

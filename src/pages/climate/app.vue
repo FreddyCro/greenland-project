@@ -1,7 +1,6 @@
 <template lang="pug">
 #app.u-article.u-paragraph.greenland
   nmd-header(
-    public-path="../"
     :outlink="headerList"
     :title="str.metaTitle"
     :url="str.metaUrl"
@@ -12,7 +11,7 @@
   g-slide(id="hero" classname="gc-hero-slide")
     section.u-section-full.gf-hero-vid-wrapper(slot="bg")
       g-vid(
-        src="../vid/climate/greenland_climate_video1",
+        :src="`${VIDEO_PATH}climate/greenland_climate_video1`",
         ext="mp4",
         poster="../img/climate/greenland_climate_preview1",
         poster-ext="webp"
@@ -54,8 +53,7 @@
   g-slide(id="transition" classname="gc-transition-slide" :is-last="true")
     section(slot="bg")
       g-vid-w-control(
-        public-path="../"
-        src="../vid/climate/greenland_climate_video3",
+        :src="`${VIDEO_PATH}climate/greenland_climate_video3`",
         ext="mp4"
         poster="../img/climate/greenland_climate_preview3",
         poster-ext="webp"
@@ -209,6 +207,8 @@
     poster-ext="webp"
     id="gc-sea-vid",
     classname="u-full-vid"
+    :use-play="false"
+    :use-sound="false"
   )
   .u-container-lg
     p.caption(v-html="str.seaImg1Caption")

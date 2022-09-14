@@ -1,7 +1,6 @@
 <template lang="pug">
 #app.u-article.greenland
   nmd-header(
-    public-path="./"
     :outlink="headerList"
     :title="str.metaTitle"
     :url="str.metaUrl"
@@ -86,12 +85,14 @@
   //- section snow
   section.gl-snow
     bnb-slide(
-      vid="vid/landing/greenland_video4_1",
+      :vid="`${VIDEO_PATH}landing/greenland_video4_1`",
       ext="mp4"
       poster="img/landing/greenland_preview4_1"
       poster-ext="webp"
       id="gl-vid4"
       classname="gl-snow-slide"
+      :use-play="false"
+      :use-sound="false"
     )
       .u-container.u-paragraph
         h2(v-html="str.snowTitle")
@@ -104,7 +105,7 @@
   //- section speed
   section.gl-speed
     bnb-slide(
-      vid="vid/landing/greenland_video5_1",
+      :vid="`${VIDEO_PATH}landing/greenland_video5_1`",
       ext="mp4"
       poster="img/landing/greenland_preview5_1",
       poster-ext="webp"
@@ -121,7 +122,7 @@
   //- section culture
   section.gl-culture
     bnb-slide(
-      vid="vid/landing/greenland_video6_1",
+      :vid="`${VIDEO_PATH}landing/greenland_video6_1`",
       ext="mp4"
       poster="img/landing/greenland_preview6_1",
       poster-ext="webp"
@@ -199,10 +200,6 @@ export default {
   data() {
     return {
       str,
-      VIDEO_PATH:
-        process.env.NODE_ENV === 'production'
-          ? process.env.VUE_APP_VIDEO_PATH
-          : 'http://localhost:8080/vid/',
       headerList: [
         {
           title: '解凍格陵蘭',

@@ -12,7 +12,11 @@
     />
 
     <div class="g-vid-w-control__btns">
-      <button class="g-vid-w-control__btn" @click="handlePlayClick">
+      <button 
+        v-if="usePlay"
+        class="g-vid-w-control__btn"
+        @click="handlePlayClick"
+      >
         <img
           v-if="isPlaying"
           :src="`${PUBLIC_PATH}img/icon/video_pause_logo.svg`"
@@ -24,7 +28,11 @@
           alt="play"
         />
       </button>
-      <button class="g-vid-w-control__btn" @click="handleMuteClick">
+      <button
+        v-if="useSound"
+        class="g-vid-w-control__btn"
+        @click="handleMuteClick"
+      >
         <img
           v-if="$store.state.sound"
           :src="`${PUBLIC_PATH}img/icon/video_turn_on_volume_logo.svg`"

@@ -11,11 +11,11 @@
           )
             a.g-series-card(
               :class="`g-series-card--${item}`"
-              :href="`${ASSETS_PATH}${listData[item].url}`"
+              :href="`${PUBLIC_PATH}${listData[item].url}`"
               target="_blank"
             )
               g-pic(
-                :src="`${ASSETS_PATH}${listData[item].src}`"
+                :src="`${PUBLIC_PATH}${listData[item].src}`"
                 ext="jpg"
                 :alt="listData[item].title"
                 classname="g-series-card__bg"
