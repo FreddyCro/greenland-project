@@ -173,9 +173,11 @@ import LandingMap from '@/pages/landing/landing-map.vue';
 import LandingMapTransition from '@/pages/landing/landing-map-transition.vue';
 import NmdHeader from '@/components/common/header/HeaderTypeA.vue';
 import str from '@/assets/string/landing.json';
+import { env } from '@/assets/mixins';
 
 export default {
   name: 'App',
+  mixins: [env],
   components: {
     AnchorBtn,
     BnbSlide,

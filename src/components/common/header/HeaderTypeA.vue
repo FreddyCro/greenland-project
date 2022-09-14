@@ -6,7 +6,6 @@
     }"
   >
     <HeaderMenu
-      :public-path="publicPath"
       :menuActiveFlag="menuActiveFlag"
       :simplified="true"
       :outlink="outlink"
@@ -18,7 +17,7 @@
       <nav class="header-bar__nav">
         <div class="header-bar__logo">
           <img
-            :src="`${publicPath}img/logo_head_melting_greenland.svg`"
+            :src="`${PUBLIC_PATH}img/logo_head_melting_greenland.svg`"
             alt="project logo"
           />
         </div>
@@ -74,17 +73,13 @@ import ShareFb from '@/components/common/header/ShareFb.vue';
 import ShareLine from '@/components/common/header/ShareLine.vue';
 import ShareTwitter from '@/components/common/header/ShareTwitter.vue';
 import debounce from 'debounce';
-import { sendGa } from '@/assets/mixins';
+import { env, sendGa } from '@/assets/mixins';
 import { handleBodyScrollbar } from '@/assets/js/udn-newmedia-utils';
 
 export default {
   name: 'HeaderTypeA',
-  mixins: [sendGa],
+  mixins: [env, sendGa],
   props: {
-    publicPath: {
-      type: String,
-      default: '',
-    },
     href: {
       type: String,
       default: document.querySelector('meta[property="og:url"]').content,

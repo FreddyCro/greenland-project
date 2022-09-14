@@ -341,9 +341,11 @@ import FooterEditor from '@/components/common/footer/footer-editor.vue';
 import FooterQuestionnaire from '@/components/common/footer/footer-questionnaire.vue';
 import FooterShare from '@/components/common/footer/footer-share.vue';
 import str from '@/assets/string/farming.json';
+import { env } from '@/assets/mixins';
 
 export default {
   name: 'App',
+  mixins: [env],
   components: {
     NmdHeader,
     GSlide,

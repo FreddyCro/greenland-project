@@ -4,7 +4,6 @@ const farmingString = require('./src/assets/string/farming.json');
 const fishingString = require('./src/assets/string/fishing.json');
 const livingString = require('./src/assets/string/living.json');
 
-const ENV = process.env.MODE;
 const getPublicPath = (env) => {
   /* production */
   const productionPath =
@@ -21,11 +20,12 @@ const getPublicPath = (env) => {
   return env === 'production' ? productionPath : testingPath;
 };
 
-const publicPath = getPublicPath(ENV);
+const ENV = process.env.VUE_APP_MODE;
+const PUBLIC_PATH = getPublicPath(ENV);
 const robot = ENV === 'production' ? 'index,follow' : 'noindex,nofollow';
 
 module.exports = {
-  publicPath,
+  publicPath: PUBLIC_PATH,
   pages: {
     index: {
       entry: 'src/pages/landing/main.js',
@@ -33,8 +33,8 @@ module.exports = {
       title: landingString.metaTitle,
       metaTitle: landingString.metaTitle,
       metaDescription: landingString.metaDescription,
-      metaUrl: `${publicPath}`,
-      metaImage: `${publicPath}img/og.jpg`,
+      metaUrl: `${PUBLIC_PATH}`,
+      metaImage: `${PUBLIC_PATH}img/og.jpg`,
       metaKeywords: landingString.metaKeywords,
       metaRobot: robot,
       metaAuthor: landingString.metaAuthor,
@@ -43,15 +43,15 @@ module.exports = {
       metaModified: landingString.metaModified,
     },
     climate: {
-      publicPath,
+      publicPath: PUBLIC_PATH,
       entry: 'src/pages/climate/main.js',
       template: 'public/index.html',
       filename: 'climate/index.html',
       title: climateString.metaTitle,
       metaTitle: climateString.metaTitle,
       metaDescription: climateString.metaDescription,
-      metaUrl: `${publicPath}climate/`,
-      metaImage: `${publicPath}img/climate/og.jpg`,
+      metaUrl: `${PUBLIC_PATH}climate/`,
+      metaImage: `${PUBLIC_PATH}img/climate/og.jpg`,
       metaKeywords: climateString.metaKeywords,
       metaRobot: robot,
       metaAuthor: climateString.metaAuthor,
@@ -60,15 +60,15 @@ module.exports = {
       metaModified: climateString.metaModified,
     },
     farming: {
-      publicPath,
+      publicPath: PUBLIC_PATH,
       entry: 'src/pages/farming/main.js',
       template: 'public/index.html',
       filename: 'farming/index.html',
       title: farmingString.metaTitle,
       metaTitle: farmingString.metaTitle,
       metaDescription: farmingString.metaDescription,
-      metaUrl: `${publicPath}farming/`,
-      metaImage: `${publicPath}img/farming/og.jpg`,
+      metaUrl: `${PUBLIC_PATH}farming/`,
+      metaImage: `${PUBLIC_PATH}img/farming/og.jpg`,
       metaKeywords: farmingString.metaKeywords,
       metaRobot: robot,
       metaAuthor: farmingString.metaAuthor,
@@ -77,15 +77,15 @@ module.exports = {
       metaModified: farmingString.metaModified,
     },
     fishing: {
-      publicPath,
+      publicPath: PUBLIC_PATH,
       entry: 'src/pages/fishing/main.js',
       template: 'public/index.html',
       filename: 'fishing/index.html',
       title: fishingString.metaTitle,
       metaTitle: fishingString.metaTitle,
       metaDescription: fishingString.metaDescription,
-      metaUrl: `${publicPath}fishing/`,
-      metaImage: `${publicPath}img/fishing/og.jpg`,
+      metaUrl: `${PUBLIC_PATH}fishing/`,
+      metaImage: `${PUBLIC_PATH}img/fishing/og.jpg`,
       metaKeywords: fishingString.metaKeywords,
       metaRobot: robot,
       metaAuthor: fishingString.metaAuthor,
@@ -94,15 +94,15 @@ module.exports = {
       metaModified: fishingString.metaModified,
     },
     living: {
-      publicPath,
+      publicPath: PUBLIC_PATH,
       entry: 'src/pages/living/main.js',
       template: 'public/index.html',
       filename: 'living/index.html',
       title: livingString.metaTitle,
       metaTitle: livingString.metaTitle,
       metaDescription: livingString.metaDescription,
-      metaUrl: `${publicPath}living/`,
-      metaImage: `${publicPath}living/og.jpg`,
+      metaUrl: `${PUBLIC_PATH}living/`,
+      metaImage: `${PUBLIC_PATH}living/og.jpg`,
       metaKeywords: livingString.metaKeywords,
       metaRobot: robot,
       metaAuthor: livingString.metaAuthor,

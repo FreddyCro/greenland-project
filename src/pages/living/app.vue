@@ -365,9 +365,11 @@ import GHeroScroll from '@/components/g-hero-scroll.vue';
 import GQuote from '@/components/g-quote.vue';
 import NmdHeader from '@/components/common/header/HeaderTypeA.vue';
 import str from '@/assets/string/living.json';
+import { env } from '@/assets/mixins';
 
 export default {
   name: 'App',
+  mixins: [env],
   components: {
     FooterLogo,
     FooterEditor,

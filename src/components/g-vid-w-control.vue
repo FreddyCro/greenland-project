@@ -15,24 +15,24 @@
       <button class="g-vid-w-control__btn" @click="handlePlayClick">
         <img
           v-if="isPlaying"
-          :src="`${publicPath}img/icon/video_pause_logo.svg`"
+          :src="`${PUBLIC_PATH}img/icon/video_pause_logo.svg`"
           alt="paused"
         />
         <img
           v-else
-          :src="`${publicPath}img/icon/video_play_logo.svg`"
+          :src="`${PUBLIC_PATH}img/icon/video_play_logo.svg`"
           alt="play"
         />
       </button>
       <button class="g-vid-w-control__btn" @click="handleMuteClick">
         <img
           v-if="$store.state.sound"
-          :src="`${publicPath}img/icon/video_turn_on_volume_logo.svg`"
+          :src="`${PUBLIC_PATH}img/icon/video_turn_on_volume_logo.svg`"
           alt="volume on"
         />
         <img
           v-else
-          :src="`${publicPath}img/icon/video_turn_off_volume_logo.svg`"
+          :src="`${PUBLIC_PATH}img/icon/video_turn_off_volume_logo.svg`"
           alt="volume off"
         />
       </button>
@@ -43,17 +43,15 @@
 <script>
 import GVid from '@/components/g-vid.vue';
 import { linearIntersectionObserver } from '@/assets/js/observer.js';
+import { env } from '@/assets/mixins';
 
 export default {
   name: 'g-vid-w-control',
+  mixins: [env],
   components: {
     GVid,
   },
   props: {
-    publicPath: {
-      type: String,
-      default: '',
-    },
     src: {
       type: String,
     },

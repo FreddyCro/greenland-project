@@ -11,11 +11,11 @@
           )
             a.g-series-card(
               :class="`g-series-card--${item}`"
-              :href="`${publicPath}${listData[item].url}`"
+              :href="`${ASSETS_PATH}${listData[item].url}`"
               target="_blank"
             )
               g-pic(
-                :src="`${publicPath}${listData[item].src}`"
+                :src="`${ASSETS_PATH}${listData[item].src}`"
                 ext="jpg"
                 :alt="listData[item].title"
                 classname="g-series-card__bg"
@@ -39,17 +39,15 @@
 <script>
 import GPic from '@/components/g-pic.vue';
 import str from '@/assets/string/series.json';
+import { env } from '@/assets/mixins';
 
 export default {
   name: 'g-series',
+  mixins: [env],
   components: {
     GPic,
   },
   props: {
-    publicPath: {
-      type: String,
-      default: './',
-    },
     list: {
       type: Array,
       default: () => [],

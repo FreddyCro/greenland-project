@@ -268,9 +268,11 @@ import FooterEditor from '@/components/common/footer/footer-editor.vue';
 import FooterQuestionnaire from '@/components/common/footer/footer-questionnaire.vue';
 import FooterShare from '@/components/common/footer/footer-share.vue';
 import str from '@/assets/string/climate.json';
+import { env } from '@/assets/mixins';
 
 export default {
   name: 'App',
+  mixins: [env],
   components: {
     NmdHeader,
     GSlide,
@@ -287,10 +289,6 @@ export default {
   data() {
     return {
       str,
-      VIDEO_PATH:
-        process.env.NODE_ENV === 'production'
-          ? process.env.VUE_APP_VIDEO_PATH
-          : 'http://localhost:8080/vid/',
       headerList: [
         {
           title: '解凍格陵蘭',

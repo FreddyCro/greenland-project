@@ -5,7 +5,7 @@
       img.g-footer-logo__logo(
         v-for="logo, index in logos"
         :key="`footer-logo-${index}`"
-        :src="`${publicPath}${logo.src}`"
+        :src="`${PUBLIC_PATH}${logo.src}`"
         :alt="logo.alt"
       )
 
@@ -14,15 +14,11 @@
 
 <script>
 import str from '@/assets/string/common.json';
+import { env } from '@/assets/mixins';
 
 export default {
   name: 'g-footer-logo',
-  props: {
-    publicPath: {
-      type: String,
-      default: '',
-    },
-  },
+  mixins: [env],
   data() {
     return {
       str,
