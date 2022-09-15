@@ -201,7 +201,7 @@
       
   g-vid-w-control(
     public-path="../"
-    src="../vid/climate/greenland_climate_video6_1",
+    :src="`${VIDEO_PATH}climate/greenland_climate_video6_1`",
     ext="mp4"
     poster="../img/climate/greenland_climate_preview6_1",
     poster-ext="webp"
