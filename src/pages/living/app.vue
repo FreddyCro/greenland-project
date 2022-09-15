@@ -33,7 +33,7 @@
         )
 
   //- section intro
-  g-slide(id="section2" classname="gli-section2-slide" :is-last="true")
+  g-slide(id="section2" classname="gli-section2-slide")
     section(slot="bg")
       g-pic(
         src="../img/living/greenland_living_pic2"

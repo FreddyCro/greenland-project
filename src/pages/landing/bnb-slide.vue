@@ -108,7 +108,9 @@ export default {
         this.isBnbEnter = false;
       },
       {
-        rootMargin: `${window.innerHeight * -0.4}px 0px ${window.innerHeight * -0.4}px 0px`,
+        rootMargin: `${window.innerHeight * -0.4}px 0px ${
+          window.innerHeight * -0.4
+        }px 0px`,
       }
     );
 
@@ -166,11 +168,12 @@ export default {
   &__prim {
     position: relative;
     width: 100%;
-    margin: 100vh auto;
+    margin: 50vh auto 100vh auto;
     padding: $spacing-9;
     background-color: rgba($color: $bg-white, $alpha: 0.9);
 
     @include rwd-min(md) {
+      margin: 100vh auto;
       width: 50%;
     }
 

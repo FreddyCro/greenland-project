@@ -49,14 +49,14 @@
     bnb-slide(
       id="hot",
       classname="gl-hot-slide",
-      first-chart="img/landing/greenland_chart2_1_pc.svg",
-      second-chart="img/landing/greenland_chart2_2_pc.svg",
+      first-chart="img/landing/greenland_chart2_1",
+      second-chart="img/landing/greenland_chart2_2",
       :alt="str.hotTitle"
       :use-offset="true"
     )
       //- TODO: container
       .u-container.u-paragraph
-        h2(v-html="str.hotTitle")
+        h2.landing-h2(v-html="str.hotTitle")
         p(
           v-for="p, index in str.hotText"
           :key="`hotText-${index}`"
@@ -68,14 +68,14 @@
     bnb-slide(
       id="melt",
       classname="gl-melt-slide",
-      first-chart="img/landing/greenland_chart3_1_pc.svg"
-      second-chart="img/landing/greenland_chart3_2_pc.svg"
+      first-chart="img/landing/greenland_chart3_1"
+      second-chart="img/landing/greenland_chart3_2"
       :alt="str.hotTitle"
       :use-offset="true"
     )
       //- TODO: container
       .u-container.u-paragraph
-        h2(v-html="str.meltTitle")
+        h2.landing-h2(v-html="str.meltTitle")
         p(
           v-for="p, index in str.meltText"
           :key="`meltText-${index}`"
@@ -95,7 +95,7 @@
       :use-sound="false"
     )
       .u-container.u-paragraph
-        h2(v-html="str.snowTitle")
+        h2.landing-h2(v-html="str.snowTitle")
         p(
           v-for="p, index in str.snowText"
           :key="`snowText-${index}`"
@@ -112,7 +112,7 @@
       id="gl-vid5"
     )
       .u-container.u-paragraph
-        h2(v-html="str.speedTitle")
+        h2.landing-h2(v-html="str.speedTitle")
         p(
           v-for="p, index in str.speedText"
           :key="`speedText-${index}`"
@@ -129,7 +129,7 @@
       id="gl-vid6"
     )
       .u-container.u-paragraph
-        h2(v-html="str.cultureTitle")
+        h2.landing-h2(v-html="str.cultureTitle")
         p(
           v-for="p, index in str.cultureText"
           :key="`cultureText-${index}`"

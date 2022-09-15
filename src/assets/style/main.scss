@@ -81,10 +81,14 @@
 
 .u-paragraph {
   h2 {
-    margin-bottom: $spacing-7;
+    margin-bottom: $spacing-5;
 
-    @include rwd-min(md) {
-      margin-bottom: $spacing-8;
+    &.landing-h2 {
+      margin-bottom: $spacing-7;
+  
+      @include rwd-min(md) {
+        margin-bottom: $spacing-8;
+      }
     }
   }
 

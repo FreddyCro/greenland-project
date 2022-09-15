@@ -31,7 +31,10 @@
           )
 
   .glm-text
-    section.u-section.glm-section.glm-mystery(ref="section-1")
+    section.u-section.glm-section.glm-mystery(
+      ref="section-1"
+      :class="{'glm-section--active': activeIndex === 0}"
+    )
       .glm-container
         .glm-title
           h2(v-html="str.mapMysteryTitle")
@@ -41,7 +44,10 @@
           v-html="p"
         )
 
-    section.u-section.glm-section.glm-scientist#climate(ref="section-2")
+    section.u-section.glm-section.glm-scientist#climate(
+      ref="section-2"
+      :class="{'glm-section--active': activeIndex === 1}"
+    )
       .glm-container
         .glm-title
           h2(v-html="str.mapScientistTitle")
@@ -73,7 +79,10 @@
         )
           g-button(:text="str.mapScientistStoryTitle" classname="glm-button")
 
-    section.u-section.glm-section.glm-fishing#fishing(ref="section-3")
+    section.u-section.glm-section.glm-fishing#fishing(
+      ref="section-3"
+      :class="{'glm-section--active': activeIndex === 2}"
+    )
       .glm-container
         .glm-title
           h2(v-html="str.mapFishingTitle")
@@ -105,7 +114,10 @@
         )
           g-button(:text="str.mapFishingStoryTitle" classname="glm-button")
 
-    section.u-section.glm-section.glm-farming#farming(ref="section-4")
+    section.u-section.glm-section.glm-farming#farming(
+      ref="section-4"
+      :class="{'glm-section--active': activeIndex === 3}"
+    )
       .glm-container
         .glm-title
           h2(v-html="str.mapFarmingTitle")
@@ -137,7 +149,10 @@
         )
           g-button(:text="str.mapFarmingStoryTitle" classname="glm-button")
 
-    section.u-section.glm-section.glm-living(ref="section-5")
+    section.u-section.glm-section.glm-living(
+      ref="section-5"
+      :class="{'glm-section--active': activeIndex === 4}"
+    )
       .glm-container
         .glm-title
           h2(v-html="str.mapLivingTitle")
@@ -198,8 +213,8 @@ export default {
       str,
       status: 'above',
       isMapEnter: false,
-      activeIndex: 0,
-      activeLaterIndex: 0,
+      activeIndex: -1,
+      activeLaterIndex: -1,
       activeIndexList: [],
       step: ['kaikai', 'kaikai', 'sisi', 'cack', 'nuuk'],
       progress: 0.01,
@@ -254,7 +269,6 @@ export default {
         this.activeIndexList.push(false);
 
         const handleEnter = () => {
-          this.$refs[el].classList.add('show');
           this.activeIndexList = this.activeIndexList.map((item, index) => {
             if (index === i) {
               this.activeIndex = index;
@@ -271,9 +285,8 @@ export default {
         };
 
         const handleLeave = () => {
-          this.activeIndexList.forEach((item, index) => {
+          this.activeIndexList.forEach((item) => {
             if (item) return;
-            this.$refs[sectionList[index]].classList.remove('show');
           });
 
           console.log('leave', i + 1);
@@ -368,12 +381,11 @@ export default {
 
   .glm-section {
     margin-top: 100vh;
-    background-color: $bg-white;
-    opacity: 0.9;
+    background-color: rgba($color: $bg-white, $alpha: 0);
+    transition: background-color 0.5s ease-in-out;
 
     @include rwd-min(md) {
       background-color: $bg-white;
-      opacity: 1;
     }
 
     &:first-child {
@@ -384,6 +396,10 @@ export default {
       @include rwd-min(md) {
         margin-bottom: 100vh;
       }
+    }
+
+    &--active {
+      background-color: rgba($color: $bg-white, $alpha: 0.9);
     }
   }
 

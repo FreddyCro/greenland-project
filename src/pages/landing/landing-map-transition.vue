@@ -70,6 +70,8 @@ export default {
   margin-bottom: 36vh;
   opacity: 0;
   transition: 0.5s ease-in-out;
+  font-family: 'Noto Serif TC', 'Noto Sans TC', 'Microsoft JhengHei', Roboto,
+    sans-serif;
 
   &--active {
     opacity: 1;
@@ -114,6 +116,7 @@ export default {
     }
 
     span {
+      padding: 0 $spacing-5;
       background-color: #fff;
     }
   }

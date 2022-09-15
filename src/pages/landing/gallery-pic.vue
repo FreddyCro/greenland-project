@@ -53,6 +53,18 @@ export default {
     top: 0;
   }
 
+  &:hover {
+    .gallery-pic__text {
+      opacity: 0.8;
+      background-color: rgba($color: #285f92, $alpha: 0.6);
+
+      span {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
+
   &__content {
     width: 100%;
     height: 100%;
@@ -73,16 +85,6 @@ export default {
     color: $bg-white;
     opacity: 0;
     transition: 0.333s ease-in-out;
-
-    &:hover {
-      opacity: 0.8;
-      background-color: rgba($color: #285f92, $alpha: 0.6);
-
-      span {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
 
     span {
       transform: translateY($spacing-5);

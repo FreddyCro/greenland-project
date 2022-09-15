@@ -1,7 +1,14 @@
 <template lang="pug">
 .g-footer-logo
   .u-container
-    .g-footer-logo__logo-container
+    .g-footer-logo__logo-container.show-mob
+      img.g-footer-logo__logo(
+        v-for="logo, index in logosMob"
+        :key="`footer-logo-${index}`"
+        :src="`${PUBLIC_PATH}${logo.src}`"
+        :alt="logo.alt"
+      )
+    .g-footer-logo__logo-container.hide-mob
       img.g-footer-logo__logo(
         v-for="logo, index in logos"
         :key="`footer-logo-${index}`"
@@ -30,6 +37,20 @@ export default {
         {
           src: 'img/logo_udn.svg',
           alt: '聯合報系',
+        },
+        {
+          src: 'img/logo_visionproject.svg',
+          alt: '願景工程',
+        },
+      ],
+      logosMob: [
+        {
+          src: 'img/logo_udn.svg',
+          alt: '聯合報系',
+        },
+        {
+          src: 'img/logo_oright.svg',
+          alt: '歐萊德',
         },
         {
           src: 'img/logo_visionproject.svg',

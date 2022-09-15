@@ -158,9 +158,6 @@
         :key="`gf-farmWeatherText2-${index}`"
         v-html="p"
       )
-  .u-container
-    .flourish-embed.flourish-chart(data-src="visualisation/10985230")
-    p.caption(v-html="str.farmWeatherImg2Caption")
 
   //- section farm sheep
   section.u-section.gf-farm-sheep
