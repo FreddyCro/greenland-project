@@ -37,20 +37,20 @@
       opacity: 1;
     }
 
-    .kaikai-label,
-    .ilu-label,
-    .sisi-label,
-    .konck-label,
-    .nuuk-label,
-    .nasas-label,
-    .nasak-label,
-    .cack-label {
-      @include rwd-max(sm) {
-        transition: none;
-        transform: scale(0.9);
-        transform-origin: center;
-      }
-    }
+    // .kaikai-label,
+    // .ilu-label,
+    // .sisi-label,
+    // .konck-label,
+    // .nuuk-label,
+    // .nasas-label,
+    // .nasak-label,
+    // .cack-label {
+    //   @include rwd-max(sm) {
+    //     transition: none;
+    //     transform: scale(0.9);
+    //     transform-origin: center;
+    //   }
+    // }
 
     .cack-label {
       @include rwd-max(sm) {
