@@ -91,7 +91,7 @@
   //- section collage
   .u-container-lg
     g-pic(
-      src="../img/climate/greenland_climate_pic4_3"
+      src="../img/climate/greenland_climate_pic4_2"
       ext="jpg"
       :alt="str.collageImg1Caption"
       classname="gc-collage-img1"

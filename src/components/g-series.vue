@@ -151,11 +151,12 @@ export default {
 .g-series-card-wrapper {
   position: relative;
   width: 100%;
-  height: 330px;
+  height: 240px;
   padding: $spacing-5;
 
   @include rwd-min(sm) {
     width: 50%;
+    height: 330px;
     padding: $spacing-6;
   }
 

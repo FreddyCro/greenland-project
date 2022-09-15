@@ -22,7 +22,7 @@
       </button>
     </share-network>
     <share-network
-      network="facebook"
+      network="line"
       :title="title"
       :description="description"
       :url="shareUrl"
