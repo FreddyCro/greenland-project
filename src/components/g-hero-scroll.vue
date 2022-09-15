@@ -41,7 +41,7 @@ export default {
       } else {
         this.shouldFadeOut = false;
       }
-    }, 300),
+    }, 100),
   },
 };
 </script>

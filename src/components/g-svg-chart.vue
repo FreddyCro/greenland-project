@@ -3,7 +3,6 @@
   g-pic(
     :src="src"
     ext="svg"
-    :alt="salt"
     :use2x="false"
     :use3x="false"
     :webp="false"

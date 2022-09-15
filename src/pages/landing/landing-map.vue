@@ -213,8 +213,8 @@ export default {
       str,
       status: 'above',
       isMapEnter: false,
-      activeIndex: -1,
-      activeLaterIndex: -1,
+      activeIndex: 0,
+      activeLaterIndex: 0,
       activeIndexList: [],
       step: ['kaikai', 'kaikai', 'sisi', 'cack', 'nuuk'],
       progress: 0.01,
@@ -423,6 +423,11 @@ export default {
 
     @include rwd-min(lg) {
       padding-left: $spacing-9;
+    }
+
+    @include rwd-min(xl) {
+      max-width: 470px;
+      margin-right: 0;
     }
   }
 

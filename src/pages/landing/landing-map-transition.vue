@@ -63,7 +63,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .gl-transition {
   position: relative;
   height: 300vh;
@@ -78,8 +78,6 @@ export default {
   }
 
   &__content {
-    /* @include bg-3x('/img/landing/greenland_pic7_1', 'jpg', true); */
-
     position: sticky;
     top: 0;
     width: 100%;
@@ -97,6 +95,10 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
+
+    img {
+      object-position: bottom center;
+    }
   }
 
   &__content-text {
