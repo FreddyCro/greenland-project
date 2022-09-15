@@ -1,5 +1,7 @@
 # greenland-project
 
++ node version: 14.18.1
+
 ## Project setup
 
 ```bash

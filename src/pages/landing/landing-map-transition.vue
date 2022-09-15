@@ -76,7 +76,7 @@ export default {
   }
 
   &__content {
-    @include bg-3x('/img/landing/greenland_pic7_1', 'jpg', true);
+    /* @include bg-3x('/img/landing/greenland_pic7_1', 'jpg', true); */
 
     position: sticky;
     top: 0;
