@@ -108,6 +108,7 @@ export default {
     forceStop: {
       handler(value) {
         this.isPlaying = !value;
+        this.video.currentTime = 0;
       },
     },
   },

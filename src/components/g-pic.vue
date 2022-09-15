@@ -15,7 +15,7 @@
         :key="`normal-${media}`"
       />
     </template>
-    <img :src="`${src}_pc.${ext}`" :alt="alt" :loading="loading" />
+    <img :src="parsedDefault" :alt="alt" :loading="loading" />
   </picture>
 </template>
 
@@ -88,6 +88,10 @@ export default {
     srcset: {
       type: Array,
       default: () => ['mob', 'pad', 'pc'],
+    },
+    default: {
+      type: String,
+      default: 'pc',
     },
     ext: {
       type: String,
@@ -170,6 +174,12 @@ export default {
         use3x: this.use3x,
         usePrefix: this.usePrefix,
       });
+    },
+    parsedDefault() {
+      if (this.default === 'pc') return `${this.src}_pc.${this.ext}`;
+      if (this.default === 'pad') return `${this.src}_pad.${this.ext}`;
+      if (this.default === 'mob') return `${this.src}_mob.${this.ext}`;
+      return `${this.src}.${this.ext}`;
     },
   },
 };

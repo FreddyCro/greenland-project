@@ -233,7 +233,8 @@
       classname="u-full-width-img"
       :webp="true"
     )
-    p.caption(v-html="str.warmFishImg1Caption")
+    p.caption.hide-mob(v-html="str.warmFishImg1Caption")
+    p.caption.show-mob(v-html="str.warmFishImg1CaptionMob")
 
   //- section warm-warn
   section.u-section.gfi-warm-warn

@@ -262,7 +262,6 @@ export default {
               const vm = this;
               setTimeout(() => {
                 vm.activeLaterIndex = index;
-                console.log('enter later', i + 1);
               }, 500);
             } else if (index <= i) return true;
             return false;
@@ -298,8 +297,6 @@ export default {
       } else {
         this.progress = newProgress;
       }
-
-      console.log('progress: ', this.progress);
     }, 50),
     handleScroll() {
       this.handleUpdateProgress();

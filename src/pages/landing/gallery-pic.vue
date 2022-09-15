@@ -6,6 +6,7 @@
       ext="jpg"
       :alt="text"
       classname="gallery-pic__img"
+      default=""
       :webp="true"
       :use-prefix="false",
     )
@@ -91,6 +92,8 @@ export default {
   }
 
   &__img {
+    display: flex;
+
     img {
       @include rwd-min(sm) {
         position: absolute;

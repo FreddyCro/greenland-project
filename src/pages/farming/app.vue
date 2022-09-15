@@ -108,7 +108,7 @@
   g-pic(
     src="../img/farming/greenland_farming_pic5_1"
     ext="jpg"
-    :alt="str.farmWeatherImg1Caption"
+    :alt="str.farmTitle"
     classname="u-full-width-img"
     :webp="true"
   )
@@ -149,7 +149,8 @@
       classname="gf-farmWeather-img2"
       :webp="true"
     )
-    p.caption(v-html="str.farmWeatherImg1Caption")
+    p.caption.hide-mob(v-html="str.farmWeatherImg1Caption")
+    p.caption.show-mob(v-html="str.farmWeatherImg1CaptionMob")
   section.u-section
     .u-container
       p(
@@ -178,7 +179,8 @@
       classname="gf-farmSheep-img1"
       :webp="true"
     )
-    p.caption(v-html="str.farmSheepImg1Caption")
+    p.caption.hide-mob(v-html="str.farmSheepImg1Caption")
+    p.caption.show-mob(v-html="str.farmSheepImg1CaptionMob")
   section.u-section
     .u-container
       p(
@@ -195,7 +197,8 @@
       :webp="true"
     )
   .u-container
-    p.caption(v-html="str.farmSheepImg2Caption")
+    p.caption.hide-mob(v-html="str.farmSheepImg2Caption")
+    p.caption.show-mob(v-html="str.farmSheepImg2CaptionMob")
 
   section.u-section
     .u-container
