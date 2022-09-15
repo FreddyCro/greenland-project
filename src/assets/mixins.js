@@ -149,7 +149,7 @@ const sendGa = {
 const env = {
   data() {
     return {
-      PUBLIC_PATH: getPublicPath(process.env.NODE_ENV),
+      PUBLIC_PATH: getPublicPath(process.env.VUE_APP_MODE),
       VIDEO_PATH:
         process.env.NODE_ENV === 'production'
           ? process.env.VUE_APP_VIDEO_PATH
