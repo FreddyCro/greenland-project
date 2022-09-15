@@ -16,7 +16,7 @@
       <a
         v-for="(item, index) in outlink"
         :key="index"
-        :href="`${publicPath}${item.url}`"
+        :href="`${PUBLIC_PATH}${item.url}`"
         target="_blank"
         rel="noopener"
         :ariaLabel="item.title"
@@ -39,13 +39,12 @@
 </template>
 
 <script>
+import { env } from '@/assets/mixins';
+
 export default {
   name: 'HeaderMenu',
+  mixins: [env],
   props: {
-    publicPath: {
-      type: String,
-      default: '',
-    },
     menuActiveFlag: {
       type: Boolean,
       default: false,

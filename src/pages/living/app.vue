@@ -1,7 +1,6 @@
 <template lang="pug">
 #app.u-article.u-paragraph.greenland
   nmd-header(
-    public-path="../"
     :outlink="headerList"
     :title="str.metaTitle"
     :url="str.metaUrl"
@@ -12,7 +11,7 @@
   g-slide(id="intro" classname="gli-intro-slide")
     section.u-section-full.gli-hero-vid-wrapper(slot="bg")
       g-vid(
-        src="../vid/living/greenland_living_video1",
+        :src="`${VIDEO_PATH}living/greenland_living_video1`",
         ext="mp4",
         poster="../img/living/greenland_living_preview1",
         poster-ext="jpg"
@@ -40,7 +39,7 @@
         src="../img/living/greenland_living_pic2"
         ext="jpg"
         :alt="str.introTitle"
-        classname="gc-intro-img-1"
+        classname="u-full-vh-img gc-intro-img-1"
         :webp="true"
       )
     section.u-section.gli-intro(slot="content")
@@ -365,9 +364,11 @@ import GHeroScroll from '@/components/g-hero-scroll.vue';
 import GQuote from '@/components/g-quote.vue';
 import NmdHeader from '@/components/common/header/HeaderTypeA.vue';
 import str from '@/assets/string/living.json';
+import { env } from '@/assets/mixins';
 
 export default {
   name: 'App',
+  mixins: [env],
   components: {
     FooterLogo,
     FooterEditor,

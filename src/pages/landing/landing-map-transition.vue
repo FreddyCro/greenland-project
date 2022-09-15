@@ -81,10 +81,10 @@ export default {
     position: sticky;
     top: 0;
     width: 100%;
-    height: 125vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     background-size: cover;
     background-position: bottom center;
   }
@@ -101,6 +101,7 @@ export default {
     position: relative;
     margin: 0 auto;
     text-align: center;
+    padding-bottom: $spacing-10;
     opacity: 0;
     transition: 0.5s ease-in-out;
 
@@ -124,12 +125,14 @@ export default {
   z-index: 10;
   width: 100%;
   height: 50%;
+  pointer-events: none;
 }
 
 .gl-transition__trigger-2 {
   position: absolute;
   top: 50vh;
   width: 100%;
-  height: 60vh;
+  height: 30vh;
+  pointer-events: none;
 }
 </style>

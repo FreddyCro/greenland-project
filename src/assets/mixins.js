@@ -1,6 +1,7 @@
 import debounce from 'debounce';
 import { detectPlatform } from '@/assets/js/udn-newmedia-utils';
 import { calcInterpolation } from '@/assets/js/progress.js';
+import { getPublicPath } from '@/assets/js/utils.js';
 
 const gaTable = {
   HeaderShareOpen: {
@@ -145,6 +146,18 @@ const sendGa = {
   },
 };
 
+const env = {
+  data() {
+    return {
+      PUBLIC_PATH: getPublicPath(process.env.VUE_APP_MODE),
+      VIDEO_PATH:
+        process.env.NODE_ENV === 'production'
+          ? process.env.VUE_APP_VIDEO_PATH
+          : 'http://localhost:8080/vid/',
+    };
+  },
+};
+
 const glMap = {
   props: {
     index: {
@@ -187,4 +200,4 @@ const glMap = {
   },
 };
 
-export { rwd, sendGa, glMap };
+export { rwd, sendGa, glMap, env };

@@ -1,7 +1,6 @@
 <template lang="pug">
 #app.u-article.u-paragraph.greenland
   nmd-header(
-    public-path="../"
     :outlink="headerList"
     :title="str.metaTitle"
     :url="str.metaUrl"
@@ -12,7 +11,7 @@
   g-slide(id="hero" classname="gc-hero-slide")
     section.u-section-full.gf-hero-vid-wrapper(slot="bg")
       g-vid(
-        src="../vid/climate/greenland_climate_video1",
+        :src="`${VIDEO_PATH}climate/greenland_climate_video1`",
         ext="mp4",
         poster="../img/climate/greenland_climate_preview1",
         poster-ext="webp"
@@ -54,8 +53,7 @@
   g-slide(id="transition" classname="gc-transition-slide" :is-last="true")
     section(slot="bg")
       g-vid-w-control(
-        public-path="../"
-        src="../vid/climate/greenland_climate_video3",
+        :src="`${VIDEO_PATH}climate/greenland_climate_video3`",
         ext="mp4"
         poster="../img/climate/greenland_climate_preview3",
         poster-ext="webp"
@@ -112,10 +110,14 @@
       )
 
   .u-container
-    img(
-      :src="'../img/climate/greenland_climate_chart4_3.svg'"
+    g-pic(
+      src="../img/climate/greenland_climate_chart4_2"
+      classname="gc-collage-img2"
+      ext="svg"
       :alt="str.protectionImg1Caption"
-      class="gc-collage-img2"
+      :use2x="false"
+      :use3x="false"
+      :webp="false"
     )
     p.caption(v-html="str.protectionImg1Caption")
 
@@ -199,12 +201,14 @@
       
   g-vid-w-control(
     public-path="../"
-    src="../vid/climate/greenland_climate_video6_1",
+    :src="`${VIDEO_PATH}climate/greenland_climate_video6_1`",
     ext="mp4"
     poster="../img/climate/greenland_climate_preview6_1",
     poster-ext="webp"
     id="gc-sea-vid",
     classname="u-full-vid"
+    :use-play="false"
+    :use-sound="false"
   )
   .u-container-lg
     p.caption(v-html="str.seaImg1Caption")
@@ -264,9 +268,11 @@ import FooterEditor from '@/components/common/footer/footer-editor.vue';
 import FooterQuestionnaire from '@/components/common/footer/footer-questionnaire.vue';
 import FooterShare from '@/components/common/footer/footer-share.vue';
 import str from '@/assets/string/climate.json';
+import { env } from '@/assets/mixins';
 
 export default {
   name: 'App',
+  mixins: [env],
   components: {
     NmdHeader,
     GSlide,

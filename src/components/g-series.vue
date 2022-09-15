@@ -11,11 +11,11 @@
           )
             a.g-series-card(
               :class="`g-series-card--${item}`"
-              :href="`${publicPath}${listData[item].url}`"
+              :href="`${PUBLIC_PATH}${listData[item].url}`"
               target="_blank"
             )
               g-pic(
-                :src="`${publicPath}${listData[item].src}`"
+                :src="`${PUBLIC_PATH}${listData[item].src}`"
                 ext="jpg"
                 :alt="listData[item].title"
                 classname="g-series-card__bg"
@@ -39,17 +39,15 @@
 <script>
 import GPic from '@/components/g-pic.vue';
 import str from '@/assets/string/series.json';
+import { env } from '@/assets/mixins';
 
 export default {
   name: 'g-series',
+  mixins: [env],
   components: {
     GPic,
   },
   props: {
-    publicPath: {
-      type: String,
-      default: './',
-    },
     list: {
       type: Array,
       default: () => [],
@@ -153,11 +151,12 @@ export default {
 .g-series-card-wrapper {
   position: relative;
   width: 100%;
-  height: 330px;
+  height: 240px;
   padding: $spacing-5;
 
   @include rwd-min(sm) {
     width: 50%;
+    height: 330px;
     padding: $spacing-6;
   }
 

@@ -1,7 +1,6 @@
 <template lang="pug">
 #app.u-article.u-paragraph.greenland
   nmd-header(
-    public-path="../"
     :outlink="headerList"
     :title="str.metaTitle"
     :url="str.metaUrl"
@@ -12,7 +11,7 @@
   g-slide(id="hero" classname="gfi-hero-slide")
     section.u-section-full.gfi-hero-vid-wrapper(slot="bg")
       g-vid(
-        src="../vid/fishing/greenland_fishing_video1",
+        :src="`${VIDEO_PATH}fishing/greenland_fishing_video1`",
         ext="mp4",
         poster="../img/fishing/greenland_fishing_preview1",
         poster-ext="webp"
@@ -54,8 +53,7 @@
   g-slide(id="transition" classname="gfi-transition-slide" :is-last="true")
     section(slot="bg")
       g-vid-w-control(
-        public-path="../"
-        src="../vid/fishing/greenland_fishing_video3",
+        :src="`${VIDEO_PATH}fishing/greenland_fishing_video3`",
         ext="mp4"
         poster="../img/fishing/greenland_fishing_preview3",
         poster-ext="webp"
@@ -235,7 +233,8 @@
       classname="u-full-width-img"
       :webp="true"
     )
-    p.caption(v-html="str.warmFishImg1Caption")
+    p.caption.hide-mob(v-html="str.warmFishImg1Caption")
+    p.caption.show-mob(v-html="str.warmFishImg1CaptionMob")
 
   //- section warm-warn
   section.u-section.gfi-warm-warn
@@ -278,9 +277,11 @@ import FooterEditor from '@/components/common/footer/footer-editor.vue';
 import FooterQuestionnaire from '@/components/common/footer/footer-questionnaire.vue';
 import FooterShare from '@/components/common/footer/footer-share.vue';
 import str from '@/assets/string/fishing.json';
+import { env } from '@/assets/mixins';
 
 export default {
   name: 'App',
+  mixins: [env],
   components: {
     NmdHeader,
     GSlide,

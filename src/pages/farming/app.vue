@@ -1,7 +1,6 @@
 <template lang="pug">
 #app.u-article.u-paragraph.greenland
   nmd-header(
-    public-path="../"
     :outlink="headerList"
     :title="str.metaTitle"
     :url="str.metaUrl"
@@ -12,7 +11,7 @@
   g-slide(id="hero" classname="gc-hero-slide" :is-first="true")
     section.u-section-full.gf-hero-vid-wrapper(slot="bg")
       g-vid(
-        src="../vid/farming/greenland_farming_video1",
+        :src="`${VIDEO_PATH}farming/greenland_farming_video1`",
         ext="mp4",
         poster="../img/farming/greenland_farming_preview1",
         poster-ext="webp"
@@ -54,8 +53,7 @@
   g-slide(id="transition" classname="gf-transition-slide" :is-last="true")
     section(slot="bg")
       g-vid-w-control(
-        public-path="../"
-        src="../vid/farming/greenland_farming_video3",
+        :src="`${VIDEO_PATH}farming/greenland_farming_video3`",
         ext="mp4",
         poster="../img/farming/greenland_farming_preview3",
         poster-ext="webp"
@@ -110,7 +108,7 @@
   g-pic(
     src="../img/farming/greenland_farming_pic5_1"
     ext="jpg"
-    :alt="str.farmWeatherImg1Caption"
+    :alt="str.farmTitle"
     classname="u-full-width-img"
     :webp="true"
   )
@@ -151,7 +149,8 @@
       classname="gf-farmWeather-img2"
       :webp="true"
     )
-    p.caption(v-html="str.farmWeatherImg1Caption")
+    p.caption.hide-mob(v-html="str.farmWeatherImg1Caption")
+    p.caption.show-mob(v-html="str.farmWeatherImg1CaptionMob")
   section.u-section
     .u-container
       p(
@@ -180,7 +179,8 @@
       classname="gf-farmSheep-img1"
       :webp="true"
     )
-    p.caption(v-html="str.farmSheepImg1Caption")
+    p.caption.hide-mob(v-html="str.farmSheepImg1Caption")
+    p.caption.show-mob(v-html="str.farmSheepImg1CaptionMob")
   section.u-section
     .u-container
       p(
@@ -197,7 +197,8 @@
       :webp="true"
     )
   .u-container
-    p.caption(v-html="str.farmSheepImg2Caption")
+    p.caption.hide-mob(v-html="str.farmSheepImg2Caption")
+    p.caption.show-mob(v-html="str.farmSheepImg2CaptionMob")
 
   section.u-section
     .u-container
@@ -213,8 +214,8 @@
       :alt="str.farmSheepImg3Caption"
       classname="gf-farmSheep-img3"
       :webp="false"
-      :no2x="true"
-      :no3x="true"
+      :use2x="false"
+      :use3x="false"
     )
     p.small.gf-img-source(v-html="str.farmSheepImg3Source")
     p.caption(v-html="str.farmSheepImg3Caption")
@@ -341,9 +342,11 @@ import FooterEditor from '@/components/common/footer/footer-editor.vue';
 import FooterQuestionnaire from '@/components/common/footer/footer-questionnaire.vue';
 import FooterShare from '@/components/common/footer/footer-share.vue';
 import str from '@/assets/string/farming.json';
+import { env } from '@/assets/mixins';
 
 export default {
   name: 'App',
+  mixins: [env],
   components: {
     NmdHeader,
     GSlide,
