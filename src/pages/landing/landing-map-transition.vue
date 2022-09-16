@@ -63,21 +63,21 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .gl-transition {
   position: relative;
   height: 300vh;
   margin-bottom: 36vh;
   opacity: 0;
   transition: 0.5s ease-in-out;
+  font-family: 'Noto Serif TC', 'Noto Sans TC', 'Microsoft JhengHei', Roboto,
+    sans-serif;
 
   &--active {
     opacity: 1;
   }
 
   &__content {
-    /* @include bg-3x('/img/landing/greenland_pic7_1', 'jpg', true); */
-
     position: sticky;
     top: 0;
     width: 100%;
@@ -95,6 +95,10 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
+
+    img {
+      object-position: bottom center;
+    }
   }
 
   &__content-text {
@@ -114,6 +118,7 @@ export default {
     }
 
     span {
+      padding: 0 $spacing-5;
       background-color: #fff;
     }
   }

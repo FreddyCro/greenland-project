@@ -244,10 +244,16 @@ export default {
     width: 100%;
     max-width: 180px;
     height: 50px;
-    color: $font-color-light;
+    color: $black;
+    background-color: $font-color-light;
     border-radius: 30px;
     border: solid 1px $font-color-light;
     transition: 0.15s ease-in-out;
+
+    @include rwd-min(md) {
+      color: $font-color-light;
+      background-color: transparent;
+    }
   }
 
   &__btn-arrow {
@@ -260,7 +266,11 @@ export default {
     transition: 0.15s ease-in-out;
 
     path {
-      fill: $font-color-light;
+      fill: $black;
+
+      @include rwd-min(md) {
+        fill: $font-color-light;
+      }
     }
   }
 }

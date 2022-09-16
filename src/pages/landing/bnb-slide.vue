@@ -27,7 +27,8 @@
         :use-sound="useSound"
       )
   .bnb-slide-half.bnb-slide__prim(:ref="`bnb-slide-prim-${id}`")
-    slot
+    .bnb-slide__prim-content-container
+      slot
 </template>
 
 <script>
@@ -108,7 +109,9 @@ export default {
         this.isBnbEnter = false;
       },
       {
-        rootMargin: `${window.innerHeight * -0.4}px 0px ${window.innerHeight * -0.4}px 0px`,
+        rootMargin: `${window.innerHeight * -0.4}px 0px ${
+          window.innerHeight * -0.4
+        }px 0px`,
       }
     );
 
@@ -166,11 +169,12 @@ export default {
   &__prim {
     position: relative;
     width: 100%;
-    margin: 100vh auto;
+    margin: 50vh auto 100vh auto;
     padding: $spacing-9;
     background-color: rgba($color: $bg-white, $alpha: 0.9);
 
     @include rwd-min(md) {
+      margin: 100vh auto;
       width: 50%;
     }
 
@@ -178,6 +182,12 @@ export default {
       margin-left: 0;
       margin-right: 0;
     } */
+  }
+
+  &__prim-content-container {
+    @include rwd-min(xl) {
+      max-width: 470px;
+    }
   }
 
   &__sec-wrapper {

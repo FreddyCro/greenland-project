@@ -1,11 +1,21 @@
 <template lang="pug">
 .g-svg-chart
-  img(:src="src", :alt="alt")
+  g-pic(
+    :src="src"
+    ext="svg"
+    :use2x="false"
+    :use3x="false"
+    :webp="false"
+  )
 </template>
 
 <script>
+import GPic from '@/components/g-pic.vue';
 export default {
   name: 'g-svg-chart',
+  components: {
+    GPic,
+  },
   props: {
     src: {
       type: String,
@@ -16,5 +26,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

@@ -95,7 +95,7 @@ export default {
 }
 
 .g-slide-bg {
-  position: fixed;
+  position: absolute;
   z-index: 1;
   left: 0;
   top: 0;
@@ -106,6 +106,7 @@ export default {
   pointer-events: none;
 
   &--active {
+    position: fixed;
     opacity: 1;
     pointer-events: all;
   }
