@@ -276,7 +276,7 @@ export default {
               const vm = this;
               setTimeout(() => {
                 vm.activeLaterIndex = index;
-              }, 500);
+              }, 1000);
             } else if (index <= i) return true;
             return false;
           });

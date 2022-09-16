@@ -50,7 +50,7 @@
 
 <script>
 import GVid from '@/components/g-vid.vue';
-// import { linearIntersectionObserver } from '@/assets/js/observer.js';
+import { linearIntersectionObserver } from '@/assets/js/observer.js';
 import { env } from '@/assets/mixins';
 
 export default {
@@ -125,15 +125,16 @@ export default {
     this.video = document.querySelector(`#${this.id}`);
     this.isPlaying = !this.forceStop;
 
-    // linearIntersectionObserver(
-    //   this.$refs['g-vid'],
-    //   () => {
-    //     this.isPlaying = true;
-    //   },
-    //   () => {
-    //     this.isPlaying = false;
-    //   }
-    // );
+    linearIntersectionObserver(
+      this.$refs['g-vid'],
+      () => {
+        this.isPlaying = true;
+      },
+      () => {
+        this.isPlaying = false;
+        this.video.currentTime = 0;
+      }
+    );
   },
 };
 </script>
