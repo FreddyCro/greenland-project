@@ -102,7 +102,7 @@ module.exports = {
       metaTitle: livingString.metaTitle,
       metaDescription: livingString.metaDescription,
       metaUrl: `${PUBLIC_PATH}living/`,
-      metaImage: `${PUBLIC_PATH}living/og.jpg`,
+      metaImage: `${PUBLIC_PATH}img/living/og.jpg`,
       metaKeywords: livingString.metaKeywords,
       metaRobot: robot,
       metaAuthor: livingString.metaAuthor,

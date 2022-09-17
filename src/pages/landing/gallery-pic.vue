@@ -55,12 +55,11 @@ export default {
 
   &:hover {
     .gallery-pic__text {
-      opacity: 0.8;
       background-color: rgba($color: #285f92, $alpha: 0.6);
+      opacity: 1;
 
       span {
         transform: translateY(0);
-        opacity: 1;
       }
     }
   }
@@ -84,11 +83,11 @@ export default {
     padding: $spacing-5;
     color: $bg-white;
     opacity: 0;
+    pointer-events: none;
     transition: 0.333s ease-in-out;
 
     span {
       transform: translateY($spacing-5);
-      opacity: 0;
       transition: 0.333s ease-in-out;
     }
   }

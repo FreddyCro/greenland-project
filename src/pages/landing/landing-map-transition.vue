@@ -67,7 +67,7 @@ export default {
 .gl-transition {
   position: relative;
   height: 300vh;
-  margin-bottom: 36vh;
+  /* margin-bottom: 36vh; */
   opacity: 0;
   transition: 0.5s ease-in-out;
   font-family: 'Noto Serif TC', 'Noto Sans TC', 'Microsoft JhengHei', Roboto,

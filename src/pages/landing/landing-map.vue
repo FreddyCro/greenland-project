@@ -74,7 +74,7 @@
           v-html="p"
         )
         a.glm-anchor(
-          href="./climate"
+          href="./climate/"
           target="_blank"
         )
           g-button(:text="str.mapScientistStoryTitle" classname="glm-button")
@@ -109,7 +109,7 @@
           v-html="p"
         )
         a.glm-anchor(
-          href="./fishing"
+          href="./fishing/"
           target="_blank"
         )
           g-button(:text="str.mapFishingStoryTitle" classname="glm-button")
@@ -144,7 +144,7 @@
           v-html="p"
         )
         a.glm-anchor(
-          href="./farming"
+          href="./farming/"
           target="_blank"
         )
           g-button(:text="str.mapFarmingStoryTitle" classname="glm-button")
@@ -179,7 +179,7 @@
           v-html="p"
         )
         a.glm-anchor(
-          href="./living"
+          href="./living/"
           target="_blank"
         )
           g-button(:text="str.mapLivingStoryTitle" classname="glm-button")
@@ -427,7 +427,6 @@ export default {
 
     @include rwd-min(xl) {
       max-width: 470px;
-      margin-right: 0;
     }
   }
 

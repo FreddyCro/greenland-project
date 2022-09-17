@@ -174,14 +174,11 @@ export default {
     background-color: rgba($color: $bg-white, $alpha: 0.9);
 
     @include rwd-min(md) {
-      margin: 100vh auto;
       width: 50%;
+      display: flex;
+      justify-content: center;
+      margin: 100vh auto;
     }
-
-    /* .u-container {
-      margin-left: 0;
-      margin-right: 0;
-    } */
   }
 
   &__prim-content-container {

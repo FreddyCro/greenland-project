@@ -248,7 +248,6 @@
         footer-editor(:data="editor")
         footer-share(
           :title="str.metaTitle"
-          :url="str.metaUrl"
           :description="str.metaDescription"
         )
         footer-questionnaire
