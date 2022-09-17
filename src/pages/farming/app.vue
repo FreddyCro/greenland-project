@@ -121,6 +121,7 @@
         v-html="p"
       )
   .u-container
+    h4.gf-farm-h4(v-html="str.farmImg1Title")
     block-chart
     p.caption(v-html="str.farmImg1Caption")
 
@@ -369,22 +370,22 @@ export default {
         },
         {
           title: '北極站科學家篇',
-          url: 'climate',
+          url: 'climate/',
           active: false,
         },
         {
           title: '撈海廢討海人篇',
-          url: 'fishing',
+          url: 'fishing/',
           active: false,
         },
         {
           title: '穿梭綠地牧羊人篇',
-          url: 'farming',
+          url: 'farming/',
           active: true,
         },
         {
           title: '格陵蘭居民篇',
-          url: 'living',
+          url: 'living/',
           active: false,
         },
       ],
@@ -431,6 +432,10 @@ export default {
   h2 {
     @include general-font-h3;
   }
+}
+
+.gf-farm-h4 {
+  margin-bottom: $spacing-8;
 }
 
 .gf-img-source {

@@ -306,22 +306,22 @@ export default {
         },
         {
           title: '北極站科學家篇',
-          url: 'climate',
+          url: 'climate/',
           active: false,
         },
         {
           title: '撈海廢討海人篇',
-          url: 'fishing',
+          url: 'fishing/',
           active: true,
         },
         {
           title: '穿梭綠地牧羊人篇',
-          url: 'farming',
+          url: 'farming/',
           active: false,
         },
         {
           title: '格陵蘭居民篇',
-          url: 'living',
+          url: 'living/',
           active: false,
         },
       ],
