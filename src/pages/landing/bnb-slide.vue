@@ -113,8 +113,8 @@ export default {
         this.isBnbEnter = false;
       },
       {
-        rootMargin: `${window.innerHeight * -0.4}px 0px ${
-          window.innerHeight * -0.4
+        rootMargin: `${window.innerHeight * -0.3}px 0px ${
+          window.innerHeight * -0.3
         }px 0px`,
       }
     );
@@ -130,7 +130,7 @@ export default {
       },
       {
         rootMargin: this.useOffset
-          ? `0px 0px ${window.innerHeight * -0.3}px 0px`
+          ? `0px 0px ${window.innerHeight * -0.2}px 0px`
           : '0px 0px 0px 0px',
         threshold: 0,
       }
@@ -179,7 +179,7 @@ export default {
   &__prim {
     position: relative;
     width: 100%;
-    margin: 300px auto 600px auto;
+    margin: 200px auto 600px auto;
     padding: $spacing-9;
     background-color: rgba($color: $bg-white, $alpha: 0.9);
 
