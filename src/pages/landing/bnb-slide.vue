@@ -26,6 +26,7 @@
         :force-stop="!isBnbEnter"
         :use-play="usePlay"
         :use-sound="useSound"
+        :full-screen="true"
       )
   .bnb-slide-half.bnb-slide__prim(:ref="`bnb-slide-prim-${id}`")
     .bnb-slide__prim-content-container

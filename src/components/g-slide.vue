@@ -96,7 +96,6 @@ export default {
     return {
       isEnter: false,
       isContentEnter: false,
-      windowHeight: null,
     };
   },
   mounted() {

@@ -10,12 +10,12 @@
         :webp="true"
         classname="u-full-vh-img"
       )
-    .gl-transition__content-text(:class="{'gl-transition__content-text--active': isTextEnter}")
-      p(
-        v-for="p, index in text"
-        :key="`transitionText-${index}`"
-      )
-        span(v-html="p")
+  .gl-transition__text(:class="{'gl-transition__text--active': isTextEnter}")
+    p(
+      v-for="p, index in text"
+      :key="`transitionText-${index}`"
+    )
+      span(v-html="p")
 </template>
 
 <script>
@@ -66,8 +66,7 @@ export default {
 <style lang="scss">
 .gl-transition {
   position: relative;
-  height: 300vh;
-  /* margin-bottom: 36vh; */
+  height: 1800px;
   opacity: 0;
   transition: 0.5s ease-in-out;
   font-family: 'Noto Serif TC', 'Noto Sans TC', 'Microsoft JhengHei', Roboto,
@@ -75,6 +74,10 @@ export default {
 
   &--active {
     opacity: 1;
+  }
+
+  @include rwd-min(md) {
+    height: 300vh;
   }
 
   &__content {
@@ -101,7 +104,7 @@ export default {
     }
   }
 
-  &__content-text {
+  &__text {
     position: relative;
     margin: 0 auto;
     text-align: center;
@@ -135,9 +138,13 @@ export default {
 
 .gl-transition__trigger-2 {
   position: absolute;
-  top: 50vh;
+  top: 300px;
   width: 100%;
-  height: 30vh;
+  height: 200px;
   pointer-events: none;
+
+  @include rwd-min(md) {
+    height: 30vh;
+  }
 }
 </style>

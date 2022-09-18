@@ -70,7 +70,7 @@
 
   //- section kir
   section.gli-kir
-    .u-section
+    .u-section.u-section--no-padding-top
       .u-container-lg
         g-pic(
           src="../img/living/greenland_living_pic4_1"
@@ -109,7 +109,7 @@
 
   //- section kaj
   section.gli-kaj
-    .u-section
+    .u-section.u-section--no-padding-top
       .u-container-lg
         g-pic(
           src="../img/living/greenland_living_pic5_1"
@@ -147,7 +147,7 @@
 
   //- section pau
   section.gli-pau
-    .u-section
+    .u-section.u-section--no-padding-top
       .u-container-lg
         g-pic(
           src="../img/living/greenland_living_pic6_1"
@@ -197,7 +197,7 @@
 
   //- section chris
   section.gli-chris
-    .u-section
+    .u-section.u-section--no-padding-top
       .u-container-lg
         g-pic(
           src="../img/living/greenland_living_pic7_1"
@@ -235,7 +235,7 @@
 
   //- section avi
   section.gli-avi
-    .u-section
+    .u-section.u-section--no-padding-top
       .u-container-lg
         g-pic(
           src="../img/living/greenland_living_pic8_1"
@@ -252,9 +252,10 @@
           :key="`gli-aviText1-${index}`"
           v-html="p"
         )
-      .u-container
-        .flourish-embed.flourish-chart(data-src="visualisation/11056017")
-        p.caption(v-html="str.aviImg2Caption")
+
+    .u-container
+      .flourish-embed.flourish-chart(data-src="visualisation/11056017")
+      p.caption(v-html="str.aviImg2Caption")
       
     .u-section
       .u-container
@@ -284,7 +285,7 @@
 
   //- section bo
   section.gli-bo
-    .u-section
+    .u-section.u-section--no-padding-top
       .u-container-lg
         g-pic(
           src="../img/living/greenland_living_pic9_1"
