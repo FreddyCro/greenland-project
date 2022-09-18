@@ -3,6 +3,7 @@
   .g-slide-bg-wrapper(:class="{ 'g-slide-bg-wrapper--last': isLast }")
     .g-slide-bg(
       :class="{ 'g-slide-bg--active': isEnter, 'g-slide-bg--fade-in': isContentEnter }"
+      :style="{ minHeight: windowHeight }"
     )
       .g-slide-bg__vid-wrapper(v-if="src")
         g-vid-w-control(
@@ -14,26 +15,34 @@
           :use-webm="true",
           :use-play="usePlay",
           :use-sound="useSound",
-          :classname="`u-full-vh-vid ${classname}-vid`",
+          :full-screen="true",
+          :classname="`${classname}-vid`",
           :force-stop="!isEnter"
         )
 
       slot(name="bg")
 
-  .last-trigger(v-if="isLast" :ref="`g-slide-last-trigger-${id}`")
+  .last-trigger(
+    v-if="isLast"
+    :ref="`g-slide-last-trigger-${id}`"
+    :style="{ height: windowHeight }"
+  )
   .g-slide-content(
     :ref="`g-slide-content-${id}`"
     :class="{ 'g-slide-content--active': isEnter, 'g-slide-content--last': isLast }"
+    :style="{ minHeight: windowHeight }"
   )
     slot(name="content")
 </template>
 
 <script>
-import { linearIntersectionObserver } from '@/assets/js/observer.js';
 import GVidWControl from '@/components/g-vid-w-control.vue';
+import { linearIntersectionObserver } from '@/assets/js/observer.js';
+import { getWindowHeight } from '@/assets/mixins.js';
 
 export default {
   name: 'g-slide',
+  mixins: [getWindowHeight],
   components: {
     GVidWControl,
   },
@@ -87,6 +96,7 @@ export default {
     return {
       isEnter: false,
       isContentEnter: false,
+      windowHeight: null,
     };
   },
   mounted() {
@@ -113,6 +123,12 @@ export default {
         }
       );
     }
+
+    // get window height
+    this.addResizeHandler();
+  },
+  destroyed() {
+    this.removeResizeHandler();
   },
   methods: {
     handleEnter() {
@@ -128,14 +144,11 @@ export default {
 <style lang="scss">
 .g-slide {
   .last-trigger {
-    height: 100vh;
     opacity: 0;
     pointer-events: none;
   }
 }
 .g-slide-bg-wrapper {
-  min-height: 100vh;
-
   &--last {
     min-height: auto;
   }
@@ -190,11 +203,14 @@ export default {
   position: relative;
   display: flex;
   align-items: center;
-  min-height: 100vh;
   margin-top: 1px;
-  margin-bottom: 100vh;
+  margin-bottom: 600px;
   z-index: 2;
   color: $font-color-light;
+
+  @include rwd-min(md) {
+    margin-bottom: 100vh;
+  }
 
   &--last {
     margin-bottom: 0;

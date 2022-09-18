@@ -89,7 +89,7 @@
       src="../img/farming/greenland_farming_pic4_3"
       ext="jpg"
       :alt="str.skillImg1Caption"
-      classname="gf-skill-img1"
+      classname="u-full-width-img gf-skill-img1"
       :webp="true"
     )
     p.caption(v-html="str.skillImg1Caption")

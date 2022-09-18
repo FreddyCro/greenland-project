@@ -11,6 +11,7 @@
     type="video/mp4"
     :muted="$store.state.sound ? false : true"
     :poster="rwdSrcPoster"
+    :style="style"
   >
     <source v-if="useWebm" :src="rwdSrcWebm" type="video/webm" />
     <source :src="rwdSrc" type="video/mp4" />
@@ -18,8 +19,11 @@
 </template>
 
 <script>
+import { getWindowHeight } from '@/assets/mixins.js';
+
 export default {
   name: 'g-vid',
+  mixins: [getWindowHeight],
   props: {
     src: {
       type: String,
@@ -42,6 +46,10 @@ export default {
       type: String,
     },
     useWebm: {
+      type: Boolean,
+      default: false,
+    },
+    fullScreen: {
       type: Boolean,
       default: false,
     },
@@ -72,6 +80,12 @@ export default {
         this.posterExt
       }`;
     },
+    style() {
+      if (!this.fullScreen) return {};
+
+      const height = this.windowHeight;
+      return { height };
+    },
   },
   watch: {
     rwdSrc: {
@@ -90,12 +104,22 @@ export default {
   },
   mounted() {
     this.video = this.$refs[this.id];
+
+    if (this.fullScreen) {
+      this.addResizeHandler();
+    }
+  },
+  destroyed() {
+    if (this.fullScreen) {
+      this.removeResizeHandler();
+    }
   },
 };
 </script>
 
 <style lang="scss">
 .g-vid {
+  width: 100%;
   max-width: 100%;
 }
 </style>

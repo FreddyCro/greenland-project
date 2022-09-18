@@ -8,17 +8,16 @@
   )
 
   //- section hero
-  g-slide(id="hero" classname="gc-hero-slide")
+  g-slide(
+    id="hero"
+    classname="gc-hero-slide"
+    :src="`${VIDEO_PATH}climate/greenland_climate_video1`",
+    ext="mp4",
+    poster="../img/climate/greenland_climate_preview1",
+    poster-ext="jpg"
+    :use-webm="true"
+  )
     section.u-section-full.gf-hero-vid-wrapper(slot="bg")
-      g-vid(
-        :src="`${VIDEO_PATH}climate/greenland_climate_video1`",
-        ext="mp4",
-        poster="../img/climate/greenland_climate_preview1",
-        poster-ext="jpg"
-        :use-webm="true"
-        id="gc-hero-vid",
-        classname="u-full-vid"
-      )
       g-hero-scroll(:fadeOut="true")
     section.u-section.gc-hero(slot="content")
       .u-container

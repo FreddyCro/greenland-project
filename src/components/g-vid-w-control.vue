@@ -9,10 +9,11 @@
       :class="classname || ''"
       :use-webm="useWebm"
       :is-playing="isPlaying"
+      :full-screen="fullScreen"
     />
 
     <div class="g-vid-w-control__btns">
-      <button 
+      <button
         v-if="usePlay"
         class="g-vid-w-control__btn"
         @click="handlePlayClick"
@@ -91,6 +92,10 @@ export default {
     useSound: {
       type: Boolean,
       default: true,
+    },
+    fullScreen: {
+      type: Boolean,
+      default: false,
     },
     forceStop: {
       type: Boolean,

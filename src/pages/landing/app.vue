@@ -317,10 +317,6 @@ export default {
 
 .gl-speed,
 .gl-culture {
-  /* .g-vid-w-control__btn {
-    background-color: #434343;
-  } */
-
   .g-vid {
     @include rwd-max(lg) {
       object-fit: contain;
@@ -335,25 +331,6 @@ export default {
 
   @include rwd-min(md) {
     flex-direction: row;
-  }
-
-  .gl-bnb-vid {
-    height: 100vh;
-
-    .g-vid-w-control {
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  .gl-bnb-text,
-  .gl-bnb-vid {
-    @include rwd-min(md) {
-      width: 50%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
   }
 
   .g-vid {
