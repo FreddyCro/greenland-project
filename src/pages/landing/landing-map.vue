@@ -31,158 +31,153 @@
           )
 
   .glm-text
-    section.u-section.glm-section.glm-mystery(
-      ref="section-1"
-      :class="{'glm-section--active': activeIndex === 0}"
-    )
-      .glm-container
-        .glm-title
-          h2(v-html="str.mapMysteryTitle")
-        p(
-          v-for="p, index in str.mapMysteryText"
-          :key="`mapMysteryText-${index}`"
-          v-html="p"
-        )
-
-    section.u-section.glm-section.glm-scientist#climate(
-      ref="section-2"
-      :class="{'glm-section--active': activeIndex === 1}"
-    )
-      .glm-container
-        .glm-title
-          h2(v-html="str.mapScientistTitle")
-          .glm-subtitle
-            span
-              img(src="img/landing/icon/logo_place.svg", alt="pin")
-            span(v-html="str.mapScientistPin")
-        p(
-          v-for="p, index in str.mapScientistText1"
-          :key="`mapScientistText1-${index}`"
-          v-html="p"
-        )
-        .glm-pic-wrapper
-          g-pic(
-            src="img/landing/map/greenland_pic8_2"
-            ext="jpg"
-            :alt="str.mapFarmingTitle"
-            :webp="true"
-            classname="u-full-width-img"
+    .stick-trigger(ref="stick-trigger-1")
+    section.glm-section.glm-mystery(ref="section-1")
+      .glm-section__content.u-section(:class="{'glm-section__content--active': activeIndex === 0}")
+        .glm-container
+          .glm-title
+            h2(v-html="str.mapMysteryTitle")
+          p(
+            v-for="p, index in str.mapMysteryText"
+            :key="`mapMysteryText-${index}`"
+            v-html="p"
           )
-        p(
-          v-for="p, index in str.mapScientistText2"
-          :key="`mapScientistText2-${index}`"
-          v-html="p"
-        )
-        a.glm-anchor(
-          href="./climate"
-          target="_blank"
-        )
-          g-button(:text="str.mapScientistStoryTitle" classname="glm-button")
 
-    section.u-section.glm-section.glm-fishing#fishing(
-      ref="section-3"
-      :class="{'glm-section--active': activeIndex === 2}"
-    )
-      .glm-container
-        .glm-title
-          h2(v-html="str.mapFishingTitle")
-          .glm-subtitle
-            span
-              img(src="img/landing/icon/logo_place.svg", alt="pin")
-            span(v-html="str.mapFishingPin")
-        p(
-          v-for="p, index in str.mapFishingText1"
-          :key="`mapFishingText1-${index}`"
-          v-html="p"
-        )
-        .glm-pic-wrapper
-          g-pic(
-            src="img/landing/map/greenland_pic8_3"
-            ext="jpg"
-            :alt="str.mapFarmingTitle"
-            :webp="true"
-            classname="u-full-width-img"
+    .stick-trigger(ref="stick-trigger-2")
+    section.glm-section.glm-scientist#climate(ref="section-2")
+      .glm-section__content.u-section(:class="{'glm-section__content--active': activeIndex === 1}")
+        .glm-container
+          .glm-title
+            h2(v-html="str.mapScientistTitle")
+            .glm-subtitle
+              span
+                img(src="img/landing/icon/logo_place.svg", alt="pin")
+              span(v-html="str.mapScientistPin")
+          p(
+            v-for="p, index in str.mapScientistText1"
+            :key="`mapScientistText1-${index}`"
+            v-html="p"
           )
-        p(
-          v-for="p, index in str.mapFishingText2"
-          :key="`mapFishingText2-${index}`"
-          v-html="p"
-        )
-        a.glm-anchor(
-          href="./fishing"
-          target="_blank"
-        )
-          g-button(:text="str.mapFishingStoryTitle" classname="glm-button")
+          .glm-pic-wrapper
+            g-pic(
+              src="img/landing/map/greenland_pic8_2"
+              ext="jpg"
+              :alt="str.mapFarmingTitle"
+              :webp="true"
+              classname="u-full-width-img"
+            )
+          p(
+            v-for="p, index in str.mapScientistText2"
+            :key="`mapScientistText2-${index}`"
+            v-html="p"
+          )
+          a.glm-anchor(
+            href="./climate/"
+            target="_blank"
+          )
+            g-button(:text="str.mapScientistStoryTitle" classname="glm-button")
 
-    section.u-section.glm-section.glm-farming#farming(
-      ref="section-4"
-      :class="{'glm-section--active': activeIndex === 3}"
-    )
-      .glm-container
-        .glm-title
-          h2(v-html="str.mapFarmingTitle")
-          .glm-subtitle
-            span
-              img(src="img/landing/icon/logo_place.svg", alt="pin")
-            span(v-html="str.mapFarmingPin")
-        p(
-          v-for="p, index in str.mapFarmingText1"
-          :key="`mapFarmingText1-${index}`"
-          v-html="p"
-        )
-        .glm-pic-wrapper
-          g-pic(
-            src="img/landing/map/greenland_pic8_4"
-            ext="jpg"
-            :alt="str.mapFarmingTitle"
-            :webp="true"
-            classname="u-full-width-img"
+    .stick-trigger(ref="stick-trigger-3")
+    section.glm-section.glm-fishing#fishing(ref="section-3")
+      .glm-section__content.u-section(:class="{'glm-section__content--active': activeIndex === 2}")
+        .glm-container
+          .glm-title
+            h2(v-html="str.mapFishingTitle")
+            .glm-subtitle
+              span
+                img(src="img/landing/icon/logo_place.svg", alt="pin")
+              span(v-html="str.mapFishingPin")
+          p(
+            v-for="p, index in str.mapFishingText1"
+            :key="`mapFishingText1-${index}`"
+            v-html="p"
           )
-        p(
-          v-for="p, index in str.mapFarmingText2"
-          :key="`mapFarmingText2-${index}`"
-          v-html="p"
-        )
-        a.glm-anchor(
-          href="./farming"
-          target="_blank"
-        )
-          g-button(:text="str.mapFarmingStoryTitle" classname="glm-button")
+          .glm-pic-wrapper
+            g-pic(
+              src="img/landing/map/greenland_pic8_3"
+              ext="jpg"
+              :alt="str.mapFarmingTitle"
+              :webp="true"
+              classname="u-full-width-img"
+            )
+          p(
+            v-for="p, index in str.mapFishingText2"
+            :key="`mapFishingText2-${index}`"
+            v-html="p"
+          )
+          a.glm-anchor(
+            href="./fishing/"
+            target="_blank"
+          )
+            g-button(:text="str.mapFishingStoryTitle" classname="glm-button")
 
-    section.u-section.glm-section.glm-living(
-      ref="section-5"
-      :class="{'glm-section--active': activeIndex === 4}"
-    )
-      .glm-container
-        .glm-title
-          h2(v-html="str.mapLivingTitle")
-          .glm-subtitle
-            span
-              img(src="img/landing/icon/logo_place.svg", alt="pin")
-            span(v-html="str.mapLivingPin")
-        p(
-          v-for="p, index in str.mapLivingText1"
-          :key="`mapLivingText1-${index}`"
-          v-html="p"
-        )
-        .glm-pic-wrapper
-          g-pic(
-            src="img/landing/map/greenland_pic8_5"
-            ext="jpg"
-            :alt="str.mapFarmingTitle"
-            :webp="true"
-            classname="u-full-width-img"
+    .stick-trigger(ref="stick-trigger-4")
+    section.glm-section.glm-farming#farming(ref="section-4")
+      .glm-section__content.u-section(:class="{'glm-section__content--active': activeIndex === 3}")
+        .glm-container
+          .glm-title
+            h2(v-html="str.mapFarmingTitle")
+            .glm-subtitle
+              span
+                img(src="img/landing/icon/logo_place.svg", alt="pin")
+              span(v-html="str.mapFarmingPin")
+          p(
+            v-for="p, index in str.mapFarmingText1"
+            :key="`mapFarmingText1-${index}`"
+            v-html="p"
           )
-        p(
-          v-for="p, index in str.mapLivingText2"
-          :key="`mapLivingText2-${index}`"
-          v-html="p"
-        )
-        a.glm-anchor(
-          href="./living"
-          target="_blank"
-        )
-          g-button(:text="str.mapLivingStoryTitle" classname="glm-button")
+          .glm-pic-wrapper
+            g-pic(
+              src="img/landing/map/greenland_pic8_4"
+              ext="jpg"
+              :alt="str.mapFarmingTitle"
+              :webp="true"
+              classname="u-full-width-img"
+            )
+          p(
+            v-for="p, index in str.mapFarmingText2"
+            :key="`mapFarmingText2-${index}`"
+            v-html="p"
+          )
+          a.glm-anchor(
+            href="./farming/"
+            target="_blank"
+          )
+            g-button(:text="str.mapFarmingStoryTitle" classname="glm-button")
+
+    .stick-trigger(ref="stick-trigger-5")
+    section.glm-section.glm-living(ref="section-5")
+      .glm-section__content.u-section(:class="{'glm-section__content--active': activeIndex === 4}")
+        .glm-container
+          .glm-title
+            h2(v-html="str.mapLivingTitle")
+            .glm-subtitle
+              span
+                img(src="img/landing/icon/logo_place.svg", alt="pin")
+              span(v-html="str.mapLivingPin")
+          p(
+            v-for="p, index in str.mapLivingText1"
+            :key="`mapLivingText1-${index}`"
+            v-html="p"
+          )
+          .glm-pic-wrapper
+            g-pic(
+              src="img/landing/map/greenland_pic8_5"
+              ext="jpg"
+              :alt="str.mapFarmingTitle"
+              :webp="true"
+              classname="u-full-width-img"
+            )
+          p(
+            v-for="p, index in str.mapLivingText2"
+            :key="`mapLivingText2-${index}`"
+            v-html="p"
+          )
+          a.glm-anchor(
+            href="./living/"
+            target="_blank"
+          )
+            g-button(:text="str.mapLivingStoryTitle" classname="glm-button")
 </template>
 
 <script>
@@ -273,17 +268,9 @@ export default {
             if (index === i) {
               this.activeIndex = index;
 
-              // if (window.innerWidth < 1024) {
-              //   document.body.style.overflow = 'hidden';
-              // }
-
               const vm = this;
               setTimeout(() => {
                 vm.activeLaterIndex = index;
-
-                // if (window.innerWidth < 1024) {
-                //   document.body.style.overflow = 'auto';
-                // }
               }, 1000);
             } else if (index <= i) return true;
             return false;
@@ -301,6 +288,30 @@ export default {
         };
 
         linearIntersectionObserver(this.$refs[el], handleEnter, handleLeave);
+      });
+
+      const stickTriggerList = [
+        'stick-trigger-1',
+        'stick-trigger-2',
+        'stick-trigger-3',
+        'stick-trigger-4',
+        'stick-trigger-5',
+      ];
+
+      stickTriggerList.forEach((el) => {
+        linearIntersectionObserver(
+          this.$refs[el],
+          () => {
+            if (window.innerWidth < 1024) {
+              document.body.style.overflow = 'hidden';
+
+              setTimeout(() => {
+                document.body.style.overflow = 'auto';
+              }, 1000);
+            }
+          },
+          () => {}
+        );
       });
     },
     handleUpdateProgress: debounce(function () {
@@ -387,27 +398,36 @@ export default {
     padding: $spacing-10;
   }
 
+  .stick-trigger {
+    height: 1px;
+  }
+
   .glm-section {
-    margin-top: 100vh;
-    background-color: rgba($color: $bg-white, $alpha: 0);
+    padding-top: 100vh;
+    margin-bottom: 100vh;
     transition: background-color 0.5s ease-in-out;
 
     @include rwd-min(md) {
       background-color: $bg-white;
-    }
-
-    &:first-child {
-      margin-top: 0;
+      padding-top: 0;
     }
 
     &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:first-child {
       @include rwd-min(md) {
-        margin-bottom: 100vh;
+        margin-top: 100vh;
       }
     }
 
-    &--active {
-      background-color: rgba($color: $bg-white, $alpha: 0.9);
+    &__content {
+      background-color: rgba($color: $bg-white, $alpha: 0);
+
+      &--active {
+        background-color: rgba($color: $bg-white, $alpha: 0.9);
+      }
     }
   }
 
@@ -493,8 +513,6 @@ export default {
   height: 100vh;
 
   @include rwd-min(md) {
-    /* position: sticky;
-    top: 0; */
     width: 50%;
   }
 
@@ -590,8 +608,6 @@ export default {
 }
 
 .glm-mystery {
-  margin-top: 50vh !important;
-
   @include rwd-min(md) {
     margin-top: 100vh !important;
   }
