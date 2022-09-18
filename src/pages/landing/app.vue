@@ -17,7 +17,7 @@
         poster="img/landing/greenland_preview1_1",
         poster-ext="webp"
         id="gl-vid1",
-        classname="gl-hero-vid"
+        classname="u-full-vh-vid gl-hero-vid"
         :use-webm="true"
       )
 
@@ -356,18 +356,6 @@ export default {
   h1 {
     margin-top: $spacing-5;
     margin-bottom: $spacing-5;
-  }
-
-  .gl-hero-vid-wrapper {
-    width: 100%;
-    height: 100vh;
-  }
-
-  .gl-hero-vid {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
   }
 }
 </style>
