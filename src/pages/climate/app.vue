@@ -50,18 +50,16 @@
         )
 
   //- section transition
-  g-slide(id="transition" classname="gc-transition-slide" :is-last="true")
-    section(slot="bg")
-      g-vid-w-control(
-        :src="`${VIDEO_PATH}climate/greenland_climate_video3`",
-        ext="mp4"
-        poster="../img/climate/greenland_climate_preview3",
-        poster-ext="webp"
-        :use-webm="true"
-        id="gc-vid3",
-        classname="u-full-vh-vid gc-transition-vid"
-      )
-
+  g-slide(
+    id="transition"
+    classname="gc-transition-slide"
+    :is-last="true"
+    :src="`${VIDEO_PATH}climate/greenland_climate_video3`",
+    ext="mp4"
+    poster="../img/climate/greenland_climate_preview3",
+    poster-ext="webp"
+    :use-webm="true"
+  )
     section.u-section.gc-transition(slot="content")
       .u-container
         p(
@@ -372,7 +370,7 @@ export default {
   align-items: center;
 }
 
-.gc-transition-vid {
+.gc-transition-slide-vid {
   @include rwd-max(lg) {
     object-fit: contain !important;
     object-position: center;

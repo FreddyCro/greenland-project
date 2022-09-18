@@ -4,6 +4,20 @@
     .g-slide-bg(
       :class="{ 'g-slide-bg--active': isEnter, 'g-slide-bg--fade-in': isContentEnter }"
     )
+      .g-slide-bg__vid-wrapper(v-if="src")
+        g-vid-w-control(
+          :id="`g-slide-vid-${id}`"
+          :src="src",
+          :ext="ext",
+          :poster="poster",
+          :poster-ext="posterExt",
+          :use-webm="true",
+          :use-play="usePlay",
+          :use-sound="useSound",
+          :classname="`u-full-vh-vid ${classname}-vid`",
+          :force-stop="!isEnter"
+        )
+
       slot(name="bg")
 
   .last-trigger(v-if="isLast" :ref="`g-slide-last-trigger-${id}`")
@@ -16,9 +30,13 @@
 
 <script>
 import { linearIntersectionObserver } from '@/assets/js/observer.js';
+import GVidWControl from '@/components/g-vid-w-control.vue';
 
 export default {
   name: 'g-slide',
+  components: {
+    GVidWControl,
+  },
   props: {
     id: {
       type: String,
@@ -32,6 +50,35 @@ export default {
       type: String,
     },
     isLast: {
+      type: Boolean,
+      default: false,
+    },
+    src: {
+      type: String,
+    },
+    ext: {
+      type: String,
+      default: 'mp4',
+    },
+    poster: {
+      type: String,
+    },
+    posterExt: {
+      type: String,
+    },
+    useWebm: {
+      type: Boolean,
+      default: false,
+    },
+    usePlay: {
+      type: Boolean,
+      default: true,
+    },
+    useSound: {
+      type: Boolean,
+      default: true,
+    },
+    forceStop: {
       type: Boolean,
       default: false,
     },
@@ -95,7 +142,7 @@ export default {
 }
 
 .g-slide-bg {
-  position: absolute;
+  position: fixed;
   z-index: 1;
   left: 0;
   top: 0;
@@ -106,7 +153,6 @@ export default {
   pointer-events: none;
 
   &--active {
-    position: fixed;
     opacity: 1;
     pointer-events: all;
   }
@@ -129,6 +175,14 @@ export default {
     &::before {
       opacity: 1;
     }
+  }
+
+  &__vid-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
   }
 }
 

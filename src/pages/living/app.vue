@@ -8,19 +8,19 @@
   )
   
   //- section hero
-  g-slide(id="intro" classname="gli-intro-slide")
+  g-slide(
+    id="intro"
+    classname="gli-intro-slide"
+    :src="`${VIDEO_PATH}living/greenland_living_video1`",
+    ext="mp4",
+    poster="../img/living/greenland_living_preview1",
+    poster-ext="jpg"
+    :use-webm="true"
+    :use-play="false"
+    :use-sound="false"
+  )
     section.u-section-full.gli-hero-vid-wrapper(slot="bg")
-      g-vid(
-        :src="`${VIDEO_PATH}living/greenland_living_video1`",
-        ext="mp4",
-        poster="../img/living/greenland_living_preview1",
-        poster-ext="jpg"
-        :use-webm="true"
-        id="gli-hero-vid",
-        classname="u-full-vid"
-        )
       g-hero-scroll(:fadeOut="true")
-
     section.u-section.gli-hero(slot="content")
       .u-container
         .g-hero-title
@@ -455,6 +455,10 @@ export default {
   h2 {
     @include general-font-h3;
   }
+}
+
+.quote-caption {
+  line-height: 1.3;
 }
 </style>
 

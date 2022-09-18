@@ -50,18 +50,16 @@
         )
 
   //- section transition
-  g-slide(id="transition" classname="gf-transition-slide" :is-last="true")
-    section(slot="bg")
-      g-vid-w-control(
-        :src="`${VIDEO_PATH}farming/greenland_farming_video3`",
-        ext="mp4",
-        poster="../img/farming/greenland_farming_preview3",
-        poster-ext="webp"
-        :use-webm="true"
-        id="gf-intro-vid-1",
-        classname="u-full-vh-vid gf-transition-vid"
-      )
-    
+  g-slide(
+    id="transition"
+    classname="gf-transition-slide"
+    :is-last="true"
+    :src="`${VIDEO_PATH}farming/greenland_farming_video3`",
+    ext="mp4",
+    poster="../img/farming/greenland_farming_preview3",
+    poster-ext="webp"
+    :use-webm="true"
+  )
     section.u-section.gf-transition(slot="content")
       .u-container
         p(
@@ -458,7 +456,7 @@ export default {
   align-items: center;
 }
 
-.gf-transition-vid {
+.gf-transition-slide-vid {
   @include rwd-max(lg) {
     object-fit: contain !important;
     object-position: center;

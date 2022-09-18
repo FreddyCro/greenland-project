@@ -8,17 +8,18 @@
   )
   
   //- section hero
-  g-slide(id="hero" classname="gfi-hero-slide")
+  g-slide(
+    id="hero"
+    classname="gfi-hero-slide"
+    :src="`${VIDEO_PATH}fishing/greenland_fishing_video1`",
+    ext="mp4",
+    poster="../img/fishing/greenland_fishing_preview1",
+    poster-ext="jpg"
+    :use-webm="true"
+    :use-play="false"
+    :use-sound="false"
+  )
     section.u-section-full.gfi-hero-vid-wrapper(slot="bg")
-      g-vid(
-        :src="`${VIDEO_PATH}fishing/greenland_fishing_video1`",
-        ext="mp4",
-        poster="../img/fishing/greenland_fishing_preview1",
-        poster-ext="webp"
-        :use-webm="true"
-        id="gfi-hero-vid",
-        classname="u-full-vh-vid"
-      )
       g-hero-scroll(:fadeOut="true")
     section.u-section.gfi-hero(slot="content")
       .u-container
@@ -50,18 +51,16 @@
         )
 
   //- section transition
-  g-slide(id="transition" classname="gfi-transition-slide" :is-last="true")
-    section(slot="bg")
-      g-vid-w-control(
-        :src="`${VIDEO_PATH}fishing/greenland_fishing_video3`",
-        ext="mp4"
-        poster="../img/fishing/greenland_fishing_preview3",
-        poster-ext="webp"
-        :use-webm="true"
-        id="gc-vid3",
-        classname="u-full-vh-vid gfi-transition-vid"
-      )
-  
+  g-slide(
+    id="transition"
+    classname="gfi-transition-slide"
+    :src="`${VIDEO_PATH}fishing/greenland_fishing_video3`",
+    ext="mp4"
+    poster="../img/fishing/greenland_fishing_preview3",
+    poster-ext="webp"
+    :use-webm="true"
+    :is-last="true"
+  )
     section.u-section.gfi-transition(slot="content")
       .u-container
         p(
@@ -381,7 +380,7 @@ export default {
   align-items: center;
 }
 
-.gfi-transition-vid {
+.gfi-transition-slide-vid {
   @include rwd-max(lg) {
     object-fit: contain !important;
     object-position: center;
