@@ -57,7 +57,7 @@
     :src="`${VIDEO_PATH}fishing/greenland_fishing_video3`",
     ext="mp4"
     poster="../img/fishing/greenland_fishing_preview3",
-    poster-ext="webp"
+    poster-ext="jpg"
     :use-webm="true"
     :is-last="true"
   )

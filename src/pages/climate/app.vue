@@ -14,7 +14,7 @@
         :src="`${VIDEO_PATH}climate/greenland_climate_video1`",
         ext="mp4",
         poster="../img/climate/greenland_climate_preview1",
-        poster-ext="webp"
+        poster-ext="jpg"
         :use-webm="true"
         id="gc-hero-vid",
         classname="u-full-vid"
@@ -57,7 +57,7 @@
     :src="`${VIDEO_PATH}climate/greenland_climate_video3`",
     ext="mp4"
     poster="../img/climate/greenland_climate_preview3",
-    poster-ext="webp"
+    poster-ext="jpg"
     :use-webm="true"
   )
     section.u-section.gc-transition(slot="content")

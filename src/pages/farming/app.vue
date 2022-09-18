@@ -14,7 +14,7 @@
         :src="`${VIDEO_PATH}farming/greenland_farming_video1`",
         ext="mp4",
         poster="../img/farming/greenland_farming_preview1",
-        poster-ext="webp"
+        poster-ext="jpg"
         :use-webm="true"
         id="gf-hero-vid",
         classname="u-full-vh-vid"
@@ -57,7 +57,7 @@
     :src="`${VIDEO_PATH}farming/greenland_farming_video3`",
     ext="mp4",
     poster="../img/farming/greenland_farming_preview3",
-    poster-ext="webp"
+    poster-ext="jpg"
     :use-webm="true"
   )
     section.u-section.gf-transition(slot="content")
