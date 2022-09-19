@@ -81,6 +81,26 @@ const gaTable = {
   },
 };
 
+const sendGA = ({ item, nmdCommon }) => {
+  if (nmdCommon) {
+    item = gaTable[nmdCommon];
+  }
+
+  window.ga('newmedia.send', {
+    hitType: 'event',
+    eventCategory: item.category,
+    eventAction: item.action,
+    eventLabel:
+      '[' +
+      detectPlatform() +
+      '] [' +
+      document.querySelector('title').innerHTML +
+      '] [' +
+      item.label +
+      ']',
+  });
+};
+
 const deviceList = [
   {
     name: 'mob',
@@ -97,7 +117,39 @@ const deviceList = [
 ];
 
 const rwd = {
+  data() {
+    return {
+      readProgress: 0,
+      lastStage: 0,
+      stagePool: [],
+    };
+  },
   methods: {
+    handleScroll: debounce(function () {
+      if (!document.querySelector('title')) return;
+
+      const calcProgress = () => {
+        const currentHeight = window.pageYOffset;
+        const totalHeight = document.body.scrollHeight - window.innerHeight;
+        return ((currentHeight / totalHeight) * 100).toFixed(2);
+      };
+
+      this.readProgress = calcProgress();
+      this.lastStage = this.stagePool.length ? Math.max(...this.stagePool) : 0;
+
+      if (this.readProgress < this.lastStage) return;
+
+      for (let i = this.lastStage + 10; i <= this.readProgress; i += 10) {
+        this.stagePool.push(i);
+        sendGA({
+          item: {
+            category: 'read',
+            action: 'scroll',
+            label: `page read: ${i}%`,
+          },
+        });
+      }
+    }, 500),
     handleResize: debounce(function () {
       // caculate the device by window width
       let device = 'mob';
@@ -129,9 +181,11 @@ const rwd = {
     this.originalWindowHeight = window.innerHeight;
     this.$store.commit('setFullVideoHeight', `${this.originalWindowHeight}px`);
 
+    window.addEventListener('scroll', this.handleScroll, { passive: true });
     window.addEventListener('resize', this.handleResize);
   },
   destroyed() {
+    window.removeEventListener('scroll', this.handleScroll, { passive: true });
     window.removeEventListener('resize', this.handleResize);
   },
 };
@@ -144,23 +198,7 @@ const sendGa = {
      * @param {string} item.label
      */
     sendGA({ item, nmdCommon }) {
-      if (nmdCommon) {
-        item = gaTable[nmdCommon];
-      }
-
-      window.ga('newmedia.send', {
-        hitType: 'event',
-        eventCategory: item.category,
-        eventAction: item.action,
-        eventLabel:
-          '[' +
-          detectPlatform() +
-          '] [' +
-          document.querySelector('title').innerHTML +
-          '] [' +
-          item.label +
-          ']',
-      });
+      sendGA({ item, nmdCommon });
     },
   },
 };

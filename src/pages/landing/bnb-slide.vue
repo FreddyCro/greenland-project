@@ -171,7 +171,7 @@ export default {
   &__prim {
     position: relative;
     width: 100%;
-    margin: 200px auto 600px auto;
+    margin: 200px auto 800px auto;
     padding: $spacing-9;
     background-color: rgba($color: $bg-white, $alpha: 0.9);
 
@@ -191,16 +191,17 @@ export default {
 
   &__sec-wrapper {
     position: sticky;
-    top: 50%;
+    top: 0;
+    /* top: 50%; */
     width: 100%;
     display: flex;
     justify-content: center;
-    transform: translateY(-50%);
+    /* transform: translateY(-50%); */
 
     @include rwd-min(md) {
       top: 0;
       width: 50%;
-      transform: translateY(0);
+      /* transform: translateY(0); */
     }
   }
 
