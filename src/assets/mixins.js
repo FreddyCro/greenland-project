@@ -2,6 +2,11 @@ import debounce from 'debounce';
 import { detectPlatform } from '@/assets/js/udn-newmedia-utils';
 import { calcInterpolation } from '@/assets/js/progress.js';
 import { getPublicPath } from '@/assets/js/utils.js';
+import InApp from 'detect-inapp';
+
+const inapp = new InApp(
+  navigator.userAgent || navigator.vendor || window.opera
+);
 
 const gaTable = {
   HeaderShareOpen: {
@@ -76,6 +81,26 @@ const gaTable = {
   },
 };
 
+const sendGA = ({ item, nmdCommon }) => {
+  if (nmdCommon) {
+    item = gaTable[nmdCommon];
+  }
+
+  window.ga('newmedia.send', {
+    hitType: 'event',
+    eventCategory: item.category,
+    eventAction: item.action,
+    eventLabel:
+      '[' +
+      detectPlatform() +
+      '] [' +
+      document.querySelector('title').innerHTML +
+      '] [' +
+      item.label +
+      ']',
+  });
+};
+
 const deviceList = [
   {
     name: 'mob',
@@ -92,7 +117,39 @@ const deviceList = [
 ];
 
 const rwd = {
+  data() {
+    return {
+      readProgress: 0,
+      lastStage: 0,
+      stagePool: [],
+    };
+  },
   methods: {
+    handleScroll: debounce(function () {
+      if (!document.querySelector('title')) return;
+
+      const calcProgress = () => {
+        const currentHeight = window.pageYOffset;
+        const totalHeight = document.body.scrollHeight - window.innerHeight;
+        return ((currentHeight / totalHeight) * 100).toFixed(2);
+      };
+
+      this.readProgress = calcProgress();
+      this.lastStage = this.stagePool.length ? Math.max(...this.stagePool) : 0;
+
+      if (this.readProgress < this.lastStage) return;
+
+      for (let i = this.lastStage + 10; i <= this.readProgress; i += 10) {
+        this.stagePool.push(i);
+        sendGA({
+          item: {
+            category: 'read',
+            action: 'scroll',
+            label: `page read: ${i}%`,
+          },
+        });
+      }
+    }, 500),
     handleResize: debounce(function () {
       // caculate the device by window width
       let device = 'mob';
@@ -106,13 +163,29 @@ const rwd = {
       if (this.$store.state.device !== device) {
         this.$store.dispatch('setDevice', device);
       }
+
+      // set the full video height
+      if (window.innerWidth > 768 || !inapp.isInApp) {
+        this.$store.commit('setFullVideoHeight', '100vh');
+      } else {
+        this.$store.commit(
+          'setFullVideoHeight',
+          `${this.originalWindowHeight}px`
+        );
+      }
     }, 100),
   },
   created() {
     this.handleResize();
+
+    this.originalWindowHeight = window.innerHeight;
+    this.$store.commit('setFullVideoHeight', `${this.originalWindowHeight}px`);
+
+    window.addEventListener('scroll', this.handleScroll, { passive: true });
     window.addEventListener('resize', this.handleResize);
   },
   destroyed() {
+    window.removeEventListener('scroll', this.handleScroll, { passive: true });
     window.removeEventListener('resize', this.handleResize);
   },
 };
@@ -125,23 +198,7 @@ const sendGa = {
      * @param {string} item.label
      */
     sendGA({ item, nmdCommon }) {
-      if (nmdCommon) {
-        item = gaTable[nmdCommon];
-      }
-
-      window.ga('newmedia.send', {
-        hitType: 'event',
-        eventCategory: item.category,
-        eventAction: item.action,
-        eventLabel:
-          '[' +
-          detectPlatform() +
-          '] [' +
-          document.querySelector('title').innerHTML +
-          '] [' +
-          item.label +
-          ']',
-      });
+      sendGA({ item, nmdCommon });
     },
   },
 };
@@ -155,32 +212,6 @@ const env = {
           ? process.env.VUE_APP_VIDEO_PATH
           : 'http://localhost:8080/vid/',
     };
-  },
-};
-
-const getWindowHeight = {
-  data() {
-    return {
-      originalWindowHeight: null,
-      windowHeight: null,
-    };
-  },
-  methods: {
-    handleResize: debounce(function () {
-      if (window.innerWidth > 768) {
-        this.windowHeight = '100vh';
-      } else {
-        this.windowHeight = `${this.originalWindowHeight}px`;
-      }
-    }, 1000),
-    addResizeHandler() {
-      this.originalWindowHeight = window.innerHeight;
-      this.windowHeight = `${this.originalWindowHeight}px`;
-      window.addEventListener('resize', this.handleResize);
-    },
-    removeResizeHandler() {
-      window.removeEventListener('resize', this.handleResize);
-    },
   },
 };
 
@@ -226,4 +257,4 @@ const glMap = {
   },
 };
 
-export { rwd, sendGa, glMap, getWindowHeight, env };
+export { rwd, sendGa, glMap, env };

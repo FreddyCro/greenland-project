@@ -11,11 +11,14 @@
   g-slide(
     id="hero"
     classname="gc-hero-slide"
+    :is-first="true"
     :src="`${VIDEO_PATH}climate/greenland_climate_video1`",
     ext="mp4",
     poster="../img/climate/greenland_climate_preview1",
     poster-ext="jpg"
     :use-webm="true"
+    :use-play="false"
+    :use-sound="false"
   )
     section.u-section-full.gf-hero-vid-wrapper(slot="bg")
       g-hero-scroll(:fadeOut="true")
@@ -168,7 +171,7 @@
       classname="gc-jp-img2"
       :webp="true"
     )
-    p.caption(v-html="str.jpImg1Caption")
+    p.caption.gc-jp-img2-caption(v-html="str.jpImg1Caption")
 
   section.u-section
     .u-container
@@ -326,6 +329,10 @@ export default {
           members: str.editorVisualMembers,
         },
         {
+          title: str.editorFilmingTitle,
+          members: str.editorFilmingMembers,
+        },
+        {
           title: str.editorEngineerTitle,
           members: str.editorEngineerMembers,
         },
@@ -354,6 +361,13 @@ export default {
 
   h2 {
     @include general-font-h3;
+  }
+}
+
+.gc-jp-img2-caption {
+  @include rwd-min(lg) {
+    margin: 0 auto;
+    max-width: 872px;
   }
 }
 </style>

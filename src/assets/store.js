@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     device: '',
     sound: false,
+    fullVideoHeight: '100vh',
   },
   mutations: {
     setDevice(state, device) {
@@ -14,6 +15,9 @@ export default new Vuex.Store({
     },
     setSound(state, sound) {
       state.sound = sound;
+    },
+    setFullVideoHeight(state, height) {
+      state.fullVideoHeight = height;
     },
   },
   actions: {

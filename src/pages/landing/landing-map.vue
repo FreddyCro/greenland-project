@@ -276,7 +276,7 @@ export default {
             return false;
           });
 
-          console.log('enter', i + 1);
+          // console.log('enter', i + 1);
         };
 
         const handleLeave = () => {
@@ -284,7 +284,7 @@ export default {
             if (item) return;
           });
 
-          console.log('leave', i + 1);
+          // console.log('leave', i + 1);
         };
 
         linearIntersectionObserver(this.$refs[el], handleEnter, handleLeave);
