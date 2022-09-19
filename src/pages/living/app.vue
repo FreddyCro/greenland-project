@@ -11,6 +11,7 @@
   g-slide(
     id="intro"
     classname="gli-intro-slide"
+    :is-first="true"
     :src="`${VIDEO_PATH}living/greenland_living_video1`",
     ext="mp4",
     poster="../img/living/greenland_living_preview1",
@@ -33,7 +34,7 @@
         )
 
   //- section intro
-  g-slide(id="section2" classname="gli-section2-slide")
+  g-slide(id="section2" classname="gli-section2-slide" :is-last="true")
     section(slot="bg")
       g-pic(
         src="../img/living/greenland_living_pic2"
@@ -80,8 +81,11 @@
           :webp="true"
         )
       .u-container
-        p.quote-caption(v-html="str.kirImg1Caption")
-
+        .quote-caption
+          .quote-caption__decoration-wrapper
+            span
+          .quote-caption__text-wrapper
+            span(v-html="str.kirImg1Caption")
         g-quote(:text="str.kirTitle")
         p(
           v-for="p, index in str.kirText1"
@@ -119,7 +123,11 @@
           :webp="true"
         )
       .u-container
-        p.quote-caption(v-html="str.kajImg1Caption")
+        .quote-caption
+          .quote-caption__decoration-wrapper
+            span
+          .quote-caption__text-wrapper
+            span(v-html="str.kajImg1Caption")
         g-quote(:text="str.kajTitle")
         p(
           v-for="p, index in str.kajText1"
@@ -157,7 +165,11 @@
           :webp="true"
         )
       .u-container
-        p.quote-caption(v-html="str.pauImg1Caption")
+        .quote-caption
+          .quote-caption__decoration-wrapper
+            span
+          .quote-caption__text-wrapper
+            span(v-html="str.pauImg1Caption")
         g-quote(:text="str.pauTitle")
         p(
           v-for="p, index in str.pauText1"
@@ -207,7 +219,11 @@
           :webp="true"
         )
       .u-container
-        p.quote-caption(v-html="str.chrisImg1Caption")
+        .quote-caption
+          .quote-caption__decoration-wrapper
+            span
+          .quote-caption__text-wrapper
+            span(v-html="str.chrisImg1Caption")
         g-quote(:text="str.chrisTitle")
         p(
           v-for="p, index in str.chrisText1"
@@ -245,7 +261,11 @@
           :webp="true"
         )
       .u-container
-        p.quote-caption(v-html="str.aviImg1Caption")
+        .quote-caption
+          .quote-caption__decoration-wrapper
+            span
+          .quote-caption__text-wrapper
+            span(v-html="str.aviImg1Caption")
         g-quote(:text="str.aviTitle")
         p(
           v-for="p, index in str.aviText1"
@@ -295,7 +315,11 @@
           :webp="true"
         )
       .u-container
-        p.quote-caption(v-html="str.boImg1Caption")
+        p.quote-caption
+          .quote-caption__decoration-wrapper
+            span
+          .quote-caption__text-wrapper
+            span(v-html="str.boImg1Caption")
         g-quote(:text="str.boTitle")
         p(
           v-for="p, index in str.boText1"
@@ -457,10 +481,6 @@ export default {
     @include general-font-h3;
   }
 }
-
-.quote-caption {
-  line-height: 1.3;
-}
 </style>
 
 <style lang="scss">
@@ -476,16 +496,35 @@ export default {
 
 .quote-caption {
   display: flex;
-  align-items: center;
-  color: $g-blue-1;
+  margin-top: $spacing-5;
 
-  &::before {
+  &__decoration-wrapper {
+    display: inline-flex;
+    align-items: center;
+
+    span {
+      display: block;
+      width: 10px;
+      height: 80%;
+      margin-right: $spacing-2;
+      background-color: $g-blue-1;
+    }
+  }
+
+  &__text-wrapper {
+    width: calc(100% - 20px);
+    display: inline-block;
+    color: $g-blue-1;
+    line-height: 1.5;
+  }
+
+  /* &::before {
     content: '';
     display: inline-block;
     width: 10px;
     height: 20px;
     margin-right: $spacing-2;
     background-color: $g-blue-1;
-  }
+  } */
 }
 </style>

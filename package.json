@@ -10,6 +10,7 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "debounce": "^1.2.1",
+    "detect-inapp": "^1.4.0",
     "vue": "^2.6.11",
     "vue-scrollto": "^2.20.0",
     "vue-social-sharing": "^3.0.9",

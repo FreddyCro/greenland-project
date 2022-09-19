@@ -11,6 +11,7 @@
   g-slide(
     id="hero"
     classname="gfi-hero-slide"
+    :is-first="true"
     :src="`${VIDEO_PATH}fishing/greenland_fishing_video1`",
     ext="mp4",
     poster="../img/fishing/greenland_fishing_preview1",

@@ -2,6 +2,11 @@ import debounce from 'debounce';
 import { detectPlatform } from '@/assets/js/udn-newmedia-utils';
 import { calcInterpolation } from '@/assets/js/progress.js';
 import { getPublicPath } from '@/assets/js/utils.js';
+import InApp from 'detect-inapp';
+
+const inapp = new InApp(
+  navigator.userAgent || navigator.vendor || window.opera
+);
 
 const gaTable = {
   HeaderShareOpen: {
@@ -106,10 +111,24 @@ const rwd = {
       if (this.$store.state.device !== device) {
         this.$store.dispatch('setDevice', device);
       }
+
+      // set the full video height
+      if (window.innerWidth > 768 || !inapp.isInApp) {
+        this.$store.commit('setFullVideoHeight', '100vh');
+      } else {
+        this.$store.commit(
+          'setFullVideoHeight',
+          `${this.originalWindowHeight}px`
+        );
+      }
     }, 100),
   },
   created() {
     this.handleResize();
+
+    this.originalWindowHeight = window.innerHeight;
+    this.$store.commit('setFullVideoHeight', `${this.originalWindowHeight}px`);
+
     window.addEventListener('resize', this.handleResize);
   },
   destroyed() {
@@ -158,32 +177,6 @@ const env = {
   },
 };
 
-const getWindowHeight = {
-  data() {
-    return {
-      originalWindowHeight: null,
-      windowHeight: null,
-    };
-  },
-  methods: {
-    handleResize: debounce(function () {
-      if (window.innerWidth > 768) {
-        this.windowHeight = '100vh';
-      } else {
-        this.windowHeight = `${this.originalWindowHeight}px`;
-      }
-    }, 1000),
-    addResizeHandler() {
-      this.originalWindowHeight = window.innerHeight;
-      this.windowHeight = `${this.originalWindowHeight}px`;
-      window.addEventListener('resize', this.handleResize);
-    },
-    removeResizeHandler() {
-      window.removeEventListener('resize', this.handleResize);
-    },
-  },
-};
-
 const glMap = {
   props: {
     index: {
@@ -226,4 +219,4 @@ const glMap = {
   },
 };
 
-export { rwd, sendGa, glMap, getWindowHeight, env };
+export { rwd, sendGa, glMap, env };

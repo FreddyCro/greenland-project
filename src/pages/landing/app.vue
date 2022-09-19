@@ -240,6 +240,10 @@ export default {
           members: str.editorVisualMembers,
         },
         {
+          title: str.editorFilmingTitle,
+          members: str.editorFilmingMembers,
+        },
+        {
           title: str.editorEngineerTitle,
           members: str.editorEngineerMembers,
         },
@@ -315,8 +319,18 @@ export default {
   }
 }
 
+.gl-snow {
+  @include rwd-max(sm) {
+    background-color: #000;
+  }
+}
+
 .gl-speed,
 .gl-culture {
+  @include rwd-max(sm) {
+    background-color: #000;
+  }
+
   .g-vid {
     @include rwd-max(lg) {
       object-fit: contain;

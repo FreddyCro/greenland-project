@@ -18,6 +18,7 @@ export default {
 <style lang="scss" scoped>
 .g-quote {
   margin-top: $spacing-5;
+  margin-bottom: $spacing-10;
 
   h2 {
     font-size: 28px;

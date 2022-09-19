@@ -20,11 +20,9 @@
 </template>
 
 <script>
-import { getWindowHeight } from '@/assets/mixins.js';
 
 export default {
   name: 'g-vid',
-  mixins: [getWindowHeight],
   props: {
     src: {
       type: String,
@@ -88,8 +86,8 @@ export default {
     style() {
       if (!this.fullScreen) return {};
 
-      const height = this.windowHeight;
-      return { height };
+      const style = { height: this.$store.state.fullVideoHeight };
+      return style;
     },
   },
   watch: {
@@ -109,15 +107,6 @@ export default {
   },
   mounted() {
     this.video = this.$refs[this.id];
-
-    if (this.fullScreen) {
-      this.addResizeHandler();
-    }
-  },
-  destroyed() {
-    if (this.fullScreen) {
-      this.removeResizeHandler();
-    }
   },
 };
 </script>

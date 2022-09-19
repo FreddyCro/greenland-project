@@ -4,7 +4,7 @@
     .bnb-slide__sec.bnb-slide__sec--chart(
       v-if="firstChart && secondChart"
       :class="{'bnb-slide__sec--active': isBnbEnter}"
-      :style="{ minHeight: windowHeight }"
+      :style="{ minHeight: $store.state.fullVideoHeight }"
     )
       g-two-chart(
         :id="`bnb-slide-media-${id}`",
@@ -37,11 +37,9 @@
 import GTwoChart from '@/components/g-two-chart.vue';
 import GVidWControl from '@/components/g-vid-w-control.vue';
 import { linearIntersectionObserver } from '@/assets/js/observer.js';
-import { getWindowHeight } from '@/assets/mixins.js';
 
 export default {
   name: 'bnb-slide',
-  mixins: [getWindowHeight],
   components: {
     GTwoChart,
     GVidWControl,
@@ -135,12 +133,6 @@ export default {
         threshold: 0,
       }
     );
-
-    // handle get window height
-    this.addResizeHandler();
-  },
-  destroyed() {
-    this.removeResizeHandler();
   },
   methods: {
     handleEnter() {
@@ -199,13 +191,16 @@ export default {
 
   &__sec-wrapper {
     position: sticky;
-    top: 0;
+    top: 50%;
     width: 100%;
     display: flex;
     justify-content: center;
+    transform: translateY(-50%);
 
     @include rwd-min(md) {
+      top: 0;
       width: 50%;
+      transform: translateY(0);
     }
   }
 

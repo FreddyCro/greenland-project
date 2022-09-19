@@ -8,17 +8,19 @@
   )
   
   //- section hero
-  g-slide(id="hero" classname="gc-hero-slide" :is-first="true")
+  g-slide(
+    id="hero"
+    classname="gc-hero-slide"
+    :is-first="true"
+    :src="`${VIDEO_PATH}farming/greenland_farming_video1`",
+    ext="mp4",
+    poster="../img/farming/greenland_farming_preview1",
+    poster-ext="jpg"
+    :use-webm="true"
+    :use-play="false"
+    :use-sound="false"
+  )
     section.u-section-full.gf-hero-vid-wrapper(slot="bg")
-      g-vid(
-        :src="`${VIDEO_PATH}farming/greenland_farming_video1`",
-        ext="mp4",
-        poster="../img/farming/greenland_farming_preview1",
-        poster-ext="jpg"
-        :use-webm="true"
-        id="gf-hero-vid",
-        classname="u-full-vh-vid"
-      )
       g-hero-scroll(:fadeOut="true")
     section.u-section.gf-hero(slot="content")
       .u-container

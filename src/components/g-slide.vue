@@ -1,9 +1,12 @@
 <template lang="pug">
 .g-slide(:ref="`g-slide-${id}`" :class="classname")
-  .g-slide-bg-wrapper(:class="{ 'g-slide-bg-wrapper--last': isLast }")
+  .g-slide-bg-wrapper(:class="{'g-slide-bg-wrapper--last': isLast }")
     .g-slide-bg(
-      :class="{ 'g-slide-bg--active': isEnter, 'g-slide-bg--fade-in': isContentEnter }"
-      :style="{ minHeight: windowHeight }"
+      :class="{ \
+        'g-slide-bg--active': isEnter, \
+        'g-slide-bg--fade-in': isContentEnter || (!isFirst && !isLast), \
+      }"
+      :style="{ minHeight: $store.state.fullVideoHeight }"
     )
       .g-slide-bg__vid-wrapper(v-if="src")
         g-vid-w-control(
@@ -25,12 +28,15 @@
   .last-trigger(
     v-if="isLast"
     :ref="`g-slide-last-trigger-${id}`"
-    :style="{ height: windowHeight }"
+    :style="{ height: $store.state.fullVideoHeight }"
   )
   .g-slide-content(
     :ref="`g-slide-content-${id}`"
-    :class="{ 'g-slide-content--active': isEnter, 'g-slide-content--last': isLast }"
-    :style="{ minHeight: windowHeight }"
+    :class="{ \
+      'g-slide-content--first': isFirst, \
+      'g-slide-content--last': isLast,  \
+    }"
+    :style="{ minHeight: $store.state.fullVideoHeight }"
   )
     slot(name="content")
 </template>
@@ -38,11 +44,9 @@
 <script>
 import GVidWControl from '@/components/g-vid-w-control.vue';
 import { linearIntersectionObserver } from '@/assets/js/observer.js';
-import { getWindowHeight } from '@/assets/mixins.js';
 
 export default {
   name: 'g-slide',
-  mixins: [getWindowHeight],
   components: {
     GVidWControl,
   },
@@ -57,6 +61,10 @@ export default {
     },
     theme: {
       type: String,
+    },
+    isFirst: {
+      type: Boolean,
+      default: false,
     },
     isLast: {
       type: Boolean,
@@ -122,12 +130,6 @@ export default {
         }
       );
     }
-
-    // get window height
-    this.addResizeHandler();
-  },
-  destroyed() {
-    this.removeResizeHandler();
   },
   methods: {
     handleEnter() {
@@ -196,6 +198,10 @@ export default {
     width: 100%;
     height: 100%;
   }
+
+  .g-vid {
+    object-fit: cover;
+  }
 }
 
 .g-slide-content {
@@ -209,6 +215,11 @@ export default {
 
   @include rwd-min(md) {
     margin-bottom: 100vh;
+  }
+
+  &--first {
+    margin-top: 100vh;
+    transform: translateY(1px);
   }
 
   &--last {
