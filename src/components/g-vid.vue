@@ -11,6 +11,7 @@
     type="video/mp4"
     :muted="$store.state.sound ? false : true"
     :poster="rwdSrcPoster"
+    :preload="preload"
     :style="style"
   >
     <source v-if="useWebm" :src="rwdSrcWebm" type="video/webm" />
@@ -48,6 +49,10 @@ export default {
     useWebm: {
       type: Boolean,
       default: false,
+    },
+    preload: {
+      type: String,
+      default: 'auto',
     },
     fullScreen: {
       type: Boolean,

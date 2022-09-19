@@ -455,7 +455,6 @@ export default {
 
     @include rwd-min(xl) {
       max-width: 470px;
-      margin-right: 0;
     }
   }
 
