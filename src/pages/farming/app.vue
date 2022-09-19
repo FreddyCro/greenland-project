@@ -14,7 +14,7 @@
         :src="`${VIDEO_PATH}farming/greenland_farming_video1`",
         ext="mp4",
         poster="../img/farming/greenland_farming_preview1",
-        poster-ext="webp"
+        poster-ext="jpg"
         :use-webm="true"
         id="gf-hero-vid",
         classname="u-full-vh-vid"
@@ -50,18 +50,16 @@
         )
 
   //- section transition
-  g-slide(id="transition" classname="gf-transition-slide" :is-last="true")
-    section(slot="bg")
-      g-vid-w-control(
-        :src="`${VIDEO_PATH}farming/greenland_farming_video3`",
-        ext="mp4",
-        poster="../img/farming/greenland_farming_preview3",
-        poster-ext="webp"
-        :use-webm="true"
-        id="gf-intro-vid-1",
-        classname="u-full-vh-vid gf-transition-vid"
-      )
-    
+  g-slide(
+    id="transition"
+    classname="gf-transition-slide"
+    :is-last="true"
+    :src="`${VIDEO_PATH}farming/greenland_farming_video3`",
+    ext="mp4",
+    poster="../img/farming/greenland_farming_preview3",
+    poster-ext="jpg"
+    :use-webm="true"
+  )
     section.u-section.gf-transition(slot="content")
       .u-container
         p(
@@ -91,7 +89,7 @@
       src="../img/farming/greenland_farming_pic4_3"
       ext="jpg"
       :alt="str.skillImg1Caption"
-      classname="gf-skill-img1"
+      classname="u-full-width-img gf-skill-img1"
       :webp="true"
     )
     p.caption(v-html="str.skillImg1Caption")
@@ -121,6 +119,7 @@
         v-html="p"
       )
   .u-container
+    h4.gf-farm-h4(v-html="str.farmImg1Title")
     block-chart
     p.caption(v-html="str.farmImg1Caption")
 
@@ -317,7 +316,6 @@
         footer-editor(:data="editor")
         footer-share(
           :title="str.metaTitle"
-          :url="str.metaUrl"
           :description="str.metaDescription"
         )
         footer-questionnaire
@@ -369,22 +367,22 @@ export default {
         },
         {
           title: '北極站科學家篇',
-          url: 'climate',
+          url: 'climate/',
           active: false,
         },
         {
           title: '撈海廢討海人篇',
-          url: 'fishing',
+          url: 'fishing/',
           active: false,
         },
         {
           title: '穿梭綠地牧羊人篇',
-          url: 'farming',
+          url: 'farming/',
           active: true,
         },
         {
           title: '格陵蘭居民篇',
-          url: 'living',
+          url: 'living/',
           active: false,
         },
       ],
@@ -433,6 +431,10 @@ export default {
   }
 }
 
+.gf-farm-h4 {
+  margin-bottom: $spacing-8;
+}
+
 .gf-img-source {
   font-size: 14px;
   color: rgb(156, 156, 156);
@@ -454,7 +456,7 @@ export default {
   align-items: center;
 }
 
-.gf-transition-vid {
+.gf-transition-slide-vid {
   @include rwd-max(lg) {
     object-fit: contain !important;
     object-position: center;

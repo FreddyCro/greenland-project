@@ -3,22 +3,49 @@
   .g-slide-bg-wrapper(:class="{ 'g-slide-bg-wrapper--last': isLast }")
     .g-slide-bg(
       :class="{ 'g-slide-bg--active': isEnter, 'g-slide-bg--fade-in': isContentEnter }"
+      :style="{ minHeight: windowHeight }"
     )
+      .g-slide-bg__vid-wrapper(v-if="src")
+        g-vid-w-control(
+          :id="`g-slide-vid-${id}`"
+          :src="src",
+          :ext="ext",
+          :poster="poster",
+          :poster-ext="posterExt",
+          :use-webm="true",
+          :use-play="usePlay",
+          :use-sound="useSound",
+          :full-screen="true",
+          :classname="`${classname}-vid`",
+          :force-stop="!isEnter"
+        )
+
       slot(name="bg")
 
-  .last-trigger(v-if="isLast" :ref="`g-slide-last-trigger-${id}`")
+  .last-trigger(
+    v-if="isLast"
+    :ref="`g-slide-last-trigger-${id}`"
+    :style="{ height: windowHeight }"
+  )
   .g-slide-content(
     :ref="`g-slide-content-${id}`"
     :class="{ 'g-slide-content--active': isEnter, 'g-slide-content--last': isLast }"
+    :style="{ minHeight: windowHeight }"
   )
     slot(name="content")
 </template>
 
 <script>
+import GVidWControl from '@/components/g-vid-w-control.vue';
 import { linearIntersectionObserver } from '@/assets/js/observer.js';
+import { getWindowHeight } from '@/assets/mixins.js';
 
 export default {
   name: 'g-slide',
+  mixins: [getWindowHeight],
+  components: {
+    GVidWControl,
+  },
   props: {
     id: {
       type: String,
@@ -32,6 +59,35 @@ export default {
       type: String,
     },
     isLast: {
+      type: Boolean,
+      default: false,
+    },
+    src: {
+      type: String,
+    },
+    ext: {
+      type: String,
+      default: 'mp4',
+    },
+    poster: {
+      type: String,
+    },
+    posterExt: {
+      type: String,
+    },
+    useWebm: {
+      type: Boolean,
+      default: false,
+    },
+    usePlay: {
+      type: Boolean,
+      default: true,
+    },
+    useSound: {
+      type: Boolean,
+      default: true,
+    },
+    forceStop: {
       type: Boolean,
       default: false,
     },
@@ -66,6 +122,12 @@ export default {
         }
       );
     }
+
+    // get window height
+    this.addResizeHandler();
+  },
+  destroyed() {
+    this.removeResizeHandler();
   },
   methods: {
     handleEnter() {
@@ -81,21 +143,18 @@ export default {
 <style lang="scss">
 .g-slide {
   .last-trigger {
-    height: 100vh;
     opacity: 0;
     pointer-events: none;
   }
 }
 .g-slide-bg-wrapper {
-  min-height: 100vh;
-
   &--last {
     min-height: auto;
   }
 }
 
 .g-slide-bg {
-  position: absolute;
+  position: fixed;
   z-index: 1;
   left: 0;
   top: 0;
@@ -106,7 +165,6 @@ export default {
   pointer-events: none;
 
   &--active {
-    position: fixed;
     opacity: 1;
     pointer-events: all;
   }
@@ -130,17 +188,28 @@ export default {
       opacity: 1;
     }
   }
+
+  &__vid-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .g-slide-content {
   position: relative;
   display: flex;
   align-items: center;
-  min-height: 100vh;
   margin-top: 1px;
-  margin-bottom: 100vh;
+  margin-bottom: 600px;
   z-index: 2;
   color: $font-color-light;
+
+  @include rwd-min(md) {
+    margin-bottom: 100vh;
+  }
 
   &--last {
     margin-bottom: 0;

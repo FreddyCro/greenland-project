@@ -71,7 +71,7 @@ $transition-2: 1s;
     transform: scale(2);
 
     // shift right
-    transform-origin: 20% 60%;
+    transform-origin: 10% 60%;
 
     @include rwd-min(sm) {
       transform-origin: 35% 60%;
@@ -98,7 +98,7 @@ $transition-2: 1s;
     // shift down
     // fade out sisi
     transform: scale(2);
-    transform-origin: 20% 60%;
+    transform-origin: 10% 60%;
 
     @include rwd-min(sm) {
       transform-origin: 35% 60%;

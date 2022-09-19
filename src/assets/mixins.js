@@ -158,6 +158,32 @@ const env = {
   },
 };
 
+const getWindowHeight = {
+  data() {
+    return {
+      originalWindowHeight: null,
+      windowHeight: null,
+    };
+  },
+  methods: {
+    handleResize: debounce(function () {
+      if (window.innerWidth > 768) {
+        this.windowHeight = '100vh';
+      } else {
+        this.windowHeight = `${this.originalWindowHeight}px`;
+      }
+    }, 1000),
+    addResizeHandler() {
+      this.originalWindowHeight = window.innerHeight;
+      this.windowHeight = `${this.originalWindowHeight}px`;
+      window.addEventListener('resize', this.handleResize);
+    },
+    removeResizeHandler() {
+      window.removeEventListener('resize', this.handleResize);
+    },
+  },
+};
+
 const glMap = {
   props: {
     index: {
@@ -200,4 +226,4 @@ const glMap = {
   },
 };
 
-export { rwd, sendGa, glMap, env };
+export { rwd, sendGa, glMap, getWindowHeight, env };

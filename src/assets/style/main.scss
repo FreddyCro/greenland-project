@@ -169,6 +169,10 @@
     padding-top: $spacing-11;
     padding-bottom: $spacing-11;
   }
+
+  &--no-padding-top {
+    padding-top: 0;
+  }
 }
 
 .u-section + .u-section {

@@ -8,17 +8,16 @@
   )
 
   //- section hero
-  g-slide(id="hero" classname="gc-hero-slide")
+  g-slide(
+    id="hero"
+    classname="gc-hero-slide"
+    :src="`${VIDEO_PATH}climate/greenland_climate_video1`",
+    ext="mp4",
+    poster="../img/climate/greenland_climate_preview1",
+    poster-ext="jpg"
+    :use-webm="true"
+  )
     section.u-section-full.gf-hero-vid-wrapper(slot="bg")
-      g-vid(
-        :src="`${VIDEO_PATH}climate/greenland_climate_video1`",
-        ext="mp4",
-        poster="../img/climate/greenland_climate_preview1",
-        poster-ext="webp"
-        :use-webm="true"
-        id="gc-hero-vid",
-        classname="u-full-vid"
-      )
       g-hero-scroll(:fadeOut="true")
     section.u-section.gc-hero(slot="content")
       .u-container
@@ -50,18 +49,16 @@
         )
 
   //- section transition
-  g-slide(id="transition" classname="gc-transition-slide" :is-last="true")
-    section(slot="bg")
-      g-vid-w-control(
-        :src="`${VIDEO_PATH}climate/greenland_climate_video3`",
-        ext="mp4"
-        poster="../img/climate/greenland_climate_preview3",
-        poster-ext="webp"
-        :use-webm="true"
-        id="gc-vid3",
-        classname="u-full-vh-vid gc-transition-vid"
-      )
-
+  g-slide(
+    id="transition"
+    classname="gc-transition-slide"
+    :is-last="true"
+    :src="`${VIDEO_PATH}climate/greenland_climate_video3`",
+    ext="mp4"
+    poster="../img/climate/greenland_climate_preview3",
+    poster-ext="jpg"
+    :use-webm="true"
+  )
     section.u-section.gc-transition(slot="content")
       .u-container
         p(
@@ -248,7 +245,6 @@
         footer-editor(:data="editor")
         footer-share(
           :title="str.metaTitle"
-          :url="str.metaUrl"
           :description="str.metaDescription"
         )
         footer-questionnaire
@@ -373,7 +369,7 @@ export default {
   align-items: center;
 }
 
-.gc-transition-vid {
+.gc-transition-slide-vid {
   @include rwd-max(lg) {
     object-fit: contain !important;
     object-position: center;

@@ -9,10 +9,11 @@
       :class="classname || ''"
       :use-webm="useWebm"
       :is-playing="isPlaying"
+      :full-screen="fullScreen"
     />
 
     <div class="g-vid-w-control__btns">
-      <button 
+      <button
         v-if="usePlay"
         class="g-vid-w-control__btn"
         @click="handlePlayClick"
@@ -50,7 +51,7 @@
 
 <script>
 import GVid from '@/components/g-vid.vue';
-import { linearIntersectionObserver } from '@/assets/js/observer.js';
+// import { linearIntersectionObserver } from '@/assets/js/observer.js';
 import { env } from '@/assets/mixins';
 
 export default {
@@ -92,6 +93,10 @@ export default {
       type: Boolean,
       default: true,
     },
+    fullScreen: {
+      type: Boolean,
+      default: false,
+    },
     forceStop: {
       type: Boolean,
       default: false,
@@ -125,16 +130,16 @@ export default {
     this.video = document.querySelector(`#${this.id}`);
     this.isPlaying = !this.forceStop;
 
-    linearIntersectionObserver(
-      this.$refs['g-vid'],
-      () => {
-        this.isPlaying = true;
-      },
-      () => {
-        this.isPlaying = false;
-        this.video.currentTime = 0;
-      }
-    );
+    // linearIntersectionObserver(
+    //   this.$refs['g-vid'],
+    //   () => {
+    //     this.isPlaying = true;
+    //   },
+    //   () => {
+    //     this.isPlaying = false;
+    //     this.video.currentTime = 0;
+    //   }
+    // );
   },
 };
 </script>

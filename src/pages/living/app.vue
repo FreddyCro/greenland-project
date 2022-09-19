@@ -8,19 +8,19 @@
   )
   
   //- section hero
-  g-slide(id="intro" classname="gli-intro-slide")
+  g-slide(
+    id="intro"
+    classname="gli-intro-slide"
+    :src="`${VIDEO_PATH}living/greenland_living_video1`",
+    ext="mp4",
+    poster="../img/living/greenland_living_preview1",
+    poster-ext="jpg"
+    :use-webm="true"
+    :use-play="false"
+    :use-sound="false"
+  )
     section.u-section-full.gli-hero-vid-wrapper(slot="bg")
-      g-vid(
-        :src="`${VIDEO_PATH}living/greenland_living_video1`",
-        ext="mp4",
-        poster="../img/living/greenland_living_preview1",
-        poster-ext="jpg"
-        :use-webm="true"
-        id="gli-hero-vid",
-        classname="u-full-vid"
-        )
       g-hero-scroll(:fadeOut="true")
-
     section.u-section.gli-hero(slot="content")
       .u-container
         .g-hero-title
@@ -70,7 +70,7 @@
 
   //- section kir
   section.gli-kir
-    .u-section
+    .u-section.u-section--no-padding-top
       .u-container-lg
         g-pic(
           src="../img/living/greenland_living_pic4_1"
@@ -109,7 +109,7 @@
 
   //- section kaj
   section.gli-kaj
-    .u-section
+    .u-section.u-section--no-padding-top
       .u-container-lg
         g-pic(
           src="../img/living/greenland_living_pic5_1"
@@ -147,7 +147,7 @@
 
   //- section pau
   section.gli-pau
-    .u-section
+    .u-section.u-section--no-padding-top
       .u-container-lg
         g-pic(
           src="../img/living/greenland_living_pic6_1"
@@ -197,7 +197,7 @@
 
   //- section chris
   section.gli-chris
-    .u-section
+    .u-section.u-section--no-padding-top
       .u-container-lg
         g-pic(
           src="../img/living/greenland_living_pic7_1"
@@ -235,7 +235,7 @@
 
   //- section avi
   section.gli-avi
-    .u-section
+    .u-section.u-section--no-padding-top
       .u-container-lg
         g-pic(
           src="../img/living/greenland_living_pic8_1"
@@ -252,9 +252,10 @@
           :key="`gli-aviText1-${index}`"
           v-html="p"
         )
-      .u-container
-        .flourish-embed.flourish-chart(data-src="visualisation/11056017")
-        p.caption(v-html="str.aviImg2Caption")
+
+    .u-container
+      .flourish-embed.flourish-chart(data-src="visualisation/11056017")
+      p.caption(v-html="str.aviImg2Caption")
       
     .u-section
       .u-container
@@ -284,7 +285,7 @@
 
   //- section bo
   section.gli-bo
-    .u-section
+    .u-section.u-section--no-padding-top
       .u-container-lg
         g-pic(
           src="../img/living/greenland_living_pic9_1"
@@ -342,7 +343,6 @@
         footer-editor(:data="editor")
         footer-share(
           :title="str.metaTitle"
-          :url="str.metaUrl"
           :description="str.metaDescription"
         )
         footer-questionnaire
@@ -394,22 +394,22 @@ export default {
         },
         {
           title: '北極站科學家篇',
-          url: 'climate',
+          url: 'climate/',
           active: false,
         },
         {
           title: '撈海廢討海人篇',
-          url: 'fishing',
+          url: 'fishing/',
           active: false,
         },
         {
           title: '穿梭綠地牧羊人篇',
-          url: 'farming',
+          url: 'farming/',
           active: false,
         },
         {
           title: '格陵蘭居民篇',
-          url: 'living',
+          url: 'living/',
           active: true,
         },
       ],
@@ -456,6 +456,10 @@ export default {
   h2 {
     @include general-font-h3;
   }
+}
+
+.quote-caption {
+  line-height: 1.3;
 }
 </style>
 

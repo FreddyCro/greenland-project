@@ -22,6 +22,7 @@ export default {
   h2 {
     font-size: 28px;
     color: #808080;
+    font-weight: $font-weight-semibold;
 
     @include rwd-min(sm) {
       font-size: 32px;

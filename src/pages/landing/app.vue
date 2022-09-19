@@ -17,7 +17,7 @@
         poster="img/landing/greenland_preview1_1",
         poster-ext="webp"
         id="gl-vid1",
-        classname="gl-hero-vid"
+        classname="u-full-vh-vid gl-hero-vid"
         :use-webm="true"
       )
 
@@ -149,7 +149,6 @@
         footer-editor(:data="editor")
         footer-share(
           :title="str.metaTitle"
-          :url="str.metaUrl"
           :description="str.metaDescription"
         )
         footer-questionnaire
@@ -208,22 +207,22 @@ export default {
         },
         {
           title: '北極站科學家篇',
-          url: 'climate',
+          url: 'climate/',
           active: false,
         },
         {
           title: '撈海廢討海人篇',
-          url: 'fishing',
+          url: 'fishing/',
           active: false,
         },
         {
           title: '穿梭綠地牧羊人篇',
-          url: 'farming',
+          url: 'farming/',
           active: false,
         },
         {
           title: '格陵蘭居民篇',
-          url: 'living',
+          url: 'living/',
           active: false,
         },
       ],
@@ -318,10 +317,6 @@ export default {
 
 .gl-speed,
 .gl-culture {
-  /* .g-vid-w-control__btn {
-    background-color: #434343;
-  } */
-
   .g-vid {
     @include rwd-max(lg) {
       object-fit: contain;
@@ -336,25 +331,6 @@ export default {
 
   @include rwd-min(md) {
     flex-direction: row;
-  }
-
-  .gl-bnb-vid {
-    height: 100vh;
-
-    .g-vid-w-control {
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  .gl-bnb-text,
-  .gl-bnb-vid {
-    @include rwd-min(md) {
-      width: 50%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
   }
 
   .g-vid {
@@ -380,18 +356,6 @@ export default {
   h1 {
     margin-top: $spacing-5;
     margin-bottom: $spacing-5;
-  }
-
-  .gl-hero-vid-wrapper {
-    width: 100%;
-    height: 100vh;
-  }
-
-  .gl-hero-vid {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
   }
 }
 </style>
