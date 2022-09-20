@@ -95,7 +95,7 @@ export default {
     handleClickCard(item) {
       this.sendGa({
         item: {
-          category: 'related',
+          category: 'series',
           action: 'click',
           label: this.listData[item].title,
         },

@@ -74,6 +74,7 @@
           a.glm-anchor(
             href="./climate/"
             target="_blank"
+            @click="handleAnchorClick('climate')"
           )
             g-button(:text="str.mapScientistStoryTitle" classname="glm-button")
 
@@ -108,6 +109,7 @@
           a.glm-anchor(
             href="./fishing/"
             target="_blank"
+            @click="handleAnchorClick('fishing')"
           )
             g-button(:text="str.mapFishingStoryTitle" classname="glm-button")
 
@@ -142,6 +144,7 @@
           a.glm-anchor(
             href="./farming/"
             target="_blank"
+            @click="handleAnchorClick('farming')"
           )
             g-button(:text="str.mapFarmingStoryTitle" classname="glm-button")
 
@@ -176,6 +179,7 @@
           a.glm-anchor(
             href="./living/"
             target="_blank"
+            @click="handleAnchorClick('living')"
           )
             g-button(:text="str.mapLivingStoryTitle" classname="glm-button")
 </template>
@@ -193,9 +197,11 @@ import {
 } from '@/assets/js/observer.js';
 import { calcElementProgress } from '@/assets/js/progress.js';
 import debounce from 'debounce';
+import { sendGa } from '@/assets/mixins';
 
 export default {
   name: 'landing-map',
+  mixins: [sendGa],
   components: {
     GPic,
     GButton,
@@ -362,6 +368,15 @@ export default {
           this.status = 'under';
         }
       }
+    },
+    handleAnchorClick(item) {
+      this.sendGA({
+        item: {
+          category: 'anchor',
+          action: 'click',
+          label: item,
+        },
+      });
     },
   },
 };
