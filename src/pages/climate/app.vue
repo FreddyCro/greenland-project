@@ -199,17 +199,28 @@
         v-html="p"
       )
       
-  g-vid-w-control(
-    public-path="../"
+  g-vid(
+    video-name="冰川"
     :src="`${VIDEO_PATH}climate/greenland_climate_video6_1`",
     ext="mp4"
     poster="../img/climate/greenland_climate_preview6_1",
     poster-ext="webp"
     id="gc-sea-vid",
     classname="u-full-vid"
-    :use-play="false"
-    :use-sound="false"
+    :use-webm="true"
+    :use-observer="true"
   )
+  //- g-vid-w-control(
+  //-   public-path="../"
+  //-   :src="`${VIDEO_PATH}climate/greenland_climate_video6_1`",
+  //-   ext="mp4"
+  //-   poster="../img/climate/greenland_climate_preview6_1",
+  //-   poster-ext="webp"
+  //-   id="gc-sea-vid",
+  //-   classname="u-full-vid"
+  //-   :use-play="false"
+  //-   :use-sound="false"
+  //- )
   .u-container-lg
     p.caption(v-html="str.seaImg1Caption")
 

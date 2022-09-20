@@ -20,10 +20,16 @@
 </template>
 
 <script>
+import { sendGA } from '@/assets/mixins';
+import { linearIntersectionObserver } from '@/assets/js/observer.js';
 
 export default {
   name: 'g-vid',
+  mixins: [sendGA],
   props: {
+    videoName: {
+      type: String,
+    },
     src: {
       type: String,
     },
@@ -58,12 +64,17 @@ export default {
     },
     isPlaying: {
       type: Boolean,
-      default: true,
+      default: false,
+    },
+    useObserver: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
     return {
       video: null,
+      observerPlaying: false,
     };
   },
   computed: {
@@ -104,9 +115,60 @@ export default {
         else this.video.pause();
       },
     },
+    observerPlaying: {
+      handler(value) {
+        if (value) this.video.play();
+        else this.video.pause();
+      },
+    },
   },
   mounted() {
     this.video = this.$refs[this.id];
+
+    if (this.useObserver) {
+      linearIntersectionObserver(
+        this.video,
+        () => {
+          this.observerPlaying = true;
+        },
+        () => {
+          this.observerPlaying = false;
+        }
+      );
+    }
+
+    // handle GA
+    let isDone = false;
+    let stageTime = 0;
+    const progressGA = (currentTime, duration) => {
+      const gap = duration / 10;
+      const newStageTime = Math.ceil(currentTime / gap);
+
+      if (newStageTime > stageTime) {
+        stageTime = newStageTime;
+
+        if (stageTime === 10) {
+          isDone = true;
+        }
+
+        console.log('GA', `${this.videoName || this.id}`, `${stageTime * 10}%`);
+
+
+        this.sendGA({
+          item: {
+            category: 'video_percent',
+            action: 'play',
+            label: `${this.videoName || this.id}_${stageTime * 10}%`,
+          },
+        });
+      }
+    };
+
+    this.video.ontimeupdate = (e) => {
+      if (!this.isPlaying && !this.observerPlaying) return;
+      if (isDone) return;
+      progressGA(e.target.currentTime, e.target.duration);
+    };
   },
 };
 </script>

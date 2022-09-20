@@ -12,6 +12,7 @@
     h1(v-html="str.heroTitle")
     .gl-hero-vid-wrapper
       g-vid(
+        video-name="冰川"
         :src="`${VIDEO_PATH}landing/greenland_video1_1`",
         ext="mp4",
         poster="img/landing/greenland_preview1_1",
@@ -19,6 +20,7 @@
         id="gl-vid1",
         classname="u-full-vh-vid gl-hero-vid"
         :use-webm="true"
+        :use-observer="true"
       )
 
   //- section intro
@@ -54,7 +56,6 @@
       :alt="str.hotTitle"
       :use-offset="true"
     )
-      //- TODO: container
       .u-container.u-paragraph
         h2.landing-h2(v-html="str.hotTitle")
         p(
@@ -84,12 +85,12 @@
 
   //- section snow
   section.gl-snow
-    bnb-slide(
+    bnb-slide(      
       :vid="`${VIDEO_PATH}landing/greenland_video4_1`",
       ext="mp4"
       poster="img/landing/greenland_preview4_1"
       poster-ext="webp"
-      id="gl-vid4"
+      id="google-earth"
       classname="gl-snow-slide"
       :use-play="false"
       :use-sound="false"
@@ -109,7 +110,7 @@
       ext="mp4"
       poster="img/landing/greenland_preview5_1",
       poster-ext="webp"
-      id="gl-vid5"
+      id="wiliam"
     )
       .u-container.u-paragraph
         h2.landing-h2(v-html="str.speedTitle")
@@ -126,7 +127,7 @@
       ext="mp4"
       poster="img/landing/greenland_preview6_1",
       poster-ext="webp"
-      id="gl-vid6"
+      id="minister"
     )
       .u-container.u-paragraph
         h2.landing-h2(v-html="str.cultureTitle")

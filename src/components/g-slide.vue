@@ -11,7 +11,7 @@
     )
       .g-slide-bg__vid-wrapper(v-if="src")
         g-vid-w-control(
-          :id="`g-slide-vid-${id}`"
+          :id="`video-${id}`"
           :src="src",
           :ext="ext",
           :poster="poster",

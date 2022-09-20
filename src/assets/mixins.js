@@ -156,7 +156,7 @@ const rwd = {
 
       for (let i = this.lastStage + 10; i <= this.readProgress; i += 10) {
         this.stagePool.push(i);
-        sendGA({
+        callGA({
           item: {
             category: 'read',
             action: 'scroll',
