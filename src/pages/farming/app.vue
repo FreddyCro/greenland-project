@@ -249,7 +249,8 @@
       classname="gf-sale-img1"
       :webp="true"
     )
-    p.caption(v-html="str.saleImg1Caption")
+    p.caption.hide-mob(v-html="str.saleImg1Caption")
+    p.caption.show-mob(v-html="str.saleImg1CaptionMob")
 
   section.u-section
     .u-container
