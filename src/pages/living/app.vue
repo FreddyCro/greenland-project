@@ -315,7 +315,7 @@
           :webp="true"
         )
       .u-container
-        p.quote-caption
+        .quote-caption
           .quote-caption__decoration-wrapper
             span
           .quote-caption__text-wrapper
