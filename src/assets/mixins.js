@@ -49,6 +49,21 @@ const gaTable = {
     action: 'click',
     label: '圓形聯logo',
   },
+  FooterShareFb: {
+    category: 'share',
+    action: 'click',
+    label: 'fb_bottom',
+  },
+  FooterShareLine: {
+    category: 'share',
+    action: 'click',
+    label: 'line_bottom',
+  },
+  FooterShareTwitter: {
+    category: 'share',
+    action: 'click',
+    label: 'twitter_bottom',
+  },
   CoverArrow: {
     category: 'arrow',
     action: 'click',

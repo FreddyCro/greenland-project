@@ -24,7 +24,10 @@
       </nav>
       <nav class="header-bar__nav">
         <div class="header-bar-share__container">
-          <div class="header-bar-share__share-icon">
+          <div
+            class="header-bar-share__share-icon"
+            @click="sendGA({ nmdCommon: 'HeaderShareFb' })"
+          >
             <share-network
               network="facebook"
               :title="title"
@@ -34,7 +37,10 @@
               <ShareFb />
             </share-network>
           </div>
-          <div class="header-bar-share__share-icon">
+          <div
+            class="header-bar-share__share-icon"
+            @click="sendGA({ nmdCommon: 'HeaderShareLine' })"
+          >
             <share-network
               network="line"
               :title="title"
@@ -44,7 +50,10 @@
               <ShareLine />
             </share-network>
           </div>
-          <div class="header-bar-share__share-icon">
+          <div
+            class="header-bar-share__share-icon"
+            @click="sendGA({ nmdCommon: 'HeaderShareTwitter' })"
+          >
             <share-network
               network="twitter"
               :title="title"
