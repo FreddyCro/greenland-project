@@ -53,7 +53,7 @@
 
   //- section transition
   g-slide(
-    id="transition"
+    id="fisherman"
     classname="gfi-transition-slide"
     :src="`${VIDEO_PATH}fishing/greenland_fishing_video3`",
     ext="mp4"
@@ -103,7 +103,7 @@
       src="../img/fishing/greenlnad_fishing_pic4_2"
       ext="jpg"
       :alt="str.janBeforeImg1Caption"
-      classname="gf-ja-before-img1"
+      classname="u-full-width-img gf-ja-before-img1"
       :webp="true"
     )
     p.caption(v-html="str.janBeforeImg1Caption")
@@ -164,7 +164,7 @@
       src="../img/fishing/greenland_fishing_pic5_3"
       ext="jpg"
       :alt="str.crisisPlasticImg2Caption"
-      classname="gf-crisis-plastic-img2"
+      classname="u-full-width-img gf-crisis-plastic-img2"
       :webp="true"
     )
     p.caption(v-html="str.crisisPlasticImg2Caption")

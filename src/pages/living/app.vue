@@ -9,7 +9,7 @@
   
   //- section hero
   g-slide(
-    id="intro"
+    id="hero"
     classname="gli-intro-slide"
     :is-first="true"
     :src="`${VIDEO_PATH}living/greenland_living_video1`",
@@ -77,7 +77,7 @@
           src="../img/living/greenland_living_pic4_1"
           ext="jpg"
           :alt="str.kirImg1Caption"
-          classname="gc-kir-img-1"
+          classname="u-full-width-img gc-kir-img-1"
           :webp="true"
         )
       .u-container
@@ -98,7 +98,7 @@
         src="../img/living/greenland_living_pic4_2"
         ext="jpg"
         :alt="str.kirImg2Caption"
-        classname="gc-kir-img-2"
+        classname="u-full-width-img gc-kir-img-2"
         :webp="true"
       )
       p.caption(v-html="str.kirImg2Caption")
@@ -119,7 +119,7 @@
           src="../img/living/greenland_living_pic5_1"
           ext="jpg"
           :alt="str.kajImg1Caption"
-          classname="gc-kaj-img-1"
+          classname="u-full-width-img gc-kaj-img-1"
           :webp="true"
         )
       .u-container
@@ -140,7 +140,7 @@
         src="../img/living/greenland_living_pic5_2"
         ext="jpg"
         :alt="str.kajImg2Caption"
-        classname="gc-kaj-img-2"
+        classname="u-full-width-img gc-kaj-img-2"
         :webp="true"
       )
       p.caption(v-html="str.kajImg2Caption")
@@ -161,7 +161,7 @@
           src="../img/living/greenland_living_pic6_1"
           ext="jpg"
           :alt="str.pauImg1Caption"
-          classname="gc-pau-img-2"
+          classname="u-full-width-img gc-pau-img-2"
           :webp="true"
         )
       .u-container
@@ -182,7 +182,7 @@
         src="../img/living/greenland_living_pic6_2"
         ext="jpg"
         :alt="str.pauImg2Caption"
-        classname="gc-pau-img-2"
+        classname="u-full-width-img gc-pau-img-2"
         :webp="true"
       )
       p.caption(v-html="str.pauImg2Caption")
@@ -215,7 +215,7 @@
           src="../img/living/greenland_living_pic7_1"
           ext="jpg"
           :alt="str.chrisImg1Caption"
-          classname="gc-chris-img-1"
+          classname="u-full-width-img gc-chris-img-1"
           :webp="true"
         )
       .u-container
@@ -236,7 +236,7 @@
         src="../img/living/greenland_living_pic7_2"
         ext="jpg"
         :alt="str.chrisImg2Caption"
-        classname="gc-chris-img-2"
+        classname="u-full-width-img gc-chris-img-2"
         :webp="true"
       )
       p.caption(v-html="str.chrisImg2Caption")
@@ -257,7 +257,7 @@
           src="../img/living/greenland_living_pic8_1"
           ext="jpg"
           :alt="str.aviImg1Caption"
-          classname="gc-avi-img-1"
+          classname="u-full-width-img gc-avi-img-1"
           :webp="true"
         )
       .u-container
@@ -290,7 +290,7 @@
         src="../img/living/greenland_living_pic8_3"
         ext="jpg"
         :alt="str.aviImg3Caption"
-        classname="gc-avi-img-3"
+        classname="u-full-width-img gc-avi-img-3"
         :webp="true"
       )
       p.caption(v-html="str.aviImg3Caption")
@@ -311,7 +311,7 @@
           src="../img/living/greenland_living_pic9_1"
           ext="jpg"
           :alt="str.boImg1Caption"
-          classname="gc-bo-img-1"
+          classname="u-full-width-img gc-bo-img-1"
           :webp="true"
         )
       .u-container
@@ -344,7 +344,7 @@
         src="../img/living/greenland_living_pic9_3"
         ext="jpg"
         :alt="str.boImg3Caption"
-        classname="gc-bo-img-1"
+        classname="u-full-width-img gc-bo-img-1"
         :webp="true"
       )
       p.caption(v-html="str.boImg3Caption")

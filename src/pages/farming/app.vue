@@ -53,7 +53,7 @@
 
   //- section transition
   g-slide(
-    id="transition"
+    id="farmer"
     classname="gf-transition-slide"
     :is-last="true"
     :src="`${VIDEO_PATH}farming/greenland_farming_video3`",
@@ -147,7 +147,7 @@
       src="../img/farming/greenland_farming_pic5_3"
       ext="jpg"
       :alt="str.farmWeatherImg1Caption"
-      classname="gf-farmWeather-img2"
+      classname="u-full-width-img gf-farmWeather-img2"
       :webp="true"
     )
     p.caption.hide-mob(v-html="str.farmWeatherImg1Caption")
@@ -174,7 +174,7 @@
       src="../img/farming/greenland_farming_pic5_5"
       ext="jpg"
       :alt="str.farmSheepImg1Caption"
-      classname="gf-farmSheep-img1"
+      classname="u-full-width-img gf-farmSheep-img1"
       :webp="true"
     )
     p.caption.hide-mob(v-html="str.farmSheepImg1Caption")
@@ -191,7 +191,7 @@
       src="../img/farming/greenland_farming_pic5_6"
       ext="jpg"
       :alt="str.farmSheepImg2Caption"
-      classname="gf-farmSheep-img2"
+      classname="u-full-width-img gf-farmSheep-img2"
       :webp="true"
     )
   .u-container
@@ -210,7 +210,7 @@
       src="../img/farming/greenland_farming_chart5_7"
       ext="svg"
       :alt="str.farmSheepImg3Caption"
-      classname="gf-farmSheep-img3"
+      classname="u-full-width-img gf-farmSheep-img3"
       :webp="false"
       :use2x="false"
       :use3x="false"
@@ -246,7 +246,7 @@
       src="../img/farming/greenland_farming_pic6_2"
       ext="jpg"
       :alt="str.saleImg1Caption"
-      classname="gf-sale-img1"
+      classname="u-full-width-img gf-sale-img1"
       :webp="true"
     )
     p.caption.hide-mob(v-html="str.saleImg1Caption")
@@ -294,7 +294,7 @@
       src="../img/farming/greenland_farming_pic6_3"
       ext="jpg"
       :alt="str.saleSelfImg1Caption"
-      classname="gf-sale-culture-img1"
+      classname="u-full-width-img gf-sale-culture-img1"
       :webp="true"
     )
     p.caption(v-html="str.saleSelfImg1Caption")

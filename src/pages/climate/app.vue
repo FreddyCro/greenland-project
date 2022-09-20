@@ -53,7 +53,7 @@
 
   //- section transition
   g-slide(
-    id="transition"
+    id="scientist"
     classname="gc-transition-slide"
     :is-last="true"
     :src="`${VIDEO_PATH}climate/greenland_climate_video3`",
@@ -94,7 +94,7 @@
       src="../img/climate/greenland_climate_pic4_2"
       ext="jpg"
       :alt="str.collageImg1Caption"
-      classname="gc-collage-img1"
+      classname="u-full-width-img gc-collage-img1"
       :webp="true"
     )
     p.caption(v-html="str.collageImg1Caption")
@@ -112,7 +112,7 @@
   .u-container
     g-pic(
       src="../img/climate/greenland_climate_chart4_2"
-      classname="gc-collage-img2"
+      classname="u-full-width-img gc-collage-img2"
       ext="svg"
       :alt="str.protectionImg1Caption"
       :use2x="false"
@@ -135,7 +135,7 @@
       src="../img/climate/greenland_climate_pic4_4"
       ext="jpg"
       :alt="str.protectionImg2Caption"
-      classname="gc-protection-img2"
+      classname="u-full-width-img gc-protection-img2"
       :webp="true"
     )
     p.caption(v-html="str.protectionImg2Caption")
@@ -168,7 +168,7 @@
       src="../img/climate/greenland_climate_pic5_2"
       ext="jpg"
       :alt="str.jpImg2Caption"
-      classname="gc-jp-img2"
+      classname="u-full-width-img gc-jp-img2"
       :webp="true"
     )
     p.caption.gc-jp-img2-caption(v-html="str.jpImg1Caption")
@@ -185,7 +185,7 @@
       src="../img/climate/greenland_climate_pic5_3"
       ext="jpg"
       :alt="str.jpImg2Caption"
-      classname="gc-jp-img2"
+      classname="u-full-width-img gc-jp-img2"
       :webp="true"
     )
     p.caption(v-html="str.jpImg2Caption")
@@ -200,7 +200,7 @@
       )
       
   g-vid(
-    video-name="冰川"
+    video-name="海冰"
     :src="`${VIDEO_PATH}climate/greenland_climate_video6_1`",
     ext="mp4"
     poster="../img/climate/greenland_climate_preview6_1",
@@ -237,7 +237,7 @@
       src="../img/climate/greenland_climate_pic6_2"
       ext="jpg"
       :alt="str.scienceImg1Caption"
-      classname="gc-science-img1"
+      classname="u-full-width-img gc-science-img1"
       :webp="true"
     )
     p.caption(v-html="str.scienceImg1Caption")
