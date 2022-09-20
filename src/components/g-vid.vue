@@ -151,9 +151,7 @@ export default {
           isDone = true;
         }
 
-        console.log('GA', `${this.videoName || this.id}`, `${stageTime * 10}%`);
-
-
+        // console.log('GA', `${this.videoName || this.id}`, `${stageTime * 10}%`);
         this.sendGA({
           item: {
             category: 'video_percent',
