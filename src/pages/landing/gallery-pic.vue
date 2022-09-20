@@ -18,11 +18,11 @@
 
 <script>
 import GPic from '@/components/g-pic.vue';
-import { sendGa } from '@/assets/mixins';
+import { sendGA } from '@/assets/mixins';
 
 export default {
   name: 'gallery-pic',
-  mixins: [sendGa],
+  mixins: [sendGA],
   props: {
     src: {
       type: String,

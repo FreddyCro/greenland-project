@@ -96,7 +96,7 @@ const gaTable = {
   },
 };
 
-const sendGA = ({ item, nmdCommon }) => {
+const callGA = ({ item, nmdCommon }) => {
   if (nmdCommon) {
     item = gaTable[nmdCommon];
   }
@@ -205,7 +205,7 @@ const rwd = {
   },
 };
 
-const sendGa = {
+const sendGA = {
   methods: {
     /**
      * @param {string} item.category
@@ -213,7 +213,7 @@ const sendGa = {
      * @param {string} item.label
      */
     sendGA({ item, nmdCommon }) {
-      sendGA({ item, nmdCommon });
+      callGA({ item, nmdCommon });
     },
   },
 };
@@ -272,4 +272,4 @@ const glMap = {
   },
 };
 
-export { rwd, sendGa, glMap, env };
+export { rwd, sendGA, glMap, env };

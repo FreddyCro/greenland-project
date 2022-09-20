@@ -40,11 +40,11 @@
 <script>
 import GPic from '@/components/g-pic.vue';
 import str from '@/assets/string/series.json';
-import { env, sendGa } from '@/assets/mixins';
+import { env, sendGA } from '@/assets/mixins';
 
 export default {
   name: 'g-series',
-  mixins: [env, sendGa],
+  mixins: [env, sendGA],
   components: {
     GPic,
   },
@@ -93,7 +93,7 @@ export default {
   },
   methods: {
     handleClickCard(item) {
-      this.sendGa({
+      this.sendGA({
         item: {
           category: 'series',
           action: 'click',

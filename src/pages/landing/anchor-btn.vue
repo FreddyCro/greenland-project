@@ -24,11 +24,11 @@
 </template>
 
 <script>
-import { sendGa } from '@/assets/mixins';
+import { sendGA } from '@/assets/mixins';
 
 export default {
   name: 'anchor-btn',
-  mixins: [sendGa],
+  mixins: [sendGA],
   props: {
     text: {
       type: String,

@@ -82,12 +82,12 @@ import ShareFb from '@/components/common/header/ShareFb.vue';
 import ShareLine from '@/components/common/header/ShareLine.vue';
 import ShareTwitter from '@/components/common/header/ShareTwitter.vue';
 import debounce from 'debounce';
-import { env, sendGa } from '@/assets/mixins';
+import { env, sendGA } from '@/assets/mixins';
 import { handleBodyScrollbar } from '@/assets/js/udn-newmedia-utils';
 
 export default {
   name: 'HeaderTypeA',
-  mixins: [env, sendGa],
+  mixins: [env, sendGA],
   props: {
     href: {
       type: String,

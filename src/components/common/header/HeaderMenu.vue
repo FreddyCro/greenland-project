@@ -40,11 +40,11 @@
 </template>
 
 <script>
-import { env, sendGa } from '@/assets/mixins';
+import { env, sendGA } from '@/assets/mixins';
 
 export default {
   name: 'HeaderMenu',
-  mixins: [env, sendGa],
+  mixins: [env, sendGA],
   props: {
     menuActiveFlag: {
       type: Boolean,

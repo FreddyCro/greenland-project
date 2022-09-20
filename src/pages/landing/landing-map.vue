@@ -197,11 +197,11 @@ import {
 } from '@/assets/js/observer.js';
 import { calcElementProgress } from '@/assets/js/progress.js';
 import debounce from 'debounce';
-import { sendGa } from '@/assets/mixins';
+import { sendGA } from '@/assets/mixins';
 
 export default {
   name: 'landing-map',
-  mixins: [sendGa],
+  mixins: [sendGA],
   components: {
     GPic,
     GButton,
