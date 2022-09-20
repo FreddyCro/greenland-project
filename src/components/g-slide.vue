@@ -1,5 +1,6 @@
 <template lang="pug">
 .g-slide(:ref="`g-slide-${id}`" :class="classname")
+  .first-trigger(v-if="isFirst" :ref="`g-slide-first-trigger-${id}`")
   .g-slide-bg-wrapper(:class="{'g-slide-bg-wrapper--last': isLast }")
     .g-slide-bg(
       :class="{ \
@@ -107,6 +108,14 @@ export default {
     };
   },
   mounted() {
+    if (this.isFirst) {
+      linearIntersectionObserver(
+        this.$refs[`g-slide-first-trigger-${this.id}`],
+        this.handleEnter,
+        () => {}
+      );
+    }
+
     if (this.isLast) {
       linearIntersectionObserver(
         this.$refs[`g-slide-last-trigger-${this.id}`],
@@ -165,6 +174,7 @@ export default {
   opacity: 0;
   transition: 0.25s ease-in-out;
   pointer-events: none;
+  background-color: #000000;
 
   &--active {
     opacity: 1;
@@ -208,7 +218,6 @@ export default {
   position: relative;
   display: flex;
   align-items: center;
-  margin-top: 1px;
   margin-bottom: 600px;
   z-index: 2;
   color: $font-color-light;
@@ -227,5 +236,9 @@ export default {
     background-color: $bg-white;
     color: $font-color;
   }
+}
+
+.first-trigger {
+  height: 1px;
 }
 </style>
