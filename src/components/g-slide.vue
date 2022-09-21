@@ -201,8 +201,6 @@ export default {
     }
   }
 
-
-
   &__vid-wrapper {
     position: absolute;
     left: 0;

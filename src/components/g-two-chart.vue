@@ -4,6 +4,7 @@
     g-svg-chart(:src="first", :alt="alt")
   .g-two-chart__second(:class="{ 'g-two-chart__second--hidden': !isActive }")
     g-svg-chart(:src="second", :alt="alt")
+  p.caption {{ chartCaption }}
 </template>
 
 <script>
@@ -23,6 +24,9 @@ export default {
       type: String,
     },
     second: {
+      type: String,
+    },
+    chartCaption: {
       type: String,
     },
     alt: {
