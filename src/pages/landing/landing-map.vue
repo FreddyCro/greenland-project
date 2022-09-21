@@ -29,7 +29,10 @@
             :step="step"
             :progress="progress"
           )
-
+        img.earth(
+          src="img/landing/icon/map_earth.svg"
+          alt="earth"
+        )
   .glm-text
     .stick-trigger(ref="stick-trigger-1")
     section.glm-section.glm-mystery(ref="section-1")
