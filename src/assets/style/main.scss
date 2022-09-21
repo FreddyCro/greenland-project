@@ -85,7 +85,7 @@
 
     &.landing-h2 {
       margin-bottom: $spacing-7;
-  
+
       @include rwd-min(md) {
         margin-bottom: $spacing-8;
       }
@@ -220,6 +220,11 @@
     object-fit: cover;
     object-position: center center;
   }
+}
+
+.u-higher-z-index {
+  position: relative;
+  z-index: 5;
 }
 
 // greenland series style

@@ -75,7 +75,7 @@
     src="../img/climate/greenland_climate_pic4_1"
     ext="jpg"
     alt=""
-    classname="u-full-img"
+    classname="u-higher-z-index u-full-width-img"
     :webp="true"
   )
 

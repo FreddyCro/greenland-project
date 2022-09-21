@@ -75,7 +75,7 @@
     src="../img/farming/greenland_farming_pic4_1"
     ext="jpg"
     :alt="str.skillImg1Caption"
-    classname="u-full-width-img"
+    classname="u-higher-z-index u-full-width-img"
     :webp="true"
   )
   section.u-section.gf-skill

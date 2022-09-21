@@ -52,7 +52,7 @@
         )
 
   //- section transition
-  section.u-section
+  section.u-section.u-section--no-padding-top.u-higher-z-index
     g-pic(
       src="../img/living/greenland_living_pic3"
       ext="jpg"

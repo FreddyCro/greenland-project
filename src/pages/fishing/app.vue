@@ -75,10 +75,9 @@
     src="../img/fishing/greenland_fishing_pic4_1"
     ext="jpg"
     :alt="str.janBeforeImg1Caption"
-    classname="u-full-width-img"
+    classname="u-higher-z-index u-full-width-img"
     :webp="true"
   )
-
   section.u-section.gfi-ja
     .u-container
       h2(v-html="str.janTitle")
