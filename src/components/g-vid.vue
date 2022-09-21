@@ -126,15 +126,17 @@ export default {
     this.video = this.$refs[this.id];
 
     if (this.useObserver) {
-      linearIntersectionObserver(
-        this.video,
-        () => {
-          this.observerPlaying = true;
-        },
-        () => {
-          this.observerPlaying = false;
-        }
-      );
+      this.video.onloadstart = () => {
+        linearIntersectionObserver(
+          this.video,
+          () => {
+            this.observerPlaying = true;
+          },
+          () => {
+            this.observerPlaying = false;
+          }
+        );
+      };
     }
 
     // handle GA
@@ -151,7 +153,6 @@ export default {
           isDone = true;
         }
 
-        // console.log('GA', `${this.videoName || this.id}`, `${stageTime * 10}%`);
         this.sendGA({
           item: {
             category: 'video_percent',
