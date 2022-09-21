@@ -1,5 +1,9 @@
 <template>
-  <a class="gl-anchor" :href="target">
+  <a
+    class="gl-anchor"
+    :href="target"
+    @click="sendGA({ item: { category: 'anchor', action: 'click', label: target}})"
+  >
     <div class="gl-anchor__title" v-html="text" />
     <svg
       class="gl-anchor__btn"
@@ -20,8 +24,11 @@
 </template>
 
 <script>
+import { sendGA } from '@/assets/mixins';
+
 export default {
   name: 'anchor-btn',
+  mixins: [sendGA],
   props: {
     text: {
       type: String,

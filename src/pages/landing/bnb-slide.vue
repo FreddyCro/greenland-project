@@ -22,7 +22,7 @@
         :ext="ext"
         :poster="poster",
         :poster-ext="posterExt"
-        :id="`bnb-slide-media-${id}`",
+        :id="`video-${id}`",
         :force-stop="!isBnbEnter"
         :use-play="usePlay"
         :use-sound="useSound"

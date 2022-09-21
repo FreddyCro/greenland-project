@@ -1,12 +1,15 @@
 <template>
   <div class="footer-share">
-    <share-network
-      network="facebook"
-      :title="title"
-      :description="description"
-      :url="shareUrl"
+    <button
+      class="footer-share__btn footer-share__btn--fb"
+      @click="sendGA({ nmdCommon: 'FooterShareFb' })"
     >
-      <button class="footer-share__btn footer-share__btn--fb">
+      <share-network
+        network="facebook"
+        :title="title"
+        :description="description"
+        :url="shareUrl"
+      >
         <svg
           width="36"
           height="36"
@@ -19,15 +22,18 @@
             fill="#2B66D8"
           ></path>
         </svg>
-      </button>
-    </share-network>
-    <share-network
-      network="line"
-      :title="title"
-      :description="description"
-      :url="shareUrl"
+      </share-network>
+    </button>
+    <button
+      class="footer-share__btn footer-share__btn--line"
+      @click="sendGA({ nmdCommon: 'FooterShareLine' })"
     >
-      <button class="footer-share__btn footer-share__btn--line">
+      <share-network
+        network="line"
+        :title="title"
+        :description="description"
+        :url="shareUrl"
+      >
         <svg
           width="36"
           height="36"
@@ -40,10 +46,13 @@
             fill="#10B82B"
           ></path>
         </svg>
-      </button>
-    </share-network>
-    <share-network network="twitter" :title="title" :url="shareUrl">
-      <button class="footer-share__btn footer-share__btn--twitter">
+      </share-network>
+    </button>
+    <button
+      class="footer-share__btn footer-share__btn--twitter"
+      @click="sendGA({ nmdCommon: 'FooterShareTwitter' })"
+    >
+      <share-network network="twitter" :title="title" :url="shareUrl">
         <svg
           width="36"
           height="36"
@@ -56,14 +65,17 @@
             fill="#49ADE4"
           ></path>
         </svg>
-      </button>
-    </share-network>
+      </share-network>
+    </button>
   </div>
 </template>
 
 <script>
+import { env, sendGA } from '@/assets/mixins';
+
 export default {
   name: 'footer-share',
+  mixins: [env, sendGA],
   props: {
     title: {
       type: String,

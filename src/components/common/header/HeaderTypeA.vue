@@ -24,7 +24,10 @@
       </nav>
       <nav class="header-bar__nav">
         <div class="header-bar-share__container">
-          <div class="header-bar-share__share-icon">
+          <div
+            class="header-bar-share__share-icon"
+            @click="sendGA({ nmdCommon: 'HeaderShareFb' })"
+          >
             <share-network
               network="facebook"
               :title="title"
@@ -34,7 +37,10 @@
               <ShareFb />
             </share-network>
           </div>
-          <div class="header-bar-share__share-icon">
+          <div
+            class="header-bar-share__share-icon"
+            @click="sendGA({ nmdCommon: 'HeaderShareLine' })"
+          >
             <share-network
               network="line"
               :title="title"
@@ -44,7 +50,10 @@
               <ShareLine />
             </share-network>
           </div>
-          <div class="header-bar-share__share-icon">
+          <div
+            class="header-bar-share__share-icon"
+            @click="sendGA({ nmdCommon: 'HeaderShareTwitter' })"
+          >
             <share-network
               network="twitter"
               :title="title"
@@ -73,12 +82,12 @@ import ShareFb from '@/components/common/header/ShareFb.vue';
 import ShareLine from '@/components/common/header/ShareLine.vue';
 import ShareTwitter from '@/components/common/header/ShareTwitter.vue';
 import debounce from 'debounce';
-import { env, sendGa } from '@/assets/mixins';
+import { env, sendGA } from '@/assets/mixins';
 import { handleBodyScrollbar } from '@/assets/js/udn-newmedia-utils';
 
 export default {
   name: 'HeaderTypeA',
-  mixins: [env, sendGa],
+  mixins: [env, sendGA],
   props: {
     href: {
       type: String,

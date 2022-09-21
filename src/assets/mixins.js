@@ -49,6 +49,21 @@ const gaTable = {
     action: 'click',
     label: '圓形聯logo',
   },
+  FooterShareFb: {
+    category: 'share',
+    action: 'click',
+    label: 'fb_bottom',
+  },
+  FooterShareLine: {
+    category: 'share',
+    action: 'click',
+    label: 'line_bottom',
+  },
+  FooterShareTwitter: {
+    category: 'share',
+    action: 'click',
+    label: 'twitter_bottom',
+  },
   CoverArrow: {
     category: 'arrow',
     action: 'click',
@@ -81,7 +96,7 @@ const gaTable = {
   },
 };
 
-const sendGA = ({ item, nmdCommon }) => {
+const callGA = ({ item, nmdCommon }) => {
   if (nmdCommon) {
     item = gaTable[nmdCommon];
   }
@@ -141,7 +156,7 @@ const rwd = {
 
       for (let i = this.lastStage + 10; i <= this.readProgress; i += 10) {
         this.stagePool.push(i);
-        sendGA({
+        callGA({
           item: {
             category: 'read',
             action: 'scroll',
@@ -190,7 +205,7 @@ const rwd = {
   },
 };
 
-const sendGa = {
+const sendGA = {
   methods: {
     /**
      * @param {string} item.category
@@ -198,7 +213,7 @@ const sendGa = {
      * @param {string} item.label
      */
     sendGA({ item, nmdCommon }) {
-      sendGA({ item, nmdCommon });
+      callGA({ item, nmdCommon });
     },
   },
 };
@@ -257,4 +272,4 @@ const glMap = {
   },
 };
 
-export { rwd, sendGa, glMap, env };
+export { rwd, sendGA, glMap, env };

@@ -14,11 +14,11 @@
 </template>
 
 <script>
-import { sendGa } from '@/assets/mixins';
+import { sendGA } from '@/assets/mixins';
 
 export default {
   name: 'FooterQuestionnaire',
-  mixins: [sendGa],
+  mixins: [sendGA],
   props: {
     href: {
       type: String,

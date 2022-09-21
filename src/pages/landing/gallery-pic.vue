@@ -1,5 +1,5 @@
 <template lang="pug">
-.gallery-pic
+.gallery-pic(@click="sendGA({item: {category: 'collection', action: 'click', label: '圖說'}})")
   .gallery-pic__content
     g-pic(
       :src="src"
@@ -18,9 +18,11 @@
 
 <script>
 import GPic from '@/components/g-pic.vue';
+import { sendGA } from '@/assets/mixins';
 
 export default {
   name: 'gallery-pic',
+  mixins: [sendGA],
   props: {
     src: {
       type: String,

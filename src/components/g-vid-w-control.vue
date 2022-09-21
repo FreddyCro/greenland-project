@@ -10,6 +10,7 @@
       :use-webm="useWebm"
       :is-playing="isPlaying"
       :full-screen="fullScreen"
+      :video-name="videoName"
     />
 
     <div class="g-vid-w-control__btns">
@@ -51,16 +52,18 @@
 
 <script>
 import GVid from '@/components/g-vid.vue';
-// import { linearIntersectionObserver } from '@/assets/js/observer.js';
-import { env } from '@/assets/mixins';
+import { env, sendGA } from '@/assets/mixins';
 
 export default {
   name: 'g-vid-w-control',
-  mixins: [env],
+  mixins: [env, sendGA],
   components: {
     GVid,
   },
   props: {
+    videoName: {
+      type: String,
+    },
     src: {
       type: String,
     },
@@ -120,26 +123,37 @@ export default {
   methods: {
     handlePlayClick() {
       this.isPlaying = !this.isPlaying;
+
+      // send GA
+      this.sendGA({
+        item: {
+          category: 'video_stop',
+          action: 'click',
+          label: `${this.videoName || this.id}_${
+            this.isPlaying ? 'play' : 'stop'
+          }`,
+        },
+      });
     },
     handleMuteClick() {
       this.isMuted = !this.isMuted;
       this.$store.dispatch('setSound', this.isMuted);
+
+      // send GA
+      this.sendGA({
+        item: {
+          category: 'video_muted',
+          action: 'click',
+          label: `${this.videoName || this.id}_${
+            this.isPlaying ? 'play' : 'stop'
+          }`,
+        },
+      });
     },
   },
   mounted() {
     this.video = document.querySelector(`#${this.id}`);
     this.isPlaying = !this.forceStop;
-
-    // linearIntersectionObserver(
-    //   this.$refs['g-vid'],
-    //   () => {
-    //     this.isPlaying = true;
-    //   },
-    //   () => {
-    //     this.isPlaying = false;
-    //     this.video.currentTime = 0;
-    //   }
-    // );
   },
 };
 </script>

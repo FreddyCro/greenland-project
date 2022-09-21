@@ -22,6 +22,7 @@
         :ariaLabel="item.title"
         :name="item.title"
         :class="{ active: item.active }"
+        @click="sendGA({ item: { category: 'menu', action: 'click', label: 'hamburger' + item.title}})"
       >
         {{ item.title }}
       </a>
@@ -39,11 +40,11 @@
 </template>
 
 <script>
-import { env } from '@/assets/mixins';
+import { env, sendGA } from '@/assets/mixins';
 
 export default {
   name: 'HeaderMenu',
-  mixins: [env],
+  mixins: [env, sendGA],
   props: {
     menuActiveFlag: {
       type: Boolean,

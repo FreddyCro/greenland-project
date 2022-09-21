@@ -13,6 +13,7 @@
               :class="`g-series-card--${item}`"
               :href="`${PUBLIC_PATH}${listData[item].url}`"
               target="_blank"
+              @click="handleClickCard(item)"
             )
               g-pic(
                 :src="`${PUBLIC_PATH}${listData[item].src}`"
@@ -39,11 +40,11 @@
 <script>
 import GPic from '@/components/g-pic.vue';
 import str from '@/assets/string/series.json';
-import { env } from '@/assets/mixins';
+import { env, sendGA } from '@/assets/mixins';
 
 export default {
   name: 'g-series',
-  mixins: [env],
+  mixins: [env, sendGA],
   components: {
     GPic,
   },
@@ -89,6 +90,17 @@ export default {
         },
       },
     };
+  },
+  methods: {
+    handleClickCard(item) {
+      this.sendGA({
+        item: {
+          category: 'series',
+          action: 'click',
+          label: this.listData[item].title,
+        },
+      });
+    },
   },
 };
 </script>
