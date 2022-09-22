@@ -12,6 +12,7 @@
         :second="secondChart",
         :alt="alt"
         :is-active="isPrimEnter"
+        :chart-caption="chartCaption"
       )
     .bnb-slide__sec.bnb-slide__sec--vid(
       v-if="vid"
@@ -74,6 +75,10 @@ export default {
       default: '',
     },
     secondChart: {
+      type: String,
+      default: '',
+    },
+    chartCaption: {
       type: String,
       default: '',
     },
@@ -174,6 +179,10 @@ export default {
     margin: 200px auto 800px auto;
     padding: $spacing-9;
     background-color: rgba($color: $bg-white, $alpha: 0.9);
+
+    @include rwd-min(sm) {
+      margin: 200px auto 1000px auto;
+    }
 
     @include rwd-min(md) {
       width: 50%;

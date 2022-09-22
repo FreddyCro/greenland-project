@@ -29,7 +29,10 @@
             :step="step"
             :progress="progress"
           )
-
+        img.earth(
+          src="img/landing/icon/map_earth.svg"
+          alt="earth"
+        )
   .glm-text
     .stick-trigger(ref="stick-trigger-1")
     section.glm-section.glm-mystery(ref="section-1")
@@ -422,13 +425,17 @@ export default {
     margin-bottom: 100vh;
     transition: background-color 0.5s ease-in-out;
 
+    &:last-child {
+      margin-bottom: 0;
+    }
+
     @include rwd-min(md) {
       background-color: $bg-white;
       padding-top: 0;
-    }
 
-    &:last-child {
-      margin-bottom: 0;
+      &:last-child {
+        margin-bottom: 300px;
+      }
     }
 
     &:first-child {
@@ -504,14 +511,16 @@ export default {
   }
 
   .glm-button {
-    &:hover {
-      background-color: $g-blue-1;
-      color: $font-color-light;
-      border-color: $g-blue-1;
+    background-color: $g-blue-1;
+    color: $font-color-light;
+    border-color: $g-blue-1;
 
-      path {
-        fill: $font-color-light;
-      }
+    path {
+      fill: $font-color-light;
+    }
+
+    &:hover {
+      background-color: lighten($g-blue-1, 5%);
     }
   }
 

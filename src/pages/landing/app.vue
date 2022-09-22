@@ -53,6 +53,7 @@
       classname="gl-hot-slide",
       first-chart="img/landing/greenland_chart2_1",
       second-chart="img/landing/greenland_chart2_2",
+      :chart-caption="str.hotChartCaption",
       :alt="str.hotTitle"
       :use-offset="true"
     )
@@ -71,6 +72,7 @@
       classname="gl-melt-slide",
       first-chart="img/landing/greenland_chart3_1"
       second-chart="img/landing/greenland_chart3_2"
+      :chart-caption="str.meltChartCaption",
       :alt="str.hotTitle"
       :use-offset="true"
     )
