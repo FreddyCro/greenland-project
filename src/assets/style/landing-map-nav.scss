@@ -21,6 +21,10 @@ $transition-2: 1s;
     transition: $transition-2 ease-in-out;
   }
 
+  .earth {
+    transition: 0.3s ease-in-out;
+  }
+
   .kaikai,
   .ilu,
   .sisi,
@@ -36,6 +40,10 @@ $transition-2: 1s;
   &--step-2,
   &--step-3,
   &--step-4 {
+    .earth {
+      opacity: 0;
+    }
+
     .pin {
       opacity: 1;
     }

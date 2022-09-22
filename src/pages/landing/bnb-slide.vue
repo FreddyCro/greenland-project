@@ -177,7 +177,7 @@ export default {
     position: relative;
     width: 100%;
     margin: 200px auto 800px auto;
-    padding: $spacing-9;
+    padding: $spacing-9 0;
     background-color: rgba($color: $bg-white, $alpha: 0.9);
 
     @include rwd-min(sm) {
@@ -193,8 +193,30 @@ export default {
   }
 
   &__prim-content-container {
-    @include rwd-min(xl) {
+    @include u-container-xxs;
+
+    @include rwd-min(xs) {
+      @include u-container-xs;
+    }
+
+    @include rwd-min(sm) {
+      padding-left: $spacing-12;
+      padding-right: $spacing-12;
+    }
+
+    @include rwd-min(md) {
+      max-width: 100%;
+      padding-left: $spacing-10;
+      padding-right: $spacing-10;
+    }
+
+    @include rwd-min(lg) {
       max-width: 470px;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    @include rwd-min(xl) {
     }
   }
 

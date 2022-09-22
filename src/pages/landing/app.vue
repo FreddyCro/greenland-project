@@ -57,7 +57,7 @@
       :alt="str.hotTitle"
       :use-offset="true"
     )
-      .u-container.u-paragraph
+      .u-paragraph
         h2.landing-h2(v-html="str.hotTitle")
         p(
           v-for="p, index in str.hotText"
@@ -76,8 +76,7 @@
       :alt="str.hotTitle"
       :use-offset="true"
     )
-      //- TODO: container
-      .u-container.u-paragraph
+      .u-paragraph
         h2.landing-h2(v-html="str.meltTitle")
         p(
           v-for="p, index in str.meltText"
@@ -97,7 +96,7 @@
       :use-play="false"
       :use-sound="false"
     )
-      .u-container.u-paragraph
+      .u-paragraph
         h2.landing-h2(v-html="str.snowTitle")
         p(
           v-for="p, index in str.snowText"
@@ -114,7 +113,7 @@
       poster-ext="webp"
       id="wiliam"
     )
-      .u-container.u-paragraph
+      .u-paragraph
         h2.landing-h2(v-html="str.speedTitle")
         p(
           v-for="p, index in str.speedText"
@@ -131,7 +130,7 @@
       poster-ext="webp"
       id="minister"
     )
-      .u-container.u-paragraph
+      .u-paragraph
         h2.landing-h2(v-html="str.cultureTitle")
         p(
           v-for="p, index in str.cultureText"
