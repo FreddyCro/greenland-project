@@ -21,7 +21,7 @@
           :use-sound="useSound",
           :full-screen="true",
           :classname="`${classname}-vid`",
-          :force-stop="!isEnter"
+          :force-stop="!isVideoPlaying"
         )
 
       slot(name="bg")
@@ -104,6 +104,7 @@ export default {
   data() {
     return {
       isEnter: false,
+      isVideoPlaying: false, // later 0.3s than isEnter
       isContentEnter: false,
     };
   },
@@ -143,9 +144,15 @@ export default {
   methods: {
     handleEnter() {
       this.isEnter = true;
+      setTimeout(() => {
+        this.isVideoPlaying = true;
+      }, 300);
     },
     handleLeave() {
       this.isEnter = false;
+      setTimeout(() => {
+        this.isVideoPlaying = false;
+      }, 300);
     },
   },
 };
@@ -239,6 +246,8 @@ export default {
 }
 
 .first-trigger {
+  position: relative;
+  z-index: 10;
   height: 1px;
 }
 </style>
