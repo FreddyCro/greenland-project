@@ -413,7 +413,6 @@ export default {
 
   @include rwd-min(md) {
     width: 50%;
-    padding: $spacing-10;
   }
 
   .stick-trigger {
@@ -467,16 +466,17 @@ export default {
 
     @include rwd-min(md) {
       max-width: 100%;
-      padding-left: $spacing-7;
-      padding-right: 0;
+      padding-left: $spacing-10;
+      padding-right: $spacing-10;
     }
 
     @include rwd-min(lg) {
-      padding-left: $spacing-9;
+      max-width: 470px;
+      padding-left: 0;
+      padding-right: 0;
     }
 
     @include rwd-min(xl) {
-      max-width: 470px;
     }
   }
 
