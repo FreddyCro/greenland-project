@@ -76,6 +76,10 @@ export default {
     opacity: 1;
   }
 
+  @include rwd-min(sm) {
+    height: 2400px;
+  }
+
   @include rwd-min(md) {
     height: 300vh;
   }
@@ -98,6 +102,7 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
+    pointer-events: none;
 
     img {
       object-position: bottom center;
@@ -142,6 +147,10 @@ export default {
   width: 100%;
   height: 200px;
   pointer-events: none;
+
+  @include rwd-min(sm) {
+    height: 400px;
+  }
 
   @include rwd-min(md) {
     height: 30vh;
