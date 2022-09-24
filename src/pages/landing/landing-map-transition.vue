@@ -2,7 +2,7 @@
 .gl-transition(:class="{'gl-transition--active': isSectionEnter}")
   .gl-transition__trigger-1(ref="trigger-1")
   .gl-transition__trigger-2(ref="trigger-2")
-  .gl-transition__content
+  .gl-transition__content(:style="style")
     .gl-transition__content-bg
       g-pic(
         src="img/landing/greenland_pic7_1"
@@ -38,6 +38,12 @@ export default {
       isSectionEnter: false,
       isTextEnter: false,
     };
+  },
+  computed: {
+    style() {
+      const style = { height: this.$store.state.fullVideoHeight };
+      return style;
+    },
   },
   mounted() {
     linearIntersectionObserver(
@@ -92,8 +98,6 @@ export default {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    background-size: cover;
-    background-position: bottom center;
   }
 
   &__content-bg {
