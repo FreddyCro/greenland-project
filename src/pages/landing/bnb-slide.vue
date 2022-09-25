@@ -175,7 +175,6 @@ export default {
 
   &__prim {
     position: relative;
-    z-index: 2;
     width: 100%;
     margin: 200px auto 800px auto;
     padding: $spacing-9 0;
@@ -223,7 +222,6 @@ export default {
 
   &__sec-wrapper {
     position: sticky;
-    z-index: 1;
     top: 0;
     /* top: 50%; */
     width: 100%;
