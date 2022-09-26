@@ -21,6 +21,7 @@
         classname="u-full-vh-vid gl-hero-vid"
         :use-webm="true"
         :use-observer="true"
+        :full-screen="true"
       )
 
   //- section intro

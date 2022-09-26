@@ -420,17 +420,23 @@ export default {
   }
 
   .glm-section {
-    padding-top: 100vh;
-    margin-bottom: 100vh;
+    padding-top: 650px;
+    margin-bottom: 650px;
     transition: background-color 0.5s ease-in-out;
 
     &:last-child {
       margin-bottom: 0;
     }
 
+    @include rwd-min(sm) {
+      padding-top: 900px;
+      margin-bottom: 900px;
+    }
+
     @include rwd-min(md) {
       background-color: $bg-white;
       padding-top: 0;
+      margin-bottom: 100vh;
 
       &:last-child {
         margin-bottom: 300px;
